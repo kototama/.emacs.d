@@ -53,7 +53,6 @@
 (autoload 'mo-git-blame-file "mo-git-blame" nil t)
 (autoload 'mo-git-blame-current "mo-git-blame" nil t)
 
-
 (yas/initialize)
 (yas/load-directory "~/.emacs.d/emacs-modes/yasnippet/snippets")
 
@@ -77,6 +76,8 @@
 ;; always uses the following modes 
 (ido-mode t)
 (global-undo-tree-mode t)
+(define-key undo-tree-map (kbd "C-?") nil)
+
 (highlight-parentheses-mode t)
 (show-paren-mode t)
 (winner-mode t)
@@ -156,6 +157,7 @@
 (global-set-key (kbd "M-o") 'my-anything)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "C-x SPC") 'ace-jump-mode)
+(global-set-key (kbd "C-x p") 'pop-to-mark-command)
 
 (global-set-key [f1] 'multi-term)
 (global-set-key [f2] 'multi-term-prev)
@@ -205,3 +207,27 @@
 
 ;; starts emacs server
 (server-start)
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(safe-local-variable-values (quote ((lexical-binding . t)))))
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(default ((t (:foreground "wheat" :background "black"))))
+ '(flyspell-duplicate ((t (:foreground "Gold3" :underline t :weight normal))))
+ '(flyspell-incorrect ((t (:foreground "OrangeRed" :underline t :weight normal))))
+ '(font-lock-builtin-face ((t (:foreground "LightSteelBlue"))))
+ '(font-lock-comment-face ((t (:foreground "SteelBlue1"))))
+ '(font-lock-function-name-face ((t (:foreground "gold"))))
+ '(font-lock-keyword-face ((t (:foreground "springgreen"))))
+ '(font-lock-type-face ((t (:foreground "PaleGreen"))))
+ '(font-lock-variable-name-face ((t (:foreground "plum"))))
+ '(menu ((((type x-toolkit)) (:background "light slate gray" :foreground "wheat" :box (:line-width 2 :color "grey75" :style released-button)))))
+ '(mode-line ((t (:foreground "black" :background "light slate gray"))))
+ '(slime-repl-result-face ((t (:foreground "orange"))))
+ '(tool-bar ((((type x w32 mac) (class color)) (:background "midnight blue" :foreground "wheat" :box (:line-width 1 :style released-button))))))

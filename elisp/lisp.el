@@ -1,9 +1,15 @@
 
-;; (require 'slime)
-;; (require 'slime-repl)
+(add-to-list 'load-path "~/.emacs.d/emacs-modes/slime")
+(add-to-list 'load-path "~/.emacs.d/emacs-modes/slime/contrib")
+
+
+(require 'slime)
+(require 'slime-repl)
 (require 'clojure-mode)
 (require 'cljdoc)
 (require 'paredit)
+
+(slime-setup '(slime-fancy slime-asdf slime-c-p-c anything-slime))
 
 ;; paredit everywhere
 ;; (add-hook 'emacs-lisp-mode-hook       (lambda () (paredit-mode +1)))
@@ -57,10 +63,12 @@
           (define-key paredit-mode-map (kbd "M-r") nil)
           (define-key paredit-mode-map (kbd "C-k") 'paredit-eager-kill-line)))
 
-(add-hook 'slime--mode-hook
+(add-hook 'slime-mode-hook
           '(lambda ()
              ;; (define-key slime-mode-map (kbd "M-p") nil)
              ))
+
+
 
 (add-hook 'slime-repl-mode-hook
           '(lambda ()
@@ -81,7 +89,7 @@
              (define-key slime-repl-mode-map "{" 'paredit-open-curly)
              (define-key slime-repl-mode-map "}" 'paredit-close-curly)
              (define-key slime-repl-mode-map (kbd "DEL") 'paredit-backward-delete)
-             ;; (define-key slime-repl-mode-map (kbd "M-r") 'slime-repl-previous-matching-input)
+             (define-key slime-repl-mode-map (kbd "M-r") 'anything-slime-repl-history)
              ))
 
 (add-hook 'emacs-lisp-mode-hook
@@ -153,7 +161,11 @@
      (define-key clojure-mode-map [f7] 'slime-edit-definition-with-etags)
      (define-key clojure-mode-map (kbd "C-*") 'earmuffy)
      (define-key clojure-mode-map "{" 'paredit-open-brace)
-     (define-key clojure-mode-map "}" 'paredit-close-brace)))
+     (define-key clojure-mode-map "}" 'paredit-close-brace)
+     (define-key clojure-mode-map (kbd "C-M-/") 'anything-slime-complete)
+     (define-key clojure-mode-map (kbd "M-/") 'dabbrev-expand)
+     (define-key clojure-mode-map (kbd "C-?") 'anything-slime-apropos)
+     ))
 
 (add-hook 'emacs-lisp-mode
           '(lambda ()

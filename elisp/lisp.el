@@ -3,6 +3,7 @@
 (require 'clojure-mode)
 (require 'cljdoc)
 (require 'paredit)
+(require 'elisp-slime-nav)
 
 (slime-setup '(slime-fancy slime-asdf slime-c-p-c anything-slime))
 
@@ -162,11 +163,12 @@
      (define-key clojure-mode-map (kbd "C-?") 'anything-slime-apropos)
      ))
 
-(add-hook 'emacs-lisp-mode
+(add-hook 'emacs-lisp-mode-hook
           '(lambda ()
+             (paredit-mode t)
              (elisp-slime-nav-mode t)
              (define-key emacs-lisp-mode-map (kbd "M-.")'elisp-slime-nav-find-elisp-thing-at-point)
-             (define-key emacs-lisp-mode-map (kbd "M-/") 'lisp-complete-symbol)
-             (define-key emacs-lisp-mode-map (kbd "C-M-/") 'dabbrev-expand)
+             (define-key emacs-lisp-mode-map (kbd "M-/") 'dabbrev-expand)
+             (define-key emacs-lisp-mode-map (kbd "C-M-/") 'lisp-complete-symbol)
              (define-key emacs-lisp-mode-map [f5] 'eval-buffer)
              (define-key emacs-lisp-mode-map (kbd "M-o") nil)))

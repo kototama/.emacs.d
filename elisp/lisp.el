@@ -1,8 +1,3 @@
-
-(add-to-list 'load-path "~/.emacs.d/emacs-modes/slime")
-(add-to-list 'load-path "~/.emacs.d/emacs-modes/slime/contrib")
-
-
 (require 'slime)
 (require 'slime-repl)
 (require 'clojure-mode)

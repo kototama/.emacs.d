@@ -115,40 +115,49 @@
          (bounds (bounds-of-thing-at-point 'sexp))
          (current-point (point))
          (earmuffed-variable (concat "*" variable "*")))
-    (save-excursion)
-    (kill-region (car bounds) (cdr bounds))
-    (if arg
-        ;; unearmuffy
+    (save-excursion
+      (kill-region (car bounds) (cdr bounds))
+      (if arg
+          ;; unearmuffy
+          (progn
+            (insert (substring variable 1 (- (length variable) 1)))
+            (goto-char (- current-point 1)))
+        ;; earmuffy
         (progn
-          (insert (substring variable 1 (- (length variable) 1)))
-          (goto-char (- current-point 1)))
-      ;; earmuffy
-      (progn
-        (insert earmuffed-variable)
-        (goto-char (+ current-point 1))))))
+          (insert earmuffed-variable)
+          (goto-char (+ current-point 1)))))))
 
-(defun clojure-correct-ns
+(defun clojure-get-ext (file-name)
+  (car (cdr (split-string file-name "\\."))))
+
+(defun clojure-expected-ns
   ()
   "Returns the namespace name that the file should have."
- (let* ((nsname ())
-        (dirs (reverse (split-string (buffer-file-name) "/")))
-        (aftersrc nil))
-   (dolist (dir dirs)
-     (when (not aftersrc)
-       (if (or (string= dir "src") (string= dir "test"))
-           (setq aftersrc t)
-         (setq nsname (append nsname (list dir "."))))))
-   (when nsname
-     (replace-regexp-in-string "_" "-" (substring (apply 'concat (reverse nsname))  1 -4)))))
+  (let* ((nspath ())
+         (dirs (cdr (split-string (buffer-file-name) "/")))
+         (project-file-found nil)
+         (current-path nil))
+    (dolist (dir dirs)
+      (progn
+        (setq current-path (concat current-path "/" dir))
+        (when project-file-found
+          (push dir nspath))
+        (when (file-exists-p (concat current-path "/project.clj"))
+          (setq project-file-found t))))
+    (let ((ns (mapconcat 'identity (cdr (reverse nspath)) ".")))
+      (substring ns 0 -4))))
 
 (defun clojure-update-ns
   ()
   "Updates the namespace of the current buffer. Useful if a file has been renamed."
   (interactive)
-  (let ((nsname (clojure-correct-ns)))
+  (let ((nsname (clojure-expected-ns)))
     (when nsname
-      (clojure-find-package) ;; function defined in clojure-mode
-      (replace-match nsname nil nil nil 4))))
+      (save-excursion
+        (save-match-data
+          (if (clojure-find-ns)
+              (replace-match nsname nil nil nil 4)
+            (error "Namespace not found")))))))
 
 (add-hook 'clojure-mode-hook
   '(lambda ()

@@ -142,6 +142,8 @@
           '(lambda ()
              (define-key term-mode-map "C-o" nil)))
 
-(defun anything-c-transform-file-browse-url (actions candidate)
-  "Disables anything config function to not browse http | ftp files"
-  actions)
+(add-hook 'anything-after-initialize-hook
+          '(lambda ()
+             (defun anything-c-transform-file-browse-url (actions candidate)
+               "Disables anything config function to not browse http | ftp files"
+               actions)))

@@ -123,16 +123,16 @@
   "Renames both current buffer and file it's visiting to NEW-NAME."
   (interactive "sNew name: ")
   (let ((name (buffer-name))
-    (filename (buffer-file-name)))
+        (filename (buffer-file-name)))
     (if (not filename)
-    (message "Buffer '%s' is not visiting a file!" name)
+        (message "Buffer '%s' is not visiting a file!" name)
       (if (get-buffer new-name)
-      (message "A buffer named '%s' already exists!" new-name)
-    (progn
-      (rename-file name new-name 1)
-      (rename-buffer new-name)
-      (set-visited-file-name new-name)
-      (set-buffer-modified-p nil))))))
+          (message "A buffer named '%s' already exists!" new-name)
+        (progn
+          (rename-file name new-name 1)
+          (rename-buffer new-name)
+          (set-visited-file-name new-name)
+          (set-buffer-modified-p nil))))))
 
 ;; global key bindings
 (global-set-key (kbd "<C-tab>") 'other-window)
@@ -198,7 +198,7 @@
 (set-language-environment "UTF-8")
 (setq slime-net-coding-system 'utf-8-unix)
 
-;; (setq browse-url-generic-program "/opt/google/chrome/chrome")
+(setq browse-url-generic-program "/opt/google/chrome/chrome" browse-url-browser-function 'browse-url-generic)
 
 ;; starts emacs server
 (server-start)

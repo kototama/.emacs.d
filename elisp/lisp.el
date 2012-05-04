@@ -127,37 +127,16 @@
           (insert earmuffed-variable)
           (goto-char (+ current-point 1)))))))
 
-(defun clojure-get-ext (file-name)
-  (car (cdr (split-string file-name "\\."))))
+(defun kill-compilation-buffer-when-no-errors ()
+  (dolist (buffer (buffer-list))
+    (when (string-match "Compilation*" (buffer-name buffer))
+      (save-current-buffer
+        (set-buffer buffer)
+        (save-excursion
+          (goto-char (point-min))
+          (when (re-search-forward "0 compiler notes" nil t)
+            (kill-buffer)))))))
 
-(defun clojure-expected-ns
-  ()
-  "Returns the namespace name that the file should have."
-  (let* ((nspath ())
-         (dirs (cdr (split-string (buffer-file-name) "/")))
-         (project-file-found nil)
-         (current-path nil))
-    (dolist (dir dirs)
-      (progn
-        (setq current-path (concat current-path "/" dir))
-        (when project-file-found
-          (push dir nspath))
-        (when (file-exists-p (concat current-path "/project.clj"))
-          (setq project-file-found t))))
-    (let ((ns (mapconcat 'identity (cdr (reverse nspath)) ".")))
-      (substring ns 0 -4))))
-
-(defun clojure-update-ns
-  ()
-  "Updates the namespace of the current buffer. Useful if a file has been renamed."
-  (interactive)
-  (let ((nsname (clojure-expected-ns)))
-    (when nsname
-      (save-excursion
-        (save-match-data
-          (if (clojure-find-ns)
-              (replace-match nsname nil nil nil 4)
-            (error "Namespace not found")))))))
 
 (add-hook 'clojure-mode-hook
   '(lambda ()
@@ -170,7 +149,17 @@
      (define-key clojure-mode-map (kbd "C-M-/") 'anything-slime-complete)
      (define-key clojure-mode-map (kbd "M-/") 'dabbrev-expand)
      (define-key clojure-mode-map (kbd "C-?") 'anything-slime-apropos)
-     ))
+     ;; autocompile file when saved
+     (define-key clojure-mode-map (kbd "C-x C-s") 
+       '(lambda ()
+          (interactive)
+          (save-buffer)
+          (when (slime-current-connection)
+            (slime-compile-and-load-file))))))
+
+(defadvice slime-compilation-finished
+  (after kill-buffer-if-necessary activate compile)
+  (kill-compilation-buffer-when-no-errors))
 
 (add-hook 'emacs-lisp-mode-hook
           '(lambda ()

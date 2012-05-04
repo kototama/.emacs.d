@@ -46,8 +46,9 @@
 (require 'igrep)
 (require 'package)
 (require 'maxframe)
-(require 'real-auto-save)
+;; (require 'real-auto-save)
 (require 'smex) 
+;; (require 'key-chord)
 
 (smex-initialize)
 
@@ -80,6 +81,7 @@
 (show-paren-mode t)
 (winner-mode t)
 (column-number-mode t)
+;; (key-chord-mode t)
 
 ;; no toolbar
 (tool-bar-mode -1)
@@ -153,6 +155,7 @@
 (global-set-key (kbd "C-a") 'move-indentation-or-line)
 (global-set-key (kbd "M-g") 'goto-line)
 (global-set-key (kbd "M-o") 'my-anything)
+
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "C-x SPC") 'ace-jump-mode)
 (global-set-key (kbd "C-x p") 'pop-to-mark-command)
@@ -183,9 +186,13 @@
 (global-set-key (kbd "C-c t") 'multi-term-next)
 (global-set-key (kbd "C-c T") 'multi-term)
 
+;; (key-chord-define-global "op" 'my-anything)
+;; (key-chord-define-global "ii" 'indent-region)
+;; (key-chord-define-global "jk" 'ace-jump-mode)
+
 (add-hook 'window-setup-hook 'maximize-frame t)
 
-(setq auto-save-interval 20)
+;; (setq auto-save-interval 20)
 
 (add-hook 'org-mode-hook 'turn-on-real-auto-save)
 (add-hook 'org-mode-hook '(lambda ()
@@ -197,6 +204,10 @@
 ;; unicode
 (set-language-environment "UTF-8")
 (setq slime-net-coding-system 'utf-8-unix)
+
+;; term setting
+(setq term-buffer-maximum-size 100000)
+
 
 (setq browse-url-generic-program "/opt/google/chrome/chrome" browse-url-browser-function 'browse-url-generic)
 

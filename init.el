@@ -61,12 +61,26 @@
 (setq ido-ignore-extensions t)
 (setq ido-file-extensions-order
       '(".clj" "js" ".txt" ".emacs" ".xml" ".el" ".ini" ".cfg" ".cnf"))
+(setq ido-use-virtual-buffers t)
 
 ;; igrep options
-(put 'igrep-files-default 'clojure-mode
-     (lambda () "*.clj"))
-(put 'igrep-files-default 'js2-mode
-     (lambda () "*.js"))
+(setq igrep-files-default 'ignore)
+;; (put 'igrep-files-default 'clojure-mode
+;;      (lambda () "*.clj\\|*.js")
+;;      )
+;; (put 'igrep-files-default 'js2-mode
+;;      (lambda () "*.js"))
+
+;; kill second line of igrep-find to allow next-error
+(defadvice igrep-find
+  (after kill-first-lines activate compile)
+  (save-current-buffer
+    (set-buffer "*igrep*")
+    (setq buffer-read-only nil)
+    (goto-char (point-min))
+    (forward-line)
+    (kill-line)))
+
 
 ;; show paren options
 (set-face-background 'show-paren-match-face "transparent")
@@ -159,6 +173,7 @@
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "C-x SPC") 'ace-jump-mode)
 (global-set-key (kbd "C-x p") 'pop-to-mark-command)
+(global-set-key (kbd "C-c l") 'org-store-link)
 
 (global-set-key [f1] 'multi-term)
 (global-set-key [f2] 'multi-term-prev)
@@ -213,3 +228,4 @@
 
 ;; starts emacs server
 (server-start)
+

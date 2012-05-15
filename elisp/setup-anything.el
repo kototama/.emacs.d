@@ -140,7 +140,7 @@
 
 (add-hook 'term-mode-hook
           '(lambda ()
-             (define-key term-mode-map "C-o" nil)))
+             (define-key term-mode-map (kbd "M-o") nil)))
 
 (add-hook 'anything-after-initialize-hook
           '(lambda ()

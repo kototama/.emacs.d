@@ -49,6 +49,7 @@
 ;; (require 'real-auto-save)
 (require 'smex) 
 ;; (require 'key-chord)
+(require 'mark-more-like-this)
 
 (smex-initialize)
 
@@ -71,12 +72,15 @@
 ;; (put 'igrep-files-default 'js2-mode
 ;;      (lambda () "*.js"))
 
-;; kill second line of igrep-find to allow next-error
+;; kill last and second line of igrep-find to allow next-error
 (defadvice igrep-find
   (after kill-first-lines activate compile)
   (save-current-buffer
     (set-buffer "*igrep*")
     (setq buffer-read-only nil)
+    (goto-char (point-max))
+    (forward-line -1)
+    (kill-line)
     (goto-char (point-min))
     (forward-line)
     (kill-line)))
@@ -201,6 +205,10 @@
 (global-set-key (kbd "C-c t") 'multi-term-next)
 (global-set-key (kbd "C-c T") 'multi-term)
 
+(global-set-key (kbd "C-<") 'mark-previous-like-this)
+(global-set-key (kbd "C->") 'mark-next-like-this)
+(global-set-key (kbd "C-M-m") 'mark-more-like-this)
+
 ;; (key-chord-define-global "op" 'my-anything)
 ;; (key-chord-define-global "ii" 'indent-region)
 ;; (key-chord-define-global "jk" 'ace-jump-mode)
@@ -209,7 +217,8 @@
 
 ;; (setq auto-save-interval 20)
 
-(add-hook 'org-mode-hook 'turn-on-real-auto-save)
+;; (add-hook 'org-mode-hook 'turn-on-real-auto-save)
+;; (remove-hook 'org-mode-hook 'turn-on-real-auto-save)
 (add-hook 'org-mode-hook '(lambda ()
                             (define-key org-mode-map (kbd "<C-return>") nil)
                             (define-key org-mode-map (kbd "<C-tab>") nil)

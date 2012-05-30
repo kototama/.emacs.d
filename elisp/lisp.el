@@ -161,6 +161,10 @@
   (after kill-buffer-if-necessary activate compile)
   (kill-compilation-buffer-when-no-errors))
 
+;; (defadvice slime-connect
+;;   (after goto-previous-buffer activate compile)
+;;   (other-window -1))
+
 (add-hook 'emacs-lisp-mode-hook
           '(lambda ()
              (paredit-mode t)

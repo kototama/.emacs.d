@@ -24,6 +24,7 @@
 ;  (set-face-foreground 'region "black")
 ;  (set-face-background 'region "black")
   )
+
 (defun faces_nox ()
   ;; these are used when in terminal
   (custom-set-faces
@@ -47,3 +48,6 @@
   ;;(faces_nox))
   )
 
+(add-hook 'window-setup-hook 
+          '(lambda () 
+             (set-cursor-color "deep sky blue")))

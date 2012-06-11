@@ -27,6 +27,9 @@
 (load "html")
 (load "smartbeol")
 
+;; disable blinking cursor
+(blink-cursor-mode 0)
+
 ;; fonts
 (if (eq window-system 'x)
     (progn
@@ -55,6 +58,8 @@
 
 (yas/initialize)
 (yas/load-directory "~/.emacs.d/emacs-modes/yasnippet/snippets")
+
+(menu-bar-mode 0)
 
 ;; ido-mode options
 (setq ido-enable-flex-matching t)
@@ -115,9 +120,6 @@
 
 ;; do not confirm file creation
 (setq confirm-nonexistent-file-or-buffer nil)
-
-;; disable blinking cursor
-(blink-cursor-mode nil)
 
 ;; integrate copy/paste with X
 (setq x-select-enable-clipboard t)

@@ -1,12 +1,4 @@
-(ns `(let* ((nsname '())
-        (dirs (reverse (split-string (buffer-file-name) "/")))
-        (aftersrc nil))
-     (dolist (dir dirs)
-        (when (not aftersrc)
-          (if (or (string= dir "src") (string= dir "test"))
-            (setq aftersrc t)
-            (setq nsname (append nsname (list dir "."))))))
-     (when nsname
-       (replace-regexp-in-string "_" "-" (substring (apply 'concat (reverse nsname))  1 -4))))`
-     (:use $1)
-     (:require ))
+#name: ns
+# --
+(ns `(clojure-expected-ns)`
+  $0)

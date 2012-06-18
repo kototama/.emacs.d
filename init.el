@@ -53,6 +53,7 @@
 (require 'smex) 
 ;; (require 'key-chord)
 (require 'mark-more-like-this)
+(require 'expand-region)
 
 (smex-initialize)
 
@@ -210,6 +211,7 @@
 (global-set-key (kbd "C-<") 'mark-previous-like-this)
 (global-set-key (kbd "C->") 'mark-next-like-this)
 (global-set-key (kbd "C-M-m") 'mark-more-like-this)
+(global-set-key (kbd "C-M-<SPC>") 'er/expand-region)
 
 ;; (key-chord-define-global "op" 'my-anything)
 ;; (key-chord-define-global "ii" 'indent-region)

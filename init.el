@@ -234,7 +234,9 @@
 (setq slime-net-coding-system 'utf-8-unix)
 
 ;; term setting
-(setq term-buffer-maximum-size 100000)
+(setq term-buffer-maximum-size 2000)
+(setq term-bind-key-alist (delete '("M-o" . term-send-backspace)
+				  term-bind-key-alist))
 
 
 (setq browse-url-generic-program "/opt/google/chrome/chrome" browse-url-browser-function 'browse-url-generic)

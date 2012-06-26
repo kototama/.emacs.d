@@ -237,6 +237,8 @@
 (setq term-buffer-maximum-size 2000)
 (setq term-bind-key-alist (delete '("M-o" . term-send-backspace)
 				  term-bind-key-alist))
+(setq term-bind-key-alist (delete '("C-p" . previous-line)
+				  term-bind-key-alist))
 
 
 (setq browse-url-generic-program "/opt/google/chrome/chrome" browse-url-browser-function 'browse-url-generic)

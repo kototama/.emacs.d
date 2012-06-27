@@ -51,3 +51,4 @@
 (add-hook 'window-setup-hook 
           '(lambda () 
              (set-cursor-color "deep sky blue")))
+

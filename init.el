@@ -38,9 +38,10 @@
       ;;              '(font . "Inconsolata-13"))
       ))
 
+(add-to-list 'default-frame-alist '(font . "Inconsolata-13"))
+
 ;; save backup files in this directory
 (setq backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
-
 
 (require 'undo-tree)
 (require 'yasnippet)
@@ -54,6 +55,9 @@
 ;; (require 'key-chord)
 (require 'mark-more-like-this)
 (require 'expand-region)
+(require 'uniquify)
+
+(setq uniquify-buffer-name-style 'forward)
 
 (smex-initialize)
 
@@ -96,16 +100,18 @@
 (set-face-background 'show-paren-match-face "transparent")
 (set-face-foreground 'show-paren-match-face "red")
 
-;; always uses the following modes 
+(define-key undo-tree-map (kbd "C-?") nil)
+(setq whitespace-style '(face tabs trailing lines))
+
+;; always uses the following modes
 (ido-mode t)
 (global-undo-tree-mode t)
-(define-key undo-tree-map (kbd "C-?") nil)
-
 (highlight-parentheses-mode t)
 (show-paren-mode t)
 (winner-mode t)
 (column-number-mode t)
-;; (key-chord-mode t)
+(whitespace-mode t)
+(flyspell-prog-mode)
 
 ;; no toolbar
 (tool-bar-mode -1)
@@ -223,11 +229,12 @@
 
 ;; (add-hook 'org-mode-hook 'turn-on-real-auto-save)
 ;; (remove-hook 'org-mode-hook 'turn-on-real-auto-save)
-(add-hook 'org-mode-hook '(lambda ()
-                            (define-key org-mode-map (kbd "<C-return>") nil)
-                            (define-key org-mode-map (kbd "<C-tab>") nil)
-                            (define-key org-mode-map (kbd "<S-iso-lefttab>") nil)
-                            (define-key org-mode-map (kbd "<backtab>") nil)))
+(add-hook 'org-mode-hook
+          '(lambda ()
+             (define-key org-mode-map (kbd "<C-return>") nil)
+             (define-key org-mode-map (kbd "<C-tab>") nil)
+             (define-key org-mode-map (kbd "<S-iso-lefttab>") nil)
+             (define-key org-mode-map (kbd "<backtab>") nil)))
 
 ;; unicode
 (set-language-environment "UTF-8")
@@ -236,12 +243,17 @@
 ;; term setting
 (setq term-buffer-maximum-size 2000)
 (setq term-bind-key-alist (delete '("M-o" . term-send-backspace)
-				  term-bind-key-alist))
+                                  term-bind-key-alist))
 (setq term-bind-key-alist (delete '("C-p" . previous-line)
-				  term-bind-key-alist))
+                                  term-bind-key-alist))
 
 
-(setq browse-url-generic-program "/opt/google/chrome/chrome" browse-url-browser-function 'browse-url-generic)
+(setq browse-url-generic-program
+      "/opt/google/chrome/chrome"
+      browse-url-browser-function 'browse-url-generic)
+
+(setq tags-table-list
+           '("~/emacs" "~/Documents/Projects/carneades/src"))
 
 ;; starts emacs server
 (server-start)

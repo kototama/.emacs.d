@@ -1,4 +1,4 @@
-(require 'magit)
+(autoload 'magit "magit-mode" "A major mode for Git" t)
 
 (add-hook 'magit-log-edit-mode-hook
           '(lambda ()
@@ -10,3 +10,8 @@
 ;; C programming
 (setq-default c-basic-offset 4)
 
+(add-hook 'flyspell-prog-mode
+          (lambda ()
+            (define-key flyspell-mode-map (kbd "C-;") nil)
+            )
+          )

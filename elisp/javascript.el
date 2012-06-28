@@ -6,4 +6,5 @@
        '(lambda ()
           (interactive)
           (js2-enter-key)
-          (indent-for-tab-command)))))
+          (indent-for-tab-command)
+          (flyspell-prog-mode)))))

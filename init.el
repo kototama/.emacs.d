@@ -4,11 +4,12 @@
 ;;; Move this code earlier if you want to reference
 ;;; packages in your .emacs.
 (when
-    (load
-     (expand-file-name "~/.emacs.d/emacs-modes/misc/package.el"))
-  (setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
-			   ("marmalade" . "http://marmalade-repo.org/packages/")
-			   ))
+    ;; for Emacs23:
+    ;; (load
+    ;;  (expand-file-name "~/.emacs.d/emacs-modes/misc/package.el"))
+    (setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
+                             ("marmalade" . "http://marmalade-repo.org/packages/")
+                             ))
   (package-initialize))
 
 ;; path for the modes that are not part of package
@@ -16,7 +17,7 @@
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/slime/contrib")
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/misc")
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/yasnippet")
-(add-to-list 'load-path  "~/.emacs.d/elisp/")
+(add-to-list 'load-path "~/.emacs.d/elisp")
 
 ;; loads personal emacs functions and configurations
 (load "dev")
@@ -44,18 +45,17 @@
 (setq backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
 
 (require 'undo-tree)
-(require 'yasnippet)
 (require 'paren)
-(require 'multi-term)
-(require 'igrep)
-(require 'package)
+;; (require 'package)
 (require 'maxframe)
-;; (require 'real-auto-save)
-(require 'smex) 
-;; (require 'key-chord)
-(require 'mark-more-like-this)
-(require 'expand-region)
+(require 'smex)
 (require 'uniquify)
+(require 'yasnippet)
+
+(autoload 'expand-region "expand-region" "expand region" t)
+(autoload 'mark-more-like-this "mark-more-like-this" "mark-more-like-this" t)
+(autoload 'igrep "igrep" "a better grep" t)
+(autoload 'multi-term "multi-term" "multiple terms" t)
 
 (setq uniquify-buffer-name-style 'forward)
 
@@ -110,8 +110,7 @@
 (show-paren-mode t)
 (winner-mode t)
 (column-number-mode t)
-(whitespace-mode t)
-(flyspell-prog-mode)
+(global-whitespace-mode t)
 
 ;; no toolbar
 (tool-bar-mode -1)
@@ -238,14 +237,15 @@
 
 ;; unicode
 (set-language-environment "UTF-8")
-(setq slime-net-coding-system 'utf-8-unix)
 
 ;; term setting
-(setq term-buffer-maximum-size 2000)
-(setq term-bind-key-alist (delete '("M-o" . term-send-backspace)
-                                  term-bind-key-alist))
-(setq term-bind-key-alist (delete '("C-p" . previous-line)
-                                  term-bind-key-alist))
+(add-hook 'multi-term-mode-hook
+          (lambda ()
+            (setq term-buffer-maximum-size 2000)
+            (setq term-bind-key-alist (delete '("M-o" . term-send-backspace)
+                                              term-bind-key-alist))
+            (setq term-bind-key-alist (delete '("C-p" . previous-line)
+                                              term-bind-key-alist))))
 
 
 (setq browse-url-generic-program
@@ -253,7 +253,7 @@
       browse-url-browser-function 'browse-url-generic)
 
 (setq tags-table-list
-           '("~/emacs" "~/Documents/Projects/carneades/src"))
+           '("~/Documents/Projects/carneades/src"))
 
 ;; starts emacs server
 (server-start)

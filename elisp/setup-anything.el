@@ -1,6 +1,9 @@
 (require 'anything)
 (require 'anything-config)
 
+(autoload 'anything "anything" "anything selections" t)
+(autoload 'anything-config "anything-config" "anything selections" t)
+
 (load-file "~/.emacs.d/elisp/projectfile.el")
 
 (defun files-in-below-directory (directory)

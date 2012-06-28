@@ -1,25 +1,21 @@
-(require 'slime)
-(require 'slime-repl)
-(require 'clojure-mode)
-(require 'cljdoc)
-(require 'paredit)
-(require 'elisp-slime-nav)
+(require 'slime-autoloads)
 
+(autoload 'paredit "paredit-mode" "A minor mode for parenthesis" t)
+(autoload 'clojure-mode "clojure-mode" "A major mode for Clojure" t)
+(autoload 'elisp-slime-nav-mode "elisp-slime-nav" "SLIME-like for Elisp" t)
+(autoload 'elisp-slime-nav-find-elisp-thing-at-point
+  "elisp-slime-nav" "SLIME-like for ELisp" t)
+
+;; SLIME Options
 (slime-setup '(slime-fancy slime-asdf slime-c-p-c anything-slime))
-
-;; paredit everywhere
-;; (add-hook 'emacs-lisp-mode-hook       (lambda () (paredit-mode +1)))
-;; (add-hook 'lisp-mode-hook             (lambda () (paredit-mode +1)))
-;; (add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
-;; (add-hook 'scheme-mode-hook           (lambda () (paredit-mode +1)))
-
-(setq blink-matching-paren nil)
-
 (setq slime-protocol-version 'ignore)
-
+(setq slime-net-coding-system 'utf-8-unix)
 ;; By default inputs and results have the same color
 (custom-set-faces
  '(slime-repl-result-face ((t (:foreground "orange")))))
+
+
+(setq blink-matching-paren nil)
 
 (defvar electrify-return-match
   "[\]}\)\"]"
@@ -91,7 +87,7 @@
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
             (paredit-mode t)
-
+            ;; (flyspell-prog-mode)
             (turn-on-eldoc-mode)
             (eldoc-add-command
              'paredit-backward-delete
@@ -100,13 +96,6 @@
             (local-set-key (kbd "RET") 'electrify-return-if-match)
             (eldoc-add-command 'electrify-return-if-match)
 
-            (show-paren-mode t)))
-
-
-(add-hook 'clojure-mode-hook
-          (lambda ()
-            (paredit-mode t)
-            ;; (local-set-key (kbd "RET") 'electrify-return-if-match)
             (show-paren-mode t)))
 
 (defun earmuffy (&optional arg)
@@ -141,6 +130,8 @@
 (add-hook 'clojure-mode-hook
   '(lambda ()
      (paredit-mode t)
+     (show-paren-mode t)
+     (flyspell-prog-mode)
      (define-key clojure-mode-map [f5] 'slime-compile-and-load-file)
      (define-key clojure-mode-map [f7] 'slime-edit-definition-with-etags)
      (define-key clojure-mode-map (kbd "C-*") 'earmuffy)
@@ -169,7 +160,7 @@
           '(lambda ()
              (paredit-mode t)
              (elisp-slime-nav-mode t)
-             (define-key emacs-lisp-mode-map (kbd "M-.")'elisp-slime-nav-find-elisp-thing-at-point)
+             (define-key emacs-lisp-mode-map (kbd "M-.") 'elisp-slime-nav-find-elisp-thing-at-point)
              (define-key emacs-lisp-mode-map (kbd "M-/") 'dabbrev-expand)
              (define-key emacs-lisp-mode-map (kbd "C-M-/") 'lisp-complete-symbol)
              (define-key emacs-lisp-mode-map [f5] 'eval-buffer)

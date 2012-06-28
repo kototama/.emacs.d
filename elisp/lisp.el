@@ -8,7 +8,6 @@
 
 ;; SLIME Options
 (slime-setup '(slime-fancy slime-asdf slime-c-p-c anything-slime))
-(setq slime-protocol-version 'ignore)
 (setq slime-net-coding-system 'utf-8-unix)
 ;; By default inputs and results have the same color
 (custom-set-faces
@@ -148,6 +147,10 @@
           (when (slime-current-connection)
             (slime-compile-and-load-file))))))
 
+(defadvice slime-connect
+  (before ignore-protocol activate compile)
+  (setq slime-protocol-version 'ignore))
+
 (defadvice slime-compilation-finished
   (after kill-buffer-if-necessary activate compile)
   (kill-compilation-buffer-when-no-errors))
@@ -171,17 +174,9 @@
   (interactive)
   (split-window-right)
   (other-window 1)
-  (let (buffer (multi-term))
+  (let ((buffer (multi-term)))
     (switch-to-buffer buffer)
-    ;; (let ((proc (get-buffer-process (current-buffer))))
-    ;;   (while (not proc)
-    ;;     (setq proc (get-buffer-process (current-buffer)))))
     (term-send-raw-string "lein swank\n")
-    (other-window -1)
-    (goto-char (point-max))
-    (previous-line 1)
-    (beginning-of-line)
-    (message "looking at:%s "(looking-at "Connection opened"))
-    ;; (message "Swank is started. Connecting...")
-    )
-  )
+    (run-at-time "10 sec" nil
+                 (lambda ()
+                   (slime-connect "localhost" 4005)))))

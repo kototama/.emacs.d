@@ -56,6 +56,7 @@
 (autoload 'mark-more-like-this "mark-more-like-this" "mark-more-like-this" t)
 (autoload 'igrep "igrep" "a better grep" t)
 (autoload 'multi-term "multi-term" "multiple terms" t)
+(autoload 'term-send-raw-string "multi-term" "multiple terms" t)
 
 (setq uniquify-buffer-name-style 'forward)
 

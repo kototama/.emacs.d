@@ -170,13 +170,13 @@
              (define-key emacs-lisp-mode-map (kbd "M-o") nil)))
 
 (defun clj-jack-in ()
-  "Starts a term, runs lein swank in it and connect to it"
+  "Starts a term, runs lein swank in it and connects to it"
   (interactive)
   (split-window-right)
   (other-window 1)
   (let ((buffer (multi-term)))
     (switch-to-buffer buffer)
     (term-send-raw-string "lein swank\n")
-    (run-at-time "10 sec" nil
+    (run-at-time "12 sec" nil
                  (lambda ()
                    (slime-connect "localhost" 4005)))))

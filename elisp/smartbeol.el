@@ -1,5 +1,5 @@
 
-(defun move-indentation-or-line 
+(defun back-to-indentation-or-beginning-of-line
   ()
   "Moves to the beginning of indentation or to the beginning of
    the line if the point is already on the first indentation"

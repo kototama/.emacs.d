@@ -51,6 +51,7 @@
 (require 'smex)
 (require 'uniquify)
 (require 'yasnippet)
+(require 'whitespace)
 
 (autoload 'expand-region "expand-region" "expand region" t)
 (autoload 'mark-more-like-this "mark-more-like-this" "mark-more-like-this" t)
@@ -179,7 +180,7 @@
 ;; (global-set-key [C-kp-1] '(lambda ()
 ;;                             (ido-find-file "~/.emacs")))
 
-(global-set-key (kbd "C-a") 'move-indentation-or-line)
+(global-set-key (kbd "C-a") 'back-to-indentation-or-beginning-of-line)
 (global-set-key (kbd "M-g") 'goto-line)
 (global-set-key (kbd "M-o") 'my-anything)
 

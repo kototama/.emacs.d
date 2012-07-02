@@ -10,8 +10,6 @@
 ;; C programming
 (setq-default c-basic-offset 4)
 
-(add-hook 'flyspell-prog-mode
-          (lambda ()
-            (define-key flyspell-mode-map (kbd "C-;") nil)
-            )
-          )
+(add-hook 'flyspell-mode-hook
+	  (lambda ()
+	    (define-key flyspell-mode-map (kbd "C-;") nil)))

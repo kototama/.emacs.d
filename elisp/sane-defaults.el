@@ -78,4 +78,14 @@
 (setq tags-table-list
            '("~/Documents/Projects/carneades/src"))
 
+;; Lines should be 80 characters wide, not 72
+(setq fill-column 80)
+
+
+;; Show me empty lines after buffer end
+(set-default 'indicate-empty-lines t)
+
+;; Sentences do not need double spaces to end. Period.
+(set-default 'sentence-end-double-space nil)
+
 (provide 'sane-defaults)

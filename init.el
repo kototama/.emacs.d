@@ -34,6 +34,14 @@
 
 (add-to-list 'default-frame-alist '(font . "Inconsolata-13"))
 
+
+(autoload 'expand-region "expand-region" "expand region" t)
+(autoload 'mark-more-like-this "mark-more-like-this" "mark-more-like-this" t)
+(autoload 'igrep "igrep" "a better grep" t)
+(autoload 'multi-term "multi-term" "multiple terms" t)
+(autoload 'term-send-raw-string "multi-term" "multiple terms" t)
+(autoload 'hippie-expand "hippie-expand" "expand stuff" t)
+
 (require 'undo-tree)
 (require 'paren)
 (require 'maxframe)
@@ -41,17 +49,14 @@
 (require 'uniquify)
 (require 'yasnippet)
 (require 'whitespace)
+(require 'ido)
+(require 'ido-ubiquitous)
 
 ;; personal configurations
 (require 'setup-anything)
 (require 'key-bindings)
 (require 'sane-defaults)
-
-(autoload 'expand-region "expand-region" "expand region" t)
-(autoload 'mark-more-like-this "mark-more-like-this" "mark-more-like-this" t)
-(autoload 'igrep "igrep" "a better grep" t)
-(autoload 'multi-term "multi-term" "multiple terms" t)
-(autoload 'term-send-raw-string "multi-term" "multiple terms" t)
+(require 'setup-hippie)
 
 (setq uniquify-buffer-name-style 'forward)
 
@@ -68,6 +73,7 @@
 (winner-mode t)
 (column-number-mode t)
 (global-whitespace-mode t)
+(ido-ubiquitous-mode 1)
 
 ;; emacs lisp functions
 (defun toggle-fullscreen (&optional f)

@@ -19,6 +19,7 @@
 (global-set-key (kbd "M-o") 'my-anything)
 
 (global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-x SPC") 'ace-jump-mode)
 (global-set-key (kbd "C-x p") 'pop-to-mark-command)
 (global-set-key (kbd "C-c l") 'org-store-link)
@@ -53,6 +54,8 @@
 (global-set-key (kbd "C->") 'mark-next-like-this)
 (global-set-key (kbd "C-M-m") 'mark-more-like-this)
 (global-set-key (kbd "C-M-<SPC>") 'er/expand-region)
+
+(global-set-key (kbd "C-.") 'hippie-expand)
 
 (define-key undo-tree-map (kbd "C-?") nil)
 

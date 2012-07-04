@@ -150,3 +150,5 @@
              (defun anything-c-transform-file-browse-url (actions candidate)
                "Disables anything config function to not browse http | ftp files"
                actions)))
+
+(provide 'setup-anything)

@@ -52,3 +52,5 @@
           '(lambda () 
              (set-cursor-color "deep sky blue")))
 
+
+(provide 'setup-colors)

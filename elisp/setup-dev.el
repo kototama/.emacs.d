@@ -13,3 +13,5 @@
 (add-hook 'flyspell-mode-hook
 	  (lambda ()
 	    (define-key flyspell-mode-map (kbd "C-;") nil)))
+
+(provide 'setup-dev)

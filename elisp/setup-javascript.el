@@ -10,3 +10,5 @@
                 (interactive)
                 (js2-enter-key)
                 (indent-for-tab-command)))))
+
+(provide 'setup-javascript)

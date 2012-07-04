@@ -180,3 +180,5 @@
     (run-at-time "15 sec" nil
                  (lambda ()
                    (slime-connect "localhost" 4005)))))
+
+(provide 'setup-lisp)

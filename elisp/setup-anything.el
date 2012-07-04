@@ -1,10 +1,10 @@
 (require 'anything)
 (require 'anything-config)
 
-(autoload 'anything "anything" "anything selections" t)
-(autoload 'anything-config "anything-config" "anything selections" t)
+;; (autoload 'anything "anything" "anything selections" t)
+;; (autoload 'anything-config "anything-config" "anything selections" t)
 
-(load-file "~/.emacs.d/elisp/projectfile.el")
+(require 'file-utils)
 
 (defun files-in-below-directory (directory)
   "List the .el files in DIRECTORY and in its sub-directories."

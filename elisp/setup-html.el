@@ -6,3 +6,5 @@
                (kbd "<C-return>") '(lambda ()
                                      (interactive)
                                      (switch-to-buffer nil)))))
+
+(provide 'setup-html)

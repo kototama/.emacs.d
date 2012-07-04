@@ -20,3 +20,5 @@
       (delete-indentation 1)
     (kill-line nil)))
 
+
+(provide 'line-utils)

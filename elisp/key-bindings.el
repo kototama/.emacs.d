@@ -33,6 +33,7 @@
 (global-set-key [f6] 'next-error)
 (global-set-key [f8] 'paredit-mode)
 (global-set-key [f9] 'magit-status)
+(global-set-key [f10] 'org-agenda)
 
 ;; (global-set-key [f10] 'toggle-fullscreen)
 (global-set-key [f12] '(lambda ()

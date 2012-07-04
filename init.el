@@ -34,6 +34,7 @@
 (autoload 'term-send-raw-string "multi-term" "multiple terms" t)
 (autoload 'hippie-expand "hippie-expand" "expand stuff" t)
 
+;; always uses the following modes
 (require 'undo-tree)
 (require 'paren)
 (require 'maxframe)
@@ -43,6 +44,15 @@
 (require 'whitespace)
 (require 'ido)
 (require 'ido-ubiquitous)
+
+(ido-mode t)
+(global-undo-tree-mode t)
+(highlight-parentheses-mode t)
+(show-paren-mode t)
+(winner-mode t)
+(column-number-mode t)
+(global-whitespace-mode t)
+(ido-ubiquitous-mode 1)
 
 ;; personal configurations
 (require 'setup-colors)
@@ -63,17 +73,6 @@
 
 (yas/initialize)
 (yas/load-directory "~/.emacs.d/emacs-modes/yasnippet/snippets")
-
-;; always uses the following modes
-(ido-mode t)
-(global-undo-tree-mode t)
-(highlight-parentheses-mode t)
-(show-paren-mode t)
-(winner-mode t)
-(column-number-mode t)
-(global-whitespace-mode t)
-(ido-ubiquitous-mode 1)
-
 
 (add-hook 'window-setup-hook 'maximize-frame t)
 
@@ -96,3 +95,27 @@
 ;; starts emacs server
 (server-start)
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-agenda-files (quote ("~/Documents/Projects/carneades/TODO.org"))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:foreground "wheat" :background "black"))))
+ '(flyspell-duplicate ((t (:foreground "Gold3" :underline t :weight normal))))
+ '(flyspell-incorrect ((t (:foreground "OrangeRed" :underline t :weight normal))))
+ '(font-lock-builtin-face ((t (:foreground "LightSteelBlue"))))
+ '(font-lock-comment-face ((t (:foreground "SteelBlue1"))))
+ '(font-lock-function-name-face ((t (:foreground "gold"))))
+ '(font-lock-keyword-face ((t (:foreground "springgreen"))))
+ '(font-lock-type-face ((t (:foreground "PaleGreen"))))
+ '(font-lock-variable-name-face ((t (:foreground "plum"))))
+ '(menu ((((type x-toolkit)) (:background "light slate gray" :foreground "wheat" :box (:line-width 2 :color "grey75" :style released-button)))))
+ '(mode-line ((t (:foreground "black" :background "light slate gray"))))
+ '(slime-repl-result-face ((t (:foreground "orange"))))
+ '(tool-bar ((((type x w32 mac) (class color)) (:background "midnight blue" :foreground "wheat" :box (:line-width 1 :style released-button))))))

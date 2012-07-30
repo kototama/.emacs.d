@@ -17,6 +17,7 @@
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/slime/contrib")
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/misc")
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/yasnippet")
+(add-to-list 'load-path "~/.emacs.d/emacs-modes/emacs-oauth")
 (add-to-list 'load-path "~/.emacs.d/elisp")
 
 ;; fonts
@@ -41,7 +42,7 @@
 (require 'smex)
 (require 'uniquify)
 (require 'yasnippet)
-(require 'whitespace)
+;; (require 'whitespace)
 (require 'ido)
 (require 'ido-ubiquitous)
 
@@ -51,7 +52,7 @@
 (show-paren-mode t)
 (winner-mode t)
 (column-number-mode t)
-(global-whitespace-mode t)
+;; (global-whitespace-mode t)
 (ido-ubiquitous-mode 1)
 
 ;; personal configurations

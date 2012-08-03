@@ -1,0 +1,5 @@
+#name: fn
+# --
+${1:namespace}.${2:name} = function(${3:args}) {
+    $0
+};

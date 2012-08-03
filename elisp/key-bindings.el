@@ -60,4 +60,13 @@
 
 (define-key undo-tree-map (kbd "C-?") nil)
 
+;; keybindins specific to azerty
+;; altgr-b
+(global-set-key (kbd "”") 'backward-word)
+;; altgr-f
+(global-set-key (kbd "đ") 'forward-word)
+;; altgr-x
+(global-set-key (kbd "»") 'smex)
+
+
 (provide 'key-bindings)

@@ -47,18 +47,17 @@
                 '(lambda ()
                    (interactive)
                    (switch-to-buffer nil)))
-
 (global-set-key (kbd "C-c t") 'multi-term-next)
 (global-set-key (kbd "C-c T") 'multi-term)
-
 (global-set-key (kbd "C-<") 'mark-previous-like-this)
 (global-set-key (kbd "C->") 'mark-next-like-this)
 (global-set-key (kbd "C-M-m") 'mark-more-like-this)
 (global-set-key (kbd "C-M-<SPC>") 'er/expand-region)
-
 (global-set-key (kbd "C-.") 'hippie-expand)
-
 (define-key undo-tree-map (kbd "C-?") nil)
+
+(global-set-key (kbd "C-x ,") 'ido-switch-buffer)
+
 
 ;; keybindins specific to azerty
 ;; altgr-b
@@ -67,6 +66,9 @@
 (global-set-key (kbd "đ") 'forward-word)
 ;; altgr-x
 (global-set-key (kbd "»") 'smex)
-
+;; altgr-a
+(global-set-key (kbd "æ") 'beginning-of-buffer)
+;; altgr-e
+(global-set-key (kbd "€") 'end-of-buffer)
 
 (provide 'key-bindings)

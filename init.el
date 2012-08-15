@@ -68,6 +68,7 @@
 (require 'setup-dev)
 (require 'setup-javascript)
 (require 'setup-lisp)
+(require 'setup-carneades)
 (require 'line-utils)
 (require 'screen-utils)
 (require 'file-utils)

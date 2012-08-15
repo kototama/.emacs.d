@@ -24,4 +24,15 @@
           (set-visited-file-name new-name)
           (set-buffer-modified-p nil))))))
 
+(defun change-encoding-to-utf8 (dir pattern)
+  (interactive "DChange files to UTF-8 encoding in directory: 
+sMatching file pattern (regexp): ")
+  (let ((files (directory-files dir t pattern)))
+    (mapc (lambda (file)
+            (find-file file)
+            (set-buffer-file-coding-system 'utf-8)
+            (save-buffer)
+            (kill-buffer (current-buffer)))
+          files)))
+
 (provide 'file-utils)

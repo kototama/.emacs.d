@@ -1,0 +1,3 @@
+[submodule "emacs-modes/cedet"]
+	path = emacs-modes/cedet
+	url = https://github.com/emacsmirror/cedet.git

@@ -20,6 +20,12 @@
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/emacs-oauth")
 (add-to-list 'load-path "~/.emacs.d/elisp")
 
+;; semantic.el experiments
+(load "~/.emacs.d/emacs-modes/cedet/cedet-devel-load.el")
+(add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode)
+(add-to-list 'semantic-default-submodes 'global-semantic-idle-completions-mode)
+
+
 ;; fonts
 (if (eq window-system 'x)
     (progn

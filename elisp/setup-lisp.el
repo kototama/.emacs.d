@@ -177,7 +177,7 @@
   (let ((buffer (multi-term)))
     (switch-to-buffer buffer)
     (term-send-raw-string "lein swank\n")
-    (run-at-time "22 sec" nil
+    (run-at-time "25 sec" nil
                  (lambda ()
                    (slime-connect "localhost" 4005)))))
 

@@ -78,6 +78,7 @@
 (require 'line-utils)
 (require 'screen-utils)
 (require 'file-utils)
+(require 'string-utils)
 
 (setq uniquify-buffer-name-style 'forward)
 

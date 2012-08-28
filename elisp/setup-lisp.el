@@ -179,6 +179,9 @@
     (term-send-raw-string "lein swank\n")
     (run-at-time "25 sec" nil
                  (lambda ()
-                   (slime-connect "localhost" 4005)))))
+                   (slime-connect "localhost" 4005)
+                   (switch-to-buffer "*slime-repl clojure*")
+                   (other-window -1)
+                   (slime-compile-and-load-file)))))
 
 (provide 'setup-lisp)

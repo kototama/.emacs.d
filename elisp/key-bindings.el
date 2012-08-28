@@ -63,6 +63,7 @@
 (define-key undo-tree-map (kbd "C-?") nil)
 
 (global-set-key (kbd "C-x ,") 'ido-switch-buffer)
+(global-set-key (kbd "C-M-i") 'indent-region)
 
 
 ;; keybindins specific to azerty

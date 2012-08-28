@@ -1,3 +1,6 @@
 [submodule "emacs-modes/cedet"]
 	path = emacs-modes/cedet
 	url = https://github.com/emacsmirror/cedet.git
+[submodule "snippets/backbone-underscore-snippets"]
+	path = snippets/backbone-underscore-snippets
+	url = git@github-kototama:kototama/backbone-underscore-snippets.git

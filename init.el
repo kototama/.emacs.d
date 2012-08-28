@@ -55,6 +55,7 @@
 ;; (require 'whitespace)
 (require 'ido)
 (require 'ido-ubiquitous)
+(require 'hippie-exp)
 
 (ido-mode t)
 (global-undo-tree-mode t)
@@ -85,7 +86,7 @@
 (smex-initialize)
 
 (yas/initialize)
-(yas/load-directory "~/.emacs.d/emacs-modes/yasnippet/snippets")
+(yas/load-directory "~/.emacs.d/snippets/backbone-underscore-snippets")
 
 (add-hook 'window-setup-hook 'maximize-frame t)
 

@@ -25,4 +25,3 @@
 (package "smex")
 (package "undo-tree")
 (package "yasnippet")
-

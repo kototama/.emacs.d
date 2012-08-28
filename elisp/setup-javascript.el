@@ -2,7 +2,6 @@
 ;; js2-mode configuration
 (add-hook 'js2-mode-hook
           (lambda ()
-            (flyspell-prog-mode)
             (define-key js2-mode-map (kbd "C-a")
               'back-to-indentation-or-beginning-of-line)
             (define-key js2-mode-map (kbd "<return>")

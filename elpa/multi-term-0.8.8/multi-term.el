@@ -740,7 +740,7 @@ This advice will fix this problem when current frame just have one `non-dedicate
              (not (multi-term-dedicated-window-p))) ;not in `sr-speedbar' window
     (split-window-vertically)
     (windmove-down)))
-llll
+
 (defadvice other-window (after multi-term-dedicated-other-window-advice)
   "Default, can use `other-window' select window in cyclic ordering of windows.
 But sometimes we don't want to select `sr-speedbar' window,

@@ -4,7 +4,7 @@
 
 
 ;;;### (autoloads nil nil ("anything-obsolete-pkg.el" "anything-obsolete.el")
-;;;;;;  (20331 9072 729655))
+;;;;;;  (20544 31686 441920))
 
 ;;;***
 

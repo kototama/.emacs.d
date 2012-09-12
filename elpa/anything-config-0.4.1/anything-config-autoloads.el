@@ -28,7 +28,7 @@
 ;;;;;;  anything-gentoo anything-minibuffer-history anything-show-kill-ring
 ;;;;;;  anything-info-emacs anything-info-at-point anything-recentf
 ;;;;;;  anything-for-files anything-mini anything-configuration)
-;;;;;;  "anything-config" "anything-config.el" (20331 9074))
+;;;;;;  "anything-config" "anything-config.el" (20544 31688))
 ;;; Generated autoloads from anything-config.el
 
 (autoload 'anything-configuration "anything-config" "\
@@ -439,7 +439,7 @@ Preconfigured `anything' : frontend of APT package manager.
 \(fn QUERY)" t nil)
 
 (autoload 'anything-c-shell-command-if-needed "anything-config" "\
-Not documented
+
 
 \(fn COMMAND)" t nil)
 
@@ -457,7 +457,7 @@ Preconfigured `anything' to execute ratpoison commands.
 \(fn)" t nil)
 
 (autoload 'w32-shell-execute-open-file "anything-config" "\
-Not documented
+
 
 \(fn FILE)" t nil)
 
@@ -475,8 +475,8 @@ Set value to VAR interactively.
 
 ;;;***
 
-;;;### (autoloads nil nil ("anything-config-pkg.el") (20331 9075
-;;;;;;  51029))
+;;;### (autoloads nil nil ("anything-config-pkg.el") (20544 31688
+;;;;;;  430492))
 
 ;;;***
 

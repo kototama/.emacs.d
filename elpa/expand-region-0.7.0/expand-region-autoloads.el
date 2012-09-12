@@ -4,7 +4,7 @@
 
 
 ;;;### (autoloads (er/expand-region) "expand-region-core" "expand-region-core.el"
-;;;;;;  (20447 11912))
+;;;;;;  (20544 31676))
 ;;; Generated autoloads from expand-region-core.el
 
 (autoload 'er/expand-region "expand-region-core" "\
@@ -29,7 +29,7 @@ before calling `er/expand-region' for the first time.
 ;;;;;;  "latex-mode-expansions.el" "nxml-mode-expansions.el" "org-mode-expansions.el"
 ;;;;;;  "python-el-expansions.el" "python-el-fgallina-expansions.el"
 ;;;;;;  "python-mode-expansions.el" "ruby-mode-expansions.el" "text-mode-expansions.el")
-;;;;;;  (20447 11914 47877))
+;;;;;;  (20544 31679 13203))
 
 ;;;***
 

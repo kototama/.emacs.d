@@ -7693,8 +7693,8 @@ file or URL.  Else return ACTIONS unmodified."
   (let ((browse-action '("Browse with Browser" . browse-url)))
     (cond ((string-match "^http\\|^ftp" candidate)
            (cons browse-action actions))
-          ;; ((string-match "\\.html?$" candidate)
-          ;;  (append actions (list browse-action)))
+          ((string-match "\\.html?$" candidate)
+           (append actions (list browse-action)))
           (t actions))))
 
 ;;;; Function

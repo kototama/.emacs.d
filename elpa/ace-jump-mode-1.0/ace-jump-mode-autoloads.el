@@ -4,7 +4,7 @@
 
 
 ;;;### (autoloads (ace-jump-mode) "ace-jump-mode" "ace-jump-mode.el"
-;;;;;;  (20363 61908))
+;;;;;;  (20544 31691))
 ;;; Generated autoloads from ace-jump-mode.el
 
 (autoload 'ace-jump-mode "ace-jump-mode" "\
@@ -31,7 +31,7 @@ You can constrol whether use the case sensitive via
 
 ;;;***
 
-;;;### (autoloads nil nil ("ace-jump-mode-pkg.el") (20363 61908 196813))
+;;;### (autoloads nil nil ("ace-jump-mode-pkg.el") (20544 31691 441594))
 
 ;;;***
 

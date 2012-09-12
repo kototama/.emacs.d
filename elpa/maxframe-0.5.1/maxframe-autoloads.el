@@ -3,8 +3,8 @@
 ;;; Code:
 
 
-;;;### (autoloads (maximize-frame) "maxframe" "maxframe.el" (20331
-;;;;;;  9142))
+;;;### (autoloads (maximize-frame) "maxframe" "maxframe.el" (20544
+;;;;;;  31660))
 ;;; Generated autoloads from maxframe.el
 
 (autoload 'maximize-frame "maxframe" "\
@@ -15,7 +15,7 @@ system.
 
 ;;;***
 
-;;;### (autoloads nil nil ("maxframe-pkg.el") (20331 9142 198872))
+;;;### (autoloads nil nil ("maxframe-pkg.el") (20544 31660 895051))
 
 ;;;***
 

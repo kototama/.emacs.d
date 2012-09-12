@@ -56,6 +56,21 @@
 
 (add-hook 'slime-mode-hook
           '(lambda ()
+             (define-key slime-mode-map (kbd "M-p") nil)
+             (define-key slime-mode-map (kbd "M-.") 
+               ;; if the definition is not found by slime-edit-definition
+               ;; then search with find-tag
+               '(lambda (name)
+                  (interactive (list (slime-read-symbol-name "Edit Definition of: ")))
+                  (let ((success nil))
+                   (unwind-protect
+                       (progn
+                         (slime-edit-definition name)
+                         (setq success 't)) 
+                     (if (not success)
+                         (progn
+                           (find-tag name)
+                           (message "Finished.")))))))
              ;; (define-key slime-mode-map (kbd "M-p") nil)
              ))
 

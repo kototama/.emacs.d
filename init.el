@@ -1,3 +1,6 @@
+;; semantic.el experiments
+(load "~/.emacs.d/emacs-modes/cedet/cedet-devel-load.el")
+
 ;;; This was installed by package-install.el.
 ;;; This provides support for the package system and
 ;;; interfacing with ELPA, the package archive.
@@ -20,8 +23,7 @@
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/emacs-oauth")
 (add-to-list 'load-path "~/.emacs.d/elisp")
 
-;; semantic.el experiments
-(load "~/.emacs.d/emacs-modes/cedet/cedet-devel-load.el")
+
 (add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode)
 (add-to-list 'semantic-default-submodes 'global-semantic-idle-completions-mode)
 

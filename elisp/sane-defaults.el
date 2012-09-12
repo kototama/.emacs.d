@@ -88,4 +88,7 @@
 ;; Sentences do not need double spaces to end. Period.
 (set-default 'sentence-end-double-space nil)
 
+;; entering text on a selected text deletes it
+(delete-selection-mode 1)
+
 (provide 'sane-defaults)

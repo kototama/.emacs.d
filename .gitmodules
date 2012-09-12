@@ -4,3 +4,6 @@
 [submodule "snippets/backbone-underscore-snippets"]
 	path = snippets/backbone-underscore-snippets
 	url = git@github-kototama:kototama/backbone-underscore-snippets.git
+[submodule "emacs-modes/slime"]
+	path = emacs-modes/slime
+	url = https://github.com/technomancy/slime.git

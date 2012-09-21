@@ -94,6 +94,8 @@
 
 (add-hook 'org-mode-hook
           '(lambda ()
+             (setq org-todo-keywords
+                   '((sequence "[ ]" "|" "[x]")))
              (define-key org-mode-map (kbd "<C-return>") nil)
              (define-key org-mode-map (kbd "<C-tab>") nil)
              (define-key org-mode-map (kbd "<S-iso-lefttab>") nil)

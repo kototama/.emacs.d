@@ -26,3 +26,4 @@
 (package "undo-tree")
 (package "yasnippet")
 (package "markdown-mode")
+(package "nrepl")

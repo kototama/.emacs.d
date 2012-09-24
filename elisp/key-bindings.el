@@ -58,7 +58,7 @@
 (global-set-key (kbd "C-c T") 'multi-term)
 (global-set-key (kbd "C-<") 'mark-previous-like-this)
 (global-set-key (kbd "C->") 'mark-next-like-this)
-(global-set-key (kbd "C-M-m") 'mark-more-like-this)
+(global-set-key (kbd "C-M-m") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-M-<SPC>") 'er/expand-region)
 (global-set-key (kbd "C-.") 'hippie-expand)
 (define-key undo-tree-map (kbd "C-?") nil)

@@ -22,7 +22,7 @@
 
 (global-set-key (kbd "C-a") 'back-to-indentation-or-beginning-of-line)
 (global-set-key (kbd "M-g") 'goto-line)
-(global-set-key (kbd "M-o") 'my-anything)
+(global-set-key (kbd "M-o") 'my-helm)
 
 (global-set-key (kbd "M-x") 'smex)
 ;; (global-set-key (kbd "M-x") 'execute-extended-command)

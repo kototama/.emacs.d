@@ -21,8 +21,11 @@
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/misc")
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/yasnippet")
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/emacs-oauth")
+(add-to-list 'load-path "~/.emacs.d/emacs-modes/nrepl.el")
+(add-to-list 'load-path "~/.emacs.d/emacs-modes/helm")
 (add-to-list 'load-path "~/.emacs.d/elisp")
 
+(require 'nrepl)
 
 (add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode)
 (add-to-list 'semantic-default-submodes 'global-semantic-idle-completions-mode)
@@ -70,7 +73,7 @@
 
 ;; personal configurations
 (require 'setup-colors)
-(require 'setup-anything)
+(require 'setup-helm)
 (require 'key-bindings)
 (require 'sane-defaults)
 (require 'setup-hippie)

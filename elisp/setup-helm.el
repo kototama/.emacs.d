@@ -1,9 +1,5 @@
-(require 'anything)
-(require 'anything-config)
-
-;; (autoload 'anything "anything" "anything selections" t)
-;; (autoload 'anything-config "anything-config" "anything selections" t)
-
+(require 'helm-config)
+(require 'helm-files)
 (require 'file-utils)
 
 (defun files-in-below-directory (directory)
@@ -74,9 +70,9 @@
     ;; return the filenames
     directories-list))
 
-;; anything conf
-(defun make-anything-directory-source (source-name dir)
-  "Returns an anything source for a particular directory"
+;; helm conf
+(defun make-helm-directory-source (source-name dir)
+  "Returns an helm source for a particular directory"
   `((name . ,(concat source-name))
     (candidates . (lambda ()
                     (directory-files
@@ -84,8 +80,8 @@
     (action . find-file)
     (type . file)))
 
-(defun make-anything-directories-in-directory-source (source-name dir)
-  "Returns an anything source for a particular directory"
+(defun make-helm-directories-in-directory-source (source-name dir)
+  "Returns an helm source for a particular directory"
   `((name . ,(concat source-name))
     (candidates . (lambda ()
                     (directories-in-below-directory
@@ -93,8 +89,8 @@
     (action . find-file)
     (type . file)))
 
-(defun make-anything-recursive-directory-source (source-name dir)
-  "Returns an anything source for a particular directory"
+(defun make-helm-recursive-directory-source (source-name dir)
+  "Returns an helm source for a particular directory"
   `((name . ,(concat source-name))
 	(candidates . (lambda ()
                         (files-in-below-directory
@@ -102,8 +98,8 @@
 	(action . find-file)
 	(type . file)))
 
-(defun make-anything-project-files-source (source-name filepath)
-  "Returns an anything source for the file of directory"
+(defun make-helm-project-files-source (source-name filepath)
+  "Returns an helm source for the file of directory"
   `((name . ,(concat source-name))
 	(candidates . (lambda ()
                         (list-project-files
@@ -112,43 +108,52 @@
 	(type . file)))
 
 
-(setf anything-elisp-source (make-anything-recursive-directory-source "Elisp files" "~/.emacs.d/elisp"))
-;; (setf anything-carneades-project-source 
-;;       (make-anything-directories-in-directory-source "Carneades" "~/Documents/Projects/carneades/src/CarneadesEngine/src"))
+(setf helm-elisp-source (make-helm-recursive-directory-source "Elisp files" "~/.emacs.d/elisp"))
+;; (setf helm-carneades-project-source 
+;;       (make-helm-directories-in-directory-source "Carneades" "~/Documents/Projects/carneades/src/CarneadesEngine/src"))
 
-(setf anything-carneades-files (make-anything-project-files-source
+(setf helm-carneades-files (make-helm-project-files-source
                                 "Carneades files"
                                 "/home/pal/Documents/Projects/carneades/src/FILES"))
 
-(setq anything-etags-enable-tag-file-dir-cache t)
-(setq anything-etags-cache-tag-file-dir "~/Documents/Projects/carneades/src/")
+(setq helm-etags-enable-tag-file-dir-cache t)
+(setq helm-etags-cache-tag-file-dir "~/Documents/Projects/carneades/src/")
 
-(defun my-anything ()
+(setq helm-sources
+        (list
+         'helm-c-source-ffap-line
+         'helm-c-source-ffap-guesser
+         'helm-c-source-buffers-list
+         'helm-c-source-files-in-current-dir
+         ;; 'helm-c-source-eproject-files-in-project
+         ;; 'helm-c-source-eproject-projects
+         'helm-c-source-file-cache
+         'helm-c-source-recentf
+         'helm-c-source-file-name-history
+         'helm-c-source-bookmarks
+         'helm-c-source-etags-select
+         ;; 'helm-c-source-locate
+         
+         
+         'helm-carneades-files
+         'helm-elisp-source
+         ))
+
+(defun my-helm ()
        (interactive)
-       (anything-other-buffer
-        '(anything-c-source-buffers
-          anything-c-source-file-name-history
-          ;; anything-c-source-info-pages
-          ;; anything-c-source-info-elisp
-          ;; anything-c-source-man-pages
-          ;; anything-c-source-locate
-          ;; anything-c-source-emacs-commands
-          ;; anything-elisp-source
-          anything-c-source-bookmarks
-          ;; anything-carneades-project-source
-          anything-carneades-files
-          anything-c-source-etags-select
-          )
-        "*my-anything*"))
+       (helm-other-buffer
+        helm-sources
+        
+        "*my-helm*"))
 
 (add-hook 'term-mode-hook
           '(lambda ()
              (define-key term-mode-map (kbd "M-o") nil)))
 
-(add-hook 'anything-after-initialize-hook
-          '(lambda ()
-             (defun anything-c-transform-file-browse-url (actions candidate)
-               "Disables anything config function to not browse http | ftp files"
-               actions)))
+;; (add-hook 'helm-after-initialize-hook
+;;           '(lambda ()
+;;              (defun helm-c-transform-file-browse-url (actions candidate)
+;;                "Disables helm config function to not browse http | ftp files"
+;;                actions)))
 
-(provide 'setup-anything)
+(provide 'setup-helm)

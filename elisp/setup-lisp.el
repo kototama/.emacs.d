@@ -161,8 +161,8 @@
        '(lambda ()
           (interactive)
           (save-buffer)
-          (when (slime-current-connection)
-            (slime-compile-and-load-file))))))
+          ;; TODO nrepl compile and load file?
+          ))))
 
 (defadvice slime-connect
   (before ignore-protocol activate compile)

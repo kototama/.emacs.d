@@ -74,7 +74,6 @@
 ;; personal configurations
 (require 'setup-colors)
 (require 'setup-helm)
-(require 'key-bindings)
 (require 'sane-defaults)
 (require 'setup-hippie)
 (require 'setup-dev)
@@ -85,6 +84,9 @@
 (require 'screen-utils)
 (require 'file-utils)
 (require 'string-utils)
+(require 'ktm-mode)
+
+(ktm-global-mode 1)
 
 (setq uniquify-buffer-name-style 'forward)
 

@@ -2,7 +2,7 @@
 (source "marmalade" "http://marmalade-repo.org/s/")
  
 (package "magit")
-(package "helm")
+;; (package "helm")
 (package "ace-jump-mode")
 (package "clojure-mode")
 (package "elisp-slime-nav")

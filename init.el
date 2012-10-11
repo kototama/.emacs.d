@@ -25,8 +25,6 @@
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/helm")
 (add-to-list 'load-path "~/.emacs.d/elisp")
 
-(require 'nrepl)
-
 (add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode)
 (add-to-list 'semantic-default-submodes 'global-semantic-idle-completions-mode)
 
@@ -61,7 +59,9 @@
 (require 'ido)
 (require 'ido-ubiquitous)
 (require 'hippie-exp)
+(require 'color-theme-kototama)
 
+(color-theme-kototama)
 (ido-mode t)
 (global-undo-tree-mode t)
 (highlight-parentheses-mode t)
@@ -72,7 +72,7 @@
 (ido-ubiquitous-mode 1)
 
 ;; personal configurations
-(require 'setup-colors)
+;; (require 'setup-colors)
 (require 'setup-helm)
 (require 'sane-defaults)
 (require 'setup-hippie)

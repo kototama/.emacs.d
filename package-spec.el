@@ -22,3 +22,4 @@
 (package "markdown-mode")
 ;; (package "nrepl")
 (package "multiple-cursors")
+(package "color-theme")

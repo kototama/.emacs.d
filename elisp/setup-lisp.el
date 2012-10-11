@@ -1,4 +1,4 @@
-;; (require 'slime-autoloads)
+(require 'nrepl)
 
 (autoload 'paredit "paredit-mode" "A minor mode for parenthesis" t)
 (autoload 'clojure-mode "clojure-mode" "A major mode for Clojure" t)

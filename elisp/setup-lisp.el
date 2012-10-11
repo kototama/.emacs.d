@@ -1,18 +1,10 @@
-(require 'slime-autoloads)
+;; (require 'slime-autoloads)
 
 (autoload 'paredit "paredit-mode" "A minor mode for parenthesis" t)
 (autoload 'clojure-mode "clojure-mode" "A major mode for Clojure" t)
 (autoload 'elisp-slime-nav-mode "elisp-slime-nav" "SLIME-like for Elisp" t)
 (autoload 'elisp-slime-nav-find-elisp-thing-at-point
   "elisp-slime-nav" "SLIME-like for ELisp" t)
-
-;; SLIME Options
-(slime-setup '(slime-fancy slime-asdf slime-c-p-c anything-slime))
-(setq slime-net-coding-system 'utf-8-unix)
-;; By default inputs and results have the same color
-(custom-set-faces
- '(slime-repl-result-face ((t (:foreground "orange")))))
-
 
 (setq blink-matching-paren nil)
 
@@ -54,51 +46,9 @@
           (define-key paredit-mode-map (kbd "M-r") nil)
           (define-key paredit-mode-map (kbd "C-k") 'paredit-eager-kill-line)))
 
-(add-hook 'slime-mode-hook
+(add-hook 'nrepl-mode-hook
           '(lambda ()
-             (define-key slime-mode-map (kbd "M-p") nil)
-             (define-key slime-mode-map (kbd "M-n") nil)
-             (define-key slime-mode-map (kbd "M-_") nil)
-             (define-key slime-mode-map (kbd "M-.") 
-               ;; if the definition is not found by slime-edit-definition
-               ;; then search with find-tag
-               '(lambda (name)
-                  (interactive (list (slime-read-symbol-name "Edit Definition of: ")))
-                  (let ((success nil))
-                   (unwind-protect
-                       (progn
-                         (slime-edit-definition name)
-                         (setq success 't)) 
-                     (if (not success)
-                         (progn
-                           (find-tag name)
-                           (message "Finished.")))))))
-             ;; (define-key slime-mode-map (kbd "M-p") nil)
-             ))
-
-
-
-(add-hook 'slime-repl-mode-hook
-          '(lambda ()
-             (clojure-mode-font-lock-setup)
-             (paredit-mode t)
-             (set-syntax-table clojure-mode-syntax-table)
-             (define-key slime-repl-mode-map (kbd "C-c r")
-               '(lambda ()
-                  (interactive)
-                  (slime-repl-previous-matching-input (slime-repl-current-input))))
-             (define-key slime-repl-mode-map
-               (kbd "<C-return>") '(lambda ()
-                                     (interactive)
-                                     (switch-to-buffer nil)))
-             (define-key slime-repl-mode-map (kbd "C-c s") 'slime-repl-next-matching-input)
-             (define-key slime-repl-mode-map (kbd "<return>") 'paredit-newline)
-             (define-key slime-repl-mode-map (kbd "<S-return>") 'slime-repl-closing-return)
-             (define-key slime-repl-mode-map "{" 'paredit-open-curly)
-             (define-key slime-repl-mode-map "}" 'paredit-close-curly)
-             (define-key slime-repl-mode-map (kbd "DEL") 'paredit-backward-delete)
-             (define-key slime-repl-mode-map (kbd "M-r") 'anything-slime-repl-history)
-             ))
+             (define-key nrepl-mode-map (kbd "<return>") 'nrepl-return)))
 
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
@@ -163,18 +113,6 @@
           (save-buffer)
           ;; TODO nrepl compile and load file?
           ))))
-
-(defadvice slime-connect
-  (before ignore-protocol activate compile)
-  (setq slime-protocol-version 'ignore))
-
-(defadvice slime-compilation-finished
-  (after kill-buffer-if-necessary activate compile)
-  (kill-compilation-buffer-when-no-errors))
-
-;; (defadvice slime-connect
-;;   (after goto-previous-buffer activate compile)
-;;   (other-window -1))
 
 (add-hook 'emacs-lisp-mode-hook
           '(lambda ()

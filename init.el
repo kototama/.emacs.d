@@ -16,8 +16,8 @@
   (package-initialize))
 
 ;; path for the modes that are not part of package
-(add-to-list 'load-path "~/.emacs.d/emacs-modes/slime")
-(add-to-list 'load-path "~/.emacs.d/emacs-modes/slime/contrib")
+;; (add-to-list 'load-path "~/.emacs.d/emacs-modes/slime")
+;; (add-to-list 'load-path "~/.emacs.d/emacs-modes/slime/contrib")
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/misc")
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/yasnippet")
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/emacs-oauth")
@@ -84,6 +84,7 @@
 (require 'screen-utils)
 (require 'file-utils)
 (require 'string-utils)
+(require 'setup-programming)
 (require 'ktm-mode)
 
 (ktm-global-mode 1)
@@ -109,11 +110,18 @@
 ;; term setting
 (add-hook 'multi-term-mode-hook
           (lambda ()
+            (define-key term-mode-map (kbd "<return>") 'term-send-raw)
             (setq term-buffer-maximum-size 2000)
             (setq term-bind-key-alist (delete '("M-o" . term-send-backspace)
                                               term-bind-key-alist))
             (setq term-bind-key-alist (delete '("C-p" . previous-line)
                                               term-bind-key-alist))))
 
+(put 'narrow-to-region 'disabled nil)
+
+(add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
+
 ;; starts emacs server
 (server-start)
+
+

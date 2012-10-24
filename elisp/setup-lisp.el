@@ -139,4 +139,6 @@
                    (other-window -1)
                    (slime-compile-and-load-file)))))
 
+(add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
+
 (provide 'setup-lisp)

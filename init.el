@@ -86,6 +86,7 @@
 (require 'string-utils)
 (require 'setup-programming)
 (require 'ktm-mode)
+(require 'setup-org)
 
 (ktm-global-mode 1)
 
@@ -98,15 +99,6 @@
 
 (add-hook 'window-setup-hook 'maximize-frame t)
 
-(add-hook 'org-mode-hook
-          '(lambda ()
-             (setq org-todo-keywords
-                   '((sequence "[ ]" "|" "[x]")))
-             (define-key org-mode-map (kbd "<C-return>") nil)
-             (define-key org-mode-map (kbd "<C-tab>") nil)
-             (define-key org-mode-map (kbd "<S-iso-lefttab>") nil)
-             (define-key org-mode-map (kbd "<backtab>") nil)))
-
 ;; term setting
 (add-hook 'multi-term-mode-hook
           (lambda ()
@@ -118,8 +110,6 @@
                                               term-bind-key-alist))))
 
 (put 'narrow-to-region 'disabled nil)
-
-(add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
 
 ;; starts emacs server
 (server-start)

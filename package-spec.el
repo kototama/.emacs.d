@@ -23,3 +23,5 @@
 ;; (package "nrepl")
 (package "multiple-cursors")
 (package "color-theme")
+(package "cljsbuild-mode")
+(package "gist")

@@ -13,4 +13,6 @@
 
 (global-set-key (kbd "C-c r") 'org-capture)
 
+(setq org-agenda-files '("~/Documents/Notes/"))
+
 (provide 'setup-org)

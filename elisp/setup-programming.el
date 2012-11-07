@@ -10,4 +10,16 @@
              (add-to-list 'term-bind-key-alist '("<return>" . send-return))
              ))
 
+
+;; term setting
+(add-hook 'multi-term-mode-hook
+          (lambda ()
+            (define-key term-mode-map (kbd "<return>") 'term-send-raw)
+            (setq term-buffer-maximum-size 2000)
+            (setq term-bind-key-alist (delete '("M-o" . term-send-backspace)
+                                              term-bind-key-alist))
+            (setq term-bind-key-alist (delete '("C-p" . previous-line)
+                                              term-bind-key-alist))))
+
+
 (provide 'setup-programming)

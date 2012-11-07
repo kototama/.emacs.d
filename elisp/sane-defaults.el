@@ -81,7 +81,6 @@
 ;; Lines should be 80 characters wide, not 72
 (setq fill-column 80)
 
-
 ;; Show me empty lines after buffer end
 (set-default 'indicate-empty-lines t)
 
@@ -90,5 +89,13 @@
 
 ;; entering text on a selected text deletes it
 (delete-selection-mode 1)
+
+;; prefix buffer having the same name by a path element
+(setq uniquify-buffer-name-style 'forward)
+
+;; no scroll bars
+(scroll-bar-mode -1)
+
+;; (put 'narrow-to-region 'disabled nil)
 
 (provide 'sane-defaults)

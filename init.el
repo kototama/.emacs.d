@@ -20,7 +20,6 @@
 ;; (add-to-list 'load-path "~/.emacs.d/emacs-modes/slime/contrib")
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/misc")
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/yasnippet")
-(add-to-list 'load-path "~/.emacs.d/emacs-modes/emacs-oauth")
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/nrepl.el")
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/helm")
 (add-to-list 'load-path "~/.emacs.d/elisp")
@@ -42,7 +41,6 @@
 (require 'package-spec)
 
 (autoload 'expand-region "expand-region" "expand region" t)
-(autoload 'mark-more-like-this "mark-more-like-this" "mark-more-like-this" t)
 (autoload 'igrep "igrep" "a better grep" t)
 (autoload 'multi-term "multi-term" "multiple terms" t)
 (autoload 'term-send-raw-string "multi-term" "multiple terms" t)
@@ -90,8 +88,6 @@
 
 (ktm-global-mode 1)
 
-(setq uniquify-buffer-name-style 'forward)
-
 (smex-initialize)
 
 (yas/initialize)
@@ -99,19 +95,6 @@
 
 (add-hook 'window-setup-hook 'maximize-frame t)
 
-;; term setting
-(add-hook 'multi-term-mode-hook
-          (lambda ()
-            (define-key term-mode-map (kbd "<return>") 'term-send-raw)
-            (setq term-buffer-maximum-size 2000)
-            (setq term-bind-key-alist (delete '("M-o" . term-send-backspace)
-                                              term-bind-key-alist))
-            (setq term-bind-key-alist (delete '("C-p" . previous-line)
-                                              term-bind-key-alist))))
-
-(put 'narrow-to-region 'disabled nil)
-
 ;; starts emacs server
 (server-start)
-
 

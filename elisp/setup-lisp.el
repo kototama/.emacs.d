@@ -111,8 +111,8 @@
        '(lambda ()
           (interactive)
           (save-buffer)
-          ;; TODO nrepl compile and load file?
-          ))))
+          (when (get-buffer "*nrepl*")
+            (nrepl-load-current-buffer))))))
 
 (add-hook 'emacs-lisp-mode-hook
           '(lambda ()

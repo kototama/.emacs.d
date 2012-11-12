@@ -76,6 +76,8 @@
     ;; altgr-e
     (define-key keymap (kbd "€") 'end-of-buffer)
 
+    (define-key keymap [C-down-mouse-1] 'browse-url-at-mouse)
+    
     keymap)
   
   :gkeymaproup 'ktm-mode)

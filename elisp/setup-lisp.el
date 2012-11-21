@@ -1,4 +1,7 @@
 (require 'nrepl)
+(require 'dash)
+(require 'cljsbuild-mode)
+(require 's)
 
 (autoload 'paredit "paredit-mode" "A minor mode for parenthesis" t)
 (autoload 'clojure-mode "clojure-mode" "A major mode for Clojure" t)
@@ -48,7 +51,8 @@
 
 (add-hook 'nrepl-mode-hook
           '(lambda ()
-             (define-key nrepl-mode-map (kbd "<return>") 'nrepl-return)))
+             (define-key nrepl-mode-map (kbd "<return>") 'nrepl-return)
+             (paredit-mode 1)))
 
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
@@ -106,12 +110,18 @@
      (define-key clojure-mode-map (kbd "C-M-/") 'anything-slime-complete)
      (define-key clojure-mode-map (kbd "M-/") 'dabbrev-expand)
      (define-key clojure-mode-map (kbd "C-?") 'anything-slime-apropos)
+     (define-key clojure-mode-map (kbd "C-c C-k") 'nrepl-load-current-buffer)
+     (define-key clojure-mode-map (kbd "C-x C-e") 'nrepl-eval-last-expression)
      ;; autocompile file when saved
      (define-key clojure-mode-map (kbd "C-x C-s") 
        '(lambda ()
           (interactive)
           (save-buffer)
-          (when (get-buffer "*nrepl*")
+          (when (and (get-buffer "*nrepl*")
+                     (s-ends-with? ".clj" buffer-file-name))
+            ;; when connected to nrepl and inside a Clojure
+            ;; but not ClojureScript file, automatically
+            ;; loads the file into the REPL upon saving
             (nrepl-load-current-buffer))))))
 
 (add-hook 'emacs-lisp-mode-hook

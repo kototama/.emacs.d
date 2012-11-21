@@ -96,5 +96,4 @@
 (add-hook 'window-setup-hook 'maximize-frame t)
 
 ;; starts emacs server, if not already started
-(unless (server-running-p)
-  (server-start))
+(server-start)

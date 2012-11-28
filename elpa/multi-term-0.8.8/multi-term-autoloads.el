@@ -3,8 +3,8 @@
 ;;; Code:
 
 
-;;;### (autoloads (multi-term) "multi-term" "multi-term.el" (20544
-;;;;;;  31658))
+;;;### (autoloads (multi-term) "multi-term" "multi-term.el" (20661
+;;;;;;  60294 0 0))
 ;;; Generated autoloads from multi-term.el
 
 (autoload 'multi-term "multi-term" "\
@@ -15,7 +15,8 @@ Will prompt you shell name when you type `C-u' before this command.
 
 ;;;***
 
-;;;### (autoloads nil nil ("multi-term-pkg.el") (20544 31658 428972))
+;;;### (autoloads nil nil ("multi-term-pkg.el") (20661 60294 556999
+;;;;;;  833000))
 
 ;;;***
 

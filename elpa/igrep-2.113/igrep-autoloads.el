@@ -5,7 +5,7 @@
 
 ;;;### (autoloads (Buffer-menu-igrep dired-do-igrep-find dired-do-igrep
 ;;;;;;  igrep-visited-files igrep-find igrep igrep-insinuate) "igrep"
-;;;;;;  "igrep.el" (20544 31672))
+;;;;;;  "igrep.el" (20661 60304 0 0))
 ;;; Generated autoloads from igrep.el
 
 (autoload 'igrep-insinuate "igrep" "\
@@ -79,7 +79,7 @@ See `\\[igrep]' for a description of PROGRAM, REGEX, and OPTIONS.
 
 ;;;***
 
-;;;### (autoloads nil nil ("igrep-pkg.el") (20544 31673 238907))
+;;;### (autoloads nil nil ("igrep-pkg.el") (20661 60305 131297 587000))
 
 ;;;***
 

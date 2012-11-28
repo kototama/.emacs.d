@@ -7,3 +7,12 @@
 [submodule "emacs-modes/slime"]
 	path = emacs-modes/slime
 	url = https://github.com/technomancy/slime.git
+[submodule "emacs-modes/helm"]
+	path = emacs-modes/helm
+	url = https://github.com/emacs-helm/helm.git
+[submodule "emacs-modes/nrepl"]
+	path = emacs-modes/nrepl
+	url = https://github.com/kingtim/nrepl.el.git
+[submodule "emacs-modes/nrepl.el"]
+	path = emacs-modes/nrepl.el
+	url = https://github.com/kingtim/nrepl.el.git

@@ -20,8 +20,11 @@
 (package "undo-tree")
 (package "yasnippet")
 (package "markdown-mode")
-;; (package "nrepl")
 (package "multiple-cursors")
 (package "color-theme")
 (package "cljsbuild-mode")
 (package "dash")
+<<<<<<< HEAD
+=======
+(package "s")
+>>>>>>> origin/master

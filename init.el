@@ -1,5 +1,5 @@
 ;; semantic.el experiments
-(load "~/.emacs.d/emacs-modes/cedet/cedet-devel-load.el")
+;; (load "~/.emacs.d/emacs-modes/cedet/cedet-devel-load.el")
 
 ;;; This was installed by package-install.el.
 ;;; This provides support for the package system and

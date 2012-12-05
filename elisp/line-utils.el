@@ -20,5 +20,15 @@
       (delete-indentation 1)
     (kill-line nil)))
 
+(defun duplicate-line
+  ()
+  (interactive)
+  (move-beginning-of-line 1)
+  (kill-line)
+  (yank)
+  (open-line 1)
+  (next-line 1)
+  (yank)
+  (back-to-indentation))
 
 (provide 'line-utils)

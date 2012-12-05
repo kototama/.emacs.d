@@ -97,3 +97,4 @@
 
 ;; starts emacs server, if not already started
 (server-start)
+

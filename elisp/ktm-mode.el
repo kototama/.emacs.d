@@ -1,6 +1,7 @@
 
 ;; Personal global mode so that keybindings applies everywhere
 ;; see http://www.reddit.com/r/emacs/comments/y76sl/proper_way_of_overriding_mode_keys/
+(require 'line-utils)
 
 (define-minor-mode ktm-mode
   "Ktm mode"
@@ -23,6 +24,7 @@
                                    (interactive "p")
                                    (next-line (+ arg 4) nil)))
     (define-key keymap (kbd "C-S-j") 'join-line)
+    (define-key keymap (kbd "C-S-d") 'duplicate-line)
     (define-key keymap (kbd "C-M-s") 'igrep-find)
     (define-key keymap (kbd "C-a") 'back-to-indentation-or-beginning-of-line)
     (define-key keymap (kbd "M-g") 'goto-line)

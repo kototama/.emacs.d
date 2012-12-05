@@ -10,7 +10,7 @@
 (package "highlight-parentheses")
 (package "ido-ubiquitous")
 (package "igrep")
-(package "js2-mode")
+;; (package "js2-mode") : bug with forward-sexp
 (package "maxframe")
 (package "mo-git-blame")
 (package "multi-term")
@@ -24,4 +24,4 @@
 (package "multiple-cursors")
 (package "color-theme")
 (package "cljsbuild-mode")
-(package "gist")
+(package "dash")

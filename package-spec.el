@@ -24,7 +24,4 @@
 (package "color-theme")
 (package "cljsbuild-mode")
 (package "dash")
-<<<<<<< HEAD
-=======
 (package "s")
->>>>>>> origin/master

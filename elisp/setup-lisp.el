@@ -151,9 +151,4 @@
 
 (add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
 
-(eval-after-load "speedbar"
-  (lambda ()
-    (speedbar-add-supported-extension ".clj")
-    (speedbar-add-supported-extension ".cljs")))
-
 (provide 'setup-lisp)

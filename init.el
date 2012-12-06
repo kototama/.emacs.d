@@ -1,5 +1,10 @@
 ;; semantic.el experiments
-;; (load "~/.emacs.d/emacs-modes/cedet/cedet-devel-load.el")
+(eval-after-load "speedbar"
+  (lambda ()
+    (speedbar-add-supported-extension ".clj")
+    (speedbar-add-supported-extension ".cljs")))
+
+(load "~/.emacs.d/emacs-modes/cedet/cedet-devel-load.el")
 
 ;;; This was installed by package-install.el.
 ;;; This provides support for the package system and
@@ -91,9 +96,19 @@
 (smex-initialize)
 
 (yas/initialize)
-(yas/load-directory "~/.emacs.d/snippets/backbone-underscore-snippets")
 
 (add-hook 'window-setup-hook 'maximize-frame t)
+
+(defun toggle-window-dedicated ()
+  "Toggle whether the current active window is dedicated or not"
+  (interactive)
+  (message 
+   (if (let (window (get-buffer-window (current-buffer)))
+         (set-window-dedicated-p window 
+                                 (not (window-dedicated-p window))))
+       "Window '%s' is dedicated"
+     "Window '%s' is normal")
+   (current-buffer)))
 
 ;; starts emacs server, if not already started
 (server-start)

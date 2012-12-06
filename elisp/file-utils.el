@@ -42,6 +42,42 @@ sMatching file pattern (regexp): ")
   (while (search-forward (string ?\C-m) nil t)
     (replace-match "" nil t)))
 
+(defun find-files-helper
+  (directory filter-fn visited)
+  "Helper for the find-files function"
+  (let ((files (directory-files directory t)))
+    (-reduce-from
+     (lambda (visited file)
+       (cond ((and (not (string= "/." (s-right 2 file)))
+                   (not (string= "/.." (s-right 3 file))) 
+                   (file-accessible-directory-p file))
+              (find-files-helper file filter-fn visited))
+             ((funcall filter-fn file) (cons file visited))
+             (t visited)))
+     visited
+     files)))
+
+(defun find-files
+  (directory filter-fn)
+  "Recursively visit the files and directories in `directory`
+and returns the file names satisfying the `filter-fn` function."
+  (find-files-helper directory filter-fn ()))
+
+(defun clj-file-p
+  (file)
+  (string= ".clj" (s-right 4 file)))
+
+(defun cljs-file-p
+  (file)
+  (string= ".cljs" (s-right 5 file)))
+
+(defun js-file-p
+  (file)
+  (string= ".js" (s-right 3 file)))
+
+(defun find-js-files
+  (directory)
+  (find-files-helper directory 'js-file-p ()))
 
 
 (provide 'file-utils)

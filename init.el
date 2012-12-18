@@ -26,17 +26,9 @@
 (autoload 'hippie-expand "hippie-expand" "expand stuff" t)
 
 ;; always uses the following modes
-(require 'undo-tree)
-(require 'paren)
-(require 'maxframe)
-(require 'smex)
-(require 'uniquify)
-(require 'yasnippet)
-;; (require 'whitespace)
-(require 'ido)
-(require 'ido-ubiquitous)
-(require 'hippie-exp)
-(require 'color-theme-kototama)
+(dolist (mode '(undo-tree paren maxframe smex uniquify yasnippet ido
+                          ido-ubiquitous hippie-exp color-theme-kototama))
+  (require mode))
 
 (color-theme-kototama)
 (ido-mode t)
@@ -48,22 +40,12 @@
 ;; (global-whitespace-mode t)
 (ido-ubiquitous-mode 1)
 
+;; load personal configuration
 ;; personal configurations
-(require 'setup-helm)
-(require 'sane-defaults)
-(require 'setup-hippie)
-(require 'setup-dev)
-(require 'setup-javascript)
-(require 'setup-lisp)
-(require 'setup-carneades)
-(require 'line-utils)
-(require 'screen-utils)
-(require 'file-utils)
-(require 'string-utils)
-(require 'setup-programming)
-(require 'ktm-mode)
-(require 'setup-org)
-(require 'setup-cedet)
+(dolist (pconf '(setup-helm sane-defaults setup-hippie setup-javascript
+                            setup-lisp setup-carneades line-utils screen-utils file-utils
+                            setup-programming ktm-mode setup-org setup-cedet))
+  (require pconf))
 
 (ktm-global-mode 1)
 

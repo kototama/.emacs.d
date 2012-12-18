@@ -37,7 +37,6 @@
 (show-paren-mode t)
 (winner-mode t)
 (column-number-mode t)
-;; (global-whitespace-mode t)
 (ido-ubiquitous-mode 1)
 
 ;; load personal configuration
@@ -47,6 +46,7 @@
                             setup-programming ktm-mode setup-org setup-cedet))
   (require pconf))
 
+;; load keybindings
 (ktm-global-mode 1)
 
 (smex-initialize)
@@ -54,14 +54,12 @@
 (yas/initialize)
 
 ;; fonts
-(if (eq window-system 'x)
-    (progn
-      (set-frame-font "Inconsolata-13")))
-
-(add-to-list 'default-frame-alist '(font . "Inconsolata-13"))
+(when (eq window-system 'x)
+  (set-frame-font "Inconsolata-13") 
+  (add-to-list 'default-frame-alist '(font . "Inconsolata-13")))
 
 ;; window
 (add-hook 'window-setup-hook 'maximize-frame t)
 
-;; starts emacs server, if not already started
+;; starts emacs server
 (server-start)

@@ -1,10 +1,12 @@
-;; semantic.el experiments
-(eval-after-load "speedbar"
-  (lambda ()
-    (speedbar-add-supported-extension ".clj")
-    (speedbar-add-supported-extension ".cljs")))
+(require 's)
 
-(load "~/.emacs.d/emacs-modes/cedet/cedet-devel-load.el")
+(when (s-contains? "elan" system-name)
+  ;; semantic.el experiments
+  (load "~/.emacs.d/emacs-modes/cedet/cedet-devel-load.el")
+  (eval-after-load "speedbar"
+    (lambda ()
+      (speedbar-add-supported-extension ".clj")
+      (speedbar-add-supported-extension ".cljs"))))
 
 ;;; This was installed by package-install.el.
 ;;; This provides support for the package system and
@@ -113,3 +115,4 @@
 ;; starts emacs server, if not already started
 (server-start)
 
+(setq recentf-max-menu-items 50)

@@ -8,16 +8,11 @@
   (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t))
 
 ;; path for the modes that are not part of package
-;; (add-to-list 'load-path "~/.emacs.d/emacs-modes/slime")
-;; (add-to-list 'load-path "~/.emacs.d/emacs-modes/slime/contrib")
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/misc")
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/yasnippet")
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/nrepl.el")
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/helm")
 (add-to-list 'load-path "~/.emacs.d/elisp")
-
-(add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode)
-(add-to-list 'semantic-default-submodes 'global-semantic-idle-completions-mode)
 
 ;; first loads package-spec.el
 ;; This will install any packages defined in
@@ -68,7 +63,7 @@
 (require 'setup-programming)
 (require 'ktm-mode)
 (require 'setup-org)
-(require 'color-theme-kototama)
+(require 'setup-cedet)
 
 (ktm-global-mode 1)
 

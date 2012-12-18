@@ -1,12 +1,6 @@
-(require 's)
-
-(when (s-contains? "elan" system-name)
-  ;; semantic.el experiments
-  (load "~/.emacs.d/emacs-modes/cedet/cedet-devel-load.el")
-  (eval-after-load "speedbar"
-    (lambda ()
-      (speedbar-add-supported-extension ".clj")
-      (speedbar-add-supported-extension ".cljs"))))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
 ;;; This was installed by package-install.el.
 ;;; This provides support for the package system and
@@ -21,6 +15,7 @@
                              ("marmalade" . "http://marmalade-repo.org/packages/")
                              ))
   (package-initialize))
+
 
 ;; path for the modes that are not part of package
 ;; (add-to-list 'load-path "~/.emacs.d/emacs-modes/slime")

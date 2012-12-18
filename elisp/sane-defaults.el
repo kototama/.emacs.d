@@ -102,3 +102,4 @@
 
 (provide 'sane-defaults)
 
+(setq recentf-max-menu-items 50)

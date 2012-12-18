@@ -1,3 +1,4 @@
+(require 's)
 (require 'helm-config)
 (require 'helm-files)
 (require 'file-utils)
@@ -119,25 +120,36 @@
 (setq helm-etags-enable-tag-file-dir-cache t)
 (setq helm-etags-cache-tag-file-dir "~/Documents/Projects/carneades/src/")
 
-(setq helm-sources
-        (list
-         'helm-c-source-ffap-line
-         'helm-c-source-ffap-guesser
-         'helm-c-source-buffers-list
-         'helm-c-source-files-in-current-dir
-         ;; 'helm-c-source-eproject-files-in-project
-         ;; 'helm-c-source-eproject-projects
-         'helm-c-source-file-cache
-         'helm-c-source-recentf
-         'helm-c-source-file-name-history
-         'helm-c-source-bookmarks
-         'helm-c-source-etags-select
-         ;; 'helm-c-source-locate
-         
-         
-         'helm-carneades-files
-         'helm-elisp-source
-         ))
+(setq helm-work-sources (list
+                         'helm-c-source-ffap-line
+                         'helm-c-source-ffap-guesser
+                         'helm-c-source-buffers-list
+                         'helm-c-source-files-in-current-dir
+                         'helm-c-source-file-cache
+                         'helm-c-source-recentf
+                         'helm-c-source-file-name-history
+                         'helm-c-source-bookmarks
+                         'helm-c-source-etags-select
+                         'helm-carneades-files
+                         'helm-elisp-source
+                         ))
+(setq helm-home-sources (list
+                         'helm-c-source-ffap-line
+                         'helm-c-source-ffap-guesser
+                         'helm-c-source-buffers-list
+                         'helm-c-source-files-in-current-dir
+                         'helm-c-source-file-cache
+                         'helm-c-source-recentf
+                         'helm-c-source-file-name-history
+                         'helm-c-source-bookmarks
+                         'helm-c-source-etags-select
+                         'helm-carneades-files
+                         'helm-elisp-source
+                         ))
+
+(setq helm-sources (if (s-contains? "elan" system-name)
+                       helm-work-sources
+                     helm-home-sources))
 
 (defun my-helm ()
        (interactive)

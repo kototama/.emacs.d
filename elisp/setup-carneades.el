@@ -1,5 +1,6 @@
 (require 's)
 (require 'file-utils)
+(require 'time-stamp)
 
 (defvar carneades-src-directory "~/Documents/Projects/carneades/src/")
 

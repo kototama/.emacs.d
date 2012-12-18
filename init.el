@@ -2,20 +2,10 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
-;;; This was installed by package-install.el.
-;;; This provides support for the package system and
-;;; interfacing with ELPA, the package archive.
-;;; Move this code earlier if you want to reference
-;;; packages in your .emacs.
-(when
-    ;; for Emacs23:
-    ;; (load
-    ;;  (expand-file-name "~/.emacs.d/emacs-modes/misc/package.el"))
-    (setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
-                             ("marmalade" . "http://marmalade-repo.org/packages/")
-                             ))
-  (package-initialize))
-
+(when (>= emacs-major-version 24)
+  (require 'package)
+  (package-initialize)
+  (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t))
 
 ;; path for the modes that are not part of package
 ;; (add-to-list 'load-path "~/.emacs.d/emacs-modes/slime")
@@ -28,14 +18,6 @@
 
 (add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode)
 (add-to-list 'semantic-default-submodes 'global-semantic-idle-completions-mode)
-
-
-;; fonts
-(if (eq window-system 'x)
-    (progn
-      (set-frame-font "Inconsolata-13")))
-
-(add-to-list 'default-frame-alist '(font . "Inconsolata-13"))
 
 ;; first loads package-spec.el
 ;; This will install any packages defined in
@@ -72,7 +54,6 @@
 (ido-ubiquitous-mode 1)
 
 ;; personal configurations
-;; (require 'setup-colors)
 (require 'setup-helm)
 (require 'sane-defaults)
 (require 'setup-hippie)
@@ -87,6 +68,7 @@
 (require 'setup-programming)
 (require 'ktm-mode)
 (require 'setup-org)
+(require 'color-theme-kototama)
 
 (ktm-global-mode 1)
 
@@ -94,20 +76,15 @@
 
 (yas/initialize)
 
-(add-hook 'window-setup-hook 'maximize-frame t)
+;; fonts
+(if (eq window-system 'x)
+    (progn
+      (set-frame-font "Inconsolata-13")))
 
-(defun toggle-window-dedicated ()
-  "Toggle whether the current active window is dedicated or not"
-  (interactive)
-  (message 
-   (if (let (window (get-buffer-window (current-buffer)))
-         (set-window-dedicated-p window 
-                                 (not (window-dedicated-p window))))
-       "Window '%s' is dedicated"
-     "Window '%s' is normal")
-   (current-buffer)))
+(add-to-list 'default-frame-alist '(font . "Inconsolata-13"))
+
+;; window
+(add-hook 'window-setup-hook 'maximize-frame t)
 
 ;; starts emacs server, if not already started
 (server-start)
-
-(setq recentf-max-menu-items 50)

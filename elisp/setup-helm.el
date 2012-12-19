@@ -143,9 +143,7 @@
                          'helm-c-source-file-name-history
                          'helm-c-source-bookmarks
                          'helm-c-source-etags-select
-                         'helm-carneades-files
-                         'helm-elisp-source
-                         ))
+                         'helm-elisp-source))
 
 (setq helm-sources (if (s-contains? "elan" system-name)
                        helm-work-sources

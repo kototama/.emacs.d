@@ -17,7 +17,7 @@
 ;; first loads package-spec.el
 ;; This will install any packages defined in
 ;; ~/.emacs.d/package-spec.el
-(require 'package-spec)
+;; (require 'package-spec)
 
 (autoload 'expand-region "expand-region" "expand region" t)
 (autoload 'igrep "igrep" "a better grep" t)

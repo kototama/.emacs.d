@@ -1,3 +1,5 @@
+(require 's)
+
 ;; disable blinking cursor
 (blink-cursor-mode 0)
 
@@ -66,7 +68,9 @@
 (setq scroll-step 1)
 
 ;; default shell to zsh
-(setq multi-term-program "/bin/zsh")
+(setq multi-term-program (if (s-contains? "elan" system-name)
+                             "/bin/zsh"
+                           "/bin/bash"))
 
 ;; unicode
 (set-language-environment "UTF-8")
@@ -102,3 +106,15 @@
 
 (provide 'sane-defaults)
 
+(setq recentf-max-menu-items 50)
+
+(defun toggle-window-dedicated ()
+  "Toggle whether the current active window is dedicated or not"
+  (interactive)
+  (message 
+   (if (let (window (get-buffer-window (current-buffer)))
+         (set-window-dedicated-p window 
+                                 (not (window-dedicated-p window))))
+       "Window '%s' is dedicated"
+     "Window '%s' is normal")
+   (current-buffer)))

@@ -1,49 +1,23 @@
-;; semantic.el experiments
-(eval-after-load "speedbar"
-  (lambda ()
-    (speedbar-add-supported-extension ".clj")
-    (speedbar-add-supported-extension ".cljs")))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
-(load "~/.emacs.d/emacs-modes/cedet/cedet-devel-load.el")
-
-;;; This was installed by package-install.el.
-;;; This provides support for the package system and
-;;; interfacing with ELPA, the package archive.
-;;; Move this code earlier if you want to reference
-;;; packages in your .emacs.
-(when
-    ;; for Emacs23:
-    ;; (load
-    ;;  (expand-file-name "~/.emacs.d/emacs-modes/misc/package.el"))
-    (setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
-                             ("marmalade" . "http://marmalade-repo.org/packages/")
-                             ))
-  (package-initialize))
+(when (>= emacs-major-version 24)
+  (require 'package)
+  (package-initialize)
+  (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t))
 
 ;; path for the modes that are not part of package
-;; (add-to-list 'load-path "~/.emacs.d/emacs-modes/slime")
-;; (add-to-list 'load-path "~/.emacs.d/emacs-modes/slime/contrib")
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/misc")
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/yasnippet")
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/nrepl.el")
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/helm")
 (add-to-list 'load-path "~/.emacs.d/elisp")
 
-(add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode)
-(add-to-list 'semantic-default-submodes 'global-semantic-idle-completions-mode)
-
-
-;; fonts
-(if (eq window-system 'x)
-    (progn
-      (set-frame-font "Inconsolata-13")))
-
-(add-to-list 'default-frame-alist '(font . "Inconsolata-13"))
-
 ;; first loads package-spec.el
 ;; This will install any packages defined in
 ;; ~/.emacs.d/package-spec.el
-(require 'package-spec)
+;; (require 'package-spec)
 
 (autoload 'expand-region "expand-region" "expand region" t)
 (autoload 'igrep "igrep" "a better grep" t)
@@ -52,17 +26,9 @@
 (autoload 'hippie-expand "hippie-expand" "expand stuff" t)
 
 ;; always uses the following modes
-(require 'undo-tree)
-(require 'paren)
-(require 'maxframe)
-(require 'smex)
-(require 'uniquify)
-(require 'yasnippet)
-;; (require 'whitespace)
-(require 'ido)
-(require 'ido-ubiquitous)
-(require 'hippie-exp)
-(require 'color-theme-kototama)
+(dolist (mode '(undo-tree paren maxframe smex uniquify yasnippet ido
+                          ido-ubiquitous hippie-exp color-theme-kototama))
+  (require mode))
 
 (color-theme-kototama)
 (ido-mode t)
@@ -71,45 +37,29 @@
 (show-paren-mode t)
 (winner-mode t)
 (column-number-mode t)
-;; (global-whitespace-mode t)
 (ido-ubiquitous-mode 1)
 
+;; load personal configuration
 ;; personal configurations
-;; (require 'setup-colors)
-(require 'setup-helm)
-(require 'sane-defaults)
-(require 'setup-hippie)
-(require 'setup-dev)
-(require 'setup-javascript)
-(require 'setup-lisp)
-(require 'setup-carneades)
-(require 'line-utils)
-(require 'screen-utils)
-(require 'file-utils)
-(require 'string-utils)
-(require 'setup-programming)
-(require 'ktm-mode)
-(require 'setup-org)
+(dolist (pconf '(setup-helm sane-defaults setup-hippie setup-javascript
+                            setup-lisp setup-carneades line-utils screen-utils file-utils
+                            setup-programming ktm-mode setup-org setup-cedet))
+  (require pconf))
 
+;; load keybindings
 (ktm-global-mode 1)
 
 (smex-initialize)
 
 (yas/initialize)
 
+;; fonts
+(when (eq window-system 'x)
+  (set-frame-font "Inconsolata-13") 
+  (add-to-list 'default-frame-alist '(font . "Inconsolata-13")))
+
+;; window
 (add-hook 'window-setup-hook 'maximize-frame t)
 
-(defun toggle-window-dedicated ()
-  "Toggle whether the current active window is dedicated or not"
-  (interactive)
-  (message 
-   (if (let (window (get-buffer-window (current-buffer)))
-         (set-window-dedicated-p window 
-                                 (not (window-dedicated-p window))))
-       "Window '%s' is dedicated"
-     "Window '%s' is normal")
-   (current-buffer)))
-
-;; starts emacs server, if not already started
+;; starts emacs server
 (server-start)
-

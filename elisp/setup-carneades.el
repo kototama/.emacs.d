@@ -5,15 +5,17 @@
 
 (defvar appdir "/home/pal/Documents/Projects/carneades/src/PolicyModellingTool/resources/policymodellingtool/public/js/app")
 
+(defvar carneade-license-year (format-time-string "%Y" (current-time)))
+
 (setq carneades-clj-license
-  (let ((year (s-left 4 (time-stamp-string))))
-    (concat (format ";;; Copyright (c) %s Fraunhofer Gesellschaft\n" year)
-            ";;; Licensed under the EUPL V.1.1\n\n")))
+      (concat (format ";;; Copyright (c) %s Fraunhofer Gesellschaft\n"
+                      carneade-license-year)
+              ";;; Licensed under the EUPL V.1.1\n\n"))
 
 (setq carneades-js-license
-  (let ((year (s-left 4 (time-stamp-string))))
-    (concat (format "// Copyright (c) %s Fraunhofer Gesellschaft\n" year)
-            "// Licensed under the EUPL V.1.1\n\n")))
+      (concat (format "// Copyright (c) %s Fraunhofer Gesellschaft\n" 
+                      carneade-license-year)
+              "// Licensed under the EUPL V.1.1\n\n"))
 
 (defun carneades-update-tags-file
   ()

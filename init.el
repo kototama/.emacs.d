@@ -43,7 +43,7 @@
 ;; personal configurations
 (dolist (pconf '(setup-helm sane-defaults setup-hippie setup-javascript
                             setup-lisp setup-carneades line-utils screen-utils file-utils
-                            setup-programming ktm-mode setup-org setup-cedet))
+                            setup-programming ktm-mode setup-org))
   (require pconf))
 
 ;; load keybindings

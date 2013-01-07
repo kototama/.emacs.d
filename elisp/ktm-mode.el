@@ -3,6 +3,15 @@
 ;; see http://www.reddit.com/r/emacs/comments/y76sl/proper_way_of_overriding_mode_keys/
 (require 'line-utils)
 
+(defun goto-line-with-feedback ()
+  "Show line numbers temporarily, while prompting for the line number input"
+  (interactive)
+  (unwind-protect
+      (progn
+        (linum-mode 1)
+        (goto-line (read-number "Goto line: ")))
+    (linum-mode -1)))
+
 (define-minor-mode ktm-mode
   "Ktm mode"
   :init-value nil
@@ -27,7 +36,7 @@
     (define-key keymap (kbd "C-S-d") 'duplicate-line)
     (define-key keymap (kbd "C-M-s") 'igrep-find)
     (define-key keymap (kbd "C-a") 'back-to-indentation-or-beginning-of-line)
-    (define-key keymap (kbd "M-g") 'goto-line)
+    (define-key keymap (kbd "M-g") 'goto-line-with-feedback)
     (define-key keymap (kbd "M-o") 'my-helm)
     (define-key keymap (kbd "M-x") 'smex)
     (define-key keymap (kbd "M-X") 'smex-major-mode-commands)

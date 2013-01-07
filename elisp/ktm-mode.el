@@ -2,6 +2,7 @@
 ;; Personal global mode so that keybindings applies everywhere
 ;; see http://www.reddit.com/r/emacs/comments/y76sl/proper_way_of_overriding_mode_keys/
 (require 'line-utils)
+(require 'file-utils)
 
 (defun goto-line-with-feedback ()
   "Show line numbers temporarily, while prompting for the line number input"
@@ -12,6 +13,7 @@
         (goto-line (read-number "Goto line: ")))
     (linum-mode -1)))
 
+
 (define-minor-mode ktm-mode
   "Ktm mode"
   :init-value nil
@@ -19,6 +21,10 @@
   :keymap
   (let ((keymap (make-sparse-keymap)))
     ;; (define-key keymap (kbd "C-<backspace>") 'forward-char)
+    
+    (define-key keymap (kbd "C-x C-r") 'rename-current-buffer-file)
+    (define-key keymap (kbd "<C-S-down>") 'move-line-down)
+    (define-key keymap (kbd "<C-S-up>") 'move-line-up)
     (define-key keymap (kbd "M-o") 'my-helm)
     (define-key keymap (kbd "<C-tab>") 'other-window)
     (define-key keymap "\r" 'newline-and-indent)

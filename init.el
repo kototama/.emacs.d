@@ -27,7 +27,8 @@
 
 ;; always uses the following modes
 (dolist (mode '(undo-tree paren maxframe smex uniquify yasnippet ido
-                          ido-ubiquitous hippie-exp color-theme-kototama))
+                          ido-ubiquitous hippie-exp color-theme-kototama
+                          auto-complete-config))
   (require mode))
 
 (color-theme-kototama)
@@ -39,7 +40,10 @@
 (column-number-mode t)
 (ido-ubiquitous-mode 1)
 
-;; load personal configuration
+(ac-config-default)
+
+;; load personal configuration 
+
 ;; personal configurations
 (dolist (pconf '(setup-helm sane-defaults setup-hippie setup-javascript
                             setup-lisp setup-carneades line-utils screen-utils file-utils

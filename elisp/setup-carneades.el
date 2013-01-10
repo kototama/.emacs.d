@@ -8,7 +8,7 @@
 
 (defvar carneade-license-year (format-time-string "%Y" (current-time)))
 
-(setq carneades-license
+(setq carneades-clj-license
       (concat (format ";;; Copyright (c) %s Fraunhofer Gesellschaft\n"
                       carneade-license-year)
               ";;; Licensed under the EUPL V.1.1\n"))

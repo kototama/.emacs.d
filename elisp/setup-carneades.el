@@ -8,15 +8,15 @@
 
 (defvar carneade-license-year (format-time-string "%Y" (current-time)))
 
-(setq carneades-clj-license
+(setq carneades-license
       (concat (format ";;; Copyright (c) %s Fraunhofer Gesellschaft\n"
                       carneade-license-year)
-              ";;; Licensed under the EUPL V.1.1\n\n"))
+              ";;; Licensed under the EUPL V.1.1\n"))
 
 (setq carneades-js-license
       (concat (format "// Copyright (c) %s Fraunhofer Gesellschaft\n" 
                       carneade-license-year)
-              "// Licensed under the EUPL V.1.1\n\n"))
+              "// Licensed under the EUPL V.1.1\n"))
 
 (defun carneades-update-tags-file
   ()
@@ -31,7 +31,8 @@
   (interactive)
   (save-excursion
     (goto-char (point-min))
-    (insert-string carneades-js-license)))
+    (cond ((eq major-mode 'clojure-mode) (insert-string carneades-clj-license))
+          ((eq major-mode 'javascript-mode) (insert-string carneades-js-license)))))
 
 (defun carneades-prompt-insert-copyright
   (file)

@@ -44,8 +44,10 @@
   :lighter " ktm"
   :keymap
   (let ((keymap (make-sparse-keymap)))
-    ;; (define-key keymap (kbd "C-<backspace>") 'forward-char)
-    
+    (define-key keymap (kbd "C-S-k") (lambda ()
+                                       (interactive)
+                                       (kill-buffer (current-buffer))))
+    (define-key keymap (kbd "<S-f1>") 'elisp-index-search)
     (define-key keymap (kbd "C-x C-r") 'rename-current-buffer-file)
     (define-key keymap (kbd "C-x r r") 'rotate-windows)
     (define-key keymap (kbd "<C-S-down>") 'move-line-down)

@@ -39,16 +39,37 @@
         (delete-indentation 1)
       (paredit-kill nil))))
 
-(defun paredit-duplicate-sexp
+;; (defun paredit-duplicate-sexp
+;;   ()
+;;   "Duplicate the current sexp on the next line."
+;;   (interactive)
+;;   (set-mark-command nil)
+;;   (forward-sexp)
+;;   (kill-ring-save (mark) (point))
+;;   (paredit-newline)
+;;   (yank)
+;;   (backward-sexp))
+
+(defun paredit-duplicate-after-point
   ()
-  "Duplicate the current sexp on the next line."
+  "Duplicates the content of the line that is after the point."
   (interactive)
+  ;; skips to the next sexp
+  (while (looking-at " ")
+    (forward-char))
   (set-mark-command nil)
-  (forward-sexp)
+  ;; while we find sexps we move forward on the line
+  (while (and (<= (point) (car (bounds-of-thing-at-point 'sexp)))
+              (not (= (point) (line-end-position))))
+    (forward-sexp)
+    (while (looking-at " ")
+      (forward-char)))
   (kill-ring-save (mark) (point))
+  ;; go to the next line and copy the sexprs we encountered
   (paredit-newline)
+  (set-mark-command nil)
   (yank)
-  (backward-sexp))
+  (exchange-point-and-mark))
 
 (eval-after-load "paredit"
   '(progn (define-key paredit-mode-map (kbd "C-c 0") 'paredit-forward-slurp-sexp)
@@ -58,7 +79,7 @@
           (define-key paredit-mode-map (kbd "M-R") 'paredit-raise-sexp)
           (define-key paredit-mode-map (kbd "M-r") nil)
           (define-key paredit-mode-map (kbd "C-k") 'paredit-eager-kill-line)
-          (define-key paredit-mode-map (kbd "C-S-d") 'paredit-duplicate-sexp)))
+          (define-key paredit-mode-map (kbd "C-S-d") 'paredit-duplicate-after-point)))
 
 (add-hook 'nrepl-mode-hook
           '(lambda ()

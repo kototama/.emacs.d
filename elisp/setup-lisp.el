@@ -1,6 +1,5 @@
 (require 'nrepl)
 (require 'dash)
-(require 'cljsbuild-mode)
 (require 's)
 
 (autoload 'paredit "paredit-mode" "A minor mode for parenthesis" t)
@@ -40,6 +39,17 @@
         (delete-indentation 1)
       (paredit-kill nil))))
 
+(defun paredit-duplicate-sexp
+  ()
+  "Duplicate the current sexp on the next line."
+  (interactive)
+  (set-mark-command nil)
+  (forward-sexp)
+  (kill-ring-save (mark) (point))
+  (paredit-newline)
+  (yank)
+  (backward-sexp))
+
 (eval-after-load "paredit"
   '(progn (define-key paredit-mode-map (kbd "C-c 0") 'paredit-forward-slurp-sexp)
           (define-key paredit-mode-map (kbd "C-c )") 'paredit-forward-barf-sexp)
@@ -47,7 +57,8 @@
           (define-key paredit-mode-map (kbd "C-c (") 'paredit-backward-barf-sexp)
           (define-key paredit-mode-map (kbd "M-R") 'paredit-raise-sexp)
           (define-key paredit-mode-map (kbd "M-r") nil)
-          (define-key paredit-mode-map (kbd "C-k") 'paredit-eager-kill-line)))
+          (define-key paredit-mode-map (kbd "C-k") 'paredit-eager-kill-line)
+          (define-key paredit-mode-map (kbd "C-S-d") 'paredit-duplicate-sexp)))
 
 (add-hook 'nrepl-mode-hook
           '(lambda ()

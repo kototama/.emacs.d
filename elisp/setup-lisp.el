@@ -59,7 +59,8 @@
     (forward-char))
   (set-mark-command nil)
   ;; while we find sexps we move forward on the line
-  (while (and (<= (point) (car (bounds-of-thing-at-point 'sexp)))
+  (while (and (bounds-of-thing-at-point 'sexp)
+              (<= (point) (car (bounds-of-thing-at-point 'sexp)))
               (not (= (point) (line-end-position))))
     (forward-sexp)
     (while (looking-at " ")
@@ -67,9 +68,15 @@
   (kill-ring-save (mark) (point))
   ;; go to the next line and copy the sexprs we encountered
   (paredit-newline)
-  (set-mark-command nil)
   (yank)
   (exchange-point-and-mark))
+
+(defun paredit-wrap-round-from-behind ()
+  (interactive)
+  (forward-sexp -1)
+  (paredit-wrap-round)
+  (insert " ")
+  (forward-char -1))
 
 (eval-after-load "paredit"
   '(progn (define-key paredit-mode-map (kbd "C-c 0") 'paredit-forward-slurp-sexp)
@@ -166,20 +173,20 @@
              (define-key emacs-lisp-mode-map [f5] 'eval-buffer)
              (define-key emacs-lisp-mode-map (kbd "M-o") nil)))
 
-(defun clj-jack-in ()
-  "Starts a term, runs lein swank in it and connects to it"
-  (interactive)
-  (split-window-right)
-  (other-window 1)
-  (let ((buffer (multi-term)))
-    (switch-to-buffer buffer)
-    (term-send-raw-string "lein swank\n")
-    (run-at-time "25 sec" nil
-                 (lambda ()
-                   (slime-connect "localhost" 4005)
-                   (switch-to-buffer "*slime-repl clojure*")
-                   (other-window -1)
-                   (slime-compile-and-load-file)))))
+;; (defun clj-jack-in ()
+;;   "Starts a term, runs lein swank in it and connects to it"
+;;   (interactive)
+;;   (split-window-right)
+;;   (other-window 1)
+;;   (let ((buffer (multi-term)))
+;;     (switch-to-buffer buffer)
+;;     (term-send-raw-string "lein swank\n")
+;;     (run-at-time "25 sec" nil
+;;                  (lambda ()
+;;                    (slime-connect "localhost" 4005)
+;;                    (switch-to-buffer "*slime-repl clojure*")
+;;                    (other-window -1)
+;;                    (slime-compile-and-load-file)))))
 
 (add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
 

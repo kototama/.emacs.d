@@ -17,27 +17,6 @@
       '(".clj" "js" ".txt" ".emacs" ".xml" ".el" ".ini" ".cfg" ".cnf"))
 (setq ido-use-virtual-buffers t)
 
-;; igrep options
-(setq igrep-files-default 'ignore)
-;; (put 'igrep-files-default 'clojure-mode
-;;      (lambda () "*.clj\\|*.js")
-;;      )
-;; (put 'igrep-files-default 'js2-mode
-;;      (lambda () "*.js"))
-
-;; kill last and second line of igrep-find to allow next-error
-(defadvice igrep-find
-  (after kill-first-lines activate compile)
-  (save-current-buffer
-    (set-buffer "*igrep*")
-    (setq buffer-read-only nil)
-    (goto-char (point-max))
-    (forward-line -1)
-    (kill-line)
-    (goto-char (point-min))
-    (forward-line)
-    (kill-line)))
-
 ;; show paren options
 (set-face-background 'show-paren-match-face "transparent")
 (set-face-foreground 'show-paren-match-face "red")
@@ -118,3 +97,17 @@
        "Window '%s' is dedicated"
      "Window '%s' is normal")
    (current-buffer)))
+
+(setq ack-and-a-half-prompt-for-directory t)
+
+(add-hook 'ido-setup-hook
+ (lambda ()
+   ;; Go straight home
+   (define-key ido-file-completion-map
+     (kbd "~")
+     (lambda ()
+       (interactive)
+       ;; type ~~ to go the ~/.emacs.d
+       (cond ((looking-back "~/") (insert ".emacs.d/"))
+             ((looking-back "/") (insert "~/"))
+             (t (call-interactively 'self-insert-command)))))))

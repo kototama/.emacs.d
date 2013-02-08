@@ -74,5 +74,11 @@ The buffer is saved if a copyright notice is inserted."
     (kill-region (mark) (point))
     (insert-string (concat "{{" key "}}"))))
 
+(defun start-carneades-project
+  "Open the routes file, compiles and starts the project "
+  ()
+  (find-file "/home/pal/Documents/Projects/carneades/src/PolicyModellingTool/src/impact/web/routes_dev.clj")
+  (end-of-buffer)
+  (nrepl-jack-in))
 
 (provide 'setup-carneades)

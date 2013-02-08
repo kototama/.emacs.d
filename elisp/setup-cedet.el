@@ -1,6 +1,4 @@
-(require 's)
-
-(when (s-contains? "elan" system-name)
+(when (string-match "elan" system-name)
   ;; semantic.el experiments
   (load "~/.emacs.d/emacs-modes/cedet/cedet-devel-load.el")
   (eval-after-load "speedbar"
@@ -11,4 +9,3 @@
   (add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode)
   (add-to-list 'semantic-default-submodes 'global-semantic-idle-completions-mode))
 
-(provide 'setup-cedet)

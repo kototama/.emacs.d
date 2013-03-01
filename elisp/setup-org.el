@@ -2,6 +2,7 @@
 
 (add-hook 'org-mode-hook
           '(lambda ()
+             (setq org-agenda-span 55)
              (define-key org-mode-map (kbd "<C-return>") nil)
              (define-key org-mode-map (kbd "<return>") 'newline)
              (define-key org-mode-map (kbd "<C-tab>") nil)

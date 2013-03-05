@@ -29,6 +29,7 @@
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/yasnippet")
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/nrepl.el")
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/helm")
+(add-to-list 'load-path "~/.emacs.d/emacs-modes/org-contrib")
 (add-to-list 'load-path "~/.emacs.d/elisp")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -65,7 +66,9 @@
 ;; personal configurations
 (dolist (pconf '(setup-helm sane-defaults setup-hippie setup-javascript
                             setup-lisp setup-carneades line-utils screen-utils file-utils
-                            setup-programming ktm-mode setup-org))
+                            setup-programming ktm-mode setup-org
+                            setup-notmuch
+                            setup-ldap))
   (require pconf))
 
 ;; load keybindings
@@ -85,3 +88,13 @@
 
 ;; starts emacs server
 (server-start)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(notmuch-saved-searches (quote (("unread" . "tag:unread"))))
+ '(notmuch-search-oldest-first nil)
+ '(send-mail-function nil))
+

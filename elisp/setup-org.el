@@ -4,7 +4,9 @@
 
 (add-hook 'org-mode-hook
           '(lambda ()
-             (setq org-agenda-span 55)
+             (setq org-file-apps
+                   (append '(("\\.pdf\\'" . "acroread %s")) org-file-apps))
+             (setq org-agenda-span 128)
              ;; (setq org-agenda-include-diary nil)
              (define-key org-mode-map (kbd "<C-return>") nil)
              (define-key org-mode-map (kbd "<return>") 'newline)

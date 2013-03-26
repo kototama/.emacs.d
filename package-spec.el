@@ -25,3 +25,5 @@
 (package "cljsbuild-mode")
 (package "dash")
 (package "s")
+(package "org")
+

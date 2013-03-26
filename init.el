@@ -33,10 +33,12 @@
 (add-to-list 'load-path "~/.emacs.d/elisp")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; first loads package-spec.el
-;; This will install any packages defined in
-;; ~/.emacs.d/package-spec.el
-;; (require 'package-spec)
+;; When the env. variable UPDATE_EMACS_PACKAGEs is defined, packages
+;; defined in ~/.emacs.d/package-spec.el
+;; will be automatically downloaded.
+
+(when (getenv "UPDATE_EMACS_PACKAGES")
+  (require 'package-spec))
 
 (autoload 'expand-region "expand-region" "expand region" t)
 (autoload 'igrep "igrep" "a better grep" t)

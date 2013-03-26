@@ -4,7 +4,7 @@
 
 (defvar carneades-src-directory "~/Documents/Projects/carneades/src/")
 
-(defvar appdir "/home/pal/Documents/Projects/carneades/src/PolicyModellingTool/resources/policymodellingtool/public/js/app")
+(defvar appdir "/home/pal/Documents/Projects/carneades/src/CarneadesWebApp")
 
 (defvar carneade-license-year (format-time-string "%Y" (current-time)))
 
@@ -55,6 +55,12 @@ The buffer is saved if a copyright notice is inserted."
   ()
   (-each (find-clj-or-cljs-files carneades-src-directory)
          'carneades-prompt-insert-copyright))
+
+(defun carneades-update-ns
+  ()
+  (-each (find-clj-or-cljs-files carneades-src-directory)
+         (lambda (filename) (when (not (string= "project.clj" filename))
+                              (find-file filename)))))
 
 (defun carneades-insert-license-app-files
   ()

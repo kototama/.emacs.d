@@ -1,4 +1,5 @@
 (require 'notmuch)
+;; (require 'notmuch-pick nil t)
 (require 'notmuch-address)
 (require 'org-notmuch)
 (require 'offlineimap)
@@ -33,28 +34,20 @@
 (define-key notmuch-search-mode-map "r" 'notmuch-search-reply-to-thread)
 (define-key notmuch-search-mode-map "R" 'notmuch-search-reply-to-thread-sender)
 
-(defun ktm-index-mails
-  ()
-  (shell-command "indexmails.sh"))
-
 (define-key notmuch-hello-mode-map "=" '(lambda ()
                                           (interactive)
-                                          (ktm-index-mails)
                                           (notmuch-hello-update t)))
 
 (define-key notmuch-hello-mode-map (kbd "+") '(lambda ()
                                                   (interactive)
                                                   (shell-command "offlineimap -o")
-                                                  (ktm-index-mails)
                                                   (notmuch-hello-update nil)))
 
-(defun ktm-read-mails
-  ()
-  (interactive)
-  (ktm-index-mails)
-  (notmuch-hello))
+(add-hook 'message-mode-hook
+          (lambda ()
+            (flyspell-mode)))
 
 (global-set-key (kbd "C-c m n") 'notmuch-mua-new-mail)
-(global-set-key (kbd "C-c m m") 'ktm-read-mails)
+(global-set-key (kbd "C-c m m") 'notmuch-hello)
 
 (provide 'setup-notmuch)

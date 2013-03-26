@@ -65,7 +65,7 @@
 (setq fill-column 80)
 
 ;; Show me empty lines after buffer end
-(set-default 'indicate-empty-lines t)
+;; (set-default 'indicate-empty-lines nil)
 
 ;; Sentences do not need double spaces to end. Period.
 (set-default 'sentence-end-double-space nil)

@@ -7,7 +7,12 @@
 (add-hook 'wisent-grammar-mode-hook
           '(lambda ()
              (semantic-mode t)))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defmacro hook-into-modes (func modes)
+  `(dolist (mode-hook ,modes)
+     (add-hook mode-hook ,func)))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
@@ -31,6 +36,7 @@
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/helm")
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/org-contrib")
 (add-to-list 'load-path "~/.emacs.d/elisp")
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; When the env. variable UPDATE_EMACS_PACKAGEs is defined, packages
@@ -41,13 +47,12 @@
   (require 'package-spec))
 
 (autoload 'expand-region "expand-region" "expand region" t)
-(autoload 'igrep "igrep" "a better grep" t)
 (autoload 'multi-term "multi-term" "multiple terms" t)
 (autoload 'term-send-raw-string "multi-term" "multiple terms" t)
 (autoload 'hippie-expand "hippie-expand" "expand stuff" t)
 
 ;; always uses the following modes
-(dolist (mode '(undo-tree paren maxframe smex uniquify yasnippet ido
+(dolist (mode '(undo-tree paren maxframe uniquify yasnippet ido
                           ido-ubiquitous hippie-exp color-theme-kototama
                           auto-complete-config))
   (require mode))
@@ -66,8 +71,13 @@
 ;; load personal configuration 
 
 ;; personal configurations
-(dolist (pconf '(setup-helm sane-defaults setup-hippie setup-javascript
-                            setup-lisp setup-carneades line-utils screen-utils file-utils
+
+(require 'setup-elget)
+(require 'use-package)
+
+(dolist (pconf '(setup-helm sane-defaults setup-hippie
+                            setup-lisp
+                            setup-carneades line-utils screen-utils file-utils
                             setup-programming ktm-mode setup-org
                             setup-notmuch
                             ;; setup-ldap
@@ -77,7 +87,7 @@
 ;; load keybindings
 (ktm-global-mode 1)
 
-(smex-initialize)
+;; (smex-initialize)
 
 (yas/initialize)
 
@@ -88,6 +98,9 @@
 
 ;; window
 (add-hook 'window-setup-hook 'maximize-frame t)
+
+;; files extensions associations
+(add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
 
 ;; starts emacs server
 (server-start)

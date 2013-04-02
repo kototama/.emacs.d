@@ -72,7 +72,7 @@
     (define-key ktm-mode-map (kbd "C-a") 'back-to-indentation-or-beginning-of-line)
     (define-key ktm-mode-map (kbd "M-g") 'goto-line-with-feedback)
     (define-key ktm-mode-map (kbd "M-o") 'my-helm)
-    (define-key ktm-mode-map (kbd "M-x") 'smex)
+    ;; (define-key ktm-mode-map (kbd "M-x") 'smex)
     (define-key ktm-mode-map (kbd "M-X") 'smex-major-mode-commands)
     (define-key ktm-mode-map (kbd "C-x SPC") 'ace-jump-mode)
     (define-key ktm-mode-map (kbd "C-x p") 'pop-to-mark-command)

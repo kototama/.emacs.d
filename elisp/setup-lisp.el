@@ -1,194 +1,192 @@
-(require 'nrepl)
-(require 'dash)
-(require 's)
-
-(autoload 'paredit "paredit-mode" "A minor mode for parenthesis" t)
-(autoload 'clojure-mode "clojure-mode" "A major mode for Clojure" t)
 (autoload 'elisp-slime-nav-mode "elisp-slime-nav" "SLIME-like for Elisp" t)
 (autoload 'elisp-slime-nav-find-elisp-thing-at-point
   "elisp-slime-nav" "SLIME-like for ELisp" t)
 
-(setq blink-matching-paren nil)
+(defvar lisp-modes  '(emacs-lisp-mode
+                      inferior-emacs-lisp-mode
+                      ielm-mode
+                      lisp-mode
+                      inferior-lisp-mode
+                      lisp-interaction-mode
+                      slime-repl-mode))
 
-(defvar electrify-return-match
-  "[\]}\)\"]"
-  "If this regexp matches the text after the cursor, do an \"electric\"
-             return.")
+(defvar lisp-mode-hooks
+  (mapcar (function
+           (lambda (mode)
+             (intern
+              (concat (symbol-name mode) "-hook"))))
+          lisp-modes))
 
-(defun electrify-return-if-match (arg)
-  "If the text after the cursor matches `electrify-return-match' then
-   open and indent an empty line between the cursor and the text.  Move the
-   cursor to the new line."
-  (interactive "P")
-  (let ((case-fold-search nil))
-    (if (looking-at electrify-return-match)
-        (save-excursion (newline-and-indent)))
-    (newline arg)
-    (indent-according-to-mode)))
+(use-package lisp-mode
+  :init
+  (progn
+    ;; (defface esk-paren-face
+    ;;   '((((class color) (background dark))
+    ;;      (:foreground "grey50"))
+    ;;     (((class color) (background light))
+    ;;      (:foreground "grey55")))
+    ;;   "Face used to dim parentheses."
+    ;;   :group 'starter-kit-faces)
 
-(defun paredit-eager-kill-line
-  ()
-  "Kills the current line or join the next line 
-   if the point is at the end of the line"
-  (interactive)
-  (let ((current-point (point))
-        (bol-point (line-beginning-position))
-        (eol-point (line-end-position)))
-    (if (and (= current-point eol-point)
-             (/= current-point bol-point))
-        (delete-indentation 1)
-      (paredit-kill nil))))
+    ;; Change lambda to an actual lambda symbol
+    (mapc (lambda (major-mode)
+            (font-lock-add-keywords
+             major-mode
+             '(("(\\(lambda\\)\\>"
+                (0 (ignore
+                    (compose-region (match-beginning 1)
+                                    (match-end 1) ?λ))))
+               ("(\\|)" . 'esk-paren-face)
+               ("(\\(ert-deftest\\)\\>[         '(]*\\(setf[    ]+\\sw+\\|\\sw+\\)?"
+                (1 font-lock-keyword-face)
+                (2 font-lock-function-name-face
+                 nil t)))))
+          lisp-modes)
 
-;; (defun paredit-duplicate-sexp
-;;   ()
-;;   "Duplicate the current sexp on the next line."
-;;   (interactive)
-;;   (set-mark-command nil)
-;;   (forward-sexp)
-;;   (kill-ring-save (mark) (point))
-;;   (paredit-newline)
-;;   (yank)
-;;   (backward-sexp))
+    (defvar slime-mode nil)
+    (defvar lisp-mode-initialized nil)
 
-(defun paredit-duplicate-after-point
-  ()
-  "Duplicates the content of the line that is after the point."
-  (interactive)
-  ;; skips to the next sexp
-  (while (looking-at " ")
-    (forward-char))
-  (set-mark-command nil)
-  ;; while we find sexps we move forward on the line
-  (while (and (bounds-of-thing-at-point 'sexp)
-              (<= (point) (car (bounds-of-thing-at-point 'sexp)))
-              (not (= (point) (line-end-position))))
-    (forward-sexp)
-    (while (looking-at " ")
-      (forward-char)))
-  (kill-ring-save (mark) (point))
-  ;; go to the next line and copy the sexprs we encountered
-  (paredit-newline)
-  (yank)
-  (exchange-point-and-mark))
+    (defun initialize-lisp-mode ()
+      (unless lisp-mode-initialized
+        (setq lisp-mode-initialized t)
 
-(defun paredit-wrap-round-from-behind ()
-  (interactive)
-  (forward-sexp -1)
-  (paredit-wrap-round)
-  (insert " ")
-  (forward-char -1))
+        (use-package redshank
+          :diminish redshank-mode)
 
-(eval-after-load "paredit"
-  '(progn (define-key paredit-mode-map (kbd "C-c 0") 'paredit-forward-slurp-sexp)
-          (define-key paredit-mode-map (kbd "C-c )") 'paredit-forward-barf-sexp)
-          (define-key paredit-mode-map (kbd "C-c 9") 'paredit-backward-slurp-sexp)
-          (define-key paredit-mode-map (kbd "C-c (") 'paredit-backward-barf-sexp)
-          (define-key paredit-mode-map (kbd "M-R") 'paredit-raise-sexp)
-          (define-key paredit-mode-map (kbd "M-r") nil)
-          (define-key paredit-mode-map (kbd "C-k") 'paredit-eager-kill-line)
-          (define-key paredit-mode-map (kbd "C-S-d") 'paredit-duplicate-after-point)))
+        (use-package elisp-slime-nav
+          :diminish elisp-slime-nav-mode)
 
-(add-hook 'nrepl-mode-hook
-          '(lambda ()
-             (define-key nrepl-mode-map (kbd "<return>") 'nrepl-return)
-             (paredit-mode 1)))
+        (use-package edebug)
 
-(add-hook 'emacs-lisp-mode-hook
-          (lambda ()
-            (paredit-mode t)
-            ;; (flyspell-prog-mode)
-            (turn-on-eldoc-mode)
-            (eldoc-add-command
-             'paredit-backward-delete
-             'paredit-close-round)
+        (use-package eldoc
+          :diminish eldoc-mode
+          :defer t
+          :init
+          (use-package eldoc-extension
+            :disabled t
+            :defer t
+            :init
+            (add-hook 'emacs-lisp-mode-hook
+                      #'(lambda () (require 'eldoc-extension)) t))
 
-            (local-set-key (kbd "RET") 'electrify-return-if-match)
-            (eldoc-add-command 'electrify-return-if-match)
+          :config
+          (eldoc-add-command 'paredit-backward-delete
+                             'paredit-close-round))
 
-            (show-paren-mode t)))
+        (use-package cldoc
+          :diminish cldoc-mode)
 
-(defun earmuffy (&optional arg)
-  (interactive "P")
-  (let* ((variable (thing-at-point 'sexp))
-         (bounds (bounds-of-thing-at-point 'sexp))
-         (current-point (point))
-         (earmuffed-variable (concat "*" variable "*")))
-    (save-excursion
-      (kill-region (car bounds) (cdr bounds))
-      (if arg
-          ;; unearmuffy
+        (use-package ert
+          :commands ert-run-tests-interactively
+          :bind ("C-c e t" . ert-run-tests-interactively))
+
+        (use-package elint
+          :commands 'elint-initialize
+          :init
+          (defun elint-current-buffer ()
+            (interactive)
+            (elint-initialize)
+            (elint-current-buffer))
+
+          :config
           (progn
-            (insert (substring variable 1 (- (length variable) 1)))
-            (goto-char (- current-point 1)))
-        ;; earmuffy
-        (progn
-          (insert earmuffed-variable)
-          (goto-char (+ current-point 1)))))))
+            (add-to-list 'elint-standard-variables 'current-prefix-arg)
+            (add-to-list 'elint-standard-variables 'command-line-args-left)
+            (add-to-list 'elint-standard-variables 'buffer-file-coding-system)
+            (add-to-list 'elint-standard-variables 'emacs-major-version)
+            (add-to-list 'elint-standard-variables 'window-system)))
 
-(defun kill-compilation-buffer-when-no-errors ()
-  (dolist (buffer (buffer-list))
-    (when (string-match "Compilation*" (buffer-name buffer))
-      (save-current-buffer
-        (set-buffer buffer)
-        (save-excursion
-          (goto-char (point-min))
-          (when (re-search-forward "0 compiler notes" nil t)
-            (kill-buffer)))))))
+        (use-package highlight-cl
+          :init
+          (mapc (function
+                 (lambda (mode-hook)
+                   (add-hook mode-hook
+                             'highlight-cl-add-font-lock-keywords)))
+                lisp-mode-hooks))
 
+        (defun my-elisp-indent-or-complete (&optional arg)
+          (interactive "p")
+          (call-interactively 'lisp-indent-line)
+          (unless (or (looking-back "^\\s-*")
+                      (bolp)
+                      (not (looking-back "[-A-Za-z0-9_*+/=<>!?]+")))
+            (call-interactively 'lisp-complete-symbol)))
 
-(add-hook 'clojure-mode-hook
-  '(lambda ()
-     (paredit-mode t)
-     (show-paren-mode t)
-     (flyspell-prog-mode)
-     (define-key clojure-mode-map [f5] 'slime-compile-and-load-file)
-     (define-key clojure-mode-map [f7] 'slime-edit-definition-with-etags)
-     (define-key clojure-mode-map (kbd "C-*") 'earmuffy)
-     (define-key clojure-mode-map "{" 'paredit-open-curly)
-     (define-key clojure-mode-map "}" 'paredit-close-curly)
-     (define-key clojure-mode-map (kbd "C-M-/") 'anything-slime-complete)
-     (define-key clojure-mode-map (kbd "M-/") 'dabbrev-expand)
-     (define-key clojure-mode-map (kbd "C-?") 'anything-slime-apropos)
-     (define-key clojure-mode-map (kbd "C-c C-k") 'nrepl-load-current-buffer)
-     (define-key clojure-mode-map (kbd "C-x C-e") 'nrepl-eval-last-expression)
-     (define-key clojure-mode-map (kbd "<return>") 'paredit-newline)
-     ;; autocompile file when saved
-     (define-key clojure-mode-map (kbd "C-x C-s") 
-       '(lambda ()
-          (interactive)
-          (save-buffer)
-          (when (and (get-buffer "*nrepl*")
-                     (s-ends-with? ".clj" buffer-file-name))
-            ;; when connected to nrepl and inside a Clojure
-            ;; but not ClojureScript file, automatically
-            ;; loads the file into the REPL upon saving
-            (nrepl-load-current-buffer))))))
+        (defun my-lisp-indent-or-complete (&optional arg)
+          (interactive "p")
+          (if (or (looking-back "^\\s-*") (bolp))
+              (call-interactively 'lisp-indent-line)
+            (call-interactively 'slime-indent-and-complete-symbol)))
 
-(add-hook 'emacs-lisp-mode-hook
-          '(lambda ()
-             (paredit-mode t)
-             (elisp-slime-nav-mode t)
-             (define-key emacs-lisp-mode-map (kbd "M-.") 'elisp-slime-nav-find-elisp-thing-at-point)
-             (define-key emacs-lisp-mode-map (kbd "M-/") 'dabbrev-expand)
-             (define-key emacs-lisp-mode-map (kbd "C-M-/") 'lisp-complete-symbol)
-             (define-key emacs-lisp-mode-map [f5] 'eval-buffer)
-             (define-key emacs-lisp-mode-map (kbd "M-o") nil)))
+        (defun my-byte-recompile-file ()
+          (save-excursion
+            (byte-recompile-file buffer-file-name)))
 
-;; (defun clj-jack-in ()
-;;   "Starts a term, runs lein swank in it and connects to it"
-;;   (interactive)
-;;   (split-window-right)
-;;   (other-window 1)
-;;   (let ((buffer (multi-term)))
-;;     (switch-to-buffer buffer)
-;;     (term-send-raw-string "lein swank\n")
-;;     (run-at-time "25 sec" nil
-;;                  (lambda ()
-;;                    (slime-connect "localhost" 4005)
-;;                    (switch-to-buffer "*slime-repl clojure*")
-;;                    (other-window -1)
-;;                    (slime-compile-and-load-file)))))
+        ;; Register Info manuals related to Lisp
+        ;; (use-package info-lookmore
+        ;;   :init
+        ;;   (progn
+        ;;     (info-lookmore-elisp-cl)
+        ;;     (info-lookmore-elisp-userlast)
+        ;;     (info-lookmore-elisp-gnus)
+        ;;     (info-lookmore-apropos-elisp)))
 
-(add-to-list 'auto-mode-alist '("\\.cljs$" . clojure-mode))
+        ;; (mapc (lambda (mode)
+        ;;         (info-lookup-add-help
+        ;;          :mode mode
+        ;;          :regexp "[^][()'\" \t\n]+"
+        ;;          :ignore-case t
+        ;;          :doc-spec '(("(ansicl)Symbol Index" nil nil nil))))
+        ;;       lisp-modes)
+        ))
+
+    (defun my-lisp-mode-hook ()
+      (initialize-lisp-mode)
+
+      (auto-fill-mode 1)
+      (paredit-mode 1)
+      ;; (redshank-mode 1)
+      (elisp-slime-nav-mode 1)
+
+      (local-set-key (kbd "<return>") 'paredit-newline)
+
+      (add-hook 'after-save-hook 'check-parens nil t)
+
+      (if (memq major-mode
+                '(emacs-lisp-mode inferior-emacs-lisp-mode ielm-mode))
+          (progn
+            (bind-key "<M-return>" 'outline-insert-heading emacs-lisp-mode-map)
+            (bind-key "<tab>" 'my-elisp-indent-or-complete emacs-lisp-mode-map)
+            (bind-key (kbd "M-.") 'elisp-slime-nav-find-elisp-thing-at-point))
+        ;; (turn-on-cldoc-mode)
+
+        (bind-key "<tab>" 'my-lisp-indent-or-complete lisp-mode-map))
+
+      (yas/minor-mode 1)
+      (eldoc-mode 1))
+
+    (hook-into-modes #'my-lisp-mode-hook lisp-mode-hooks)))
+
+;; (add-hook 'emacs-lisp-mode-hook
+;;           (lambda ()
+;;             (message "Emacs lisp mode hook")
+;;             (elisp-slime-nav-mode t)
+;;             (define-key emacs-lisp-mode-map (kbd "M-.") 'elisp-slime-nav-find-elisp-thing-at-point)
+;;             (define-key emacs-lisp-mode-map (kbd "M-/") 'dabbrev-expand)
+;;             (define-key emacs-lisp-mode-map (kbd "C-M-/") 'lisp-complete-symbol)
+;;             (define-key emacs-lisp-mode-map [f5] 'eval-buffer)
+;;             (define-key emacs-lisp-mode-map (kbd "M-o") nil)
+
+;;             (paredit-mode t)
+;;             ;; (flyspell-prog-mode)
+;;             (turn-on-eldoc-mode)
+;;             (eldoc-add-command
+;;              'paredit-backward-delete
+;;              'paredit-close-round)
+
+;;             ;; (local-set-key (kbd "RET") 'nil)
+;;             (eldoc-add-command 'electrify-return-if-match)
+
+;;             (show-paren-mode t)))
 
 (provide 'setup-lisp)

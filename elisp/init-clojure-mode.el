@@ -49,8 +49,8 @@
 
           (add-hook 'clojure-mode-hook #'my-clojure-mode-hook))
 
-  :bind (("C-c c j" . nrepl-jack-in)
-         ("C-c c q" . nrepl-quit)))
+  :bind (("C-c n j" . nrepl-jack-in)
+         ("C-c n q" . nrepl-quit)))
 
 
 

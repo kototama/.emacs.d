@@ -72,8 +72,8 @@
 
 ;; personal configurations
 
+
 (require 'setup-elget)
-(require 'use-package)
 
 (dolist (pconf '(setup-helm sane-defaults setup-hippie
                             setup-lisp

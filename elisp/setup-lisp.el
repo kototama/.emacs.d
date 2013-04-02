@@ -1,11 +1,8 @@
-(autoload 'elisp-slime-nav-mode "elisp-slime-nav" "SLIME-like for Elisp" t)
-(autoload 'elisp-slime-nav-find-elisp-thing-at-point
-  "elisp-slime-nav" "SLIME-like for ELisp" t)
-
 (defvar lisp-modes  '(emacs-lisp-mode
                       inferior-emacs-lisp-mode
                       ielm-mode
                       lisp-mode
+                      nrepl-mode
                       clojure-mode
                       inferior-lisp-mode
                       lisp-interaction-mode
@@ -37,7 +34,7 @@
                 (0 (ignore
                     (compose-region (match-beginning 1)
                                     (match-end 1) ?λ))))
-               ("(\\|)" . 'esk-paren-face)
+               ;; ("(\\|)" . 'esk-paren-face)
                ("(\\(ert-deftest\\)\\>[         '(]*\\(setf[    ]+\\sw+\\|\\sw+\\)?"
                 (1 font-lock-keyword-face)
                 (2 font-lock-function-name-face

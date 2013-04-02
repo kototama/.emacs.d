@@ -1,29 +1,28 @@
-(defun earmuffy (&optional arg)
-  (interactive "P")
-  (let* ((variable (thing-at-point 'sexp))
-         (bounds (bounds-of-thing-at-point 'sexp))
-         (current-point (point))
-         (earmuffed-variable (concat "*" variable "*")))
-    (save-excursion
-      (kill-region (car bounds) (cdr bounds))
-      (if arg
-          ;; unearmuffy
-          (progn
-            (insert (substring variable 1 (- (length variable) 1)))
-            (goto-char (- current-point 1)))
-        ;; earmuffy
-        (progn
-          (insert earmuffed-variable)
-          (goto-char (+ current-point 1)))))))
+(use-package clojure-mode
+  :init (progn
+          (defun earmuffy (&optional arg)
+            (interactive "P")
+            (let* ((variable (thing-at-point 'sexp))
+                   (bounds (bounds-of-thing-at-point 'sexp))
+                   (current-point (point))
+                   (earmuffed-variable (concat "*" variable "*")))
+              (save-excursion
+                (kill-region (car bounds) (cdr bounds))
+                (if arg
+                    ;; unearmuffy
+                    (progn
+                      (insert (substring variable 1 (- (length variable) 1)))
+                      (goto-char (- current-point 1)))
+                  ;; earmuffy
+                  (progn
+                    (insert earmuffed-variable)
+                    (goto-char (+ current-point 1)))))))
 
-(paredit-mode t)
-(show-paren-mode t)
-(flyspell-prog-mode)
-;; (define-key clojure-mode-map [f5] 'slime-compile-and-load-file)
-;; (define-key clojure-mode-map [f7] 'slime-edit-definition-with-etags)
+          (defun my-clojure-mode-hook ()
+            (paredit-mode t)
+            (show-paren-mode t)
+            (flyspell-prog-mode)
 
-(add-hook 'clojure-mode-hook
-          (lambda ()
             (define-key clojure-mode-map (kbd "C-*") 'earmuffy)
             (define-key clojure-mode-map "{" 'paredit-open-curly)
             (define-key clojure-mode-map "}" 'paredit-close-curly)
@@ -44,5 +43,16 @@
                    ;; when connected to nrepl and inside a Clojure
                    ;; but not ClojureScript file, automatically
                    ;; loads the file into the REPL upon saving
-                   (nrepl-load-current-buffer))))))
+                   (nrepl-load-current-buffer)))))
+
+          (use-package nrepl)
+
+          (add-hook 'clojure-mode-hook #'my-clojure-mode-hook))
+
+  :bind (("C-c c j" . nrepl-jack-in)
+         ("C-c c q" . nrepl-quit)))
+
+
+
+
             

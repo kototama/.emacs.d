@@ -31,7 +31,8 @@
             ;; (define-key clojure-mode-map (kbd "C-?") 'anything-slime-apropos)
             (define-key clojure-mode-map (kbd "C-c C-k") 'nrepl-load-current-buffer)
             (define-key clojure-mode-map (kbd "C-x C-e") 'nrepl-eval-last-expression)
-            (define-key clojure-mode-map (kbd "<return>") 'paredit-newline)
+            (define-key clojure-mode-map (kbd "<return>")
+            'paredit-newline)
 
             ;; autocompile file when saved
             (define-key clojure-mode-map (kbd "C-x C-s") 
@@ -47,10 +48,24 @@
 
           (use-package nrepl)
 
-          (add-hook 'clojure-mode-hook #'my-clojure-mode-hook))
+          (add-hook 'clojure-mode-hook 'my-clojure-mode-hook))
 
   :bind (("C-c n j" . nrepl-jack-in)
          ("C-c n q" . nrepl-quit)))
+
+(use-package nrepl
+  (:init
+   (progn
+     (defun my-nrepl-init-mode-hook
+       ()
+       (paredit-mode 1))
+
+     (add-hook 'nrepl-mode-hook 'my-nrepl-init-mode-hook)))
+
+  (:bind (("<s-return>" . nrepl-return)
+          ("C-c n r" . nrepl-return))))
+
+
 
 
 

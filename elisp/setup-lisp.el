@@ -2,7 +2,6 @@
                       inferior-emacs-lisp-mode
                       ielm-mode
                       lisp-mode
-                      nrepl-mode
                       clojure-mode
                       inferior-lisp-mode
                       lisp-interaction-mode
@@ -172,11 +171,13 @@
             (delete-indentation 1)
           (paredit-kill nil))))
 
-    (use-package paredit-mode
-      (:bind (("C-S-d" . paredit-duplicate-after-point)
-              ("C-k" . paredit-eager-kill-line)
-              ("M-R" . paredit-raise-sexp)
-              )))
+    (use-package paredit
+      :bind (("C-S-d" . paredit-duplicate-after-point)
+             ("C-k" . paredit-eager-kill-line)
+             ("M-R" . paredit-raise-sexp)
+             ("C-M-a" . paredit-backward)
+             ("C-M-S-a" . beginning-of-defun)
+             ))
 
     ;; (add-hook 'paredit-mode-hook
     ;;       (lambda ()

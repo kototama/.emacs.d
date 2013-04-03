@@ -30,11 +30,11 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; load-paths
-(add-to-list 'load-path "~/.emacs.d/emacs-modes/misc")
-(add-to-list 'load-path "~/.emacs.d/emacs-modes/yasnippet")
-(add-to-list 'load-path "~/.emacs.d/emacs-modes/nrepl.el")
-(add-to-list 'load-path "~/.emacs.d/emacs-modes/helm")
-(add-to-list 'load-path "~/.emacs.d/emacs-modes/org-contrib")
+(add-to-list 'load-path "~/.emacs.d/site-lisp/misc")
+;; (add-to-list 'load-path "~/.emacs.d/emacs-modes/yasnippet")
+;; (add-to-list 'load-path "~/.emacs.d/emacs-modes/nrepl.el")
+;; (add-to-list 'load-path "~/.emacs.d/emacs-modes/helm")
+;; (add-to-list 'load-path "~/.emacs.d/emacs-modes/org-contrib")
 (add-to-list 'load-path "~/.emacs.d/elisp")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

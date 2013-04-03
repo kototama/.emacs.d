@@ -78,7 +78,9 @@
     (define-key ktm-mode-map (kbd "C-x SPC") 'ace-jump-mode)
     (define-key ktm-mode-map (kbd "C-x p") 'pop-to-mark-command)
     (define-key ktm-mode-map (kbd "C-c l") 'org-store-link)
-    (define-key ktm-mode-map (kbd "C-x b") 'helm-buffers-list)
+    ;; (define-key ktm-mode-map (kbd "C-x b") 'helm-buffers-list)
+    (define-key ktm-mode-map (kbd "C-x b") 'ido-switch-buffer)
+    (define-key ktm-mode-map (kbd "C-S-o") 'ido-switch-buffer)
 
     (define-key ktm-mode-map [f1] 'multi-term)
     (define-key ktm-mode-map [f2] 'multi-term-prev)

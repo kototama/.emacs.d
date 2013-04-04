@@ -1,6 +1,6 @@
 (when (string-match "elan" system-name)
   ;; semantic.el experiments
-  (load "~/.emacs.d/emacs-modes/cedet/cedet-devel-load.el")
+  (load "~/.emacs.d/site-lisp/cedet/cedet-devel-load.el")
   (eval-after-load "speedbar"
     (lambda ()
       (speedbar-add-supported-extension ".clj")

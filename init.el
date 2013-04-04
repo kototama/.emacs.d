@@ -34,7 +34,7 @@
 ;; (add-to-list 'load-path "~/.emacs.d/emacs-modes/yasnippet")
 ;; (add-to-list 'load-path "~/.emacs.d/emacs-modes/nrepl.el")
 ;; (add-to-list 'load-path "~/.emacs.d/emacs-modes/helm")
-;; (add-to-list 'load-path "~/.emacs.d/emacs-modes/org-contrib")
+
 (add-to-list 'load-path "~/.emacs.d/elisp")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -74,6 +74,7 @@
 
 
 (require 'setup-elget)
+(add-to-list 'load-path "~/.emacs.d/el-get/org-mode/contrib/lisp")
 
 (dolist (pconf '(setup-helm sane-defaults setup-hippie
                             setup-lisp

@@ -1,7 +1,7 @@
 (require 'color-theme)
 
 (defun color-theme-kototama ()
-  "Black background theme with coral/fushia colors."
+  "Black background theme with coral/fushia/blueish colors."
   (interactive)
   (color-theme-install
     '(color-theme-kototama

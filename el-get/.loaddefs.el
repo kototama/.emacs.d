@@ -3,6 +3,57 @@
 ;;; Code:
 
 
+;;;### (autoloads (ac-nrepl-popup-doc ac-nrepl-setup ac-nrepl-clear-class-cache)
+;;;;;;  "ac-nrepl/ac-nrepl" "ac-nrepl/ac-nrepl.el" (20829 35800))
+;;; Generated autoloads from ac-nrepl/ac-nrepl.el
+
+(autoload 'ac-nrepl-clear-class-cache "ac-nrepl/ac-nrepl" "\
+Clear the class cache to prevent stale results.
+
+\(fn)" nil nil)
+
+(add-hook 'nrepl-connected-hook 'ac-nrepl-refresh-class-cache t)
+
+(defface ac-nrepl-candidate-face '((t (:inherit ac-candidate-face))) "\
+Face for nrepl candidates." :group (quote auto-complete))
+
+(defface ac-nrepl-selection-face '((t (:inherit ac-selection-face))) "\
+Face for the nrepl selected candidate." :group (quote auto-complete))
+
+(defconst ac-nrepl-source-defaults '((available . ac-nrepl-available-p) (candidate-face . ac-nrepl-candidate-face) (selection-face . ac-nrepl-selection-face) (prefix . ac-nrepl-symbol-start-pos) (document . ac-nrepl-documentation)) "\
+Defaults common to the various completion sources.")
+
+(defvar ac-source-nrepl-ns (append '((candidates . ac-nrepl-candidates-ns) (symbol . "n")) ac-nrepl-source-defaults) "\
+Auto-complete source for nrepl ns completion.")
+
+(defvar ac-source-nrepl-vars (append '((candidates . ac-nrepl-candidates-vars) (symbol . "v")) ac-nrepl-source-defaults) "\
+Auto-complete source for nrepl var completion.")
+
+(defvar ac-source-nrepl-ns-classes (append '((candidates . ac-nrepl-candidates-ns-classes) (symbol . "c")) ac-nrepl-source-defaults) "\
+Auto-complete source for nrepl ns-specific class completion.")
+
+(defvar ac-source-nrepl-all-classes (append '((candidates . ac-nrepl-candidates-all-classes) (symbol . "c")) ac-nrepl-source-defaults) "\
+Auto-complete source for nrepl all class completion.")
+
+(defvar ac-source-nrepl-java-methods (append '((candidates . ac-nrepl-candidates-java-methods) (symbol . "m") (action . ac-nrepl-delete-java-class-hint)) ac-nrepl-source-defaults) "\
+Auto-complete source for nrepl java method completion.")
+
+(defvar ac-source-nrepl-static-methods (append '((candidates . ac-nrepl-candidates-static-methods) (symbol . "s")) ac-nrepl-source-defaults) "\
+Auto-complete source for nrepl java static method completion.")
+
+(autoload 'ac-nrepl-setup "ac-nrepl/ac-nrepl" "\
+Add the nrepl completion source to the front of `ac-sources'.
+This affects only the current buffer.
+
+\(fn)" t nil)
+
+(autoload 'ac-nrepl-popup-doc "ac-nrepl/ac-nrepl" "\
+A popup alternative to `nrepl-doc'.
+
+\(fn)" t nil)
+
+;;;***
+
 ;;;### (autoloads (ack-and-a-half-find-file-same ack-and-a-half-find-file
 ;;;;;;  ack-and-a-half-same ack-and-a-half) "ack-and-a-half/ack-and-a-half"
 ;;;;;;  "ack-and-a-half/ack-and-a-half.el" (20829 33927))
@@ -2715,6 +2766,48 @@ an exceedingly quick way of adding multiple cursors to multiple lines.
 
 ;;;***
 
+;;;### (autoloads (nrepl nrepl-jack-in nrepl-disable-on-existing-clojure-buffers
+;;;;;;  nrepl-enable-on-existing-clojure-buffers nrepl-interaction-mode)
+;;;;;;  "nrepl/nrepl" "nrepl/nrepl.el" (20829 35787))
+;;; Generated autoloads from nrepl/nrepl.el
+
+(autoload 'nrepl-interaction-mode "nrepl/nrepl" "\
+Minor mode for nrepl interaction from a Clojure buffer.
+
+\\{nrepl-interaction-mode-map}
+
+\(fn &optional ARG)" t nil)
+
+(autoload 'nrepl-enable-on-existing-clojure-buffers "nrepl/nrepl" "\
+Enable interaction mode on existing Clojure buffers.
+See command `nrepl-interaction-mode'.
+
+\(fn)" t nil)
+
+(autoload 'nrepl-disable-on-existing-clojure-buffers "nrepl/nrepl" "\
+Disable interaction mode on existing Clojure buffers.
+See command `nrepl-interaction-mode'.
+
+\(fn)" t nil)
+
+(autoload 'nrepl-jack-in "nrepl/nrepl" "\
+Start a nREPL server for the current project and connect to it.
+If PROMPT-PROJECT is t, then prompt for the project for which to
+start the server.
+
+\(fn &optional PROMPT-PROJECT)" t nil)
+
+(add-hook 'nrepl-connected-hook 'nrepl-enable-on-existing-clojure-buffers)
+
+(autoload 'nrepl "nrepl/nrepl" "\
+Connect nrepl to HOST and PORT.
+
+\(fn HOST PORT)" t nil)
+
+(eval-after-load 'clojure-mode '(progn (define-key clojure-mode-map (kbd "C-c M-j") 'nrepl-jack-in) (define-key clojure-mode-map (kbd "C-c M-c") 'nrepl)))
+
+;;;***
+
 ;;;### (autoloads (offlineimap) "offlineimap/offlineimap" "offlineimap/offlineimap.el"
 ;;;;;;  (20829 21552))
 ;;; Generated autoloads from offlineimap/offlineimap.el
@@ -3908,7 +4001,8 @@ See `yas-minor-mode' for more information on Yas minor mode.
 ;;;;;;  "expand-region/python-el-fgallina-expansions.el" "expand-region/python-mode-expansions.el"
 ;;;;;;  "expand-region/ruby-mode-expansions.el" "expand-region/text-mode-expansions.el"
 ;;;;;;  "expand-region/web-mode-expansions.el" "fuzzy/fuzzy.el" "helm/helm-aliases.el"
-;;;;;;  "helm/helm-pkg.el" "helm/helm-plugin.el" "ido-ubiquitous/ido-ubiquitous-autoloads.el"
+;;;;;;  "helm/helm-pkg.el" "helm/helm-plugin.el" "ido-hacks/ido-hacks.el"
+;;;;;;  "ido-hacks/ido-hacks.el.gz" "ido-ubiquitous/ido-ubiquitous-autoloads.el"
 ;;;;;;  "ido-ubiquitous/ido-ubiquitous-pkg.el" "magit/magit-bisect.el"
 ;;;;;;  "magit/magit-key-mode.el" "multiple-cursors/mc-cycle-cursors.el"
 ;;;;;;  "multiple-cursors/multiple-cursors-core.el" "multiple-cursors/multiple-cursors-pkg.el"
@@ -3978,7 +4072,7 @@ See `yas-minor-mode' for more information on Yas minor mode.
 ;;;;;;  "org-mode/lisp/ox-odt.el" "org-mode/lisp/ox-org.el" "org-mode/lisp/ox-publish.el"
 ;;;;;;  "org-mode/lisp/ox-texinfo.el" "org-mode/lisp/ox.el" "popup/popup.el"
 ;;;;;;  "s/s.el" "yasnippet/dropdown-list.el" "yasnippet/yasnippet-debug.el"
-;;;;;;  "yasnippet/yasnippet-tests.el") (20829 35614 312638))
+;;;;;;  "yasnippet/yasnippet-tests.el") (20829 41985 205869))
 
 ;;;***
 

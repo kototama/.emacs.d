@@ -47,7 +47,7 @@
 		 ;; line-utils
 		 ;; screen-utils
 		 ;; file-utils
-		 setup-programming
+		 ;; setup-programming
 		 ktm-mode
 		 setup-notmuch
 		 sane-defaults

@@ -1,4 +1,3 @@
-(require 's)
 (require 'helm-config)
 (require 'helm-files)
 (require 'file-utils)
@@ -145,7 +144,7 @@
                          'helm-c-source-etags-select
                          'helm-elisp-source))
 
-(setq helm-sources (if (s-contains? "elan" system-name)
+(setq helm-sources (if (string-match  "elan" system-name)
                        helm-work-sources
                      helm-home-sources))
 

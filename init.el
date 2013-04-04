@@ -51,6 +51,29 @@
 (autoload 'term-send-raw-string "multi-term" "multiple terms" t)
 (autoload 'hippie-expand "hippie-expand" "expand stuff" t)
 
+;; load personal configuration 
+
+;; personal configurations
+
+
+(require 'setup-elget)
+(add-to-list 'load-path "~/.emacs.d/el-get/org-mode/contrib/lisp")
+
+(dolist (pconf '(setup-hippie
+		 setup-lisp
+		 setup-carneades
+		 line-utils
+		 screen-utils
+		 file-utils
+		 setup-programming
+		 ktm-mode
+		 setup-notmuch
+		 sane-defaults
+		 ;; setup-ldap
+		 ))
+  (require pconf))
+
+
 ;; always uses the following modes
 (dolist (mode '(undo-tree paren maxframe uniquify yasnippet ido
                           ido-ubiquitous hippie-exp color-theme-kototama
@@ -68,34 +91,13 @@
 
 (ac-config-default)
 
-;; load personal configuration 
-
-;; personal configurations
-
-
-(require 'setup-elget)
-(add-to-list 'load-path "~/.emacs.d/el-get/org-mode/contrib/lisp")
-
-(dolist (pconf '(sane-defaults
-		 setup-hippie
-		 setup-lisp
-		 setup-carneades
-		 line-utils
-		 screen-utils
-		 file-utils
-		 setup-programming
-		 ktm-mode
-		 setup-notmuch
-		 ;; setup-ldap
-		 ))
-  (require pconf))
 
 ;; load keybindings
 (ktm-global-mode 1)
 
 ;; (smex-initialize)
 
-(yas/initialize)
+
 
 ;; fonts
 (when (eq window-system 'x)

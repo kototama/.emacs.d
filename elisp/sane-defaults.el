@@ -18,8 +18,8 @@
 (setq ido-use-virtual-buffers t)
 
 ;; show paren options
-(set-face-background 'show-paren-match-face "transparent")
-(set-face-foreground 'show-paren-match-face "red")
+;; (set-face-background 'show-paren-match-face "transparent")
+;; (set-face-foreground 'show-paren-match-face "red")
 
 (setq whitespace-style '(face tabs trailing lines))
 

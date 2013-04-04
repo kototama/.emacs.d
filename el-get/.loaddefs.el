@@ -3,6 +3,17 @@
 ;;; Code:
 
 
+;;;### (autoloads (auto-complete) "auto-complete/auto-complete" "auto-complete/auto-complete.el"
+;;;;;;  (20829 20246))
+;;; Generated autoloads from auto-complete/auto-complete.el
+
+(autoload 'auto-complete "auto-complete/auto-complete" "\
+Start auto-completion at current point.
+
+\(fn &optional SOURCES)" t nil)
+
+;;;***
+
 ;;;### (autoloads (clojure-mode) "clojure-mode/clojure-mode" "clojure-mode/clojure-mode.el"
 ;;;;;;  (20827 3440))
 ;;; Generated autoloads from clojure-mode/clojure-mode.el
@@ -2099,6 +2110,107 @@ Minor mode to highlight the surrounding parentheses.
 
 ;;;***
 
+;;;### (autoloads (ido-ubiquitous-function-compatibility-exceptions
+;;;;;;  ido-ubiquitous-command-compatibility-exceptions ido-ubiquitous-function-exceptions
+;;;;;;  ido-ubiquitous-command-exceptions ido-ubiquitous-mode ido-ubiquitous)
+;;;;;;  "ido-ubiquitous/ido-ubiquitous" "ido-ubiquitous/ido-ubiquitous.el"
+;;;;;;  (20829 20331))
+;;; Generated autoloads from ido-ubiquitous/ido-ubiquitous.el
+
+(let ((loads (get 'ido-ubiquitous 'custom-loads))) (if (member '"ido-ubiquitous/ido-ubiquitous" loads) nil (put 'ido-ubiquitous 'custom-loads (cons '"ido-ubiquitous/ido-ubiquitous" loads))))
+
+(defvar ido-ubiquitous-mode nil "\
+Non-nil if Ido-Ubiquitous mode is enabled.
+See the command `ido-ubiquitous-mode' for a description of this minor mode.
+Setting this variable directly does not take effect;
+either customize it (see the info node `Easy Customization')
+or call the function `ido-ubiquitous-mode'.")
+
+(custom-autoload 'ido-ubiquitous-mode "ido-ubiquitous/ido-ubiquitous" nil)
+
+(autoload 'ido-ubiquitous-mode "ido-ubiquitous/ido-ubiquitous" "\
+Use `ido-completing-read' instead of `completing-read' almost everywhere.
+
+  This mode has no effect unles `ido-mode' is also enabled.
+
+  If this mode causes problems for a function, you can force the
+  function to use the original completing read by using the macro
+  `ido-ubiquitous-disable-in'. For example, if a
+  function `foo' cannot work with ido-style completion, evaluate
+  the following (for example by putting it in your .emacs file):
+
+    (ido-ubiquitous-disable-in foo)
+
+\(fn &optional ARG)" t nil)
+
+(define-obsolete-variable-alias 'ido-ubiquitous 'ido-ubiquitous-mode "0.8")
+
+(define-obsolete-function-alias 'ido-ubiquitous 'ido-ubiquitous-mode "0.8")
+
+(defvar ido-ubiquitous-command-exceptions 'nil "\
+List of commands that should not be affected by `ido-ubiquitous'.
+
+Even when `ido-ubiquitous' mode is enabled, these commands will
+continue to use `completing-read' instead of
+`ido-completing-read'.
+
+Only *interactive* commands should go here. To disable
+ido-ubiquitous in non-interactive functions, customize
+`ido-ubiquitous-function-exceptions'.
+
+Note: this feature depends on the variable `this-command' being
+properly set to the name of the currently executing command.
+Depending on how the command is onvoked, this may or may not
+happen, so this feature may simply not work in some cases.")
+
+(custom-autoload 'ido-ubiquitous-command-exceptions "ido-ubiquitous/ido-ubiquitous" t)
+
+(define-obsolete-variable-alias 'ido-ubiquitous-exceptions 'ido-ubiquitous-command-exceptions "0.4")
+
+(defvar ido-ubiquitous-function-exceptions '(grep-read-files) "\
+List of functions in which to disable ido-ubiquitous.
+
+If you need to add a function to this list, please also file a
+bug report at
+https://github.com/DarwinAwardWinner/ido-ubiquitous/issues
+
+Note that certain functions, such as `read-file-name', must
+always have ido-ubiquitous disabled, and cannot be added
+here. (They are effectively a permanent part of this list
+already.)")
+
+(custom-autoload 'ido-ubiquitous-function-exceptions "ido-ubiquitous/ido-ubiquitous" nil)
+
+(defvar ido-ubiquitous-command-compatibility-exceptions 'nil "\
+List of commands in which to disable compatibility.
+
+See `ido-ubiquitous-enable-compatibility' for a description of
+the compatibility behavior. If this behavior causes a command to
+break, add that command to this list to disable compatibility
+mode for just that command.
+
+Only *interactive* commands should go here. To disable
+compatibility mode in non-interactive functions, customize
+`ido-ubiquitous-function-compatibility-exceptions'.")
+
+(custom-autoload 'ido-ubiquitous-command-compatibility-exceptions "ido-ubiquitous/ido-ubiquitous" t)
+
+(defvar ido-ubiquitous-function-compatibility-exceptions 'nil "\
+List of functions in which to disable ido-ubiquitous compatibility mode.
+
+See `ido-ubiquitous-enable-compatibility' for a description of
+the compatibility behavior. If this behavior causes a function to
+break, add that function to this list to disable compatibility
+mode for just that command.
+
+If you need to add a function to this list, please also file a
+bug report at
+https://github.com/DarwinAwardWinner/ido-ubiquitous/issues")
+
+(custom-autoload 'ido-ubiquitous-function-compatibility-exceptions "ido-ubiquitous/ido-ubiquitous" nil)
+
+;;;***
+
 ;;;### (autoloads (gfm-mode markdown-mode) "markdown-mode/markdown-mode"
 ;;;;;;  "markdown-mode/markdown-mode.el" (20829 19962))
 ;;; Generated autoloads from markdown-mode/markdown-mode.el
@@ -2391,6 +2503,17 @@ Anchors the rectangular region at point.
 
 Think of this one as `set-mark' except you're marking a rectangular region. It is
 an exceedingly quick way of adding multiple cursors to multiple lines.
+
+\(fn)" t nil)
+
+;;;***
+
+;;;### (autoloads (offlineimap) "offlineimap/offlineimap" "offlineimap/offlineimap.el"
+;;;;;;  (20829 20815))
+;;; Generated autoloads from offlineimap/offlineimap.el
+
+(autoload 'offlineimap "offlineimap/offlineimap" "\
+Start OfflineIMAP.
 
 \(fn)" t nil)
 
@@ -3559,12 +3682,14 @@ See `yas-minor-mode' for more information on Yas minor mode.
 
 ;;;***
 
-;;;### (autoloads nil nil ("color-theme/color-theme-autoloads.el"
-;;;;;;  "dash/dash.el" "el-get/el-get-autoloads.el" "el-get/el-get-build.el"
-;;;;;;  "el-get/el-get-byte-compile.el" "el-get/el-get-core.el" "el-get/el-get-custom.el"
-;;;;;;  "el-get/el-get-dependencies.el" "el-get/el-get-install.el"
-;;;;;;  "el-get/el-get-methods.el" "el-get/el-get-notify.el" "el-get/el-get-recipes.el"
-;;;;;;  "el-get/el-get-status.el" "expand-region/cc-mode-expansions.el"
+;;;### (autoloads nil nil ("auto-complete-emacs-lisp/auto-complete-emacs-lisp.el"
+;;;;;;  "auto-complete/auto-complete-config.el" "auto-complete/auto-complete-pkg.el"
+;;;;;;  "cl-lib/cl-lib-autoloads.el" "cl-lib/cl-lib-pkg.el" "cl-lib/cl-lib.el"
+;;;;;;  "color-theme/color-theme-autoloads.el" "dash/dash.el" "el-get/el-get-autoloads.el"
+;;;;;;  "el-get/el-get-build.el" "el-get/el-get-byte-compile.el"
+;;;;;;  "el-get/el-get-core.el" "el-get/el-get-custom.el" "el-get/el-get-dependencies.el"
+;;;;;;  "el-get/el-get-install.el" "el-get/el-get-methods.el" "el-get/el-get-notify.el"
+;;;;;;  "el-get/el-get-recipes.el" "el-get/el-get-status.el" "expand-region/cc-mode-expansions.el"
 ;;;;;;  "expand-region/clojure-mode-expansions.el" "expand-region/cperl-mode-expansions.el"
 ;;;;;;  "expand-region/css-mode-expansions.el" "expand-region/erlang-mode-expansions.el"
 ;;;;;;  "expand-region/expand-region-core.el" "expand-region/expand-region-pkg.el"
@@ -3575,8 +3700,9 @@ See `yas-minor-mode' for more information on Yas minor mode.
 ;;;;;;  "expand-region/org-mode-expansions.el" "expand-region/python-el-expansions.el"
 ;;;;;;  "expand-region/python-el-fgallina-expansions.el" "expand-region/python-mode-expansions.el"
 ;;;;;;  "expand-region/ruby-mode-expansions.el" "expand-region/text-mode-expansions.el"
-;;;;;;  "expand-region/web-mode-expansions.el" "helm/helm-aliases.el"
-;;;;;;  "helm/helm-pkg.el" "helm/helm-plugin.el" "multiple-cursors/mc-cycle-cursors.el"
+;;;;;;  "expand-region/web-mode-expansions.el" "fuzzy/fuzzy.el" "helm/helm-aliases.el"
+;;;;;;  "helm/helm-pkg.el" "helm/helm-plugin.el" "ido-ubiquitous/ido-ubiquitous-autoloads.el"
+;;;;;;  "ido-ubiquitous/ido-ubiquitous-pkg.el" "multiple-cursors/mc-cycle-cursors.el"
 ;;;;;;  "multiple-cursors/multiple-cursors-core.el" "multiple-cursors/multiple-cursors-pkg.el"
 ;;;;;;  "multiple-cursors/multiple-cursors.el" "org-mode/contrib/lisp/ob-eukleides.el"
 ;;;;;;  "org-mode/contrib/lisp/ob-fomus.el" "org-mode/contrib/lisp/ob-julia.el"
@@ -3642,10 +3768,10 @@ See `yas-minor-mode' for more information on Yas minor mode.
 ;;;;;;  "org-mode/lisp/ox-beamer.el" "org-mode/lisp/ox-html.el" "org-mode/lisp/ox-icalendar.el"
 ;;;;;;  "org-mode/lisp/ox-latex.el" "org-mode/lisp/ox-man.el" "org-mode/lisp/ox-md.el"
 ;;;;;;  "org-mode/lisp/ox-odt.el" "org-mode/lisp/ox-org.el" "org-mode/lisp/ox-publish.el"
-;;;;;;  "org-mode/lisp/ox-texinfo.el" "org-mode/lisp/ox.el" "use-package/bind-key.el"
-;;;;;;  "use-package/use-package.el" "yasnippet/dropdown-list.el"
-;;;;;;  "yasnippet/yasnippet-debug.el" "yasnippet/yasnippet-tests.el")
-;;;;;;  (20829 20039 783801))
+;;;;;;  "org-mode/lisp/ox-texinfo.el" "org-mode/lisp/ox.el" "popup/popup.el"
+;;;;;;  "s/s.el" "use-package/bind-key.el" "use-package/use-package.el"
+;;;;;;  "yasnippet/dropdown-list.el" "yasnippet/yasnippet-debug.el"
+;;;;;;  "yasnippet/yasnippet-tests.el") (20829 20816 336119))
 
 ;;;***
 

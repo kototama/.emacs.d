@@ -76,13 +76,18 @@
 (require 'setup-elget)
 (add-to-list 'load-path "~/.emacs.d/el-get/org-mode/contrib/lisp")
 
-(dolist (pconf '(setup-helm sane-defaults setup-hippie
-                            setup-lisp
-                            setup-carneades line-utils screen-utils file-utils
-                            setup-programming ktm-mode setup-org
-                            setup-notmuch
-                            ;; setup-ldap
-                            ))
+(dolist (pconf '(sane-defaults
+		 setup-hippie
+		 setup-lisp
+		 setup-carneades
+		 line-utils
+		 screen-utils
+		 file-utils
+		 setup-programming
+		 ktm-mode
+		 setup-notmuch
+		 ;; setup-ldap
+		 ))
   (require pconf))
 
 ;; load keybindings

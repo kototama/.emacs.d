@@ -23,4 +23,3 @@
 (setq org-agenda-diary-file "~/Documents/Notes/diary.org")
 (setq org-agenda-include-diary nil)
 
-(provide 'setup-org)

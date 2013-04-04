@@ -166,4 +166,4 @@
 ;;                "Disables helm config function to not browse http | ftp files"
 ;;                actions)))
 
-(provide 'setup-helm)
+(provide 'init-helm)

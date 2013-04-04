@@ -1,12 +1,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; CEDET
-(setq wisent-debug-flag t)
-(load "~/.emacs.d/elisp/setup-cedet.el")
-(speedbar-add-supported-extension ".clj")
-(speedbar-add-supported-extension ".cljs")
-(add-hook 'wisent-grammar-mode-hook
-          '(lambda ()
-             (semantic-mode t)))
+;; (setq wisent-debug-flag t)
+;; (load "~/.emacs.d/elisp/setup-cedet.el")
+;; (speedbar-add-supported-extension ".clj")
+;; (speedbar-add-supported-extension ".cljs")
+;; (add-hook 'wisent-grammar-mode-hook
+;;           '(lambda ()
+;;              (semantic-mode t)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defmacro hook-into-modes (func modes)

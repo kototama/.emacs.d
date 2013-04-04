@@ -1,7 +1,7 @@
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-(add-to-list 'load-path "~/.emacs.d/el-get/use-package")
+;; (add-to-list 'load-path "~/.emacs.d/el-get/use-package")
 
-(require 'use-package)
+;; (require 'use-package)
 
 (setq el-get-user-package-directory "~/.emacs.d/elisp")
 

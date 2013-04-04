@@ -1,3 +1,5 @@
+(require 'use-package)
+
 (use-package clojure-mode
   :init (progn
           (defun earmuffy (&optional arg)

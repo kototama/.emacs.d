@@ -144,8 +144,8 @@
                          'helm-c-source-etags-select
                          'helm-elisp-source))
 
-(setq helm-sources (if (string-match  "elan" system-name)
-                       helm-work-sources
+(setq helm-sources (when at-work
+                     helm-work-sources
                      helm-home-sources))
 
 (defun my-helm ()

@@ -3,6 +3,51 @@
 ;;; Code:
 
 
+;;;### (autoloads (ack-and-a-half-find-file-same ack-and-a-half-find-file
+;;;;;;  ack-and-a-half-same ack-and-a-half) "ack-and-a-half/ack-and-a-half"
+;;;;;;  "ack-and-a-half/ack-and-a-half.el" (20829 33927))
+;;; Generated autoloads from ack-and-a-half/ack-and-a-half.el
+
+(autoload 'ack-and-a-half "ack-and-a-half/ack-and-a-half" "\
+Run ack.
+PATTERN is interpreted as a regular expression, iff REGEXP is
+non-nil.  If called interactively, the value of REGEXP is
+determined by `ack-and-a-half-regexp-search'.  A prefix arg
+toggles the behavior.  DIRECTORY is the root directory.  If
+called interactively, it is determined by
+`ack-and-a-half-project-root-file-patterns'.  The user is only
+prompted, if `ack-and-a-half-prompt-for-directory' is set.
+
+\(fn PATTERN &optional REGEXP DIRECTORY)" t nil)
+
+(autoload 'ack-and-a-half-same "ack-and-a-half/ack-and-a-half" "\
+Run ack with --type matching the current `major-mode'.
+The types of files searched are determined by
+`ack-and-a-half-mode-type-alist' and
+`ack-and-a-half-mode-extension-alist'.  If no type is configured,
+the buffer's file extension is used for the search.  PATTERN is
+interpreted as a regular expression, iff REGEXP is non-nil.  If
+called interactively, the value of REGEXP is determined by
+`ack-and-a-half-regexp-search'.  A prefix arg toggles that value.
+DIRECTORY is the directory in which to start searching.  If
+called interactively, it is determined by
+`ack-and-a-half-project-root-file-patterns`.  The user is only
+prompted, if `ack-and-a-half-prompt-for-directory' is set.`
+
+\(fn PATTERN &optional REGEXP DIRECTORY)" t nil)
+
+(autoload 'ack-and-a-half-find-file "ack-and-a-half/ack-and-a-half" "\
+Prompt to find a file found by ack in DIRECTORY.
+
+\(fn &optional DIRECTORY)" t nil)
+
+(autoload 'ack-and-a-half-find-file-same "ack-and-a-half/ack-and-a-half" "\
+Prompt to find a file found by ack in DIRECTORY.
+
+\(fn &optional DIRECTORY)" t nil)
+
+;;;***
+
 ;;;### (autoloads (auto-complete) "auto-complete/auto-complete" "auto-complete/auto-complete.el"
 ;;;;;;  (20829 21430))
 ;;; Generated autoloads from auto-complete/auto-complete.el
@@ -3769,9 +3814,8 @@ See `yas-minor-mode' for more information on Yas minor mode.
 ;;;;;;  "org-mode/lisp/ox-latex.el" "org-mode/lisp/ox-man.el" "org-mode/lisp/ox-md.el"
 ;;;;;;  "org-mode/lisp/ox-odt.el" "org-mode/lisp/ox-org.el" "org-mode/lisp/ox-publish.el"
 ;;;;;;  "org-mode/lisp/ox-texinfo.el" "org-mode/lisp/ox.el" "popup/popup.el"
-;;;;;;  "s/s.el" "use-package/bind-key.el" "use-package/use-package.el"
-;;;;;;  "yasnippet/dropdown-list.el" "yasnippet/yasnippet-debug.el"
-;;;;;;  "yasnippet/yasnippet-tests.el") (20829 21852 935734))
+;;;;;;  "s/s.el" "yasnippet/dropdown-list.el" "yasnippet/yasnippet-debug.el"
+;;;;;;  "yasnippet/yasnippet-tests.el") (20829 33927 791194))
 
 ;;;***
 

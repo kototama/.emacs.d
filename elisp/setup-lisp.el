@@ -47,13 +47,13 @@
       (unless lisp-mode-initialized
         (setq lisp-mode-initialized t)
 
-        (use-package redshank
-          :diminish redshank-mode)
+        ;; (use-package redshank
+        ;;   :diminish redshank-mode)
 
         (use-package elisp-slime-nav
           :diminish elisp-slime-nav-mode)
 
-        (use-package edebug)
+        ;; (use-package edebug)
 
         (use-package eldoc
           :diminish eldoc-mode
@@ -70,12 +70,12 @@
           (eldoc-add-command 'paredit-backward-delete
                              'paredit-close-round))
 
-        (use-package cldoc
-          :diminish cldoc-mode)
+        ;; (use-package cldoc
+        ;;   :diminish cldoc-mode)
 
-        (use-package ert
-          :commands ert-run-tests-interactively
-          :bind ("C-c e t" . ert-run-tests-interactively))
+        ;; (use-package ert
+        ;;   :commands ert-run-tests-interactively
+        ;;   :bind ("C-c e t" . ert-run-tests-interactively))
 
         (use-package elint
           :commands 'elint-initialize
@@ -93,13 +93,13 @@
             (add-to-list 'elint-standard-variables 'emacs-major-version)
             (add-to-list 'elint-standard-variables 'window-system)))
 
-        (use-package highlight-cl
-          :init
-          (mapc (function
-                 (lambda (mode-hook)
-                   (add-hook mode-hook
-                             'highlight-cl-add-font-lock-keywords)))
-                lisp-mode-hooks))
+        ;; (use-package highlight-cl
+        ;;   :init
+        ;;   (mapc (function
+        ;;          (lambda (mode-hook)
+        ;;            (add-hook mode-hook
+        ;;                      'highlight-cl-add-font-lock-keywords)))
+        ;;         lisp-mode-hooks))
 
         (defun my-elisp-indent-or-complete (&optional arg)
           (interactive "p")
@@ -179,18 +179,6 @@
              ("C-M-S-a" . beginning-of-defun)
              ))
 
-    ;; (add-hook 'paredit-mode-hook
-    ;;       (lambda ()
-    ;;         (define-key paredit-mode-map (kbd "C-c 0") 'paredit-forward-slurp-sexp)
-    ;;         (define-key paredit-mode-map (kbd "C-c )") 'paredit-forward-barf-sexp)
-    ;;         (define-key paredit-mode-map (kbd "C-c 9") 'paredit-backward-slurp-sexp)
-    ;;         (define-key paredit-mode-map (kbd "C-c (") 'paredit-backward-barf-sexp)
-    ;;         (define-key paredit-mode-map (kbd "M-R") 'paredit-raise-sexp)
-    ;;         (define-key paredit-mode-map (kbd "M-r") nil)
-    ;;         (define-key paredit-mode-map (kbd "C-k") 'paredit-eager-kill-line)
-    ;;         (define-key paredit-mode-map )))
-
-
     (defun my-lisp-mode-hook ()
       (initialize-lisp-mode)
 
@@ -217,27 +205,5 @@
       (eldoc-mode 1))
 
     (hook-into-modes #'my-lisp-mode-hook lisp-mode-hooks)))
-
-;; (add-hook 'emacs-lisp-mode-hook
-;;           (lambda ()
-;;             (message "Emacs lisp mode hook")
-;;             (elisp-slime-nav-mode t)
-;;             (define-key emacs-lisp-mode-map (kbd "M-.") 'elisp-slime-nav-find-elisp-thing-at-point)
-;;             (define-key emacs-lisp-mode-map (kbd "M-/") 'dabbrev-expand)
-;;             (define-key emacs-lisp-mode-map (kbd "C-M-/") 'lisp-complete-symbol)
-;;             (define-key emacs-lisp-mode-map [f5] 'eval-buffer)
-;;             (define-key emacs-lisp-mode-map (kbd "M-o") nil)
-
-;;             (paredit-mode t)
-;;             ;; (flyspell-prog-mode)
-;;             (turn-on-eldoc-mode)
-;;             (eldoc-add-command
-;;              'paredit-backward-delete
-;;              'paredit-close-round)
-
-;;             ;; (local-set-key (kbd "RET") 'nil)
-;;             (eldoc-add-command 'electrify-return-if-match)
-
-;;             (show-paren-mode t)))
 
 (provide 'setup-lisp)

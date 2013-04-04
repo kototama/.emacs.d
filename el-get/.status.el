@@ -1,4 +1,11 @@
-((auto-complete status "installed" recipe
+((ack-and-a-half status "installed" recipe
+                 (:name ack-and-a-half :description "Yet another front-end for ack" :type github :pkgname "jhelwig/ack-and-a-half" :prepare
+                        (progn
+                          (defalias 'ack 'ack-and-a-half)
+                          (defalias 'ack-same 'ack-and-a-half-same)
+                          (defalias 'ack-find-file 'ack-and-a-half-find-file)
+                          (defalias 'ack-find-file-same 'ack-and-a-half-find-file-same))))
+ (auto-complete status "installed" recipe
                 (:name auto-complete :website "https://github.com/auto-complete/auto-complete" :description "The most intelligent auto-completion extension." :type github :pkgname "auto-complete/auto-complete" :depends
                        (popup fuzzy)))
  (auto-complete-emacs-lisp status "installed" recipe

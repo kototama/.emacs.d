@@ -2,6 +2,25 @@
 
 (use-package clojure-mode
   :init (progn
+          (use-package nrepl
+            :init
+            (progn
+              (defun my-nrepl-init-mode-hook
+                ()
+                (paredit-mode 1))
+
+              (defun my-nrepl-show-server-buffer
+                ()
+                (interactive)
+                (switch-to-buffer "*nrepl-server*")
+                (ktm-mode 1))
+
+              (add-hook 'nrepl-mode-hook 'my-nrepl-init-mode-hook))
+
+            :bind (("<S-return>" . nrepl-return)
+                   ("C-c n r" . nrepl-return)
+                   ("C-c n b" . my-nrepl-show-server-buffer)))
+          
           (defun earmuffy (&optional arg)
             (interactive "P")
             (let* ((variable (thing-at-point 'sexp))
@@ -33,7 +52,8 @@
           (defun my-clojure-mode-hook ()
             (paredit-mode t)
             (show-paren-mode t)
-            (flyspell-prog-mode)
+            ;; (flyspell-prog-mode nil)
+            (elisp-slime-nav-mode nil)
 
             ;; (define-key clojure-mode-map "{" 'paredit-open-curly)
             ;; (define-key clojure-mode-map "}" 'paredit-close-curly)
@@ -52,39 +72,10 @@
   :bind (("C-c n j" . nrepl-jack-in)
          ("C-c n q" . nrepl-quit)
          ("C-x C-s" . my-compile-on-save)
-         ("C-*" . earmuffy)))
-
-(use-package nrepl
-  :init
-  (progn
-    (defun my-nrepl-init-mode-hook
-      ()
-      (paredit-mode 1))
-
-    (defun my-nrepl-show-server-buffer
-      ()
-      (interactive)
-      (switch-to-buffer "*nrepl-server*")
-      (ktm-mode 1))
-
-    (add-hook 'nrepl-mode-hook 'my-nrepl-init-mode-hook))
-
-  :bind (("<S-return>" . nrepl-return)
-         ("C-c n r" . nrepl-return)
-         ("C-c n b" . my-nrepl-show-server-buffer)))
+         ("C-*" . earmuffy)
+         ("C-;" . comment-region)))
 
 
-(use-package nrepl
-  (:init
-   (progn
-     (defun my-nrepl-init-mode-hook
-       ()
-       (paredit-mode 1))
-
-     (add-hook 'nrepl-mode-hook 'my-nrepl-init-mode-hook)))
-
-  (:bind (("<s-return>" . nrepl-return)
-          ("C-c n r" . nrepl-return))))
 
 
 

@@ -24,10 +24,10 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; repos
-(when (>= emacs-major-version 24)
-  (require 'package)
-  (package-initialize)
-  (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t))
+;; (when (>= emacs-major-version 24)
+;;   (require 'package)
+;;   (package-initialize)
+;;   (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -42,14 +42,13 @@
 ;; for org-much
 (add-to-list 'load-path "~/.emacs.d/el-get/org-mode/contrib/lisp")
 
-(dolist (pconf '(setup-hippie
+(dolist (pconf '(;; setup-hippie
 		 setup-lisp
 		 ;; line-utils
 		 ;; screen-utils
 		 ;; file-utils
 		 ;; setup-programming
 		 ktm-mode
-		 setup-notmuch
 		 sane-defaults
 		 ;; setup-ldap
 		 ))

@@ -54,7 +54,7 @@ The buffer is saved if a copyright notice is inserted."
 (defun carneades-insert-license-in-clj-cljs-files
   ()
   (-each (find-clj-or-cljs-files carneades-src-directory)
-         'carneades-prompt-insert-copyright))
+          'carneades-prompt-insert-copyright))
 
 (defun carneades-update-ns
   ()
@@ -81,9 +81,11 @@ The buffer is saved if a copyright notice is inserted."
     (insert-string (concat "{{" key "}}"))))
 
 (defun start-carneades-project
-  "Open the routes file, compiles and starts the project "
   ()
-  (find-file "/home/pal/Documents/Projects/carneades/src/PolicyModellingTool/src/impact/web/routes_dev.clj")
+  "Open the routes file, compiles and starts the project "
+  (interactive)
+  (cd "/home/pal/Documents/Projects/carneades/src")
+  (find-file "/home/pal/Documents/Projects/carneades/src/CarneadesWebApp/src/carneades/analysis/web/routes_dev.clj")
   (end-of-buffer)
   (nrepl-jack-in))
 

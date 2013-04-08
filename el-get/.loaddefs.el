@@ -2766,6 +2766,76 @@ an exceedingly quick way of adding multiple cursors to multiple lines.
 
 ;;;***
 
+;;;### (autoloads (notmuch-cycle-notmuch-buffers notmuch notmuch-search)
+;;;;;;  "notmuch/emacs/notmuch" "notmuch/emacs/notmuch.el" (20834
+;;;;;;  45355))
+;;; Generated autoloads from notmuch/emacs/notmuch.el
+
+(autoload 'notmuch-search "notmuch/emacs/notmuch" "\
+Run \"notmuch search\" with the given `query' and display results.
+
+If `query' is nil, it is read interactively from the minibuffer.
+Other optional parameters are used as follows:
+
+  oldest-first: A Boolean controlling the sort order of returned threads
+  target-thread: A thread ID (without the thread: prefix) that will be made
+                 current if it appears in the search results.
+  target-line: The line number to move to if the target thread does not
+               appear in the search results.
+
+\(fn &optional QUERY OLDEST-FIRST TARGET-THREAD TARGET-LINE CONTINUATION)" t nil)
+
+(autoload 'notmuch "notmuch/emacs/notmuch" "\
+Run notmuch and display saved searches, known tags, etc.
+
+\(fn)" t nil)
+
+(autoload 'notmuch-cycle-notmuch-buffers "notmuch/emacs/notmuch" "\
+Cycle through any existing notmuch buffers (search, show or hello).
+
+If the current buffer is the only notmuch buffer, bury it. If no
+notmuch buffers exist, run `notmuch'.
+
+\(fn)" t nil)
+
+;;;***
+
+;;;### (autoloads (notmuch-hello) "notmuch/emacs/notmuch-hello" "notmuch/emacs/notmuch-hello.el"
+;;;;;;  (20834 45355))
+;;; Generated autoloads from notmuch/emacs/notmuch-hello.el
+
+(autoload 'notmuch-hello "notmuch/emacs/notmuch-hello" "\
+Run notmuch and display saved searches, known tags, etc.
+
+\(fn &optional NO-DISPLAY)" t nil)
+
+;;;***
+
+;;;### (autoloads (notmuch-show) "notmuch/emacs/notmuch-show" "notmuch/emacs/notmuch-show.el"
+;;;;;;  (20834 45355))
+;;; Generated autoloads from notmuch/emacs/notmuch-show.el
+
+(autoload 'notmuch-show "notmuch/emacs/notmuch-show" "\
+Run \"notmuch show\" with the given thread ID and display results.
+
+The optional PARENT-BUFFER is the notmuch-search buffer from
+which this notmuch-show command was executed, (so that the
+next thread from that buffer can be show when done with this
+one).
+
+The optional QUERY-CONTEXT is a notmuch search term. Only
+messages from the thread matching this search term are shown if
+non-nil.
+
+The optional BUFFER-NAME provides the name of the buffer in
+which the message thread is shown. If it is nil (which occurs
+when the command is called interactively) the argument to the
+function is used.
+
+\(fn THREAD-ID &optional PARENT-BUFFER QUERY-CONTEXT BUFFER-NAME)" t nil)
+
+;;;***
+
 ;;;### (autoloads (nrepl nrepl-jack-in nrepl-disable-on-existing-clojure-buffers
 ;;;;;;  nrepl-enable-on-existing-clojure-buffers nrepl-interaction-mode)
 ;;;;;;  "nrepl/nrepl" "nrepl/nrepl.el" (20829 35787))
@@ -4001,39 +4071,43 @@ See `yas-minor-mode' for more information on Yas minor mode.
 ;;;;;;  "expand-region/python-el-fgallina-expansions.el" "expand-region/python-mode-expansions.el"
 ;;;;;;  "expand-region/ruby-mode-expansions.el" "expand-region/text-mode-expansions.el"
 ;;;;;;  "expand-region/web-mode-expansions.el" "fuzzy/fuzzy.el" "helm/helm-aliases.el"
-;;;;;;  "helm/helm-pkg.el" "helm/helm-plugin.el" "ido-hacks/ido-hacks.el"
-;;;;;;  "ido-hacks/ido-hacks.el.gz" "ido-ubiquitous/ido-ubiquitous-autoloads.el"
+;;;;;;  "helm/helm-pkg.el" "helm/helm-plugin.el" "ido-ubiquitous/ido-ubiquitous-autoloads.el"
 ;;;;;;  "ido-ubiquitous/ido-ubiquitous-pkg.el" "magit/magit-bisect.el"
 ;;;;;;  "magit/magit-key-mode.el" "multiple-cursors/mc-cycle-cursors.el"
 ;;;;;;  "multiple-cursors/multiple-cursors-core.el" "multiple-cursors/multiple-cursors-pkg.el"
-;;;;;;  "multiple-cursors/multiple-cursors.el" "org-mode/contrib/lisp/ob-eukleides.el"
-;;;;;;  "org-mode/contrib/lisp/ob-fomus.el" "org-mode/contrib/lisp/ob-julia.el"
-;;;;;;  "org-mode/contrib/lisp/ob-mathomatic.el" "org-mode/contrib/lisp/ob-oz.el"
-;;;;;;  "org-mode/contrib/lisp/ob-tcl.el" "org-mode/contrib/lisp/org-annotate-file.el"
-;;;;;;  "org-mode/contrib/lisp/org-bibtex-extras.el" "org-mode/contrib/lisp/org-bookmark.el"
-;;;;;;  "org-mode/contrib/lisp/org-checklist.el" "org-mode/contrib/lisp/org-choose.el"
-;;;;;;  "org-mode/contrib/lisp/org-collector.el" "org-mode/contrib/lisp/org-colview-xemacs.el"
-;;;;;;  "org-mode/contrib/lisp/org-contribdir.el" "org-mode/contrib/lisp/org-depend.el"
-;;;;;;  "org-mode/contrib/lisp/org-drill.el" "org-mode/contrib/lisp/org-elisp-symbol.el"
-;;;;;;  "org-mode/contrib/lisp/org-eval-light.el" "org-mode/contrib/lisp/org-eval.el"
-;;;;;;  "org-mode/contrib/lisp/org-expiry.el" "org-mode/contrib/lisp/org-favtable.el"
-;;;;;;  "org-mode/contrib/lisp/org-git-link.el" "org-mode/contrib/lisp/org-interactive-query.el"
-;;;;;;  "org-mode/contrib/lisp/org-invoice.el" "org-mode/contrib/lisp/org-jira.el"
-;;;;;;  "org-mode/contrib/lisp/org-learn.el" "org-mode/contrib/lisp/org-mac-iCal.el"
-;;;;;;  "org-mode/contrib/lisp/org-mac-link-grabber.el" "org-mode/contrib/lisp/org-mairix.el"
-;;;;;;  "org-mode/contrib/lisp/org-man.el" "org-mode/contrib/lisp/org-mew.el"
-;;;;;;  "org-mode/contrib/lisp/org-mime.el" "org-mode/contrib/lisp/org-mtags.el"
-;;;;;;  "org-mode/contrib/lisp/org-notify.el" "org-mode/contrib/lisp/org-notmuch.el"
-;;;;;;  "org-mode/contrib/lisp/org-panel.el" "org-mode/contrib/lisp/org-screen.el"
-;;;;;;  "org-mode/contrib/lisp/org-secretary.el" "org-mode/contrib/lisp/org-static-mathjax.el"
-;;;;;;  "org-mode/contrib/lisp/org-sudoku.el" "org-mode/contrib/lisp/org-velocity.el"
-;;;;;;  "org-mode/contrib/lisp/org-vm.el" "org-mode/contrib/lisp/org-w3m.el"
-;;;;;;  "org-mode/contrib/lisp/org-wikinodes.el" "org-mode/contrib/lisp/org-wl.el"
-;;;;;;  "org-mode/contrib/lisp/orgtbl-sqlinsert.el" "org-mode/contrib/lisp/ox-confluence.el"
-;;;;;;  "org-mode/contrib/lisp/ox-deck.el" "org-mode/contrib/lisp/ox-groff.el"
-;;;;;;  "org-mode/contrib/lisp/ox-s5.el" "org-mode/lisp/ob-C.el"
-;;;;;;  "org-mode/lisp/ob-R.el" "org-mode/lisp/ob-asymptote.el" "org-mode/lisp/ob-awk.el"
-;;;;;;  "org-mode/lisp/ob-calc.el" "org-mode/lisp/ob-clojure.el"
+;;;;;;  "multiple-cursors/multiple-cursors.el" "notmuch/emacs/coolj.el"
+;;;;;;  "notmuch/emacs/notmuch-address.el" "notmuch/emacs/notmuch-crypto.el"
+;;;;;;  "notmuch/emacs/notmuch-lib.el" "notmuch/emacs/notmuch-maildir-fcc.el"
+;;;;;;  "notmuch/emacs/notmuch-message.el" "notmuch/emacs/notmuch-mua.el"
+;;;;;;  "notmuch/emacs/notmuch-print.el" "notmuch/emacs/notmuch-query.el"
+;;;;;;  "notmuch/emacs/notmuch-tag.el" "notmuch/emacs/notmuch-wash.el"
+;;;;;;  "org-mode/contrib/lisp/ob-eukleides.el" "org-mode/contrib/lisp/ob-fomus.el"
+;;;;;;  "org-mode/contrib/lisp/ob-julia.el" "org-mode/contrib/lisp/ob-mathomatic.el"
+;;;;;;  "org-mode/contrib/lisp/ob-oz.el" "org-mode/contrib/lisp/ob-tcl.el"
+;;;;;;  "org-mode/contrib/lisp/org-annotate-file.el" "org-mode/contrib/lisp/org-bibtex-extras.el"
+;;;;;;  "org-mode/contrib/lisp/org-bookmark.el" "org-mode/contrib/lisp/org-checklist.el"
+;;;;;;  "org-mode/contrib/lisp/org-choose.el" "org-mode/contrib/lisp/org-collector.el"
+;;;;;;  "org-mode/contrib/lisp/org-colview-xemacs.el" "org-mode/contrib/lisp/org-contribdir.el"
+;;;;;;  "org-mode/contrib/lisp/org-depend.el" "org-mode/contrib/lisp/org-drill.el"
+;;;;;;  "org-mode/contrib/lisp/org-elisp-symbol.el" "org-mode/contrib/lisp/org-eval-light.el"
+;;;;;;  "org-mode/contrib/lisp/org-eval.el" "org-mode/contrib/lisp/org-expiry.el"
+;;;;;;  "org-mode/contrib/lisp/org-favtable.el" "org-mode/contrib/lisp/org-git-link.el"
+;;;;;;  "org-mode/contrib/lisp/org-interactive-query.el" "org-mode/contrib/lisp/org-invoice.el"
+;;;;;;  "org-mode/contrib/lisp/org-jira.el" "org-mode/contrib/lisp/org-learn.el"
+;;;;;;  "org-mode/contrib/lisp/org-mac-iCal.el" "org-mode/contrib/lisp/org-mac-link-grabber.el"
+;;;;;;  "org-mode/contrib/lisp/org-mairix.el" "org-mode/contrib/lisp/org-man.el"
+;;;;;;  "org-mode/contrib/lisp/org-mew.el" "org-mode/contrib/lisp/org-mime.el"
+;;;;;;  "org-mode/contrib/lisp/org-mtags.el" "org-mode/contrib/lisp/org-notify.el"
+;;;;;;  "org-mode/contrib/lisp/org-notmuch.el" "org-mode/contrib/lisp/org-panel.el"
+;;;;;;  "org-mode/contrib/lisp/org-screen.el" "org-mode/contrib/lisp/org-secretary.el"
+;;;;;;  "org-mode/contrib/lisp/org-static-mathjax.el" "org-mode/contrib/lisp/org-sudoku.el"
+;;;;;;  "org-mode/contrib/lisp/org-velocity.el" "org-mode/contrib/lisp/org-vm.el"
+;;;;;;  "org-mode/contrib/lisp/org-w3m.el" "org-mode/contrib/lisp/org-wikinodes.el"
+;;;;;;  "org-mode/contrib/lisp/org-wl.el" "org-mode/contrib/lisp/orgtbl-sqlinsert.el"
+;;;;;;  "org-mode/contrib/lisp/ox-confluence.el" "org-mode/contrib/lisp/ox-deck.el"
+;;;;;;  "org-mode/contrib/lisp/ox-groff.el" "org-mode/contrib/lisp/ox-s5.el"
+;;;;;;  "org-mode/lisp/ob-C.el" "org-mode/lisp/ob-R.el" "org-mode/lisp/ob-asymptote.el"
+;;;;;;  "org-mode/lisp/ob-awk.el" "org-mode/lisp/ob-calc.el" "org-mode/lisp/ob-clojure.el"
 ;;;;;;  "org-mode/lisp/ob-comint.el" "org-mode/lisp/ob-core.el" "org-mode/lisp/ob-css.el"
 ;;;;;;  "org-mode/lisp/ob-ditaa.el" "org-mode/lisp/ob-dot.el" "org-mode/lisp/ob-emacs-lisp.el"
 ;;;;;;  "org-mode/lisp/ob-eval.el" "org-mode/lisp/ob-exp.el" "org-mode/lisp/ob-fortran.el"
@@ -4072,7 +4146,7 @@ See `yas-minor-mode' for more information on Yas minor mode.
 ;;;;;;  "org-mode/lisp/ox-odt.el" "org-mode/lisp/ox-org.el" "org-mode/lisp/ox-publish.el"
 ;;;;;;  "org-mode/lisp/ox-texinfo.el" "org-mode/lisp/ox.el" "popup/popup.el"
 ;;;;;;  "s/s.el" "yasnippet/dropdown-list.el" "yasnippet/yasnippet-debug.el"
-;;;;;;  "yasnippet/yasnippet-tests.el") (20829 41985 205869))
+;;;;;;  "yasnippet/yasnippet-tests.el") (20834 46328 514707))
 
 ;;;***
 

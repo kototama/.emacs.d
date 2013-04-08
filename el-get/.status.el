@@ -38,8 +38,6 @@
                 (:name expand-region :type github :pkgname "magnars/expand-region.el" :description "Expand region increases the selected region by semantic units. Just keep pressing the key until it selects what you want." :website "https://github.com/magnars/expand-region.el#readme" :features expand-region))
  (fuzzy status "installed" recipe
         (:name fuzzy :website "https://github.com/auto-complete/fuzzy-el" :description "Fuzzy matching utilities for GNU Emacs" :type github :pkgname "auto-complete/fuzzy-el"))
- (helm status "installed" recipe
-       (:name helm :description "Emacs incremental and narrowing framework" :type github :pkgname "emacs-helm/helm" :features helm-config))
  (highlight-parentheses status "installed" recipe
                         (:name highlight-parentheses :description "Highlight the matching parentheses surrounding point." :type http :url "http://nschum.de/src/emacs/highlight-parentheses/highlight-parentheses.el" :features highlight-parentheses))
  (ido-ubiquitous status "installed" recipe
@@ -60,6 +58,11 @@
              (:name multi-term :description "A mode based on term.el, for managing multiple terminal buffers in Emacs." :type emacswiki :features multi-term))
  (multiple-cursors status "installed" recipe
                    (:name multiple-cursors :description "An experiment in adding multiple cursors to emacs" :type github :pkgname "magnars/multiple-cursors.el" :features multiple-cursors))
+ (notmuch status "installed" recipe
+          (:name notmuch :description "Run notmuch(thread-based email index, search and tagging) within emacs" :type git :url "git://notmuchmail.org/git/notmuch" :load-path
+                 ("./emacs")
+                 :build
+                 ("./configure" "make")))
  (nrepl status "installed" recipe
         (:name nrepl :description "An Emacs client for nREPL, the Clojure networked REPL server." :type github :pkgname "kingtim/nrepl.el" :depends clojure-mode))
  (offlineimap status "installed" recipe

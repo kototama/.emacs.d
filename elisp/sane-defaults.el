@@ -1,5 +1,3 @@
-(require 's)
-
 ;; disable blinking cursor
 (blink-cursor-mode 0)
 
@@ -47,7 +45,7 @@
 (setq scroll-step 1)
 
 ;; default shell to zsh
-(setq multi-term-program (if (s-contains? "elan" system-name)
+(setq multi-term-program (when at-work
                              "/bin/zsh"
                            "/bin/bash"))
 

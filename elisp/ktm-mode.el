@@ -105,12 +105,15 @@
     (define-key ktm-mode-map (kbd "C-<") 'mark-previous-like-this)
     (define-key ktm-mode-map (kbd "C->") 'mark-next-like-this)
     (define-key ktm-mode-map (kbd "C-M-m") 'mc/mark-next-like-this)
-    (define-key ktm-mode-map (kbd "C-M-<SPC>") 'er/expand-region)
+    (define-key ktm-mode-map (kbd "C-M-<SPC>") 'mark-sexp)
+    (define-key ktm-mode-map (kbd "C-M-S-<SPC>") 'er/expand-region)
     (define-key ktm-mode-map (kbd "C-.") 'hippie-expand)
     ;; (define-key undo-tree-map (kbd "C-?") nil)
 
-    (define-key ktm-mode-map (kbd "C-x ,") 'ido-switch-buffer)
+
     (define-key ktm-mode-map (kbd "C-M-i") 'indent-region)
+    ;; (define-key ktm-mode-map (kbd "C-S ") 'nil)
+    ;; (define-key ktm-mode-map (kbd "C-S-s") 'save-buffer)   
 
     ;; keybindins specific to azerty
     ;; altgr-b

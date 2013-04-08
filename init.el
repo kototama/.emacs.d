@@ -55,8 +55,7 @@
   (require pconf))
 
 (when at-work
-  (require 'setup-carneades)
-  (require 'setup-notmuch))
+  (require 'setup-carneades))
 
 ;; always uses the following modes
 (dolist (mode '(undo-tree

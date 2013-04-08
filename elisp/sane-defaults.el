@@ -16,8 +16,13 @@
 (setq ido-use-virtual-buffers t)
 
 ;; show paren options
-;; (set-face-background 'show-paren-match-face "transparent")
-;; (set-face-foreground 'show-paren-match-face "red")
+(use-package "paren"
+  :init
+  (progn
+    (set-face-background 'show-paren-match-face "purple")
+    (set-face-foreground 'show-paren-match-face "black")))
+
+;; (set-cursor-color "cyan")
 
 (setq whitespace-style '(face tabs trailing lines))
 

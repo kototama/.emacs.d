@@ -35,6 +35,7 @@
 ;; load-paths
 (add-to-list 'load-path "~/.emacs.d/site-lisp/misc")
 (add-to-list 'load-path "~/.emacs.d/elisp")
+(add-to-list 'load-path "~/.emacs.d/elisp/utils")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (require 'setup-elget)

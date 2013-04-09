@@ -2,9 +2,13 @@
 
 (use-package clojure-mode
   :init (progn
+          
           (use-package nrepl
             :init
             (progn
+
+              (use-package ac-nrepl)
+              
               (defun my-nrepl-init-mode-hook
                 ()
                 (paredit-mode 1))
@@ -15,9 +19,12 @@
                 (switch-to-buffer "*nrepl-server*")
                 (ktm-mode 1))
 
-              (add-hook 'nrepl-mode-hook 'my-nrepl-init-mode-hook))
+              (add-hook 'nrepl-mode-hook 'my-nrepl-init-mode-hook)
+              (add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
+              (add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup))
 
             :bind (("<S-return>" . nrepl-return)
+                   ("C-S-e" . nrepl-eval-last-expression)
                    ("C-c n r" . nrepl-return)
                    ("C-c n b" . my-nrepl-show-server-buffer)))
           

@@ -81,6 +81,7 @@
     ;; (define-key ktm-mode-map (kbd "C-x b") 'helm-buffers-list)
     (define-key ktm-mode-map (kbd "C-x b") 'ido-switch-buffer)
     (define-key ktm-mode-map (kbd "C-S-o") 'ido-switch-buffer)
+    (define-key ktm-mode-map (kbd "C-S-n") 'next-error)
 
     (define-key ktm-mode-map [f1] 'multi-term)
     (define-key ktm-mode-map [f2] 'multi-term-prev)
@@ -89,6 +90,7 @@
     (define-key ktm-mode-map [(shift f4)] 'kmacro-end-or-call-macro)
     (define-key ktm-mode-map [f4] 'slime-connect)
     (define-key ktm-mode-map [f6] 'next-error)
+    (define-key ktm-mode-map [f7] 'el-get-install)
     (define-key ktm-mode-map [f8] 'paredit-mode)
     (define-key ktm-mode-map [f9] 'magit-status)
     (define-key ktm-mode-map [f10] 'org-agenda)

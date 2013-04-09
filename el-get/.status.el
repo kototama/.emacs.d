@@ -38,8 +38,12 @@
                 (:name expand-region :type github :pkgname "magnars/expand-region.el" :description "Expand region increases the selected region by semantic units. Just keep pressing the key until it selects what you want." :website "https://github.com/magnars/expand-region.el#readme" :features expand-region))
  (fuzzy status "installed" recipe
         (:name fuzzy :website "https://github.com/auto-complete/fuzzy-el" :description "Fuzzy matching utilities for GNU Emacs" :type github :pkgname "auto-complete/fuzzy-el"))
+ (highlight status "installed" recipe
+            (:name highlight :auto-generated t :type emacswiki :description "Highlighting commands." :website "https://raw.github.com/emacsmirror/emacswiki.org/master/highlight.el"))
  (highlight-parentheses status "installed" recipe
                         (:name highlight-parentheses :description "Highlight the matching parentheses surrounding point." :type http :url "http://nschum.de/src/emacs/highlight-parentheses/highlight-parentheses.el" :features highlight-parentheses))
+ (highlight-sexp status "installed" recipe
+                 (:name highlight-sexp :auto-generated t :type emacswiki :description "" :website "https://raw.github.com/emacsmirror/emacswiki.org/master/highlight-sexp.el"))
  (ido-ubiquitous status "installed" recipe
                  (:name ido-ubiquitous :description "Use ido (nearly) everywhere" :type elpa))
  (magit status "installed" recipe
@@ -65,6 +69,8 @@
                  ("./configure" "make")))
  (nrepl status "installed" recipe
         (:name nrepl :description "An Emacs client for nREPL, the Clojure networked REPL server." :type github :pkgname "kingtim/nrepl.el" :depends clojure-mode))
+ (nrepl-eval-sexp-fu status "installed" recipe
+                     (:name nrepl-eval-sexp-fu :description "Fancy highlighting of sexps on eval" :type github :pkgname "samaaron/nrepl-eval-sexp-fu" :features nrepl-eval-sexp-fu))
  (offlineimap status "installed" recipe
               (:name offlineimap :description "Run OfflineIMAP from Emacs" :type git :url "git://git.naquadah.org/offlineimap-el.git" :features offlineimap))
  (org-mode status "installed" recipe
@@ -121,6 +127,8 @@
                    (progn
                      (autoload 'undo-tree-mode "undo-tree.el" "Undo tree mode; see undo-tree.el for details" t)
                      (autoload 'global-undo-tree-mode "undo-tree.el" "Global undo tree mode" t))))
+ (visual-regexp status "installed" recipe
+                (:name visual-regexp :description "A regexp/replace command for Emacs with interactive visual feedback" :type github :pkgname "benma/visual-regexp.el" :features visual-regexp))
  (yasnippet status "installed" recipe
             (:name yasnippet :website "https://github.com/capitaomorte/yasnippet.git" :description "YASnippet is a template system for Emacs." :type github :pkgname "capitaomorte/yasnippet" :features "yasnippet" :pre-init
                    (unless

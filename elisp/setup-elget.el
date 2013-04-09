@@ -1,7 +1,4 @@
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-;; (add-to-list 'load-path "~/.emacs.d/el-get/use-package")
-
-;; (require 'use-package)
 
 (setq el-get-user-package-directory "~/.emacs.d/elisp")
 
@@ -16,7 +13,5 @@
 (add-to-list 'el-get-recipe-path "~/.emacs.d/recipes")
 
 (el-get 'sync)
-
-
 
 (provide 'setup-elget)

@@ -183,6 +183,7 @@
       (initialize-lisp-mode)
 
       (auto-fill-mode 1)
+      (auto-complete-mode t)
       (paredit-mode 1)
       ;; (redshank-mode 1)
       (elisp-slime-nav-mode 1)

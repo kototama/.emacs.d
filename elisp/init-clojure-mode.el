@@ -12,7 +12,8 @@
               (defun my-nrepl-init-mode-hook
                 ()
                 (auto-complete-mode 1)
-                (paredit-mode 1))
+                (paredit-mode 1)
+                (bind-key "<S-return>" 'nrepl-return nrepl-mode-map))
 
               (defun my-nrepl-show-server-buffer
                 ()
@@ -22,12 +23,7 @@
 
               (add-hook 'nrepl-mode-hook 'my-nrepl-init-mode-hook)
               (add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
-              (add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup))
-
-            :bind (("<S-return>" . nrepl-return)
-                   ("C-S-e" . nrepl-eval-last-expression)
-                   ("C-c n r" . nrepl-return)
-                   ("C-c n b" . my-nrepl-show-server-buffer)))
+              (add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)))
           
           (defun earmuffy (&optional arg)
             (interactive "P")
@@ -47,11 +43,12 @@
                     (insert earmuffed-variable)
                     (goto-char (+ current-point 1)))))))
 
-          (defun my-compile-on-save ()
+          (defun my-clojure-compile-on-save ()
             (interactive)
             (save-buffer)
             (when (and (get-buffer "*nrepl*")
-                       (s-ends-with? ".clj" buffer-file-name))
+                       (s-ends-with? ".clj" buffer-file-name)
+                       (not (s-ends-with? "project.clj" buffer-file-name)))
               ;; when connected to nrepl and inside a Clojure
               ;; but not ClojureScript file, automatically
               ;; loads the file into the REPL upon saving
@@ -73,15 +70,20 @@
             ;; (define-key clojure-mode-map (kbd "<return>")
             ;; 'paredit-newline)
 
-            (eldoc-mode nil))
-          
+            (eldoc-mode nil)
+            
+	    (bind-key "C-*" 'earmuffy)
+            (bind-key "C-c n j" 'nrepl-jack-in clojure-mode-map)
+            (bind-key "C-c n q" 'nrepl-quit clojure-mode-map)
+            (bind-key "C-x C-s" 'my-clojure-compile-on-save
+            clojure-mode-map)
+            (bind-key "C-c n b" 'my-nrepl-show-server-buffer
+            clojure-mode-map)
+            (bind-key "C-S-e" 'nrepl-eval-last-expression clojure-mode-map))
+
           (add-hook 'clojure-mode-hook 'my-clojure-mode-hook))
 
-  :bind (("C-c n j" . nrepl-jack-in)
-         ("C-c n q" . nrepl-quit)
-         ("C-x C-s" . my-compile-on-save)
-         ("C-*" . earmuffy)
-         ("C-;" . comment-region)))
+  :bind (("C-;" . comment-region)))
 
 
 

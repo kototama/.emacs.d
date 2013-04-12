@@ -103,6 +103,11 @@
 
 (setq ack-and-a-half-prompt-for-directory t)
 
+(setq frame-title-format
+      '((:eval (if (buffer-file-name)
+                   (abbreviate-file-name (buffer-file-name))
+                 "%b"))))
+
 (add-hook 'ido-setup-hook
  (lambda ()
    ;; Go straight home

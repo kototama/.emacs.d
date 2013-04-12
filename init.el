@@ -1,3 +1,5 @@
+(defvar *emacs-load-start* (current-time))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; CEDET
 ;; (setq wisent-debug-flag t)
@@ -99,3 +101,13 @@
 (add-hook 'window-setup-hook 'maximize-frame t)
 
 
+(defun anarcat/time-to-ms (time)
+  (+ (* (+ (* (car time) (expt 2 16)) (car (cdr time))) 1000000) (car
+  (cdr (cdr time)))))
+
+(defun anarcat/display-timing ()
+  (message ".emacs loaded in %fms" (/ (- (anarcat/time-to-ms
+  (current-time)) (anarcat/time-to-ms *emacs-load-start*))
+  1000000.0)))
+
+(add-hook 'after-init-hook 'anarcat/display-timing t)

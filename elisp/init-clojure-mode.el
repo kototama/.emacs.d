@@ -11,6 +11,7 @@
               
               (defun my-nrepl-init-mode-hook
                 ()
+                (auto-complete-mode 1)
                 (paredit-mode 1))
 
               (defun my-nrepl-show-server-buffer

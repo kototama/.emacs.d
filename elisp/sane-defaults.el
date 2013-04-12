@@ -88,7 +88,7 @@
 
 (provide 'sane-defaults)
 
-(setq recentf-max-menu-items 50)
+(setq recentf-max-menu-items 1000)
 
 (defun toggle-window-dedicated ()
   "Toggle whether the current active window is dedicated or not"

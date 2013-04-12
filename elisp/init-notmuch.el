@@ -5,6 +5,12 @@
     (use-package notmuch-address)
     (use-package org-notmuch)
     ;; (use-package gnus-art)
+
+    (setq notmuch-hello-sections '(notmuch-hello-insert-saved-searches
+                                   notmuch-hello-insert-search
+                                   notmuch-hello-insert-recent-searches
+                                   notmuch-hello-insert-alltags
+                                   notmuch-hello-insert-footer))
     
     (setq notmuch-address-command "nottoomuch-addresses.sh")
     (notmuch-address-message-insinuate)
@@ -42,12 +48,19 @@
                                                      (interactive)
                                                      (notmuch-search-tag
                                                       (if (member "unread" (notmuch-search-get-tags))
-                                                          "-unread" "+unread"))))
+                                                          "-unread"
+                                                    "+unread"))))
+
+    (defadvice notmuch-hello (after jump-to-unread-or-inbox activate)
+      ;; jumps to the 'unread' or 'inbox tag
+      (when (not (re-search-forward "unread" nil t))
+        (re-search-forward "inbox" nil t))
+      (backward-word))
+      
 
     (add-hook 'message-mode-hook
               (lambda ()
-                (flyspell-mode)))
-    ))
+                (flyspell-mode)))))
 
 ;; (autoload 'notmuch-mua-new-mail "notmuch" "notmuch-mode" t)
 ;; (autoload 'notmuch-hello "notmuch" "notmuch-mode" t)

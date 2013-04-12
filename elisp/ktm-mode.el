@@ -57,7 +57,7 @@
     (define-key ktm-mode-map (kbd "<C-tab>") 'other-window)
     ;; (define-key ktm-mode-map "\r" 'newline-and-indent)
     (define-key ktm-mode-map (kbd "C-;") 'comment-region)
-    (define-key ktm-mode-map (kbd "C-k") 'eager-kill-line)
+    ;; (define-key ktm-mode-map (kbd "C-k") 'eager-kill-line)
     (define-key ktm-mode-map (kbd "C-p") 'backward-char)
     (define-key ktm-mode-map (kbd "C-S-p") 'previous-line)
     (define-key ktm-mode-map (kbd "M-p") '(lambda (arg)
@@ -80,8 +80,12 @@
     (define-key ktm-mode-map (kbd "C-c l") 'org-store-link)
     ;; (define-key ktm-mode-map (kbd "C-x b") 'helm-buffers-list)
     (define-key ktm-mode-map (kbd "C-x b") 'ido-switch-buffer)
+    
+
+    ;; shift rocks
     (define-key ktm-mode-map (kbd "C-S-o") 'ido-switch-buffer)
     (define-key ktm-mode-map (kbd "C-S-n") 'next-error)
+    (define-key ktm-mode-map (kbd "C-S-f") 'ido-find-file)
 
     (define-key ktm-mode-map [f1] 'multi-term)
     (define-key ktm-mode-map [f2] 'multi-term-prev)

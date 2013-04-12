@@ -25,6 +25,8 @@
                      (progn
                        (color-theme-initialize)
                        (setq color-theme-is-global t))))
+ (control-lock status "installed" recipe
+               (:name control-lock :auto-generated t :type emacswiki :description "Like caps-lock, but for your control key.  Give your pinky a rest!" :website "https://raw.github.com/emacsmirror/emacswiki.org/master/control-lock.el"))
  (dash status "installed" recipe
        (:name dash :description "A modern list api for Emacs. No 'cl required." :type github :pkgname "magnars/dash.el"))
  (el-get status "installed" recipe
@@ -38,6 +40,11 @@
                 (:name expand-region :type github :pkgname "magnars/expand-region.el" :description "Expand region increases the selected region by semantic units. Just keep pressing the key until it selects what you want." :website "https://github.com/magnars/expand-region.el#readme" :features expand-region))
  (fuzzy status "installed" recipe
         (:name fuzzy :website "https://github.com/auto-complete/fuzzy-el" :description "Fuzzy matching utilities for GNU Emacs" :type github :pkgname "auto-complete/fuzzy-el"))
+ (haskell-mode status "installed" recipe
+               (:name haskell-mode :description "A Haskell editing mode" :type github :pkgname "haskell/haskell-mode" :load "haskell-site-file.el" :post-init
+                      (progn
+                        (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+                        (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation))))
  (highlight status "installed" recipe
             (:name highlight :auto-generated t :type emacswiki :description "Highlighting commands." :website "https://raw.github.com/emacsmirror/emacswiki.org/master/highlight.el"))
  (highlight-parentheses status "installed" recipe

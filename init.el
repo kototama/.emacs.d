@@ -9,7 +9,7 @@
 ;; (add-hook 'wisent-grammar-mode-hook
 ;;           '(lambda ()
 ;;              (semantic-mode t)))
-
+;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (setq at-work (string-match "elan" system-name))

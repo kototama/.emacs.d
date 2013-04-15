@@ -4,7 +4,8 @@
 
 
 ;;;### (autoloads (ac-nrepl-popup-doc ac-nrepl-setup ac-nrepl-clear-class-cache)
-;;;;;;  "ac-nrepl/ac-nrepl" "ac-nrepl/ac-nrepl.el" (20829 35800))
+;;;;;;  "ac-nrepl/ac-nrepl" "ac-nrepl/ac-nrepl.el" (20829 35800 540685
+;;;;;;  56000))
 ;;; Generated autoloads from ac-nrepl/ac-nrepl.el
 
 (autoload 'ac-nrepl-clear-class-cache "ac-nrepl/ac-nrepl" "\
@@ -56,7 +57,7 @@ A popup alternative to `nrepl-doc'.
 
 ;;;### (autoloads (ack-and-a-half-find-file-same ack-and-a-half-find-file
 ;;;;;;  ack-and-a-half-same ack-and-a-half) "ack-and-a-half/ack-and-a-half"
-;;;;;;  "ack-and-a-half/ack-and-a-half.el" (20829 33927))
+;;;;;;  "ack-and-a-half/ack-and-a-half.el" (20829 33927 135395 359000))
 ;;; Generated autoloads from ack-and-a-half/ack-and-a-half.el
 
 (autoload 'ack-and-a-half "ack-and-a-half/ack-and-a-half" "\
@@ -100,7 +101,7 @@ Prompt to find a file found by ack in DIRECTORY.
 ;;;***
 
 ;;;### (autoloads (auto-complete) "auto-complete/auto-complete" "auto-complete/auto-complete.el"
-;;;;;;  (20829 21430))
+;;;;;;  (20829 21430 561428 196000))
 ;;; Generated autoloads from auto-complete/auto-complete.el
 
 (autoload 'auto-complete "auto-complete/auto-complete" "\
@@ -111,7 +112,7 @@ Start auto-completion at current point.
 ;;;***
 
 ;;;### (autoloads (clojure-mode) "clojure-mode/clojure-mode" "clojure-mode/clojure-mode.el"
-;;;;;;  (20829 21449))
+;;;;;;  (20829 21449 717523 191000))
 ;;; Generated autoloads from clojure-mode/clojure-mode.el
 
 (autoload 'clojure-mode "clojure-mode/clojure-mode" "\
@@ -145,7 +146,7 @@ if that value is non-nil.
 ;;;***
 
 ;;;### (autoloads (clojure-test-mode) "clojure-mode/clojure-test-mode"
-;;;;;;  "clojure-mode/clojure-test-mode.el" (20829 21449))
+;;;;;;  "clojure-mode/clojure-test-mode.el" (20829 21449 717523 191000))
 ;;; Generated autoloads from clojure-mode/clojure-test-mode.el
 
 (autoload 'clojure-test-mode "clojure-mode/clojure-test-mode" "\
@@ -305,7 +306,7 @@ Initialize the color theme package by loading color-theme-libraries.
 
 ;;;### (autoloads (el-get-checksum el-get-make-recipes el-get-cd
 ;;;;;;  el-get-self-update el-get-update-all el-get-version) "el-get/el-get"
-;;;;;;  "el-get/el-get.el" (20829 21226))
+;;;;;;  "el-get/el-get.el" (20829 21226 52414 93000))
 ;;; Generated autoloads from el-get/el-get.el
 
 (autoload 'el-get-version "el-get/el-get" "\
@@ -342,7 +343,7 @@ Compute the checksum of the given package, and put it in the kill-ring
 ;;;***
 
 ;;;### (autoloads (el-get-list-packages) "el-get/el-get-list-packages"
-;;;;;;  "el-get/el-get-list-packages.el" (20829 21226))
+;;;;;;  "el-get/el-get-list-packages.el" (20829 21226 48414 67000))
 ;;; Generated autoloads from el-get/el-get-list-packages.el
 
 (autoload 'el-get-list-packages "el-get/el-get-list-packages" "\
@@ -355,7 +356,7 @@ Display a list of packages.
 ;;;### (autoloads (elisp-slime-nav-describe-elisp-thing-at-point
 ;;;;;;  elisp-slime-nav-find-elisp-thing-at-point elisp-slime-nav-mode)
 ;;;;;;  "elisp-slime-nav/elisp-slime-nav" "elisp-slime-nav/elisp-slime-nav.el"
-;;;;;;  (20829 21501))
+;;;;;;  (20829 21501 877781 833000))
 ;;; Generated autoloads from elisp-slime-nav/elisp-slime-nav.el
 
 (autoload 'elisp-slime-nav-mode "elisp-slime-nav/elisp-slime-nav" "\
@@ -383,7 +384,7 @@ Argument SYM-NAME thing to find.
 ;;;***
 
 ;;;### (autoloads (er/expand-region) "expand-region/expand-region"
-;;;;;;  "expand-region/expand-region.el" (20829 21504))
+;;;;;;  "expand-region/expand-region.el" (20829 21504 953797 88000))
 ;;; Generated autoloads from expand-region/expand-region.el
 
 (autoload 'er/expand-region "expand-region/expand-region" "\
@@ -403,7 +404,7 @@ before calling `er/expand-region' for the first time.
 ;;;;;;  expand-region-skip-whitespace expand-region-autocopy-register
 ;;;;;;  expand-region-guess-python-mode expand-region-preferred-python-mode
 ;;;;;;  expand-region) "expand-region/expand-region-custom" "expand-region/expand-region-custom.el"
-;;;;;;  (20829 21504))
+;;;;;;  (20829 21504 953797 88000))
 ;;; Generated autoloads from expand-region/expand-region-custom.el
 
 (let ((loads (get 'expand-region 'custom-loads))) (if (member '"expand-region/expand-region-custom" loads) nil (put 'expand-region 'custom-loads (cons '"expand-region/expand-region-custom" loads))))
@@ -453,7 +454,7 @@ List of modes which derive from `text-mode' for which text mode expansions are n
 ;;;***
 
 ;;;### (autoloads (ghc-core-mode ghc-core-create-core) "haskell-mode/ghc-core"
-;;;;;;  "haskell-mode/ghc-core.el" (20837 24199))
+;;;;;;  "haskell-mode/ghc-core.el" (20837 24199 995399 397000))
 ;;; Generated autoloads from haskell-mode/ghc-core.el
 
 (autoload 'ghc-core-create-core "haskell-mode/ghc-core" "\
@@ -471,7 +472,8 @@ Major mode for GHC Core files.
 ;;;***
 
 ;;;### (autoloads (haskell-align-imports) "haskell-mode/haskell-align-imports"
-;;;;;;  "haskell-mode/haskell-align-imports.el" (20837 24199))
+;;;;;;  "haskell-mode/haskell-align-imports.el" (20837 24199 995399
+;;;;;;  397000))
 ;;; Generated autoloads from haskell-mode/haskell-align-imports.el
 
 (autoload 'haskell-align-imports "haskell-mode/haskell-align-imports" "\
@@ -482,7 +484,7 @@ Align all the imports in the buffer.
 ;;;***
 
 ;;;### (autoloads (haskell-c-mode) "haskell-mode/haskell-c" "haskell-mode/haskell-c.el"
-;;;;;;  (20837 24199))
+;;;;;;  (20837 24199 995399 397000))
 ;;; Generated autoloads from haskell-mode/haskell-c.el
 
 (add-to-list 'auto-mode-alist '("\\.hsc\\'" . haskell-c-mode))
@@ -495,7 +497,7 @@ Major mode for Haskell FFI files.
 ;;;***
 
 ;;;### (autoloads (haskell-cabal-get-dir haskell-cabal-mode) "haskell-mode/haskell-cabal"
-;;;;;;  "haskell-mode/haskell-cabal.el" (20837 24199))
+;;;;;;  "haskell-mode/haskell-cabal.el" (20837 24199 995399 397000))
 ;;; Generated autoloads from haskell-mode/haskell-cabal.el
 
 (add-to-list 'auto-mode-alist '("\\.cabal\\'" . haskell-cabal-mode))
@@ -514,7 +516,7 @@ Get the Cabal dir for a new project. Various ways of figuring this out,
 ;;;***
 
 ;;;### (autoloads (haskell-decl-scan-mode) "haskell-mode/haskell-decl-scan"
-;;;;;;  "haskell-mode/haskell-decl-scan.el" (20837 24199))
+;;;;;;  "haskell-mode/haskell-decl-scan.el" (20837 24199 995399 397000))
 ;;; Generated autoloads from haskell-mode/haskell-decl-scan.el
 
 (autoload 'haskell-decl-scan-mode "haskell-mode/haskell-decl-scan" "\
@@ -564,7 +566,7 @@ Invokes `haskell-decl-scan-mode-hook'.
 ;;;***
 
 ;;;### (autoloads (haskell-doc-show-type haskell-doc-mode) "haskell-mode/haskell-doc"
-;;;;;;  "haskell-mode/haskell-doc.el" (20837 24199))
+;;;;;;  "haskell-mode/haskell-doc.el" (20837 24199 999399 411000))
 ;;; Generated autoloads from haskell-mode/haskell-doc.el
 
 (autoload 'haskell-doc-mode "haskell-mode/haskell-doc" "\
@@ -587,7 +589,7 @@ current buffer.
 ;;;***
 
 ;;;### (autoloads (haskell-indent-mode) "haskell-mode/haskell-indent"
-;;;;;;  "haskell-mode/haskell-indent.el" (20837 24199))
+;;;;;;  "haskell-mode/haskell-indent.el" (20837 24199 999399 411000))
 ;;; Generated autoloads from haskell-mode/haskell-indent.el
 
 (autoload 'haskell-indent-mode "haskell-mode/haskell-indent" "\
@@ -619,7 +621,7 @@ Invokes `haskell-indent-hook' if not nil.
 ;;;***
 
 ;;;### (autoloads (haskell-indentation-mode) "haskell-mode/haskell-indentation"
-;;;;;;  "haskell-mode/haskell-indentation.el" (20837 24200))
+;;;;;;  "haskell-mode/haskell-indentation.el" (20837 24200 3399 437000))
 ;;; Generated autoloads from haskell-mode/haskell-indentation.el
 
 (autoload 'haskell-indentation-mode "haskell-mode/haskell-indentation" "\
@@ -634,7 +636,8 @@ autofill-mode.
 
 ;;;### (autoloads (haskell-interactive-mode-echo haskell-interactive-switch
 ;;;;;;  haskell-interactive-bring haskell-interactive-mode) "haskell-mode/haskell-interactive-mode"
-;;;;;;  "haskell-mode/haskell-interactive-mode.el" (20837 24200))
+;;;;;;  "haskell-mode/haskell-interactive-mode.el" (20837 24200 3399
+;;;;;;  437000))
 ;;; Generated autoloads from haskell-mode/haskell-interactive-mode.el
 
 (autoload 'haskell-interactive-mode "haskell-mode/haskell-interactive-mode" "\
@@ -663,7 +666,7 @@ Echo a read only piece of text before the prompt.
 ;;;***
 
 ;;;### (autoloads (haskell-menu) "haskell-mode/haskell-menu" "haskell-mode/haskell-menu.el"
-;;;;;;  (20837 24200))
+;;;;;;  (20837 24200 3399 437000))
 ;;; Generated autoloads from haskell-mode/haskell-menu.el
 
 (autoload 'haskell-menu "haskell-mode/haskell-menu" "\
@@ -675,7 +678,7 @@ Launch the Haskell sessions menu.
 
 ;;;### (autoloads (haskell-hayoo haskell-hoogle literate-haskell-mode
 ;;;;;;  haskell-mode) "haskell-mode/haskell-mode" "haskell-mode/haskell-mode.el"
-;;;;;;  (20837 24200))
+;;;;;;  (20837 24200 3399 437000))
 ;;; Generated autoloads from haskell-mode/haskell-mode.el
 
 (when load-file-name (add-to-list 'load-path (file-name-directory load-file-name)))
@@ -744,7 +747,7 @@ Do a Hayoo search for QUERY.
 ;;;***
 
 ;;;### (autoloads (haskell-move-nested) "haskell-mode/haskell-move-nested"
-;;;;;;  "haskell-mode/haskell-move-nested.el" (20837 24200))
+;;;;;;  "haskell-mode/haskell-move-nested.el" (20837 24200 3399 437000))
 ;;; Generated autoloads from haskell-mode/haskell-move-nested.el
 
 (autoload 'haskell-move-nested "haskell-mode/haskell-move-nested" "\
@@ -756,7 +759,8 @@ Do a Hayoo search for QUERY.
 
 ;;;### (autoloads (haskell-navigate-imports-return haskell-navigate-imports-go
 ;;;;;;  haskell-navigate-imports) "haskell-mode/haskell-navigate-imports"
-;;;;;;  "haskell-mode/haskell-navigate-imports.el" (20837 24200))
+;;;;;;  "haskell-mode/haskell-navigate-imports.el" (20837 24200 3399
+;;;;;;  437000))
 ;;; Generated autoloads from haskell-mode/haskell-navigate-imports.el
 
 (autoload 'haskell-navigate-imports "haskell-mode/haskell-navigate-imports" "\
@@ -781,7 +785,7 @@ Return to the non-import point we were at before going to the module list.
 ;;;;;;  haskell-process-cabal-build haskell-process-load-or-reload
 ;;;;;;  haskell-process-reload-file haskell-process-load-file haskell-process-generate-tags)
 ;;;;;;  "haskell-mode/haskell-process" "haskell-mode/haskell-process.el"
-;;;;;;  (20837 24200))
+;;;;;;  (20837 24200 3399 437000))
 ;;; Generated autoloads from haskell-mode/haskell-process.el
 
 (autoload 'haskell-process-generate-tags "haskell-mode/haskell-process" "\
@@ -827,7 +831,7 @@ Get the current process from the current session.
 ;;;***
 
 ;;;### (autoloads (haskell-session-process haskell-session) "haskell-mode/haskell-session"
-;;;;;;  "haskell-mode/haskell-session.el" (20837 24200))
+;;;;;;  "haskell-mode/haskell-session.el" (20837 24200 3399 437000))
 ;;; Generated autoloads from haskell-mode/haskell-session.el
 
 (autoload 'haskell-session "haskell-mode/haskell-session" "\
@@ -844,7 +848,7 @@ Get the session process.
 
 ;;;### (autoloads (haskell-show-parse haskell-show-parse-and-insert
 ;;;;;;  haskell-show-replace) "haskell-mode/haskell-show" "haskell-mode/haskell-show.el"
-;;;;;;  (20837 24200))
+;;;;;;  (20837 24200 7399 452000))
 ;;; Generated autoloads from haskell-mode/haskell-show.el
 
 (autoload 'haskell-show-replace "haskell-mode/haskell-show" "\
@@ -867,7 +871,8 @@ Parse the given input into a tree.
 ;;;***
 
 ;;;### (autoloads (haskell-sort-imports) "haskell-mode/haskell-sort-imports"
-;;;;;;  "haskell-mode/haskell-sort-imports.el" (20837 24200))
+;;;;;;  "haskell-mode/haskell-sort-imports.el" (20837 24200 7399
+;;;;;;  452000))
 ;;; Generated autoloads from haskell-mode/haskell-sort-imports.el
 
 (autoload 'haskell-sort-imports "haskell-mode/haskell-sort-imports" "\
@@ -879,7 +884,7 @@ Sort the import list at the point.
 
 ;;;### (autoloads (haskell-is-prefix-of haskell-string-take haskell-trim)
 ;;;;;;  "haskell-mode/haskell-string" "haskell-mode/haskell-string.el"
-;;;;;;  (20837 24200))
+;;;;;;  (20837 24200 7399 452000))
 ;;; Generated autoloads from haskell-mode/haskell-string.el
 
 (autoload 'haskell-trim "haskell-mode/haskell-string" "\
@@ -903,7 +908,7 @@ Is x string a prefix of y string?
 ;;;;;;  inferior-haskell-info inferior-haskell-kind inferior-haskell-type
 ;;;;;;  inferior-haskell-send-decl inferior-haskell-load-and-run
 ;;;;;;  inferior-haskell-load-file switch-to-haskell) "haskell-mode/inf-haskell"
-;;;;;;  "haskell-mode/inf-haskell.el" (20837 24200))
+;;;;;;  "haskell-mode/inf-haskell.el" (20837 24200 7399 452000))
 ;;; Generated autoloads from haskell-mode/inf-haskell.el
 
 (defalias 'run-haskell 'switch-to-haskell)
@@ -972,7 +977,8 @@ we load it.
 ;;;***
 
 ;;;### (autoloads (highlight-parentheses-mode) "highlight-parentheses/highlight-parentheses"
-;;;;;;  "highlight-parentheses/highlight-parentheses.el" (20829 21530))
+;;;;;;  "highlight-parentheses/highlight-parentheses.el" (20829 21530
+;;;;;;  213922 344000))
 ;;; Generated autoloads from highlight-parentheses/highlight-parentheses.el
 
 (autoload 'highlight-parentheses-mode "highlight-parentheses/highlight-parentheses" "\
@@ -986,7 +992,7 @@ Minor mode to highlight the surrounding parentheses.
 ;;;;;;  ido-ubiquitous-command-compatibility-exceptions ido-ubiquitous-function-exceptions
 ;;;;;;  ido-ubiquitous-command-exceptions ido-ubiquitous-mode ido-ubiquitous)
 ;;;;;;  "ido-ubiquitous/ido-ubiquitous" "ido-ubiquitous/ido-ubiquitous.el"
-;;;;;;  (20829 21446))
+;;;;;;  (20829 21446 305506 281000))
 ;;; Generated autoloads from ido-ubiquitous/ido-ubiquitous.el
 
 (let ((loads (get 'ido-ubiquitous 'custom-loads))) (if (member '"ido-ubiquitous/ido-ubiquitous" loads) nil (put 'ido-ubiquitous 'custom-loads (cons '"ido-ubiquitous/ido-ubiquitous" loads))))
@@ -1084,7 +1090,7 @@ https://github.com/DarwinAwardWinner/ido-ubiquitous/issues")
 ;;;***
 
 ;;;### (autoloads (magit-status) "magit/magit" "magit/magit.el" (20829
-;;;;;;  35612))
+;;;;;;  35612 103750 666000))
 ;;; Generated autoloads from magit/magit.el
 
 (autoload 'magit-status "magit/magit" "\
@@ -1102,7 +1108,7 @@ when asking for user input.
 ;;;***
 
 ;;;### (autoloads (magit-blame-mode) "magit/magit-blame" "magit/magit-blame.el"
-;;;;;;  (20829 35612))
+;;;;;;  (20829 35612 95750 630000))
 ;;; Generated autoloads from magit/magit-blame.el
 
 (autoload 'magit-blame-mode "magit/magit-blame" "\
@@ -1113,7 +1119,7 @@ Display blame information inline.
 ;;;***
 
 ;;;### (autoloads (turn-on-magit-flow magit-flow-mode) "magit/magit-flow"
-;;;;;;  "magit/magit-flow.el" (20829 35612))
+;;;;;;  "magit/magit-flow.el" (20829 35612 95750 630000))
 ;;; Generated autoloads from magit/magit-flow.el
 
 (autoload 'magit-flow-mode "magit/magit-flow" "\
@@ -1129,7 +1135,7 @@ Unconditionally turn on `magit-flow-mode'.
 ;;;***
 
 ;;;### (autoloads (turn-on-magit-stgit magit-stgit-mode) "magit/magit-stgit"
-;;;;;;  "magit/magit-stgit.el" (20829 35612))
+;;;;;;  "magit/magit-stgit.el" (20829 35612 95750 630000))
 ;;; Generated autoloads from magit/magit-stgit.el
 
 (autoload 'magit-stgit-mode "magit/magit-stgit" "\
@@ -1145,7 +1151,7 @@ Unconditionally turn on `magit-stgit-mode'.
 ;;;***
 
 ;;;### (autoloads (turn-on-magit-svn magit-svn-mode) "magit/magit-svn"
-;;;;;;  "magit/magit-svn.el" (20829 35612))
+;;;;;;  "magit/magit-svn.el" (20829 35612 95750 630000))
 ;;; Generated autoloads from magit/magit-svn.el
 
 (autoload 'magit-svn-mode "magit/magit-svn" "\
@@ -1161,7 +1167,7 @@ Unconditionally turn on `magit-svn-mode'.
 ;;;***
 
 ;;;### (autoloads (turn-on-magit-topgit magit-topgit-mode) "magit/magit-topgit"
-;;;;;;  "magit/magit-topgit.el" (20829 35612))
+;;;;;;  "magit/magit-topgit.el" (20829 35612 95750 630000))
 ;;; Generated autoloads from magit/magit-topgit.el
 
 (autoload 'magit-topgit-mode "magit/magit-topgit" "\
@@ -1178,7 +1184,7 @@ Unconditionally turn on `magit-topgit-mode'.
 
 ;;;### (autoloads (global-magit-wip-save-mode magit-wip-save-mode
 ;;;;;;  magit-wip-mode) "magit/magit-wip" "magit/magit-wip.el" (20829
-;;;;;;  35612))
+;;;;;;  35612 95750 630000))
 ;;; Generated autoloads from magit/magit-wip.el
 
 (defvar magit-wip-mode nil "\
@@ -1228,7 +1234,7 @@ See `magit-wip-save-mode' for more information on Magit-Wip-Save mode.
 ;;;***
 
 ;;;### (autoloads (rebase-mode) "magit/rebase-mode" "magit/rebase-mode.el"
-;;;;;;  (20829 35612))
+;;;;;;  (20829 35612 103750 666000))
 ;;; Generated autoloads from magit/rebase-mode.el
 
 (autoload 'rebase-mode "magit/rebase-mode" "\
@@ -1246,7 +1252,7 @@ running 'man git-rebase' at the command line) for details.
 ;;;***
 
 ;;;### (autoloads (gfm-mode markdown-mode) "markdown-mode/markdown-mode"
-;;;;;;  "markdown-mode/markdown-mode.el" (20829 21533))
+;;;;;;  "markdown-mode/markdown-mode.el" (20829 21533 401938 153000))
 ;;; Generated autoloads from markdown-mode/markdown-mode.el
 
 (autoload 'markdown-mode "markdown-mode/markdown-mode" "\
@@ -1263,7 +1269,7 @@ Major mode for editing GitHub Flavored Markdown files.
 
 ;;;### (autoloads (restore-frame maximize-frame x-restore-frame x-maximize-frame
 ;;;;;;  w32-restore-frame w32-maximize-frame) "maxframe/maxframe"
-;;;;;;  "maxframe/maxframe.el" (20829 21539))
+;;;;;;  "maxframe/maxframe.el" (20829 21539 41966 127000))
 ;;; Generated autoloads from maxframe/maxframe.el
 
 (autoload 'w32-maximize-frame "maxframe/maxframe" "\
@@ -1304,7 +1310,7 @@ Restores a maximized frame.  See `maximize-frame'.
 ;;;### (autoloads (multi-term-dedicated-select multi-term-dedicated-toggle
 ;;;;;;  multi-term-dedicated-open multi-term-prev multi-term-next
 ;;;;;;  multi-term) "multi-term/multi-term" "multi-term/multi-term.el"
-;;;;;;  (20829 21540))
+;;;;;;  (20829 21540 437973 40000))
 ;;; Generated autoloads from multi-term/multi-term.el
 
 (autoload 'multi-term "multi-term/multi-term" "\
@@ -1345,7 +1351,7 @@ Select the `multi-term' dedicated window.
 
 ;;;### (autoloads (mc/edit-beginnings-of-lines mc/edit-ends-of-lines
 ;;;;;;  mc/edit-lines) "multiple-cursors/mc-edit-lines" "multiple-cursors/mc-edit-lines.el"
-;;;;;;  (20829 21543))
+;;;;;;  (20829 21543 129986 395000))
 ;;; Generated autoloads from multiple-cursors/mc-edit-lines.el
 
 (autoload 'mc/edit-lines "multiple-cursors/mc-edit-lines" "\
@@ -1376,7 +1382,7 @@ Add one cursor to the beginning of each line in the active region.
 ;;;;;;  mc/mark-previous-word-like-this mc/mark-previous-like-this
 ;;;;;;  mc/mark-next-symbol-like-this mc/mark-next-word-like-this
 ;;;;;;  mc/mark-next-like-this) "multiple-cursors/mc-mark-more" "multiple-cursors/mc-mark-more.el"
-;;;;;;  (20829 21543))
+;;;;;;  (20829 21543 129986 395000))
 ;;; Generated autoloads from multiple-cursors/mc-mark-more.el
 
 (autoload 'mc/mark-next-like-this "multiple-cursors/mc-mark-more" "\
@@ -1508,7 +1514,7 @@ Mark the tag we're in and its pair for renaming.
 
 ;;;### (autoloads (mc/sort-regions mc/reverse-regions mc/insert-numbers)
 ;;;;;;  "multiple-cursors/mc-separate-operations" "multiple-cursors/mc-separate-operations.el"
-;;;;;;  (20829 21543))
+;;;;;;  (20829 21543 129986 395000))
 ;;; Generated autoloads from multiple-cursors/mc-separate-operations.el
 
 (autoload 'mc/insert-numbers "multiple-cursors/mc-separate-operations" "\
@@ -1529,7 +1535,8 @@ Insert increasing numbers for each cursor, starting at 0 or ARG.
 ;;;***
 
 ;;;### (autoloads (set-rectangular-region-anchor) "multiple-cursors/rectangular-region-mode"
-;;;;;;  "multiple-cursors/rectangular-region-mode.el" (20829 21543))
+;;;;;;  "multiple-cursors/rectangular-region-mode.el" (20829 21543
+;;;;;;  133986 414000))
 ;;; Generated autoloads from multiple-cursors/rectangular-region-mode.el
 
 (autoload 'set-rectangular-region-anchor "multiple-cursors/rectangular-region-mode" "\
@@ -1544,7 +1551,7 @@ an exceedingly quick way of adding multiple cursors to multiple lines.
 
 ;;;### (autoloads (notmuch-cycle-notmuch-buffers notmuch notmuch-search)
 ;;;;;;  "notmuch/emacs/notmuch" "notmuch/emacs/notmuch.el" (20834
-;;;;;;  45355))
+;;;;;;  45355 185834 898000))
 ;;; Generated autoloads from notmuch/emacs/notmuch.el
 
 (autoload 'notmuch-search "notmuch/emacs/notmuch" "\
@@ -1577,7 +1584,7 @@ notmuch buffers exist, run `notmuch'.
 ;;;***
 
 ;;;### (autoloads (notmuch-hello) "notmuch/emacs/notmuch-hello" "notmuch/emacs/notmuch-hello.el"
-;;;;;;  (20834 45355))
+;;;;;;  (20834 45355 161834 780000))
 ;;; Generated autoloads from notmuch/emacs/notmuch-hello.el
 
 (autoload 'notmuch-hello "notmuch/emacs/notmuch-hello" "\
@@ -1588,7 +1595,7 @@ Run notmuch and display saved searches, known tags, etc.
 ;;;***
 
 ;;;### (autoloads (notmuch-show) "notmuch/emacs/notmuch-show" "notmuch/emacs/notmuch-show.el"
-;;;;;;  (20834 45355))
+;;;;;;  (20834 45355 177834 864000))
 ;;; Generated autoloads from notmuch/emacs/notmuch-show.el
 
 (autoload 'notmuch-show "notmuch/emacs/notmuch-show" "\
@@ -1614,7 +1621,7 @@ function is used.
 
 ;;;### (autoloads (nrepl nrepl-jack-in nrepl-disable-on-existing-clojure-buffers
 ;;;;;;  nrepl-enable-on-existing-clojure-buffers nrepl-interaction-mode)
-;;;;;;  "nrepl/nrepl" "nrepl/nrepl.el" (20829 35787))
+;;;;;;  "nrepl/nrepl" "nrepl/nrepl.el" (20829 35787 328619 561000))
 ;;; Generated autoloads from nrepl/nrepl.el
 
 (autoload 'nrepl-interaction-mode "nrepl/nrepl" "\
@@ -1655,7 +1662,7 @@ Connect nrepl to HOST and PORT.
 ;;;***
 
 ;;;### (autoloads (offlineimap) "offlineimap/offlineimap" "offlineimap/offlineimap.el"
-;;;;;;  (20829 21552))
+;;;;;;  (20829 21552 390032 311000))
 ;;; Generated autoloads from offlineimap/offlineimap.el
 
 (autoload 'offlineimap "offlineimap/offlineimap" "\
@@ -1667,7 +1674,7 @@ Start OfflineIMAP.
 
 ;;;### (autoloads (htmlize-many-files-dired htmlize-many-files htmlize-file
 ;;;;;;  htmlize-region htmlize-buffer) "org-mode/contrib/lisp/htmlize"
-;;;;;;  "org-mode/contrib/lisp/htmlize.el" (20829 21604))
+;;;;;;  "org-mode/contrib/lisp/htmlize.el" (20829 21604 510290 758000))
 ;;; Generated autoloads from org-mode/contrib/lisp/htmlize.el
 
 (autoload 'htmlize-buffer "org-mode/contrib/lisp/htmlize" "\
@@ -1733,7 +1740,8 @@ HTMLize dired-marked files.
 ;;;***
 
 ;;;### (autoloads (org-bullets-mode) "org-mode/contrib/lisp/org-bullets"
-;;;;;;  "org-mode/contrib/lisp/org-bullets.el" (20829 21604))
+;;;;;;  "org-mode/contrib/lisp/org-bullets.el" (20829 21604 510290
+;;;;;;  758000))
 ;;; Generated autoloads from org-mode/contrib/lisp/org-bullets.el
 
 (autoload 'org-bullets-mode "org-mode/contrib/lisp/org-bullets" "\
@@ -1744,7 +1752,8 @@ UTF-8 bullets for `org-mode'.
 ;;;***
 
 ;;;### (autoloads (org-contacts) "org-mode/contrib/lisp/org-contacts"
-;;;;;;  "org-mode/contrib/lisp/org-contacts.el" (20829 21604))
+;;;;;;  "org-mode/contrib/lisp/org-contacts.el" (20829 21604 514290
+;;;;;;  787000))
 ;;; Generated autoloads from org-mode/contrib/lisp/org-contacts.el
 
 (autoload 'org-contacts "org-mode/contrib/lisp/org-contacts" "\
@@ -1756,7 +1765,8 @@ Create agenda view for contacts matching NAME.
 
 ;;;### (autoloads (org-registry-update org-registry-insinuate org-registry-initialize
 ;;;;;;  org-registry-visit org-registry-show) "org-mode/contrib/lisp/org-registry"
-;;;;;;  "org-mode/contrib/lisp/org-registry.el" (20829 21604))
+;;;;;;  "org-mode/contrib/lisp/org-registry.el" (20829 21604 526290
+;;;;;;  839000))
 ;;; Generated autoloads from org-mode/contrib/lisp/org-registry.el
 
 (autoload 'org-registry-show "org-mode/contrib/lisp/org-registry" "\
@@ -1794,7 +1804,7 @@ Update the registry for the current Org file.
 ;;;***
 
 ;;;### (autoloads (org-toc-show) "org-mode/contrib/lisp/org-toc"
-;;;;;;  "org-mode/contrib/lisp/org-toc.el" (20829 21604))
+;;;;;;  "org-mode/contrib/lisp/org-toc.el" (20829 21604 526290 839000))
 ;;; Generated autoloads from org-mode/contrib/lisp/org-toc.el
 
 (autoload 'org-toc-show "org-mode/contrib/lisp/org-toc" "\
@@ -1806,7 +1816,7 @@ Show the table of contents of the current Org-mode buffer.
 
 ;;;### (autoloads (org-track-compile-org org-track-fetch-package)
 ;;;;;;  "org-mode/contrib/lisp/org-track" "org-mode/contrib/lisp/org-track.el"
-;;;;;;  (20829 21604))
+;;;;;;  (20829 21604 526290 839000))
 ;;; Generated autoloads from org-mode/contrib/lisp/org-track.el
 
 (autoload 'org-track-fetch-package "org-mode/contrib/lisp/org-track" "\
@@ -1828,7 +1838,8 @@ DIRECTORY is where the directory org-mode/ lives (i.e. the
 ;;;***
 
 ;;;### (autoloads (org-freemind-export-to-freemind) "org-mode/contrib/lisp/ox-freemind"
-;;;;;;  "org-mode/contrib/lisp/ox-freemind.el" (20829 21604))
+;;;;;;  "org-mode/contrib/lisp/ox-freemind.el" (20829 21604 530290
+;;;;;;  867000))
 ;;; Generated autoloads from org-mode/contrib/lisp/ox-freemind.el
 
 (autoload 'org-freemind-export-to-freemind "org-mode/contrib/lisp/ox-freemind" "\
@@ -1865,7 +1876,8 @@ Return output file's name.
 
 ;;;### (autoloads (org-koma-letter-export-to-pdf org-koma-letter-export-to-latex
 ;;;;;;  org-koma-letter-export-as-latex) "org-mode/contrib/lisp/ox-koma-letter"
-;;;;;;  "org-mode/contrib/lisp/ox-koma-letter.el" (20829 21604))
+;;;;;;  "org-mode/contrib/lisp/ox-koma-letter.el" (20829 21604 534290
+;;;;;;  880000))
 ;;; Generated autoloads from org-mode/contrib/lisp/ox-koma-letter.el
 
 (autoload 'org-koma-letter-export-as-latex "org-mode/contrib/lisp/ox-koma-letter" "\
@@ -1967,7 +1979,7 @@ Return PDF file's name.
 
 ;;;### (autoloads (org-rss-publish-to-rss org-rss-export-to-rss org-rss-export-as-rss)
 ;;;;;;  "org-mode/contrib/lisp/ox-rss" "org-mode/contrib/lisp/ox-rss.el"
-;;;;;;  (20829 21604))
+;;;;;;  (20829 21604 534290 880000))
 ;;; Generated autoloads from org-mode/contrib/lisp/ox-rss.el
 
 (autoload 'org-rss-export-as-rss "org-mode/contrib/lisp/ox-rss" "\
@@ -2033,7 +2045,7 @@ Return output file name.
 
 ;;;### (autoloads (org-taskjuggler-export-and-open org-taskjuggler-export)
 ;;;;;;  "org-mode/contrib/lisp/ox-taskjuggler" "org-mode/contrib/lisp/ox-taskjuggler.el"
-;;;;;;  (20829 21604))
+;;;;;;  (20829 21604 534290 880000))
 ;;; Generated autoloads from org-mode/contrib/lisp/ox-taskjuggler.el
 
 (autoload 'org-taskjuggler-export "org-mode/contrib/lisp/ox-taskjuggler" "\
@@ -2112,7 +2124,7 @@ Open file with the TaskJuggler GUI.
 ;;;;;;  org-run-like-in-org-mode turn-on-orgstruct++ turn-on-orgstruct
 ;;;;;;  orgstruct-mode org-global-cycle org-cycle org-mode org-clock-persistence-insinuate
 ;;;;;;  turn-on-orgtbl org-version org-babel-do-load-languages) "org-mode/lisp/org"
-;;;;;;  "org-mode/lisp/org.el" (20829 21604))
+;;;;;;  "org-mode/lisp/org.el" (20829 21604 654291 473000))
 ;;; Generated autoloads from org-mode/lisp/org.el
 
 (autoload 'org-babel-do-load-languages "org-mode/lisp/org" "\
@@ -2329,7 +2341,7 @@ Call the customize function with org as argument.
 ;;;;;;  org-search-view org-agenda-list org-batch-store-agenda-views
 ;;;;;;  org-store-agenda-views org-batch-agenda-csv org-batch-agenda
 ;;;;;;  org-agenda org-toggle-sticky-agenda) "org-mode/lisp/org-agenda"
-;;;;;;  "org-mode/lisp/org-agenda.el" (20829 21604))
+;;;;;;  "org-mode/lisp/org-agenda.el" (20829 21604 606291 238000))
 ;;; Generated autoloads from org-mode/lisp/org-agenda.el
 
 (autoload 'org-toggle-sticky-agenda "org-mode/lisp/org-agenda" "\
@@ -2382,7 +2394,7 @@ longer string it is used as a tags/todo match string.
 Parameters are alternating variable names and values that will be bound
 before running the agenda command.
 
-\(fn CMD-KEY &rest PARAMETERS)" nil (quote macro))
+\(fn CMD-KEY &rest PARAMETERS)" nil t)
 
 (autoload 'org-batch-agenda-csv "org-mode/lisp/org-agenda" "\
 Run an agenda command in batch mode and send the result to STDOUT.
@@ -2419,7 +2431,7 @@ priority-l   The priority letter if any was given
 priority-n   The computed numerical priority
 agenda-day   The day in the agenda where this is listed
 
-\(fn CMD-KEY &rest PARAMETERS)" nil (quote macro))
+\(fn CMD-KEY &rest PARAMETERS)" nil t)
 
 (autoload 'org-store-agenda-views "org-mode/lisp/org-agenda" "\
 Store agenda views.
@@ -2429,7 +2441,7 @@ Store agenda views.
 (autoload 'org-batch-store-agenda-views "org-mode/lisp/org-agenda" "\
 Run all custom agenda commands that have a file argument.
 
-\(fn &rest PARAMETERS)" nil (quote macro))
+\(fn &rest PARAMETERS)" nil t)
 
 (autoload 'org-agenda-list "org-mode/lisp/org-agenda" "\
 Produce a daily/weekly view from all files in variable `org-agenda-files'.
@@ -2591,7 +2603,7 @@ to override `appt-message-warning-time'.
 
 ;;;### (autoloads (org-capture-import-remember-templates org-capture
 ;;;;;;  org-capture-string) "org-mode/lisp/org-capture" "org-mode/lisp/org-capture.el"
-;;;;;;  (20829 21604))
+;;;;;;  (20829 21604 606291 238000))
 ;;; Generated autoloads from org-mode/lisp/org-capture.el
 
 (autoload 'org-capture-string "org-mode/lisp/org-capture" "\
@@ -2635,7 +2647,7 @@ Set `org-capture-templates' to be similar to `org-remember-templates'.
 
 ;;;### (autoloads (org-agenda-columns org-insert-columns-dblock org-dblock-write:columnview
 ;;;;;;  org-columns) "org-mode/lisp/org-colview" "org-mode/lisp/org-colview.el"
-;;;;;;  (20829 21604))
+;;;;;;  (20829 21604 610291 265000))
 ;;; Generated autoloads from org-mode/lisp/org-colview.el
 
 (autoload 'org-columns "org-mode/lisp/org-colview" "\
@@ -2679,29 +2691,29 @@ Turn on or update column view in the agenda.
 ;;;***
 
 ;;;### (autoloads (org-check-version) "org-mode/lisp/org-compat"
-;;;;;;  "org-mode/lisp/org-compat.el" (20829 21604))
+;;;;;;  "org-mode/lisp/org-compat.el" (20829 21604 610291 265000))
 ;;; Generated autoloads from org-mode/lisp/org-compat.el
 
 (autoload 'org-check-version "org-mode/lisp/org-compat" "\
 Try very hard to provide sensible version strings.
 
-\(fn)" nil (quote macro))
+\(fn)" nil t)
 
 ;;;***
 
 ;;;### (autoloads (org-load-noerror-mustsuffix) "org-mode/lisp/org-macs"
-;;;;;;  "org-mode/lisp/org-macs.el" (20829 21604))
+;;;;;;  "org-mode/lisp/org-macs.el" (20829 21604 626291 343000))
 ;;; Generated autoloads from org-mode/lisp/org-macs.el
 
 (autoload 'org-load-noerror-mustsuffix "org-mode/lisp/org-macs" "\
 Load FILE with optional arguments NOERROR and MUSTSUFFIX.  Drop the MUSTSUFFIX argument for XEmacs, which doesn't recognize it.
 
-\(fn FILE)" nil (quote macro))
+\(fn FILE)" nil t)
 
 ;;;***
 
 ;;;### (autoloads (org-git-version org-release) "org-mode/lisp/org-version"
-;;;;;;  "org-mode/lisp/org-version.el" (20829 21606))
+;;;;;;  "org-mode/lisp/org-version.el" (20829 21606 714301 698000))
 ;;; Generated autoloads from org-mode/lisp/org-version.el
 
 (autoload 'org-release "org-mode/lisp/org-version" "\
@@ -2722,7 +2734,7 @@ The location of ODT styles.")
 ;;;***
 
 ;;;### (autoloads (paredit-mode) "paredit/paredit" "paredit/paredit.el"
-;;;;;;  (20829 21624))
+;;;;;;  (20829 21624 258388 685000))
 ;;; Generated autoloads from paredit/paredit.el
 
 (autoload 'paredit-mode "paredit/paredit" "\
@@ -2739,7 +2751,7 @@ Paredit behaves badly if parentheses are imbalanced, so exercise
 ;;;***
 
 ;;;### (autoloads (global-undo-tree-mode undo-tree-mode) "undo-tree/undo-tree"
-;;;;;;  "undo-tree/undo-tree.el" (20829 21666))
+;;;;;;  "undo-tree/undo-tree.el" (20829 21666 622598 758000))
 ;;; Generated autoloads from undo-tree/undo-tree.el
 
 (autoload 'undo-tree-mode "undo-tree/undo-tree" "\
@@ -2786,7 +2798,7 @@ See `undo-tree-mode' for more information on Undo-Tree mode.
 ;;;***
 
 ;;;### (autoloads (vr/query-replace vr/replace) "visual-regexp/visual-regexp"
-;;;;;;  "visual-regexp/visual-regexp.el" (20839 49289))
+;;;;;;  "visual-regexp/visual-regexp.el" (20840 8985 813097 206000))
 ;;; Generated autoloads from visual-regexp/visual-regexp.el
 
 (autoload 'vr/replace "visual-regexp/visual-regexp" "\
@@ -2802,7 +2814,7 @@ Use vr/query-replace like you would use query-replace-regexp.
 ;;;***
 
 ;;;### (autoloads (yas-global-mode yas-minor-mode) "yasnippet/yasnippet"
-;;;;;;  "yasnippet/yasnippet.el" (20829 21673))
+;;;;;;  "yasnippet/yasnippet.el" (20829 21673 154631 157000))
 ;;; Generated autoloads from yasnippet/yasnippet.el
 
 (autoload 'yas-minor-mode "yasnippet/yasnippet" "\
@@ -2943,7 +2955,7 @@ See `yas-minor-mode' for more information on Yas minor mode.
 ;;;;;;  "org-mode/lisp/ox-odt.el" "org-mode/lisp/ox-org.el" "org-mode/lisp/ox-publish.el"
 ;;;;;;  "org-mode/lisp/ox-texinfo.el" "org-mode/lisp/ox.el" "popup/popup.el"
 ;;;;;;  "s/s.el" "yasnippet/dropdown-list.el" "yasnippet/yasnippet-debug.el"
-;;;;;;  "yasnippet/yasnippet-tests.el") (20839 49290 472421))
+;;;;;;  "yasnippet/yasnippet-tests.el") (20840 8986 330981 921000))
 
 ;;;***
 

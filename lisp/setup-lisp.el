@@ -172,12 +172,18 @@
           (paredit-kill nil))))
 
     (use-package paredit
-      :bind (("C-S-d" . paredit-duplicate-after-point)
-             ("C-k" . paredit-eager-kill-line)
-             ("M-R" . paredit-raise-sexp)
-             ("C-M-a" . paredit-backward)
-             ("C-M-S-a" . beginning-of-defun)
-             ))
+      :init (progn
+
+              (defun my-paredit-mode-hook
+                ()
+                (bind-key "C-S-d" 'paredit-duplicate-after-point paredit-mode-map)
+                (bind-key "C-k" 'paredit-eager-kill-line paredit-mode-map)
+                (bind-key "M-R" 'paredit-raise-sexp paredit-mode-map)
+                (bind-key "C-M-a" 'paredit-backward paredit-mode-map)
+                (bind-key "C-M-S-a" 'beginning-of-defun
+                paredit-mode-map))
+
+              (add-hook 'paredit-mode-hook 'my-paredit-mode-hook)))
 
     (defun my-lisp-mode-hook ()
       (initialize-lisp-mode)
@@ -195,7 +201,7 @@
       (if (memq major-mode
                 '(emacs-lisp-mode inferior-emacs-lisp-mode ielm-mode))
           (progn
-            (bind-key "<M-return>" 'outline-insert-heading emacs-lisp-mode-map)
+            ;; (bind-key "<M-return>" 'outline-insert-heading emacs-lisp-mode-map)
             (bind-key "<tab>" 'my-elisp-indent-or-complete emacs-lisp-mode-map)
             (bind-key (kbd "M-.") 'elisp-slime-nav-find-elisp-thing-at-point))
         ;; (turn-on-cldoc-mode)

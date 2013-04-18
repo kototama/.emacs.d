@@ -1,7 +1,6 @@
 (use-package notmuch
   :init
   (progn
-
     (use-package notmuch-address)
     (use-package org-notmuch)
     ;; (use-package gnus-art)
@@ -13,8 +12,6 @@
                                    notmuch-hello-insert-footer))
     
     (setq notmuch-address-command "nottoomuch-addresses.sh")
-    (notmuch-address-message-insinuate)
-
     (setq mail-user-agent 'message-user-agent)
 
     (setq user-mail-address "email@"
@@ -29,9 +26,6 @@
     (setq notmuch-fcc-dirs "Sent")
     (setq notmuch-search-oldest-first nil)
 
-
-    
-
     (defun my-notmuch-hello-mode-hook
       ()
 
@@ -45,8 +39,7 @@
 						      (interactive)
 						      (shell-command "offlineimap -o")
 						      (notmuch-hello-update
-						       nil)))
-      )
+						       nil))))
 
     (defun my-notmuch-search-mode-hook
       ()
@@ -81,19 +74,13 @@
 
     (defadvice notmuch-hello (after jump-to-unread-or-inbox activate)
       (notmuch-jump-to-unread-or-inbox))
-      
 
     (add-hook 'message-mode-hook
               (lambda ()
+                (notmuch-address-message-insinuate)
                 (flyspell-mode))))
 
   :bind (("C-c m n" . notmuch-mua-new-mail)
          ("C-c m m" . notmuch-hello)))
-
-;; ;; (autoload 'notmuch-mua-new-mail "notmuch" "notmuch-mode" t)
-;; ;; (autoload 'notmuch-hello "notmuch" "notmuch-mode" t)
-
-;; (global-set-key (kbd "C-c m n") 'notmuch-mua-new-mail)
-;; (global-set-key (kbd "C-c m m") 'notmuch-hello)
 
 (provide 'init-notmuch)

@@ -2,7 +2,6 @@
                       inferior-emacs-lisp-mode
                       ielm-mode
                       lisp-mode
-                      clojure-mode
                       inferior-lisp-mode
                       lisp-interaction-mode
                       slime-repl-mode))
@@ -17,14 +16,6 @@
 (use-package lisp-mode
   :init
   (progn
-    ;; (defface esk-paren-face
-    ;;   '((((class color) (background dark))
-    ;;      (:foreground "grey50"))
-    ;;     (((class color) (background light))
-    ;;      (:foreground "grey55")))
-    ;;   "Face used to dim parentheses."
-    ;;   :group 'starter-kit-faces)
-
     ;; Change lambda to an actual lambda symbol
     (mapc (lambda (major-mode)
             (font-lock-add-keywords
@@ -194,22 +185,27 @@
       ;; (redshank-mode 1)
       (elisp-slime-nav-mode 1)
 
-      (local-set-key (kbd "<return>") 'paredit-newline)
-
       (add-hook 'after-save-hook 'check-parens nil t)
 
       (if (memq major-mode
                 '(emacs-lisp-mode inferior-emacs-lisp-mode ielm-mode))
           (progn
-            ;; (bind-key "<M-return>" 'outline-insert-heading emacs-lisp-mode-map)
-            (bind-key "<tab>" 'my-elisp-indent-or-complete emacs-lisp-mode-map)
-            (bind-key (kbd "M-.") 'elisp-slime-nav-find-elisp-thing-at-point))
-        ;; (turn-on-cldoc-mode)
+            (bind-key "<tab>" 'my-elisp-indent-or-complete
+                emacs-lisp-mode-map)
+            (bind-key "<return>" 'paredit-newline emacs-lisp-mode-map) ;; ??
+            (bind-key "M-." 'elisp-slime-nav-find-elisp-thing-at-point emacs-lisp-mode-map)
+            ;; (turn-on-cldoc-mode)
 
-        (bind-key "<tab>" 'my-lisp-indent-or-complete lisp-mode-map))
+            (bind-key "<tab>" 'my-lisp-indent-or-complete lisp-mode-map)))
 
       (yas/minor-mode 1)
       (eldoc-mode 1))
+
+    (defun my-minibuffer-hook ()
+      (if (eq this-command 'eval-expression)
+          (paredit-mode 1)))
+
+    (add-hook 'minibuffer-setup-hook 'my-minibuffer-hook)
 
     (hook-into-modes #'my-lisp-mode-hook lisp-mode-hooks)))
 

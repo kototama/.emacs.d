@@ -59,8 +59,7 @@
 							  "+unread"))))
 
       (define-key notmuch-show-mode-map "r" 'notmuch-show-reply)
-      (define-key notmuch-show-mode-map "R"
-      'notmuch-search-reply-sender))
+      (define-key notmuch-show-mode-map "R" 'notmuch-search-reply-sender))
 
     (defun notmuch-jump-to-unread-or-inbox
       ()

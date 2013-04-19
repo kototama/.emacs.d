@@ -136,6 +136,8 @@
                      (autoload 'global-undo-tree-mode "undo-tree.el" "Global undo tree mode" t))))
  (visual-regexp status "installed" recipe
                 (:name visual-regexp :description "A regexp/replace command for Emacs with interactive visual feedback" :type github :pkgname "benma/visual-regexp.el" :features visual-regexp))
+ (wgrep status "installed" recipe
+        (:name wgrep :auto-generated t :type emacswiki :description "Writable grep buffer and apply the changes to files" :website "https://raw.github.com/emacsmirror/emacswiki.org/master/wgrep.el"))
  (yasnippet status "installed" recipe
             (:name yasnippet :website "https://github.com/capitaomorte/yasnippet.git" :description "YASnippet is a template system for Emacs." :type github :pkgname "capitaomorte/yasnippet" :features "yasnippet" :pre-init
                    (unless

@@ -82,7 +82,7 @@
 (column-number-mode t)
 (ido-ubiquitous-mode 1)
 (ac-config-default)
-(savehist-mode 1)
+;; (savehist-mode 1)
 ;; load keybindings
 (ktm-global-mode 1)
 

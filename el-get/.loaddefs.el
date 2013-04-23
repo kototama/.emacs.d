@@ -2798,7 +2798,7 @@ See `undo-tree-mode' for more information on Undo-Tree mode.
 ;;;***
 
 ;;;### (autoloads (vr/query-replace vr/replace) "visual-regexp/visual-regexp"
-;;;;;;  "visual-regexp/visual-regexp.el" (20840 8985 813097 206000))
+;;;;;;  "visual-regexp/visual-regexp.el" (20852 64931 983933 567000))
 ;;; Generated autoloads from visual-regexp/visual-regexp.el
 
 (autoload 'vr/replace "visual-regexp/visual-regexp" "\
@@ -2955,7 +2955,7 @@ See `yas-minor-mode' for more information on Yas minor mode.
 ;;;;;;  "org-mode/lisp/ox-odt.el" "org-mode/lisp/ox-org.el" "org-mode/lisp/ox-publish.el"
 ;;;;;;  "org-mode/lisp/ox-texinfo.el" "org-mode/lisp/ox.el" "popup/popup.el"
 ;;;;;;  "s/s.el" "wgrep/wgrep.el" "yasnippet/dropdown-list.el" "yasnippet/yasnippet-debug.el"
-;;;;;;  "yasnippet/yasnippet-tests.el") (20849 1788 580941 156000))
+;;;;;;  "yasnippet/yasnippet-tests.el") (20852 64932 359275 903000))
 
 ;;;***
 

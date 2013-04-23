@@ -3,28 +3,6 @@
 (use-package clojure-mode
   :init (progn
           
-          (use-package nrepl
-            :init
-            (progn
-
-              (use-package ac-nrepl)
-              
-              (defun my-nrepl-init-mode-hook
-                ()
-                (auto-complete-mode 1)
-                (paredit-mode 1)
-                (bind-key "<S-return>" 'nrepl-return nrepl-mode-map))
-
-              (defun my-nrepl-show-server-buffer
-                ()
-                (interactive)
-                (switch-to-buffer "*nrepl-server*")
-                (ktm-mode 1))
-
-              (add-hook 'nrepl-mode-hook 'my-nrepl-init-mode-hook)
-              (add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
-              (add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)))
-          
           (defun earmuffy (&optional arg)
             (interactive "P")
             (let* ((variable (thing-at-point 'sexp))
@@ -54,11 +32,38 @@
               ;; loads the file into the REPL upon saving
               (nrepl-load-current-buffer)))
 
+          (defun my-clojure-switch-to-nrepl-buffer
+            ()
+            (interactive)
+            (switch-to-buffer-other-window "*nrepl*"))
+
           (defun my-clojure-mode-hook ()
+            (use-package nrepl
+              :init
+              (progn
+
+                (use-package ac-nrepl)
+                
+                (defun my-nrepl-init-mode-hook
+                  ()
+                  (auto-complete-mode 1)
+                  (paredit-mode 1)
+                  (bind-key "<S-return>" 'nrepl-return nrepl-mode-map))
+
+                (defun my-nrepl-show-server-buffer
+                  ()
+                  (interactive)
+                  (switch-to-buffer "*nrepl-server*")
+                  (ktm-mode 1))
+
+                (add-hook 'nrepl-mode-hook 'my-nrepl-init-mode-hook)
+                (add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
+                (add-hook 'nrepl-interaction-mode-hook
+                          'ac-nrepl-setup)))
+            
             (paredit-mode t)
             (show-paren-mode t)
             ;; (flyspell-prog-mode nil)
-            (elisp-slime-nav-mode nil)
 
             ;; (define-key clojure-mode-map "{" 'paredit-open-curly)
             ;; (define-key clojure-mode-map "}" 'paredit-close-curly)
@@ -74,12 +79,14 @@
             
 	    (bind-key "C-*" 'earmuffy)
             (bind-key "C-c n j" 'nrepl-jack-in clojure-mode-map)
+            (bind-key "C-c n n" 'my-clojure-switch-to-nrepl-buffer clojure-mode-map)
             (bind-key "C-c n q" 'nrepl-quit clojure-mode-map)
-            (bind-key "C-x C-s" 'my-clojure-compile-on-save
+            (bind-key "C-x C-s" 'my-clojure-compile-on-save clojure-mode-map)
+            (bind-key "C-c n b" 'my-nrepl-show-server-buffer clojure-mode-map)
+            (bind-key "C-S-e" 'nrepl-eval-last-expression
             clojure-mode-map)
-            (bind-key "C-c n b" 'my-nrepl-show-server-buffer
-            clojure-mode-map)
-            (bind-key "C-S-e" 'nrepl-eval-last-expression clojure-mode-map))
+            (bind-key "<return>" 'paredit-newline clojure-mode-map)
+            (bind-key "M-." 'nrepl-jump clojure-mode-map))
 
           (add-hook 'clojure-mode-hook 'my-clojure-mode-hook))
 

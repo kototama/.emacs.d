@@ -2,6 +2,8 @@
            (:name ac-nrepl :description "Nrepl completion source for Emacs auto-complete package" :type github :pkgname "purcell/ac-nrepl" :depends
                   (auto-complete nrepl)
                   :features ac-nrepl))
+ (ace-jump-mode status "installed" recipe
+                (:name ace-jump-mode :website "https://github.com/winterTTr/ace-jump-mode/wiki" :description "A quick cursor location minor mode for emacs" :type github :pkgname "winterTTr/ace-jump-mode" :features ace-jump-mode))
  (ack-and-a-half status "installed" recipe
                  (:name ack-and-a-half :description "Yet another front-end for ack" :type github :pkgname "jhelwig/ack-and-a-half" :prepare
                         (progn
@@ -78,6 +80,8 @@
         (:name nrepl :description "An Emacs client for nREPL, the Clojure networked REPL server." :type github :pkgname "kingtim/nrepl.el" :depends clojure-mode))
  (nrepl-eval-sexp-fu status "installed" recipe
                      (:name nrepl-eval-sexp-fu :description "Fancy highlighting of sexps on eval" :type github :pkgname "samaaron/nrepl-eval-sexp-fu" :features nrepl-eval-sexp-fu))
+ (nyan-mode status "installed" recipe
+            (:name nyan-mode :description "Nyan Cat for Emacs! Nyanyanyanyanyanyanyanyanyan!" :type github :pkgname "TeMPOraL/nyan-mode" :features nyan-mode))
  (offlineimap status "installed" recipe
               (:name offlineimap :description "Run OfflineIMAP from Emacs" :type git :url "git://git.naquadah.org/offlineimap-el.git" :features offlineimap))
  (org-mode status "installed" recipe
@@ -135,7 +139,7 @@
                      (autoload 'undo-tree-mode "undo-tree.el" "Undo tree mode; see undo-tree.el for details" t)
                      (autoload 'global-undo-tree-mode "undo-tree.el" "Global undo tree mode" t))))
  (visual-regexp status "installed" recipe
-                (:name visual-regexp :description "A regexp/replace command for Emacs with interactive visual feedback" :type github :pkgname "benma/visual-regexp.el"))
+                (:name visual-regexp :description "A regexp/replace command for Emacs with\n       interactive visual feedback" :type github :depends cl-lib :pkgname "benma/visual-regexp.el"))
  (wgrep status "installed" recipe
         (:name wgrep :auto-generated t :type emacswiki :description "Writable grep buffer and apply the changes to files" :website "https://raw.github.com/emacsmirror/emacswiki.org/master/wgrep.el"))
  (yasnippet status "installed" recipe

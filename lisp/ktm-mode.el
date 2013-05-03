@@ -110,7 +110,8 @@
     (define-key ktm-mode-map (kbd "C-c T") 'multi-term)
     (define-key ktm-mode-map (kbd "C-<") 'mark-previous-like-this)
     (define-key ktm-mode-map (kbd "C->") 'mark-next-like-this)
-    (define-key ktm-mode-map (kbd "C-M-m") 'mc/mark-next-like-this)
+    (define-key ktm-mode-map (kbd "C-M-m") 'mark-sexp)
+    (define-key ktm-mode-map (kbd "C-M-S-m") 'mc/mark-next-like-this)
     (define-key ktm-mode-map (kbd "C-M-<SPC>") 'mark-sexp)
     (define-key ktm-mode-map (kbd "C-M-S-<SPC>") 'er/expand-region)
     (define-key ktm-mode-map (kbd "C-.") 'hippie-expand)
@@ -132,6 +133,8 @@
     (define-key ktm-mode-map (kbd "æ") 'beginning-of-buffer)
     ;; altgr-e
     (define-key ktm-mode-map (kbd "€") 'end-of-buffer)
+    ;; altgr-S-e
+    (define-key ktm-mode-map (kbd "¢") 'mc/edit-lines)
 
     (define-key ktm-mode-map [C-down-mouse-1] 'browse-url-at-mouse)
     

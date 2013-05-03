@@ -4,7 +4,6 @@
     
     (defun my-notmuch-hello-mode-hook
       ()
-
       (define-key notmuch-hello-mode-map "="
         (lambda ()
           (interactive)
@@ -44,9 +43,13 @@
         (when (not (re-search-forward "unread" nil t))
           (re-search-forward "inbox" nil t))
         (backward-word))
+
+      (defun my-notmuch-show-hook
+        ()
+        (require 'org-notmuch))
       
       (use-package notmuch-address)
-      (use-package org-notmuch)
+      
       ;; (use-package gnus-art)
 
       (setq notmuch-hello-sections '(notmuch-hello-insert-saved-searches
@@ -71,7 +74,9 @@
       (setq notmuch-search-oldest-first nil)
 
       (add-hook 'notmuch-hello-mode-hook 'my-notmuch-hello-mode-hook)
-      (add-hook 'notmuch-search-mode-hook 'my-notmuch-search-mode-hook)
+      (add-hook 'notmuch-search-mode-hook
+      'my-notmuch-search-mode-hook)
+      (add-hook 'notmuch-show-hook 'my-notmuch-show-hook)
 
       (defadvice notmuch-hello (after jump-to-registero-unread-or-inbox activate)
         (notmuch-jump-to-unread-or-inbox))

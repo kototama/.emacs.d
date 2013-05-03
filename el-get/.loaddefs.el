@@ -55,6 +55,59 @@ A popup alternative to `nrepl-doc'.
 
 ;;;***
 
+;;;### (autoloads (ace-jump-mode ace-jump-line-mode ace-jump-word-mode
+;;;;;;  ace-jump-char-mode ace-jump-mode-pop-mark) "ace-jump-mode/ace-jump-mode"
+;;;;;;  "ace-jump-mode/ace-jump-mode.el" (20867 43587 195702 270000))
+;;; Generated autoloads from ace-jump-mode/ace-jump-mode.el
+
+(autoload 'ace-jump-mode-pop-mark "ace-jump-mode/ace-jump-mode" "\
+Pop up a postion from `ace-jump-mode-mark-ring', and jump back to that position
+
+\(fn)" t nil)
+
+(autoload 'ace-jump-char-mode "ace-jump-mode/ace-jump-mode" "\
+AceJump char mode
+
+\(fn QUERY-CHAR)" t nil)
+
+(autoload 'ace-jump-word-mode "ace-jump-mode/ace-jump-mode" "\
+AceJump word mode.
+You can set `ace-jump-word-mode-use-query-char' to nil to prevent
+asking for a head char, that will mark all the word in current
+buffer.
+
+\(fn HEAD-CHAR)" t nil)
+
+(autoload 'ace-jump-line-mode "ace-jump-mode/ace-jump-mode" "\
+AceJump line mode.
+Marked each no empty line and move there
+
+\(fn)" t nil)
+
+(autoload 'ace-jump-mode "ace-jump-mode/ace-jump-mode" "\
+AceJump mode is a minor mode for you to quick jump to a
+position in the curret view.
+   There is three submode now:
+     `ace-jump-char-mode'
+     `ace-jump-word-mode'
+     `ace-jump-line-mode'
+
+You can specify the sequence about which mode should enter
+by customize `ace-jump-mode-submode-list'.
+
+If you do not want to query char for word mode, you can change
+`ace-jump-word-mode-use-query-char' to nil.
+
+If you don't like the default move keys, you can change it by
+setting `ace-jump-mode-move-keys'.
+
+You can constrol whether use the case sensitive via
+`ace-jump-mode-case-fold'.
+
+\(fn &optional PREFIX)" t nil)
+
+;;;***
+
 ;;;### (autoloads (ack-and-a-half-find-file-same ack-and-a-half-find-file
 ;;;;;;  ack-and-a-half-same ack-and-a-half) "ack-and-a-half/ack-and-a-half"
 ;;;;;;  "ack-and-a-half/ack-and-a-half.el" (20829 33927 135395 359000))
@@ -1661,6 +1714,30 @@ Connect nrepl to HOST and PORT.
 
 ;;;***
 
+;;;### (autoloads (nyan-mode) "nyan-mode/nyan-mode" "nyan-mode/nyan-mode.el"
+;;;;;;  (20866 26796 822474 860000))
+;;; Generated autoloads from nyan-mode/nyan-mode.el
+
+(defvar nyan-mode nil "\
+Non-nil if Nyan mode is enabled.
+See the command `nyan-mode' for a description of this minor mode.
+Setting this variable directly does not take effect;
+either customize it (see the info node `Easy Customization')
+or call the function `nyan-mode'.")
+
+(custom-autoload 'nyan-mode "nyan-mode/nyan-mode" nil)
+
+(autoload 'nyan-mode "nyan-mode/nyan-mode" "\
+Use NyanCat to show buffer size and position in mode-line.
+You can customize this minor mode, see option `nyan-mode'.
+
+Note: If you turn this mode on then you probably want to turn off
+option `scroll-bar-mode'.
+
+\(fn &optional ARG)" t nil)
+
+;;;***
+
 ;;;### (autoloads (offlineimap) "offlineimap/offlineimap" "offlineimap/offlineimap.el"
 ;;;;;;  (20829 21552 390032 311000))
 ;;; Generated autoloads from offlineimap/offlineimap.el
@@ -2798,7 +2875,7 @@ See `undo-tree-mode' for more information on Undo-Tree mode.
 ;;;***
 
 ;;;### (autoloads (vr/query-replace vr/replace) "visual-regexp/visual-regexp"
-;;;;;;  "visual-regexp/visual-regexp.el" (20852 64931 983933 567000))
+;;;;;;  "visual-regexp/visual-regexp.el" (20862 13050 174230 664000))
 ;;; Generated autoloads from visual-regexp/visual-regexp.el
 
 (autoload 'vr/replace "visual-regexp/visual-regexp" "\
@@ -2955,7 +3032,7 @@ See `yas-minor-mode' for more information on Yas minor mode.
 ;;;;;;  "org-mode/lisp/ox-odt.el" "org-mode/lisp/ox-org.el" "org-mode/lisp/ox-publish.el"
 ;;;;;;  "org-mode/lisp/ox-texinfo.el" "org-mode/lisp/ox.el" "popup/popup.el"
 ;;;;;;  "s/s.el" "wgrep/wgrep.el" "yasnippet/dropdown-list.el" "yasnippet/yasnippet-debug.el"
-;;;;;;  "yasnippet/yasnippet-tests.el") (20852 64932 359275 903000))
+;;;;;;  "yasnippet/yasnippet-tests.el") (20867 43588 599664 665000))
 
 ;;;***
 

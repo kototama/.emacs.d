@@ -85,6 +85,7 @@
 ;; (savehist-mode 1)
 ;; load keybindings
 (ktm-global-mode 1)
+(nyan-mode 1)
 
 ;; fonts
 (when (eq window-system 'x)

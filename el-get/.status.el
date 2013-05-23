@@ -16,8 +16,12 @@
                        (popup fuzzy)))
  (auto-complete-emacs-lisp status "installed" recipe
                            (:name auto-complete-emacs-lisp :description "Auto-complete sources for emacs lisp" :type http :url "http://www.cx4a.org/pub/auto-complete-emacs-lisp.el" :depends auto-complete))
+ (auto-indent-mode status "installed" recipe
+                   (:name auto-indent-mode :website "https://github.com/mlf176f2/auto-indent-mode.el" :description "Automatically Indent  when pressing return, pasting, and other customizable features." :type github :pkgname "mlf176f2/auto-indent-mode.el"))
  (cl-lib status "installed" recipe
          (:name cl-lib :builtin "24.3" :type elpa :description "Properly prefixed CL functions and macros" :url "http://elpa.gnu.org/packages/cl-lib.html"))
+ (cljsbuild-mode status "installed" recipe
+                 (:name cljsbuild-mode :description "Minor mode for the ClojureScript 'lein cljsbuild' command" :type github :pkgname "kototama/cljsbuild-mode"))
  (clojure-mode status "installed" recipe
                (:name clojure-mode :website "https://github.com/technomancy/clojure-mode" :description "Emacs support for the Clojure language." :type github :pkgname "technomancy/clojure-mode"))
  (color-theme status "installed" recipe

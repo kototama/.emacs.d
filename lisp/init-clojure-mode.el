@@ -83,20 +83,12 @@
             (bind-key "C-c n q" 'nrepl-quit clojure-mode-map)
             (bind-key "C-x C-s" 'my-clojure-compile-on-save clojure-mode-map)
             (bind-key "C-c n b" 'my-nrepl-show-server-buffer clojure-mode-map)
-            (bind-key "C-S-e" 'nrepl-eval-last-expression
-            clojure-mode-map)
+            (bind-key "€" 'nrepl-eval-last-expression
+	    clojure-mode-map)
+            (bind-key "<f5>" 'nrepl-eval-buffer clojure-mode-map)
             (bind-key "<return>" 'paredit-newline clojure-mode-map)
             (bind-key "M-." 'nrepl-jump clojure-mode-map))
 
           (add-hook 'clojure-mode-hook 'my-clojure-mode-hook))
 
   :bind (("C-;" . comment-region)))
-
-
-
-
-
-
-
-
-            

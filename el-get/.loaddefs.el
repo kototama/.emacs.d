@@ -164,6 +164,85 @@ Start auto-completion at current point.
 
 ;;;***
 
+;;;### (autoloads (auto-indent-global-mode auto-indent-minor-mode-on
+;;;;;;  auto-indent-minor-mode auto-indent-eol-char-newline auto-indent-eol-newline)
+;;;;;;  "auto-indent-mode/auto-indent-mode" "auto-indent-mode/auto-indent-mode.el"
+;;;;;;  (20893 60849 853773 428000))
+;;; Generated autoloads from auto-indent-mode/auto-indent-mode.el
+
+(autoload 'auto-indent-eol-newline "auto-indent-mode/auto-indent-mode" "\
+Auto-indent function for `end-of-line' and then newline.
+
+\(fn)" t nil)
+
+(autoload 'auto-indent-eol-char-newline "auto-indent-mode/auto-indent-mode" "\
+Auto-indent function for `end-of-line', insert `auto-indent-eol-char', and then newline.
+
+\(fn)" t nil)
+
+(defalias 'auto-indent-mode 'auto-indent-minor-mode)
+
+(autoload 'auto-indent-minor-mode "auto-indent-mode/auto-indent-mode" "\
+Auto Indent minor mode.
+
+With no argument, this command toggles the mode.
+positive prefix argument turns on the mode.
+Negative prefix argument turns off the mode.
+
+When auto-indent-minor-mode minor mode is enabled, yanking or pasting automatically indents
+
+Fall back to default, non-indented yanking by preceding the yanking commands with C-u.
+
+Based on auto-indentation posts, slightly redefined to allow it to be a minor mode
+
+http://www.emacswiki.org/emacs/AutoIndentation
+
+\(fn &optional ARG)" t nil)
+
+(autoload 'auto-indent-minor-mode-on "auto-indent-mode/auto-indent-mode" "\
+Turn on auto-indent minor mode.
+
+\(fn)" t nil)
+
+(defvar auto-indent-global-mode nil "\
+Non-nil if Auto-Indent-Global mode is enabled.
+See the command `auto-indent-global-mode' for a description of this minor mode.
+Setting this variable directly does not take effect;
+either customize it (see the info node `Easy Customization')
+or call the function `auto-indent-global-mode'.")
+
+(custom-autoload 'auto-indent-global-mode "auto-indent-mode/auto-indent-mode" nil)
+
+(autoload 'auto-indent-global-mode "auto-indent-mode/auto-indent-mode" "\
+Toggle Auto-Indent minor mode in all buffers.
+With prefix ARG, enable Auto-Indent-Global mode if ARG is positive;
+otherwise, disable it.  If called from Lisp, enable the mode if
+ARG is omitted or nil.
+
+Auto-Indent minor mode is enabled in all buffers where
+`auto-indent-minor-mode-on' would do it.
+See `auto-indent-minor-mode' for more information on Auto-Indent minor mode.
+
+\(fn &optional ARG)" t nil)
+
+;;;***
+
+;;;### (autoloads (cljsbuild-auto cljsbuild-mode) "cljsbuild-mode/cljsbuild-mode"
+;;;;;;  "cljsbuild-mode/cljsbuild-mode.el" (20867 44014 477821 40000))
+;;; Generated autoloads from cljsbuild-mode/cljsbuild-mode.el
+
+(autoload 'cljsbuild-mode "cljsbuild-mode/cljsbuild-mode" "\
+ClojureScript Build mode
+
+\(fn &optional ARG)" t nil)
+
+(autoload 'cljsbuild-auto "cljsbuild-mode/cljsbuild-mode" "\
+Run \"lein cljsbuild auto\" in a background buffer.
+
+\(fn)" t nil)
+
+;;;***
+
 ;;;### (autoloads (clojure-mode) "clojure-mode/clojure-mode" "clojure-mode/clojure-mode.el"
 ;;;;;;  (20829 21449 717523 191000))
 ;;; Generated autoloads from clojure-mode/clojure-mode.el
@@ -3032,7 +3111,7 @@ See `yas-minor-mode' for more information on Yas minor mode.
 ;;;;;;  "org-mode/lisp/ox-odt.el" "org-mode/lisp/ox-org.el" "org-mode/lisp/ox-publish.el"
 ;;;;;;  "org-mode/lisp/ox-texinfo.el" "org-mode/lisp/ox.el" "popup/popup.el"
 ;;;;;;  "s/s.el" "wgrep/wgrep.el" "yasnippet/dropdown-list.el" "yasnippet/yasnippet-debug.el"
-;;;;;;  "yasnippet/yasnippet-tests.el") (20867 43588 599664 665000))
+;;;;;;  "yasnippet/yasnippet-tests.el") (20893 60850 529446 193000))
 
 ;;;***
 

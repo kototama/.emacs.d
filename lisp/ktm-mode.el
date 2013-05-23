@@ -44,6 +44,8 @@
   :lighter " ktm"
   :keymap
   (let ((ktm-mode-map (make-sparse-keymap)))
+    (define-key ktm-mode-map (kbd "C-w") 'kill-ring-save)
+    (define-key ktm-mode-map (kbd "C-S-w") 'kill-region)
     (define-key ktm-mode-map (kbd "C-S-k") (lambda ()
                                        (interactive)
                                        (kill-buffer (current-buffer))))
@@ -75,7 +77,7 @@
     (define-key ktm-mode-map (kbd "M-o") 'my-helm)
     ;; (define-key ktm-mode-map (kbd "M-x") 'smex)
     ;; (define-key ktm-mode-map (kbd "M-X") 'smex-major-mode-commands)
-    (define-key ktm-mode-map (kbd "C-x SPC") 'ace-jump-mode)
+    (define-key ktm-mode-map (kbd "M-j") 'ace-jump-mode)
     (define-key ktm-mode-map (kbd "C-x p") 'pop-to-mark-command)
     (define-key ktm-mode-map (kbd "C-c l") 'org-store-link)
     ;; (define-key ktm-mode-map (kbd "C-x b") 'helm-buffers-list)
@@ -126,16 +128,62 @@
     ;; altgr-b
     (define-key ktm-mode-map (kbd "”") 'backward-word)
     ;; altgr-f
-    (define-key ktm-mode-map (kbd "đ") 'forward-word)
+    (define-key ktm-mode-map (kbd "đ") 'ido-find-file)
     ;; altgr-x
     (define-key ktm-mode-map (kbd "»") 'smex)
     ;; altgr-a
-    (define-key ktm-mode-map (kbd "æ") 'beginning-of-buffer)
+    ;; (define-key ktm-mode-map (kbd "S-æ") 'beginning-of-buffer)
     ;; altgr-e
-    (define-key ktm-mode-map (kbd "€") 'end-of-buffer)
+    (define-key ktm-mode-map (kbd "€") 'eval-last-sexp)
+    ;; altgr-s
+    ;; (define-key ktm-mode-map (kbd "ß") nil)
+    ;; algr-g
+    (define-key ktm-mode-map (kbd "ŋ") 'keyboard-quit)
+    ;; altgr-o
+    (define-key ktm-mode-map (kbd "ø") 'ido-switch-buffer)
+    ;; altgr-k
+    (define-key ktm-mode-map (kbd "ĸ") (lambda ()
+                                       (interactive)
+                                       (kill-buffer (current-buffer))))
+    (define-key ktm-mode-map (kbd "S-<home>") 'beginning-of-buffer)
+    
+    (define-key ktm-mode-map (kbd "S-<end>") 'end-of-buffer)
     ;; altgr-S-e
     (define-key ktm-mode-map (kbd "¢") 'mc/edit-lines)
 
+    ;; since I inverted AltGr and R_Ctrl on my keyboard configuration
+    ;; this is sometimes usefull
+    (define-key ktm-mode-map (kbd "C-(") (lambda
+                                           ()
+                                           (interactive)
+                                           (insert "[")))
+    (define-key ktm-mode-map (kbd "C-)") (lambda
+                                           ()
+                                           (interactive)
+                                           (insert "]")))
+    (define-key ktm-mode-map (kbd "C-'") (lambda
+                                           ()
+                                           (interactive)
+                                           (insert "{")))
+    (define-key ktm-mode-map (kbd "C-=") (lambda
+                                           ()
+                                           (interactive)
+                                           (insert "}")))
+    (define-key ktm-mode-map (kbd "C-à") (lambda
+                                           ()
+                                           (interactive)
+                                           (insert "@")))
+    (define-key ktm-mode-map (kbd "C-\"") (lambda
+                                            ()
+                                           (interactive)
+                                           (insert "#")))
+    (define-key ktm-mode-map (kbd "C-é") (lambda
+                                            ()
+                                           (interactive)
+                                           (insert "~")))
+
+    
+    
     (define-key ktm-mode-map [C-down-mouse-1] 'browse-url-at-mouse)
     
     ktm-mode-map)

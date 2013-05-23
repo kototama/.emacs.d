@@ -80,7 +80,7 @@ The buffer is saved if a copyright notice is inserted."
     (kill-region (mark) (point))
     (insert-string (concat "{{" key "}}"))))
 
-(defun start-carneades-project
+(defun carneades-start-project
   ()
   "Open the routes file, compiles and starts the project "
   (interactive)

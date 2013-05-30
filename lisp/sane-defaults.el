@@ -2,7 +2,10 @@
 (blink-cursor-mode 0)
 
 ;; save backup files in this directory
-(setq backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
 
 ;; no menu
 (menu-bar-mode 0)
@@ -93,9 +96,9 @@
 (defun toggle-window-dedicated ()
   "Toggle whether the current active window is dedicated or not"
   (interactive)
-  (message 
+  (message
    (if (let (window (get-buffer-window (current-buffer)))
-         (set-window-dedicated-p window 
+         (set-window-dedicated-p window
                                  (not (window-dedicated-p window))))
        "Window '%s' is dedicated"
      "Window '%s' is normal")

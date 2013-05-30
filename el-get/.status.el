@@ -135,6 +135,8 @@
                  :url "http://mumble.net/~campbell/emacs/paredit.el"))
  (popup status "installed" recipe
         (:name popup :website "https://github.com/auto-complete/popup-el" :description "Visual Popup Interface Library for Emacs" :type github :pkgname "auto-complete/popup-el"))
+ (powerline status "installed" recipe
+            (:name powerline :website "https://github.com/jonathanchu/emacs-powerline" :description "Powerline for Emacs" :type github :pkgname "jonathanchu/emacs-powerline" :features powerline))
  (s status "installed" recipe
     (:name s :description "The long lost Emacs string manipulation library." :type github :pkgname "magnars/s.el" :features s))
  (undo-tree status "installed" recipe

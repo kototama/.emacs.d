@@ -3110,8 +3110,9 @@ See `yas-minor-mode' for more information on Yas minor mode.
 ;;;;;;  "org-mode/lisp/ox-latex.el" "org-mode/lisp/ox-man.el" "org-mode/lisp/ox-md.el"
 ;;;;;;  "org-mode/lisp/ox-odt.el" "org-mode/lisp/ox-org.el" "org-mode/lisp/ox-publish.el"
 ;;;;;;  "org-mode/lisp/ox-texinfo.el" "org-mode/lisp/ox.el" "popup/popup.el"
-;;;;;;  "s/s.el" "wgrep/wgrep.el" "yasnippet/dropdown-list.el" "yasnippet/yasnippet-debug.el"
-;;;;;;  "yasnippet/yasnippet-tests.el") (20893 60850 529446 193000))
+;;;;;;  "powerline/powerline.el" "s/s.el" "wgrep/wgrep.el" "yasnippet/dropdown-list.el"
+;;;;;;  "yasnippet/yasnippet-debug.el" "yasnippet/yasnippet-tests.el")
+;;;;;;  (20903 15306 341918 995000))
 
 ;;;***
 

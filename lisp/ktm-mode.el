@@ -1,4 +1,3 @@
-
 ;; Personal global mode so that keybindings applies everywhere
 ;; see http://www.reddit.com/r/emacs/comments/y76sl/proper_way_of_overriding_mode_keys/
 (require 'line-utils)
@@ -12,6 +11,31 @@
         (linum-mode 1)
         (goto-line (read-number "Goto line: ")))
     (linum-mode -1)))
+
+(defun toggle-window-split ()
+  (interactive)
+  (if (= (count-windows) 2)
+      (let* ((this-win-buffer (window-buffer))
+             (next-win-buffer (window-buffer (next-window)))
+             (this-win-edges (window-edges (selected-window)))
+             (next-win-edges (window-edges (next-window)))
+             (this-win-2nd (not (and (<= (car this-win-edges)
+                                         (car next-win-edges))
+                                     (<= (cadr this-win-edges)
+                                         (cadr next-win-edges)))))
+             (splitter
+              (if (= (car this-win-edges)
+                     (car (window-edges (next-window))))
+                  'split-window-horizontally
+                'split-window-vertically)))
+        (delete-other-windows)
+        (let ((first-win (selected-window)))
+          (funcall splitter)
+          (if this-win-2nd (other-window 1))
+          (set-window-buffer (selected-window) this-win-buffer)
+          (set-window-buffer (next-window) next-win-buffer)
+          (select-window first-win)
+          (if this-win-2nd (other-window 1))))))
 
 (defun rotate-windows ()
   "Rotate your windows"
@@ -36,7 +60,7 @@
              (set-window-buffer w2 b1)
              (set-window-start w1 s2)
              (set-window-start w2 s1)
-             (setq i (1+ i))))))) 
+             (setq i (1+ i)))))))
 
 (define-minor-mode ktm-mode
   "Ktm mode"
@@ -44,8 +68,8 @@
   :lighter " ktm"
   :keymap
   (let ((ktm-mode-map (make-sparse-keymap)))
-    (define-key ktm-mode-map (kbd "C-w") 'kill-ring-save)
-    (define-key ktm-mode-map (kbd "C-S-w") 'kill-region)
+    ;; (define-key ktm-mode-map (kbd "C-w") 'kill-ring-save)
+    ;; (define-key ktm-mode-map (kbd "C-S-w") 'kill-region)
     (define-key ktm-mode-map (kbd "C-S-k") (lambda ()
                                        (interactive)
                                        (kill-buffer (current-buffer))))
@@ -82,7 +106,7 @@
     (define-key ktm-mode-map (kbd "C-c l") 'org-store-link)
     ;; (define-key ktm-mode-map (kbd "C-x b") 'helm-buffers-list)
     (define-key ktm-mode-map (kbd "C-x b") 'ido-switch-buffer)
-    
+
 
     ;; shift rocks
     (define-key ktm-mode-map (kbd "C-S-o") 'ido-switch-buffer)
@@ -122,7 +146,7 @@
 
     (define-key ktm-mode-map (kbd "C-M-i") 'indent-region)
     ;; (define-key ktm-mode-map (kbd "C-S ") 'nil)
-    ;; (define-key ktm-mode-map (kbd "C-S-s") 'save-buffer)   
+    ;; (define-key ktm-mode-map (kbd "C-S-s") 'save-buffer)
 
     ;; keybindins specific to azerty
     ;; altgr-b
@@ -146,7 +170,7 @@
                                        (interactive)
                                        (kill-buffer (current-buffer))))
     (define-key ktm-mode-map (kbd "S-<home>") 'beginning-of-buffer)
-    
+
     (define-key ktm-mode-map (kbd "S-<end>") 'end-of-buffer)
     ;; altgr-S-e
     (define-key ktm-mode-map (kbd "¢") 'mc/edit-lines)
@@ -182,12 +206,12 @@
                                            (interactive)
                                            (insert "~")))
 
-    
-    
+
+
     (define-key ktm-mode-map [C-down-mouse-1] 'browse-url-at-mouse)
-    
+
     ktm-mode-map)
-  
+
   :gkeymaproup 'ktm-mode)
 
 (define-globalized-minor-mode ktm-global-mode ktm-mode

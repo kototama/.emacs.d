@@ -86,10 +86,15 @@
 ;; load keybindings
 (ktm-global-mode 1)
 (nyan-mode 1)
+(auto-indent-global-mode 1)
+
+(setq whitespace-style '(face tabs trailing lines empty))
+
+(add-hook 'before-save-hook 'whitespace-cleanup)
 
 ;; fonts
 (when (eq window-system 'x)
-  (set-frame-font "Inconsolata-13") 
+  (set-frame-font "Inconsolata-13")
   (add-to-list 'default-frame-alist '(font . "Inconsolata-13")))
 
 ;; files extensions associations

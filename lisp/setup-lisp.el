@@ -151,16 +151,20 @@
 
     (defun paredit-eager-kill-line
       ()
-      "Kills the current line or join the next line 
+      "Kills the current line or join the next line
    if the point is at the end of the line"
       (interactive)
-      (let ((current-point (point))
-            (bol-point (line-beginning-position))
-            (eol-point (line-end-position)))
-        (if (and (= current-point eol-point)
-                 (/= current-point bol-point))
-            (delete-indentation 1)
-          (paredit-kill nil))))
+      (paredit-kill)
+      ;; (let ((current-point (point))
+      ;;       (bol-point (line-beginning-position))
+      ;;       (eol-point (line-end-position)))
+      ;;   (if (and (= current-point eol-point)
+      ;;            (/= current-point bol-point))
+      ;;       (delete-indentation 1)
+      ;;     (progn
+      ;;       (message "kill")
+      ;;      (paredit-kill nil))))
+      )
 
     (use-package paredit
       :init (progn

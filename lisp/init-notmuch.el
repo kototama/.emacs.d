@@ -1,7 +1,7 @@
 (use-package notmuch
   :init
   (progn
-    
+
     (defun my-notmuch-hello-mode-hook
       ()
       (define-key notmuch-hello-mode-map "="
@@ -36,7 +36,7 @@
       (bind-key "r" 'my-notmuch-mark-as-read notmuch-search-mode-map)
       (bind-key "r" 'notmuch-show-reply notmuch-show-mode-map)
       (bind-key "R" 'notmuch-show-reply-send notmuch-show-mode-map))
-    
+
       (defun notmuch-jump-to-unread-or-inbox
         ()
         (goto-char 0)
@@ -47,9 +47,9 @@
       (defun my-notmuch-show-hook
         ()
         (require 'org-notmuch))
-      
+
       (use-package notmuch-address)
-      
+
       ;; (use-package gnus-art)
 
       (setq notmuch-hello-sections '(notmuch-hello-insert-saved-searches
@@ -57,7 +57,7 @@
                                      notmuch-hello-insert-recent-searches
                                      notmuch-hello-insert-alltags
                                      notmuch-hello-insert-footer))
-      
+
       (setq notmuch-address-command "nottoomuch-addresses.sh")
       (setq mail-user-agent 'message-user-agent)
 
@@ -74,12 +74,15 @@
       (setq notmuch-search-oldest-first nil)
 
       (add-hook 'notmuch-hello-mode-hook 'my-notmuch-hello-mode-hook)
-      (add-hook 'notmuch-search-mode-hook
-      'my-notmuch-search-mode-hook)
+      ;; (add-hook 'notmuch-search-mode-hook
+      ;; 'my-notmuch-search-mode-hook)
       (add-hook 'notmuch-show-hook 'my-notmuch-show-hook)
 
       (defadvice notmuch-hello (after jump-to-registero-unread-or-inbox activate)
         (notmuch-jump-to-unread-or-inbox))
+
+      (defadvice notmuch-search (after fake-search-mode-hook activate)
+        (my-notmuch-search-mode-hook))
 
       (add-hook 'message-mode-hook
                 (lambda ()

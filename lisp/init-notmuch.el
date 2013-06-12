@@ -164,8 +164,9 @@ Such a list can be computed with `notmuch-hello-query-counts'."
       (defun notmuch-jump-to-unread-or-inbox
         ()
         (goto-char 0)
-        (when (not (re-search-forward "unread" nil t))
-          (re-search-forward "inbox" nil t))
+        (re-search-forward "me" nil t)
+        ;; (when (not (re-search-forward "unread" nil t))
+        ;;   (re-search-forward "me" nil t))
         (backward-word))
 
       (defun my-notmuch-show-hook
@@ -180,7 +181,8 @@ Such a list can be computed with `notmuch-hello-query-counts'."
                                      notmuch-hello-insert-search
                                      notmuch-hello-insert-recent-searches
                                      notmuch-hello-insert-alltags
-                                     notmuch-hello-insert-footer))
+                                     ;; notmuch-hello-insert-footer
+                                     ))
 
       (setq notmuch-address-command "nottoomuch-addresses.sh")
       (setq mail-user-agent 'message-user-agent)

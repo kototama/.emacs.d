@@ -1,5 +1,3 @@
-;; (require 'org)
-
 (use-package org
   :init (progn
 
@@ -22,13 +20,11 @@
                 (setq org-reveal-root "file:///home/pal/Documents/Presentations/reveal.js-master"))))
 
           (setq org-default-notes-file "~/Documents/Notes/todo.org")
-
-          (add-hook 'org-mode-hook 'my-org-mode-hook)
-
-          (setq org-agenda-files '("~/Documents/Notes/"))
+          (setq org-agenda-files '("~/Documents/Notes/" "~/Documents/Markos/"))
           (setq org-agenda-diary-file "~/Documents/Notes/diary.org")
           (setq org-agenda-include-diary nil)
 
+          (add-hook 'org-mode-hook 'my-org-mode-hook)
 ))
 
 ;; (setq org-todo-keywords

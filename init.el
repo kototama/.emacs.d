@@ -62,7 +62,8 @@
   (require 'setup-carneades))
 
 ;; always uses the following modes
-(dolist (mode '(undo-tree
+(dolist (mode '(diminish
+                undo-tree
                 paren
                 maxframe
                 uniquify
@@ -85,8 +86,12 @@
 ;; (savehist-mode 1)
 ;; load keybindings
 (ktm-global-mode 1)
-(nyan-mode 1)
 (auto-indent-global-mode 1)
+
+(dolist (mode '(undo-tree-mode
+                paredit-mode
+                ktm-mode))
+  (diminish mode))
 
 (setq whitespace-style '(face tabs trailing lines empty))
 

@@ -35,6 +35,8 @@
                (:name control-lock :auto-generated t :type emacswiki :description "Like caps-lock, but for your control key.  Give your pinky a rest!" :website "https://raw.github.com/emacsmirror/emacswiki.org/master/control-lock.el"))
  (dash status "installed" recipe
        (:name dash :description "A modern list api for Emacs. No 'cl required." :type github :pkgname "magnars/dash.el"))
+ (diminish status "installed" recipe
+           (:name diminish :description "An Emacs package that diminishes the amount of space taken on the mode line by the names of minor modes." :type http :url "http://www.eskimo.com/~seldon/diminish.el" :features diminish))
  (el-get status "installed" recipe
          (:name el-get :website "https://github.com/dimitri/el-get#readme" :description "Manage the external elisp bits and pieces you depend upon." :type github :branch "4.stable" :pkgname "dimitri/el-get" :info "." :load "el-get.el"))
  (elisp-slime-nav status "installed" recipe
@@ -42,6 +44,8 @@
                          (add-hook 'emacs-lisp-mode-hook
                                    (defun turn-elisp-slime-nav-on nil
                                      (elisp-slime-nav-mode t)))))
+ (emacs-async status "installed" recipe
+              (:name emacs-async :description "Simple library for asynchronous processing in Emacs" :type github :pkgname "jwiegley/emacs-async"))
  (expand-region status "installed" recipe
                 (:name expand-region :type github :pkgname "magnars/expand-region.el" :description "Expand region increases the selected region by semantic units. Just keep pressing the key until it selects what you want." :website "https://github.com/magnars/expand-region.el#readme" :features expand-region))
  (fuzzy status "installed" recipe
@@ -88,6 +92,8 @@
             (:name nyan-mode :description "Nyan Cat for Emacs! Nyanyanyanyanyanyanyanyanyan!" :type github :pkgname "TeMPOraL/nyan-mode" :features nyan-mode))
  (offlineimap status "installed" recipe
               (:name offlineimap :description "Run OfflineIMAP from Emacs" :type git :url "git://git.naquadah.org/offlineimap-el.git" :features offlineimap))
+ (org-html5presentation status "installed" recipe
+                        (:name org-html5presentation :type http :website "https://gist.github.com/509761" :description "html5 presentation from org files" :url "https://raw.github.com/gist/509761/org-html5presentation.el"))
  (org-mode status "installed" recipe
            (:name org-mode :website "http://orgmode.org/" :description "Org-mode is for keeping notes, maintaining ToDo lists, doing project planning, and authoring with a fast and effective plain-text system." :type git :url "git://orgmode.org/org-mode.git" :info "doc" :build/berkeley-unix `,(mapcar
                                                                                                                                                                                                                                                                                                        (lambda
@@ -105,6 +111,10 @@
                             '("oldorg"))
                   :load-path
                   ("." "lisp" "contrib/lisp")))
+ (org-tree-slide status "installed" recipe
+                 (:name org-tree-slide :description "A presentation tool for org-mode" :type github :pkgname "takaxp/org-tree-slide" :required nil))
+ (ox-reveal status "installed" recipe
+            (:name ox-reveal :description "Exports Org-mode contents to Reveal.js HTML\n       presentation." :type github :pkgname "yjwen/org-reveal"))
  (package status "installed" recipe
           (:name package :description "ELPA implementation (\"package.el\") from Emacs 24" :builtin "24" :type http :url "http://repo.or.cz/w/emacs.git/blob_plain/1a0a666f941c99882093d7bd08ced15033bc3f0c:/lisp/emacs-lisp/package.el" :shallow nil :features package :post-init
                  (progn

@@ -436,6 +436,52 @@ Initialize the color theme package by loading color-theme-libraries.
 
 ;;;***
 
+;;;### (autoloads (diminished-modes diminish-undo diminish) "diminish/diminish"
+;;;;;;  "diminish/diminish.el" (20920 38321 348805 363000))
+;;; Generated autoloads from diminish/diminish.el
+
+(autoload 'diminish "diminish/diminish" "\
+Diminish mode-line display of minor mode MODE to TO-WHAT (default \"\").
+
+Interactively, enter (with completion) the name of any minor mode, followed
+on the next line by what you want it diminished to (default empty string).
+The response to neither prompt should be quoted.  However, in Lisp code,
+both args must be quoted, the first as a symbol, the second as a string,
+as in (diminish 'jiggle-mode \" Jgl\").
+
+The mode-line displays of minor modes usually begin with a space, so
+the modes' names appear as separate words on the mode line.  However, if
+you're having problems with a cramped mode line, you may choose to use single
+letters for some modes, without leading spaces.  Capitalizing them works
+best; if you then diminish some mode to \"X\" but have abbrev-mode enabled as
+well, you'll get a display like \"AbbrevX\".  This function prepends a space
+to TO-WHAT if it's > 1 char long & doesn't already begin with a space.
+
+\(fn MODE &optional TO-WHAT)" t nil)
+
+(autoload 'diminish-undo "diminish/diminish" "\
+Restore mode-line display of diminished mode MODE to its minor-mode value.
+Do nothing if the arg is a minor mode that hasn't been diminished.
+
+Interactively, enter (with completion) the name of any diminished mode (a
+mode that was formerly a minor mode on which you invoked M-x diminish).
+To restore all diminished modes to minor status, answer `diminished-modes'.
+The response to the prompt shouldn't be quoted.  However, in Lisp code,
+the arg must be quoted as a symbol, as in (diminish-undo 'diminished-modes).
+
+\(fn MODE)" t nil)
+
+(autoload 'diminished-modes "diminish/diminish" "\
+Echo all active diminished or minor modes as if they were minor.
+The display goes in the echo area; if it's too long even for that,
+you can see the whole thing in the *Messages* buffer.
+This doesn't change the status of any modes; it just lets you see
+what diminished modes would be on the mode-line if they were still minor.
+
+\(fn)" t nil)
+
+;;;***
+
 ;;;### (autoloads (el-get-checksum el-get-make-recipes el-get-cd
 ;;;;;;  el-get-self-update el-get-update-all el-get-version) "el-get/el-get"
 ;;;;;;  "el-get/el-get.el" (20829 21226 52414 93000))
@@ -512,6 +558,71 @@ Argument SYM-NAME thing to find.
 \(fn SYM-NAME)" t nil)
 
 (dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook)) (add-hook hook 'elisp-slime-nav-mode))
+
+;;;***
+
+;;;### (autoloads (async-start async-start-process) "emacs-async/async"
+;;;;;;  "emacs-async/async.el" (20921 42453 797588 691000))
+;;; Generated autoloads from emacs-async/async.el
+
+(autoload 'async-start-process "emacs-async/async" "\
+Start the executable PROGRAM asynchronously.  See `async-start'.
+PROGRAM is passed PROGRAM-ARGS, calling FINISH-FUNC with the
+process object when done.  If FINISH-FUNC is nil, the future
+object will return the process object when the program is
+finished.
+
+\(fn NAME PROGRAM FINISH-FUNC &rest PROGRAM-ARGS)" nil nil)
+
+(autoload 'async-start "emacs-async/async" "\
+Execute START-FUNC (often a lambda) in a subordinate Emacs process.
+When done, the return value is passed to FINISH-FUNC.  Example:
+
+    (async-start
+       ;; What to do in the child process
+       (lambda ()
+         (message \"This is a test\")
+         (sleep-for 3)
+         222)
+
+       ;; What to do when it finishes
+       (lambda (result)
+         (message \"Async process done, result should be 222: %s\"
+                  result)))
+
+If FINISH-FUNC is nil or missing, a future is returned that can
+be inspected using `async-get', blocking until the value is
+ready.  Example:
+
+    (let ((proc (async-start
+                   ;; What to do in the child process
+                   (lambda ()
+                     (message \"This is a test\")
+                     (sleep-for 3)
+                     222))))
+
+        (message \"I'm going to do some work here\") ;; ....
+
+        (message \"Waiting on async process, result should be 222: %s\"
+                 (async-get proc)))
+
+If you don't want to use a callback, and you don't care about any
+return value form the child process, pass the `ignore' symbol as
+the second argument (if you don't, and never call `async-get', it
+will leave *emacs* process buffers hanging around):
+
+    (async-start
+     (lambda ()
+       (delete-file \"a remote file on a slow link\" nil))
+     'ignore)
+
+Note: Even when FINISH-FUNC is present, a future is still
+returned except that it yields no value (since the value is
+passed to FINISH-FUNC).  Call `async-get' on such a future always
+returns nil.  It can still be useful, however, as an argument to
+`async-ready' or `async-wait'.
+
+\(fn START-FUNC &optional FINISH-FUNC)" nil t)
 
 ;;;***
 
@@ -1716,7 +1827,7 @@ notmuch buffers exist, run `notmuch'.
 ;;;***
 
 ;;;### (autoloads (notmuch-hello) "notmuch/emacs/notmuch-hello" "notmuch/emacs/notmuch-hello.el"
-;;;;;;  (20834 45355 161834 780000))
+;;;;;;  (20921 29842 560591 117000))
 ;;; Generated autoloads from notmuch/emacs/notmuch-hello.el
 
 (autoload 'notmuch-hello "notmuch/emacs/notmuch-hello" "\
@@ -1823,6 +1934,103 @@ option `scroll-bar-mode'.
 
 (autoload 'offlineimap "offlineimap/offlineimap" "\
 Start OfflineIMAP.
+
+\(fn)" t nil)
+
+;;;***
+
+;;;### (autoloads (org-export-html5presentationize-generate-css org-export-as-html5presentation
+;;;;;;  org-export-region-as-html5presentation org-replace-region-by-html5presentation
+;;;;;;  org-export-as-html5presentation-to-buffer org-export-as-html5presentation-batch
+;;;;;;  org-export-as-html5presentation-and-open) "org-html5presentation/org-html5presentation"
+;;;;;;  "org-html5presentation/org-html5presentation.el" (20921 34103
+;;;;;;  924183 929000))
+;;; Generated autoloads from org-html5presentation/org-html5presentation.el
+
+(put 'org-export-html5presentation-style-include-default 'safe-local-variable 'booleanp)
+
+(put 'org-export-html5presentation-style 'safe-local-variable 'stringp)
+
+(put 'org-export-html5presentation-style-extra 'safe-local-variable 'stringp)
+
+(autoload 'org-export-as-html5presentation-and-open "org-html5presentation/org-html5presentation" "\
+Export the outline as HTML and immediately open it with a browser.
+If there is an active region, export only the region.
+The prefix ARG specifies how many levels of the outline should become
+headlines.  The default is 3.  Lower levels will become bulleted lists.
+
+\(fn ARG)" t nil)
+
+(autoload 'org-export-as-html5presentation-batch "org-html5presentation/org-html5presentation" "\
+Call the function `org-export-as-html5presentation'.
+This function can be used in batch processing as:
+emacs   --batch
+        --load=$HOME/lib/emacs/org.el
+        --eval \"(setq org-export-headline-levels 2)\"
+	--visit=MyFile --funcall org-export-as-html5presentation-batch
+
+\(fn)" nil nil)
+
+(autoload 'org-export-as-html5presentation-to-buffer "org-html5presentation/org-html5presentation" "\
+Call `org-export-as-html5presentation` with output to a temporary buffer.
+No file is created.  The prefix ARG is passed through to `org-export-as-html5presentation'.
+
+\(fn ARG)" t nil)
+
+(autoload 'org-replace-region-by-html5presentation "org-html5presentation/org-html5presentation" "\
+Assume the current region has org-mode syntax, and convert it to HTML.
+This can be used in any buffer.  For example, you could write an
+itemized list in org-mode syntax in an HTML buffer and then use this
+command to convert it.
+
+\(fn BEG END)" t nil)
+
+(autoload 'org-export-region-as-html5presentation "org-html5presentation/org-html5presentation" "\
+Convert region from BEG to END in org-mode buffer to HTML.
+If prefix arg BODY-ONLY is set, omit file header, footer, and table of
+contents, and only produce the region of converted text, useful for
+cut-and-paste operations.
+If BUFFER is a buffer or a string, use/create that buffer as a target
+of the converted HTML.  If BUFFER is the symbol `string', return the
+produced HTML as a string and leave not buffer behind.  For example,
+a Lisp program could call this function in the following way:
+
+  (setq html (org-export-region-as-html5presentation beg end t 'string))
+
+When called interactively, the output buffer is selected, and shown
+in a window.  A non-interactive call will only return the buffer.
+
+\(fn BEG END &optional ORG-HTML5PRESENTATION-BODY-ONLY BUFFER)" t nil)
+
+(autoload 'org-export-as-html5presentation "org-html5presentation/org-html5presentation" "\
+Export the outline as a pretty HTML file.
+If there is an active region, export only the region.  The prefix
+ARG specifies how many levels of the outline should become
+headlines.  The default is 3.  Lower levels will become bulleted
+lists.  HIDDEN is obsolete and does nothing.
+EXT-PLIST is a property list with external parameters overriding
+org-mode's default settings, but still inferior to file-local
+settings.  When TO-BUFFER is non-nil, create a buffer with that
+name and export to that buffer.  If TO-BUFFER is the symbol
+`string', don't leave any buffer behind but just return the
+resulting HTML as a string.  When BODY-ONLY is set, don't produce
+the file header and footer, simply return the content of
+<body>...</body>, without even the body tags themselves.  When
+PUB-DIR is set, use this as the publishing directory.
+
+\(fn ARG &optional HIDDEN EXT-PLIST TO-BUFFER ORG-HTML5PRESENTATION-BODY-ONLY PUB-DIR)" t nil)
+
+(autoload 'org-export-html5presentationize-generate-css "org-html5presentation/org-html5presentation" "\
+Create the CSS for all font definitions in the current Emacs session.
+Use this to create face definitions in your CSS style file that can then
+be used by code snippets transformed by htmlize.
+This command just produces a buffer that contains class definitions for all
+faces used in the current Emacs session.  You can copy and paste the ones you
+need into your CSS file.
+
+If you then set `org-export-html5presentationize-output-type' to `css', calls to
+the function `org-export-html5presentationize-region-for-paste' will produce code
+that uses these same face definitions.
 
 \(fn)" t nil)
 
@@ -2889,6 +3097,137 @@ The location of ODT styles.")
 
 ;;;***
 
+;;;### (autoloads (org-tree-slide-skip-comments-toggle org-tree-slide-skip-done-toggle
+;;;;;;  org-tree-slide-heading-emphasis-toggle org-tree-slide-slide-in-effect-toggle
+;;;;;;  org-tree-slide-display-header-toggle org-tree-slide-narrowing-control-profile
+;;;;;;  org-tree-slide-presentation-profile org-tree-slide-simple-profile
+;;;;;;  org-tree-slide-content org-tree-slide-without-init-play org-tree-slide-play-with-timer
+;;;;;;  org-tree-slide-mode) "org-tree-slide/org-tree-slide" "org-tree-slide/org-tree-slide.el"
+;;;;;;  (20921 34144 240383 837000))
+;;; Generated autoloads from org-tree-slide/org-tree-slide.el
+
+(autoload 'org-tree-slide-mode "org-tree-slide/org-tree-slide" "\
+A presentation tool for org-mode.
+
+Usage:
+  - Set minimal recommendation settings in .emacs
+    (global-set-key (kbd \"<f8>\") 'org-tree-slide-mode)
+    (global-set-key (kbd \"S-<f8>\") 'org-tree-slide-skip-done-toggle)
+  - Open an org file
+  - Type <f8> to start org-tree-slide-mode
+  - Type <left>/<right> to move between trees
+  - To exit this minor mode, just type <f8> again.
+
+Profiles:
+
+  - [ Simple ]
+ => M-x `org-tree-slide-simple-profile'
+
+    1. No header display
+    2. No slide-in effect
+    3. The cursor will move to the head of buffer when exit
+    4. No slide number display in mode line
+    5. Display every type of tree
+
+  - [ Presentation ]
+ => M-x `org-tree-slide-presentation-profile'
+
+    1. Display header
+    2. Enable slide-in effect
+    3. The cursor will move to the head of buffer when exit
+    4. Display slide number in mode line
+    5. Display every type of tree
+
+  - [ TODO Pursuit with narrowing ]
+ => M-x `org-tree-slide-narrowing-control-profile'
+
+    1. No header display
+    2. No slide-in effect
+    3. The cursor will keep the same position when exit
+    4. Display slide number in mode line
+    5. Display TODO trees only
+
+\(fn &optional ARG)" t nil)
+
+(autoload 'org-tree-slide-play-with-timer "org-tree-slide/org-tree-slide" "\
+Start slideshow with setting a count down timer.
+
+\(fn)" t nil)
+
+(autoload 'org-tree-slide-without-init-play "org-tree-slide/org-tree-slide" "\
+Start slideshow without the init play. Just enter org-tree-slide-mode.
+
+\(fn)" t nil)
+
+(autoload 'org-tree-slide-content "org-tree-slide/org-tree-slide" "\
+Change the display for viewing content of the org file during
+   the slide view mode is active.
+
+\(fn)" t nil)
+
+(autoload 'org-tree-slide-simple-profile "org-tree-slide/org-tree-slide" "\
+Set variables for simple use.
+  `org-tree-slide-header'            => nil
+  `org-tree-slide-slide-in-effect'   => nil
+  `org-tree-slide-heading-emphasis'  => nil
+  `org-tree-slide-cursor-init'       => t
+  `org-tree-slide-modeline-display'  => nil
+  `org-tree-slide-skip-done'         => nil
+  `org-tree-slide-skip-comments'     => t
+
+\(fn)" t nil)
+
+(autoload 'org-tree-slide-presentation-profile "org-tree-slide/org-tree-slide" "\
+Set variables for presentation use.
+  `org-tree-slide-header'            => t
+  `org-tree-slide-slide-in-effect'   => t
+  `org-tree-slide-heading-emphasis'  => nil
+  `org-tree-slide-cursor-init'       => t
+  `org-tree-slide-modeline-display'  => 'outside
+  `org-tree-slide-skip-done'         => nil
+  `org-tree-slide-skip-comments'     => t
+
+\(fn)" t nil)
+
+(autoload 'org-tree-slide-narrowing-control-profile "org-tree-slide/org-tree-slide" "\
+Set variables for TODO pursuit with narrowing.
+  `org-tree-slide-header'            => nil
+  `org-tree-slide-slide-in-effect'   => nil
+  `org-tree-slide-heading-emphasis'  => nil
+  `org-tree-slide-cursor-init'       => nil
+  `org-tree-slide-modeline-display'  => 'lighter
+  `org-tree-slide-skip-done'         => t
+  `org-tree-slide-skip-comments'     => t
+
+\(fn)" t nil)
+
+(autoload 'org-tree-slide-display-header-toggle "org-tree-slide/org-tree-slide" "\
+Toggle displaying the slide header
+
+\(fn)" t nil)
+
+(autoload 'org-tree-slide-slide-in-effect-toggle "org-tree-slide/org-tree-slide" "\
+Toggle using slide-in effect
+
+\(fn)" t nil)
+
+(autoload 'org-tree-slide-heading-emphasis-toggle "org-tree-slide/org-tree-slide" "\
+Toggle applying emphasis to heading
+
+\(fn)" t nil)
+
+(autoload 'org-tree-slide-skip-done-toggle "org-tree-slide/org-tree-slide" "\
+Toggle show TODO item only or not
+
+\(fn)" t nil)
+
+(autoload 'org-tree-slide-skip-comments-toggle "org-tree-slide/org-tree-slide" "\
+Toggle show COMMENT item or not
+
+\(fn)" t nil)
+
+;;;***
+
 ;;;### (autoloads (paredit-mode) "paredit/paredit" "paredit/paredit.el"
 ;;;;;;  (20829 21624 258388 685000))
 ;;; Generated autoloads from paredit/paredit.el
@@ -3020,24 +3359,26 @@ See `yas-minor-mode' for more information on Yas minor mode.
 ;;;;;;  "el-get/el-get-byte-compile.el" "el-get/el-get-core.el" "el-get/el-get-custom.el"
 ;;;;;;  "el-get/el-get-dependencies.el" "el-get/el-get-install.el"
 ;;;;;;  "el-get/el-get-methods.el" "el-get/el-get-notify.el" "el-get/el-get-recipes.el"
-;;;;;;  "el-get/el-get-status.el" "expand-region/cc-mode-expansions.el"
-;;;;;;  "expand-region/clojure-mode-expansions.el" "expand-region/cperl-mode-expansions.el"
-;;;;;;  "expand-region/css-mode-expansions.el" "expand-region/erlang-mode-expansions.el"
-;;;;;;  "expand-region/expand-region-core.el" "expand-region/expand-region-pkg.el"
-;;;;;;  "expand-region/feature-mode-expansions.el" "expand-region/html-mode-expansions.el"
-;;;;;;  "expand-region/js-mode-expansions.el" "expand-region/js2-mode-expansions.el"
-;;;;;;  "expand-region/jsp-expansions.el" "expand-region/latex-mode-expansions.el"
-;;;;;;  "expand-region/nxml-mode-expansions.el" "expand-region/octave-expansions.el"
-;;;;;;  "expand-region/org-mode-expansions.el" "expand-region/python-el-expansions.el"
-;;;;;;  "expand-region/python-el-fgallina-expansions.el" "expand-region/python-mode-expansions.el"
-;;;;;;  "expand-region/ruby-mode-expansions.el" "expand-region/text-mode-expansions.el"
-;;;;;;  "expand-region/web-mode-expansions.el" "fuzzy/fuzzy.el" "haskell-mode/haskell-checkers.el"
-;;;;;;  "haskell-mode/haskell-font-lock.el" "haskell-mode/haskell-ghci.el"
-;;;;;;  "haskell-mode/haskell-hugs.el" "haskell-mode/haskell-package.el"
-;;;;;;  "haskell-mode/haskell-simple-indent.el" "haskell-mode/haskell-site-file.el"
-;;;;;;  "highlight-sexp/highlight-sexp.el" "ido-ubiquitous/ido-ubiquitous-autoloads.el"
-;;;;;;  "ido-ubiquitous/ido-ubiquitous-pkg.el" "magit/magit-bisect.el"
-;;;;;;  "magit/magit-key-mode.el" "multiple-cursors/mc-cycle-cursors.el"
+;;;;;;  "el-get/el-get-status.el" "emacs-async/async-file.el" "emacs-async/async-pkg.el"
+;;;;;;  "emacs-async/async-test.el" "emacs-async/dired-async.el"
+;;;;;;  "emacs-async/helm-async.el" "emacs-async/smtpmail-async.el"
+;;;;;;  "expand-region/cc-mode-expansions.el" "expand-region/clojure-mode-expansions.el"
+;;;;;;  "expand-region/cperl-mode-expansions.el" "expand-region/css-mode-expansions.el"
+;;;;;;  "expand-region/erlang-mode-expansions.el" "expand-region/expand-region-core.el"
+;;;;;;  "expand-region/expand-region-pkg.el" "expand-region/feature-mode-expansions.el"
+;;;;;;  "expand-region/html-mode-expansions.el" "expand-region/js-mode-expansions.el"
+;;;;;;  "expand-region/js2-mode-expansions.el" "expand-region/jsp-expansions.el"
+;;;;;;  "expand-region/latex-mode-expansions.el" "expand-region/nxml-mode-expansions.el"
+;;;;;;  "expand-region/octave-expansions.el" "expand-region/org-mode-expansions.el"
+;;;;;;  "expand-region/python-el-expansions.el" "expand-region/python-el-fgallina-expansions.el"
+;;;;;;  "expand-region/python-mode-expansions.el" "expand-region/ruby-mode-expansions.el"
+;;;;;;  "expand-region/text-mode-expansions.el" "expand-region/web-mode-expansions.el"
+;;;;;;  "fuzzy/fuzzy.el" "haskell-mode/haskell-checkers.el" "haskell-mode/haskell-font-lock.el"
+;;;;;;  "haskell-mode/haskell-ghci.el" "haskell-mode/haskell-hugs.el"
+;;;;;;  "haskell-mode/haskell-package.el" "haskell-mode/haskell-simple-indent.el"
+;;;;;;  "haskell-mode/haskell-site-file.el" "highlight-sexp/highlight-sexp.el"
+;;;;;;  "ido-ubiquitous/ido-ubiquitous-autoloads.el" "ido-ubiquitous/ido-ubiquitous-pkg.el"
+;;;;;;  "magit/magit-bisect.el" "magit/magit-key-mode.el" "multiple-cursors/mc-cycle-cursors.el"
 ;;;;;;  "multiple-cursors/multiple-cursors-core.el" "multiple-cursors/multiple-cursors-pkg.el"
 ;;;;;;  "multiple-cursors/multiple-cursors.el" "notmuch/emacs/coolj.el"
 ;;;;;;  "notmuch/emacs/notmuch-address.el" "notmuch/emacs/notmuch-crypto.el"
@@ -3109,10 +3450,10 @@ See `yas-minor-mode' for more information on Yas minor mode.
 ;;;;;;  "org-mode/lisp/ox-beamer.el" "org-mode/lisp/ox-html.el" "org-mode/lisp/ox-icalendar.el"
 ;;;;;;  "org-mode/lisp/ox-latex.el" "org-mode/lisp/ox-man.el" "org-mode/lisp/ox-md.el"
 ;;;;;;  "org-mode/lisp/ox-odt.el" "org-mode/lisp/ox-org.el" "org-mode/lisp/ox-publish.el"
-;;;;;;  "org-mode/lisp/ox-texinfo.el" "org-mode/lisp/ox.el" "popup/popup.el"
-;;;;;;  "powerline/powerline.el" "s/s.el" "wgrep/wgrep.el" "yasnippet/dropdown-list.el"
-;;;;;;  "yasnippet/yasnippet-debug.el" "yasnippet/yasnippet-tests.el")
-;;;;;;  (20903 15306 341918 995000))
+;;;;;;  "org-mode/lisp/ox-texinfo.el" "org-mode/lisp/ox.el" "ox-reveal/ox-reveal.el"
+;;;;;;  "popup/popup.el" "powerline/powerline.el" "s/s.el" "wgrep/wgrep.el"
+;;;;;;  "yasnippet/dropdown-list.el" "yasnippet/yasnippet-debug.el"
+;;;;;;  "yasnippet/yasnippet-tests.el") (20921 42454 808724 908000))
 
 ;;;***
 

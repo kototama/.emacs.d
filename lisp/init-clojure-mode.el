@@ -2,7 +2,7 @@
 
 (use-package clojure-mode
   :init (progn
-          
+
           (defun earmuffy (&optional arg)
             (interactive "P")
             (let* ((variable (thing-at-point 'sexp))
@@ -43,7 +43,7 @@
               (progn
 
                 (use-package ac-nrepl)
-                
+
                 (defun my-nrepl-init-mode-hook
                   ()
                   (auto-complete-mode 1)
@@ -60,7 +60,7 @@
                 (add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
                 (add-hook 'nrepl-interaction-mode-hook
                           'ac-nrepl-setup)))
-            
+
             (paredit-mode t)
             (show-paren-mode t)
             ;; (flyspell-prog-mode nil)
@@ -75,8 +75,8 @@
             ;; (define-key clojure-mode-map (kbd "<return>")
             ;; 'paredit-newline)
 
-            (eldoc-mode nil)
-            
+            (eldoc-mode 0)
+
 	    (bind-key "C-*" 'earmuffy)
             (bind-key "C-c n j" 'nrepl-jack-in clojure-mode-map)
             (bind-key "C-c n n" 'my-clojure-switch-to-nrepl-buffer clojure-mode-map)

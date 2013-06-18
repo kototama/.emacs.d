@@ -1,6 +1,20 @@
 (use-package org
   :init (progn
 
+          (defun my-org-mode-mail-to-agenda-entry
+            (date text)
+            (interactive (list (calendar-read-date)
+                               (read-string "Day entry:")))
+            (org-notmuch-store-link)
+            (let* ((link (concat "[["
+                                 (plist-get org-store-link-plist :link)
+                                 "]["
+                                 (plist-get org-store-link-plist
+                                            :description)
+                                 "]]"))
+                   (entry (concat text " " link)))
+              (org-agenda-add-entry-to-org-agenda-diary-file 'day entry date)))
+
           (defun my-org-mode-hook
             ()
             (setq org-file-apps

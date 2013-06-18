@@ -68,43 +68,48 @@
   :lighter " ktm"
   :keymap
   (let ((ktm-mode-map (make-sparse-keymap)))
-    ;; (define-key ktm-mode-map (kbd "C-w") 'kill-ring-save)
-    ;; (define-key ktm-mode-map (kbd "C-S-w") 'kill-region)
     (define-key ktm-mode-map (kbd "C-S-k") (lambda ()
                                        (interactive)
-                                       (kill-buffer (current-buffer))))
+                                       (kill-buffer
+                                        (current-buffer))))
+
     (define-key ktm-mode-map (kbd "C-c o") 'browse-url-at-point)
     (define-key ktm-mode-map (kbd "<S-f1>") 'elisp-index-search)
     (define-key ktm-mode-map (kbd "C-x C-r") 'rename-current-buffer-file)
     (define-key ktm-mode-map (kbd "C-x r r") 'rotate-windows)
-    (define-key ktm-mode-map (kbd "<C-S-down>") 'move-line-down)
-    (define-key ktm-mode-map (kbd "<C-S-up>") 'move-line-up)
-    (define-key ktm-mode-map (kbd "M-o") 'my-helm)
-    (define-key ktm-mode-map (kbd "<C-tab>") 'other-window)
+
     ;; (define-key ktm-mode-map "\r" 'newline-and-indent)
     (define-key ktm-mode-map (kbd "C-;") 'comment-region)
     ;; (define-key ktm-mode-map (kbd "C-k") 'eager-kill-line)
+
+    ;;; MOVEMENTS, DEPLACEMENTS
     (define-key ktm-mode-map (kbd "C-p") 'backward-char)
     (define-key ktm-mode-map (kbd "C-S-p") 'previous-line)
+    (define-key ktm-mode-map (kbd "C-S-a") 'beginning-of-buffer)
+    (define-key ktm-mode-map (kbd "C-S-e") 'end-of-buffer)
     (define-key ktm-mode-map (kbd "M-p") '(lambda (arg)
                                    (interactive "p")
                                    (previous-line (+ arg 4) nil)))
     (define-key ktm-mode-map (kbd "M-n") '(lambda (arg)
                                    (interactive "p")
                                    (next-line (+ arg 4) nil)))
+    (define-key ktm-mode-map (kbd "C-a") 'back-to-indentation-or-beginning-of-line)
+    (define-key ktm-mode-map (kbd "M-g") 'goto-line-with-feedback)
+    (define-key ktm-mode-map (kbd "M-j") 'ace-jump-mode)
+    (define-key ktm-mode-map (kbd "C-x p") 'pop-to-mark-command)
+    (define-key ktm-mode-map (kbd "<C-tab>") 'other-window)
+    (define-key ktm-mode-map (kbd "<C-S-down>") 'move-line-down)
+    (define-key ktm-mode-map (kbd "<C-S-up>") 'move-line-up)
+
     (define-key ktm-mode-map (kbd "C-S-j") 'join-line)
     ;; (define-key ktm-mode-map (kbd "C-S-d") 'duplicate-line)
     ;; (define-key ktm-mode-map (kbd "C-S-d") 'nil)
+
+
     (define-key ktm-mode-map (kbd "C-M-s") 'ack-and-a-half)
-    (define-key ktm-mode-map (kbd "C-a") 'back-to-indentation-or-beginning-of-line)
-    (define-key ktm-mode-map (kbd "M-g") 'goto-line-with-feedback)
-    (define-key ktm-mode-map (kbd "M-o") 'my-helm)
-    ;; (define-key ktm-mode-map (kbd "M-x") 'smex)
-    ;; (define-key ktm-mode-map (kbd "M-X") 'smex-major-mode-commands)
-    (define-key ktm-mode-map (kbd "M-j") 'ace-jump-mode)
-    (define-key ktm-mode-map (kbd "C-x p") 'pop-to-mark-command)
+
     (define-key ktm-mode-map (kbd "C-c l") 'org-store-link)
-    ;; (define-key ktm-mode-map (kbd "C-x b") 'helm-buffers-list)
+
     (define-key ktm-mode-map (kbd "C-x b") 'ido-switch-buffer)
 
 

@@ -1,3 +1,5 @@
+(require 'use-package)
+
 (use-package org
   :init (progn
 
@@ -31,12 +33,17 @@
             (use-package ox-reveal
               :init
               (progn
-                (setq org-reveal-root "file:///home/pal/Documents/Presentations/reveal.js-master"))))
+                (setq org-reveal-root
+                      "file:///home/pal/Documents/Presentations/reveal.js-master"))))
 
-          (setq org-default-notes-file "~/Documents/Notes/todo.org")
-          (setq org-agenda-files '("~/Documents/Notes/" "~/Documents/Markos/"))
-          (setq org-agenda-diary-file "~/Documents/Notes/diary.org")
-          (setq org-agenda-include-diary nil)
+          (use-package org-octopress
+            :init
+            (progn
+              (setq org-octopress-directory-top       "~/Documents/Projects/Blog/octopress/source")
+              (setq org-octopress-directory-posts     "~/Documents/Projects/Blog/octopress/source/_posts")
+              (setq org-octopress-directory-org-top   "~/Documents/Projects/Blog/octopress/source")
+              (setq org-octopress-directory-org-posts "~/Documents/Projects/Blog/octopress/source/_org_posts")
+              (setq org-octopress-setup-file          "~/Documents/Projects/Blog/setupfile.org")))
 
           (add-hook 'org-mode-hook 'my-org-mode-hook)
 ))

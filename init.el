@@ -36,6 +36,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; load-paths
 (add-to-list 'load-path "~/.emacs.d/site-lisp/misc")
+(add-to-list 'load-path "~/.emacs.d/site-lisp/emacs-ctable")
+(add-to-list 'load-path "~/.emacs.d/site-lisp/org-octopress")
+(add-to-list 'load-path "~/.emacs.d/site-lisp/orglue")
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/lisp/utils")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

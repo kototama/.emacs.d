@@ -43,7 +43,9 @@
               (setq org-octopress-directory-posts     "~/Documents/Projects/Blog/octopress/source/_posts")
               (setq org-octopress-directory-org-top   "~/Documents/Projects/Blog/octopress/source")
               (setq org-octopress-directory-org-posts "~/Documents/Projects/Blog/octopress/source/_org_posts")
-              (setq org-octopress-setup-file          "~/Documents/Projects/Blog/setupfile.org")))
+              (setq org-octopress-setup-file
+                    "~/Documents/Projects/Blog/setupfile.org")
+              (setq org-jekyll-comments "true")))
 
           (add-hook 'org-mode-hook 'my-org-mode-hook)
 ))

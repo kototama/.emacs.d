@@ -14,7 +14,7 @@
               ";;; Licensed under the EUPL V.1.1\n"))
 
 (setq carneades-js-license
-      (concat (format "// Copyright (c) %s Fraunhofer Gesellschaft\n" 
+      (concat (format "// Copyright (c) %s Fraunhofer Gesellschaft\n"
                       carneade-license-year)
               "// Licensed under the EUPL V.1.1\n"))
 
@@ -88,5 +88,19 @@ The buffer is saved if a copyright notice is inserted."
   (find-file "/home/pal/Documents/Projects/carneades/src/CarneadesWebApp/src/carneades/analysis/web/routes_dev.clj")
   (end-of-buffer)
   (nrepl-jack-in))
+
+(defun carneades-create-new-file
+  ()
+  (interactive)
+  (let ((buffer (ido-find-file)))
+    (switch-to-buffer buffer)
+    (carneades-insert-copyright)
+    (goto-char (point-max))
+    (save-buffer)
+    (insert "\n(ns x\n(:require []))")
+    (indent-region (point-min) (point-max))
+    (clojure-update-ns)
+    (re-search-backward "\\[")
+    (forward-char)))
 
 (provide 'setup-carneades)

@@ -13,6 +13,7 @@
                                             :description)
                                  "]]"))
                    (entry (concat text " " link)))
+              (require 'org-agenda)
               (org-agenda-add-entry-to-org-agenda-diary-file 'day entry date)))
 
           (defun my-org-mode-hook

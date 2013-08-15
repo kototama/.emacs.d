@@ -1,3 +1,5 @@
+(require 'use-package)
+
 (use-package nrepl-eval-sexp-fu
   :init
   (progn

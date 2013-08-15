@@ -148,70 +148,14 @@
     (define-key ktm-mode-map (kbd "C-.") 'hippie-expand)
     ;; (define-key undo-tree-map (kbd "C-?") nil)
 
-
     (define-key ktm-mode-map (kbd "C-M-i") 'indent-region)
-    ;; (define-key ktm-mode-map (kbd "C-S ") 'nil)
-    ;; (define-key ktm-mode-map (kbd "C-S-s") 'save-buffer)
 
-    ;; keybindins specific to azerty
-    ;; altgr-b
-    (define-key ktm-mode-map (kbd "”") 'backward-word)
-    ;; altgr-f
-    (define-key ktm-mode-map (kbd "đ") 'ido-find-file)
-    ;; altgr-x
-    (define-key ktm-mode-map (kbd "»") 'smex)
-    ;; altgr-a
-    ;; (define-key ktm-mode-map (kbd "S-æ") 'beginning-of-buffer)
-    ;; altgr-e
-    (define-key ktm-mode-map (kbd "€") 'eval-last-sexp)
-    ;; altgr-s
-    ;; (define-key ktm-mode-map (kbd "ß") nil)
-    ;; algr-g
-    (define-key ktm-mode-map (kbd "ŋ") 'keyboard-quit)
-    ;; altgr-o
-    (define-key ktm-mode-map (kbd "ø") 'ido-switch-buffer)
-    ;; altgr-k
-    (define-key ktm-mode-map (kbd "ĸ") (lambda ()
-                                       (interactive)
-                                       (kill-buffer (current-buffer))))
     (define-key ktm-mode-map (kbd "S-<home>") 'beginning-of-buffer)
 
     (define-key ktm-mode-map (kbd "S-<end>") 'end-of-buffer)
+
     ;; altgr-S-e
     (define-key ktm-mode-map (kbd "¢") 'mc/edit-lines)
-
-    ;; since I inverted AltGr and R_Ctrl on my keyboard configuration
-    ;; this is sometimes usefull
-    (define-key ktm-mode-map (kbd "C-(") (lambda
-                                           ()
-                                           (interactive)
-                                           (insert "[")))
-    (define-key ktm-mode-map (kbd "C-)") (lambda
-                                           ()
-                                           (interactive)
-                                           (insert "]")))
-    (define-key ktm-mode-map (kbd "C-'") (lambda
-                                           ()
-                                           (interactive)
-                                           (insert "{")))
-    (define-key ktm-mode-map (kbd "C-=") (lambda
-                                           ()
-                                           (interactive)
-                                           (insert "}")))
-    (define-key ktm-mode-map (kbd "C-à") (lambda
-                                           ()
-                                           (interactive)
-                                           (insert "@")))
-    (define-key ktm-mode-map (kbd "C-\"") (lambda
-                                            ()
-                                           (interactive)
-                                           (insert "#")))
-    (define-key ktm-mode-map (kbd "C-é") (lambda
-                                            ()
-                                           (interactive)
-                                           (insert "~")))
-
-
 
     (define-key ktm-mode-map [C-down-mouse-1] 'browse-url-at-mouse)
 

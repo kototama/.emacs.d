@@ -149,22 +149,26 @@
       (yank)
       (exchange-point-and-mark))
 
+    (defun delete-horizontal-space-forward ()
+      (interactive "*P")
+      (let ((orig-pos (point)))
+        (delete-region
+         (point)
+         (progn
+           (skip-chars-forward " \t")
+           (constrain-to-field nil orig-pos)))))
+
     (defun paredit-eager-kill-line
       ()
       "Kills the current line or join the next line
    if the point is at the end of the line"
       (interactive)
-      (paredit-kill)
-      ;; (let ((current-point (point))
-      ;;       (bol-point (line-beginning-position))
-      ;;       (eol-point (line-end-position)))
-      ;;   (if (and (= current-point eol-point)
-      ;;            (/= current-point bol-point))
-      ;;       (delete-indentation 1)
-      ;;     (progn
-      ;;       (message "kill")
-      ;;      (paredit-kill nil))))
-      )
+      (cond ((looking-at " ")
+             (progn
+               (delete-horizontal-space-forward)))
+
+            (t (progn
+                 (paredit-kill)))))
 
     (use-package paredit
       :init (progn
@@ -176,7 +180,8 @@
                 (bind-key "M-R" 'paredit-raise-sexp paredit-mode-map)
                 (bind-key "C-M-a" 'paredit-backward paredit-mode-map)
                 (bind-key "C-M-S-a" 'beginning-of-defun
-                paredit-mode-map))
+                          paredit-mode-map)
+                (bind-key "M-S-b" 'paredit-backward paredit-mode-map))
 
               (add-hook 'paredit-mode-hook 'my-paredit-mode-hook)))
 

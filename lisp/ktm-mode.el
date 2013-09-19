@@ -62,6 +62,16 @@
              (set-window-start w2 s1)
              (setq i (1+ i)))))))
 
+(defun move-down-a-few-lines
+  (arg)
+  (interactive "p")
+  (next-line (+ arg 4) nil))
+
+(defun move-up-a-few-lines
+  (arg)
+  (interactive "p")
+  (previous-line (+ arg 4) nil))
+
 (define-minor-mode ktm-mode
   "Ktm mode"
   :init-value nil
@@ -87,12 +97,8 @@
     (define-key ktm-mode-map (kbd "C-S-p") 'previous-line)
     (define-key ktm-mode-map (kbd "C-S-a") 'beginning-of-buffer)
     (define-key ktm-mode-map (kbd "C-S-e") 'end-of-buffer)
-    (define-key ktm-mode-map (kbd "M-p") '(lambda (arg)
-                                   (interactive "p")
-                                   (previous-line (+ arg 4) nil)))
-    (define-key ktm-mode-map (kbd "M-n") '(lambda (arg)
-                                   (interactive "p")
-                                   (next-line (+ arg 4) nil)))
+    (define-key ktm-mode-map (kbd "M-p") 'move-up-a-few-lines)
+    (define-key ktm-mode-map (kbd "M-n") 'move-down-a-few-lines)
     (define-key ktm-mode-map (kbd "C-a") 'back-to-indentation-or-beginning-of-line)
     (define-key ktm-mode-map (kbd "M-g") 'goto-line-with-feedback)
     (define-key ktm-mode-map (kbd "M-j") 'ace-jump-mode)

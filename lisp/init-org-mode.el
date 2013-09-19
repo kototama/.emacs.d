@@ -48,6 +48,11 @@
                     "~/Documents/Projects/Blog/setupfile.org")
               (setq org-jekyll-comments "true")))
 
+          (setq org-default-notes-file "~/Documents/Notes/todo.org")
+          (setq org-agenda-files '("~/Documents/Notes/" "~/Documents/Notes/markos/"))
+          (setq org-agenda-diary-file "~/Documents/Notes/diary.org")
+          (setq org-agenda-include-diary nil)
+
           (add-hook 'org-mode-hook 'my-org-mode-hook)
 ))
 

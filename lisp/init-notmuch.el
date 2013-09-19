@@ -159,6 +159,14 @@ Such a list can be computed with `notmuch-hello-query-counts'."
 	   (if (member "markos" (notmuch-show-get-tags))
 	       "-markos" "+markos"))))
 
+      (define-key notmuch-show-mode-map (kbd "M-r")
+        (lambda ()
+          "remove unread tag for message"
+          (interactive)
+          (notmuch-show-tag-message
+           (if (member "unread" (notmuch-show-get-tags))
+               "-unread" "+unread"))))
+
       (bind-key "r" 'my-notmuch-mark-as-read notmuch-search-mode-map)
       (bind-key "r" 'notmuch-show-reply notmuch-show-mode-map)
       (bind-key "R" 'notmuch-show-reply-sender notmuch-show-mode-map))
@@ -174,6 +182,24 @@ Such a list can be computed with `notmuch-hello-query-counts'."
       (defun my-notmuch-show-hook
         ()
         (require 'org-notmuch))
+
+      ;; (defun my-notmuch-mark-as-read
+      ;;   (messageid)
+      ;;   (notmuch-tag-tag-icon))
+
+      (defun my-notmuch-mark-as-read
+        (messageid)
+        (notmuch-tag (concat "id:" messageid) '("+ab")))
+
+      (defun my-notmuch-mark-thread-as-read
+        (idstring)
+        (interactive (list (notmuch-show-get-message-id)))
+        "Marks the thread containing the message as read."
+        (notmuch-query-map-threads
+         (lambda (msg)
+           (let ((id (plist-get msg :id)))
+             (my-notmuch-mark-as-read id)))
+         (notmuch-query-get-threads (list idstring))))
 
       (use-package notmuch-address)
 

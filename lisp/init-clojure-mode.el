@@ -87,8 +87,18 @@
 	    clojure-mode-map)
             (bind-key "<f5>" 'nrepl-eval-buffer clojure-mode-map)
             (bind-key "<return>" 'paredit-newline clojure-mode-map)
-            (bind-key "M-." 'nrepl-jump clojure-mode-map))
+            (bind-key "M-." 'nrepl-jump clojure-mode-map)
+            (bind-key "M-n" 'move-down-a-few-lines
+                      clojure-test-mode-map)
+            )
 
           (add-hook 'clojure-mode-hook 'my-clojure-mode-hook))
 
   :bind (("C-;" . comment-region)))
+
+;; (use-package clojure-test-mode
+;;   :init (progn
+;; 	  (use-package nrepl-mode)
+;;           (bind-key "M-n" 'move-down-a-few-lines
+;;                     clojure-test-mode-map)
+;;           (bind-key "M-p" 'move-up-a-few-lines clojure-test-mode-map)))

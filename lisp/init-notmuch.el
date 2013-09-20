@@ -243,7 +243,7 @@ Such a list can be computed with `notmuch-hello-query-counts'."
          kill-list as read. "
         (let ((kill-list (my-notmuch-read-kill-list)))
           (dolist (idstr kill-list)
-            (my-notmuch-mark-as-read idstr)))
+            (my-notmuch-mark-thread-as-read idstr)))
         (message "Kill-list processed."))
 
       (use-package notmuch-address)

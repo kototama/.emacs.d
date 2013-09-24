@@ -132,13 +132,14 @@ Such a list can be computed with `notmuch-hello-query-counts'."
       ()
       (require 'notmuch-query)
       (require 'notmuch-show)
+      (require 'notmuch-kill-mode)
 
       (define-key notmuch-hello-mode-map "="
         (lambda ()
           (interactive)
           (notmuch-hello-update t)
           (notmuch-jump-to-unread-or-inbox)
-          (my-notmuch-process-kill-list)))
+          (notmuch-kill-process-kill-list)))
 
       (define-key notmuch-hello-mode-map (kbd "+")
         (lambda ()
@@ -193,58 +194,6 @@ Such a list can be computed with `notmuch-hello-query-counts'."
       ;; (defun my-notmuch-mark-as-read
       ;;   (messageid)
       ;;   (notmuch-tag-tag-icon))
-
-      (defun my-notmuch-mark-as-read
-        (messageid)
-        (notmuch-tag (concat "id:" messageid) '("-unread")))
-
-      (defun my-notmuch-mark-thread-as-read
-        (idstring)
-        (interactive (list (notmuch-show-get-message-id)))
-        "Marks the thread containing the message as read
-         and refreshed the current view."
-        (notmuch-query-map-threads
-         (lambda (msg)
-           (let ((id (plist-get msg :id)))
-             (my-notmuch-mark-as-read id)))
-         (notmuch-query-get-threads (list idstring "tag:unread")))
-        (notmuch-show-refresh-view))
-
-      (defun my-notmuch-get-string-from-file (filePath)
-        "Return filePath's file content."
-        (with-temp-buffer
-          (insert-file-contents filePath)
-          (buffer-string)))
-
-      (defvar my-notmuch-kill-list "/home/pal/.kill-list")
-
-      (defun my-notmuch-read-kill-list
-        ()
-        (let ((content (my-notmuch-get-string-from-file
-                         my-notmuch-kill-list)))
-          (read content)))
-
-      (defun my-notmuch-add-to-kill-list
-        (idstr)
-        (let* ((kill-list (my-notmuch-read-kill-list))
-               (new-kill-list (cons idstr kill-list)))
-          (with-temp-file my-notmuch-kill-list
-            (insert-string (prin1-to-string new-kill-list)))))
-
-      (defun my-notmuch-add-thread-to-kill-list
-        (idstr)
-        (interactive (list (notmuch-show-get-message-id)))
-        (my-notmuch-add-to-kill-list idstr)
-        (my-notmuch-mark-thread-as-read idstr))
-
-      (defun my-notmuch-process-kill-list
-        ()
-        "Marks all thread of all messages contained in the
-         kill-list as read. "
-        (let ((kill-list (my-notmuch-read-kill-list)))
-          (dolist (idstr kill-list)
-            (my-notmuch-mark-thread-as-read idstr)))
-        (message "Kill-list processed."))
 
       (use-package notmuch-address)
 

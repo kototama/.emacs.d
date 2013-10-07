@@ -189,7 +189,12 @@ Such a list can be computed with `notmuch-hello-query-counts'."
 
       (defun my-notmuch-show-hook
         ()
-        (require 'org-notmuch))
+        (require 'org-notmuch)
+        (notmuch-kill-mode))
+
+      (defun my-notmuch-search-hook
+        ()
+        (notmuch-kill-mode))
 
       ;; (defun my-notmuch-mark-as-read
       ;;   (messageid)
@@ -222,9 +227,8 @@ Such a list can be computed with `notmuch-hello-query-counts'."
       (setq notmuch-search-oldest-first nil)
 
       (add-hook 'notmuch-hello-mode-hook 'my-notmuch-hello-mode-hook)
-      ;; (add-hook 'notmuch-search-mode-hook
-      ;; 'my-notmuch-search-mode-hook)
       (add-hook 'notmuch-show-hook 'my-notmuch-show-hook)
+      (add-hook 'notmuch-search-hook 'my-notmuch-search-hook)
 
       (defadvice notmuch-hello (after jump-to-registero-unread-or-inbox activate)
         (notmuch-jump-to-unread-or-inbox))

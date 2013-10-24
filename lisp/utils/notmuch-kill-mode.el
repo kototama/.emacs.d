@@ -100,8 +100,8 @@
 
 (defun notmuch-kill-add-thread-to-kill-list
   (idstr)
-  "Adds the thread containing the message's id to the kill-list,
-  processes the augmented kill-list and refreshes the view."
+  "Adds the thread containing the message's id to the kill-list
+and refreshes the view."
   (interactive (list (notmuch-kill-get-id)))
   (notmuch-kill-add-to-kill-list idstr)
   (notmuch-kill-mark-thread-as-read-and-refresh idstr))

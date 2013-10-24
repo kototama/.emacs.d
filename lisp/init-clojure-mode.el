@@ -61,6 +61,9 @@
                 (add-hook 'nrepl-interaction-mode-hook
                           'ac-nrepl-setup)))
 
+            (setq nrepl-popup-stacktraces nil)
+            (setq nrepl-popup-stacktraces-in-repl t)
+
             (paredit-mode t)
             (show-paren-mode t)
             ;; (flyspell-prog-mode nil)

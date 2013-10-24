@@ -20,15 +20,20 @@
 (defun notmuch-kill-init
   ()
   "Initializes the mode."
+  (message "init mode")
+  (message "init list: %s" notmuch-kill-kill-list)
   (when (not (file-exists-p notmuch-kill-kill-list-path))
     (notmuch-kill-write-kill-list))
   (setq notmuch-kill-kill-list (notmuch-kill-read-kill-list))
-  (add-hook 'kill-emacs-hook 'notmuch-kill-exit))
+  (add-hook 'kill-buffer-hook 'notmuch-kill-kill-buffer-hook))
 
-(defun notmuch-kill-exit
+(defun notmuch-kill-kill-buffer-hook
   (&optional exit-data)
-  "Called when Emacs exists."
-  (notmuch-kill-write-kill-list))
+  "Called when a buffer is killed."
+  (when (or (eq major-mode 'notmuch-search-mode)
+            (eq major-mode 'notmuch-show-mode)
+            (eq major-mode 'notmuch-hello-mode))
+    (notmuch-kill-write-kill-list)))
 
 (defun notmuch-kill-mark-as-read
   (messageid)
@@ -89,10 +94,7 @@
 (defun notmuch-kill-add-to-kill-list
   (idstr)
   "Adds the thread containing the message's id to the kill-list."
-  (message "adding %s " idstr)
-  (message "new list %s" (cons idstr notmuch-kill-kill-list))
-  (setq notmuch-kill-kill-list (cons idstr notmuch-kill-kill-list))
-  (message "new list 2 %s" notmuch-kill-kill-list))
+  (setq notmuch-kill-kill-list (cons idstr notmuch-kill-kill-list)))
 
 (defun notmuch-kill-add-thread-to-kill-list
   (idstr)
@@ -100,9 +102,7 @@
   processes the augmented kill-list and refreshes the view."
   (interactive (list (notmuch-kill-get-id)))
   (notmuch-kill-add-to-kill-list idstr)
-  (notmuch-kill-mark-thread-as-read idstr)
-  (message "new list 3 %s" notmuch-kill-kill-list)
-  )
+  (notmuch-kill-mark-thread-as-read idstr))
 
 (defun notmuch-kill-process-kill-list
   ()

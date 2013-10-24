@@ -4,14 +4,31 @@
      messages contained in a killed thread will have their
      'unread' tag removed.
   "
+  :group 'notmuch
   :lighter " notmuch-kill"
   :keymap (let ((map (make-sparse-keymap)))
             (define-key map (kbd "C-c C-k") 'notmuch-kill-add-thread-to-kill-list)
-            map))
+            map)
+  :after-hook (notmuch-kill-init))
 
 (require 'notmuch-query)
 
-(defvar notmuch-kill-kill-list "~/.kill-list")
+(defvar notmuch-kill-kill-list-path "~/.kill-list")
+
+(setq notmuch-kill-kill-list nil)
+
+(defun notmuch-kill-init
+  ()
+  "Initializes the mode."
+  (when (not (file-exists-p notmuch-kill-kill-list-path))
+    (notmuch-kill-write-kill-list))
+  (setq notmuch-kill-kill-list (notmuch-kill-read-kill-list))
+  (add-hook 'kill-emacs-hook 'notmuch-kill-exit))
+
+(defun notmuch-kill-exit
+  (&optional exit-data)
+  "Called when Emacs exists."
+  (notmuch-kill-write-kill-list))
 
 (defun notmuch-kill-mark-as-read
   (messageid)
@@ -60,16 +77,22 @@
   ()
   "Returns the content of the kill-list."
   (let ((content (notmuch-kill-get-string-from-file
-                  notmuch-kill-kill-list)))
+                  notmuch-kill-kill-list-path)))
     (read content)))
+
+(defun notmuch-kill-write-kill-list
+  ()
+  "Writes the content of the kill-list to the disk."
+  (with-temp-file notmuch-kill-kill-list-path
+    (insert-string (prin1-to-string notmuch-kill-kill-list))))
 
 (defun notmuch-kill-add-to-kill-list
   (idstr)
-  "Adds the thread containing the message's id to the kill-list"
-  (let* ((kill-list (notmuch-kill-read-kill-list))
-         (new-kill-list (cons idstr kill-list)))
-    (with-temp-file notmuch-kill-kill-list
-      (insert-string (prin1-to-string new-kill-list)))))
+  "Adds the thread containing the message's id to the kill-list."
+  (message "adding %s " idstr)
+  (message "new list %s" (cons idstr notmuch-kill-kill-list))
+  (setq notmuch-kill-kill-list (cons idstr notmuch-kill-kill-list))
+  (message "new list 2 %s" notmuch-kill-kill-list))
 
 (defun notmuch-kill-add-thread-to-kill-list
   (idstr)
@@ -77,15 +100,16 @@
   processes the augmented kill-list and refreshes the view."
   (interactive (list (notmuch-kill-get-id)))
   (notmuch-kill-add-to-kill-list idstr)
-  (notmuch-kill-mark-thread-as-read idstr))
+  (notmuch-kill-mark-thread-as-read idstr)
+  (message "new list 3 %s" notmuch-kill-kill-list)
+  )
 
 (defun notmuch-kill-process-kill-list
   ()
   "Marks all thread of all messages contained in the kill-list as
 read."
-  (let ((kill-list (notmuch-kill-read-kill-list)))
-    (dolist (idstr kill-list)
-      (notmuch-kill-mark-thread-as-read idstr)))
+  (dolist (idstr notmuch-kill-kill-list)
+    (notmuch-kill-mark-thread-as-read idstr))
   (message "Kill-list processed."))
 
 (provide 'notmuch-kill-mode)

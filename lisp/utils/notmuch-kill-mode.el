@@ -20,8 +20,6 @@
 (defun notmuch-kill-init
   ()
   "Initializes the mode."
-  (message "init mode")
-  (message "init list: %s" notmuch-kill-kill-list)
   (when (not (file-exists-p notmuch-kill-kill-list-path))
     (notmuch-kill-write-kill-list))
   (setq notmuch-kill-kill-list (notmuch-kill-read-kill-list))

@@ -59,14 +59,18 @@
 
 (defun notmuch-kill-mark-thread-as-read
   (idstring)
-  (interactive (list (notmuch-kill-get-id)))
-  "Marks the thread containing the message as read
-         and refreshed the current view."
+  "Marks the thread containing the message as read."
   (notmuch-query-map-threads
    (lambda (msg)
      (let ((id (plist-get msg :id)))
        (notmuch-kill-mark-as-read id)))
-   (notmuch-query-get-threads (list idstring)))
+   (notmuch-query-get-threads (list idstring))))
+
+(defun notmuch-kill-mark-thread-as-read-and-refresh
+  (idstring)
+  (interactive (list (notmuch-kill-get-id)))
+  "Marks the thread containing the message as read and refreshed the view."
+  (notmuch-kill-mark-thread-as-read idstring)
   (notmuch-kill-refresh-view))
 
 (defun notmuch-kill-get-string-from-file
@@ -100,7 +104,7 @@
   processes the augmented kill-list and refreshes the view."
   (interactive (list (notmuch-kill-get-id)))
   (notmuch-kill-add-to-kill-list idstr)
-  (notmuch-kill-mark-thread-as-read idstr))
+  (notmuch-kill-mark-thread-as-read-and-refresh idstr))
 
 (defun notmuch-kill-process-kill-list
   ()
@@ -108,6 +112,7 @@
 read."
   (dolist (idstr notmuch-kill-kill-list)
     (notmuch-kill-mark-thread-as-read idstr))
+  (notmuch-kill-refresh-view)
   (message "Kill-list processed."))
 
 (provide 'notmuch-kill-mode)

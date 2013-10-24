@@ -122,3 +122,5 @@
        (cond ((looking-back "~/") (insert ".emacs.d/"))
              ((looking-back "/") (insert "~/"))
              (t (call-interactively 'self-insert-command)))))))
+
+(setq-default fill-column 80)

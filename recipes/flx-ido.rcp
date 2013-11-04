@@ -1,0 +1,4 @@
+(:name flx-ido
+       :description "Flx-ido mode"
+       :type github
+       :pkgname "lewang/flx")

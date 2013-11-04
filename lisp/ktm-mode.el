@@ -2,6 +2,7 @@
 ;; see http://www.reddit.com/r/emacs/comments/y76sl/proper_way_of_overriding_mode_keys/
 (require 'line-utils)
 (require 'file-utils)
+(require 'find-file-in-project)
 
 (defun goto-line-with-feedback ()
   "Show line numbers temporarily, while prompting for the line number input"
@@ -161,7 +162,8 @@
     (define-key ktm-mode-map (kbd "S-<end>") 'end-of-buffer)
 
     ;; altgr-S-e
-    (define-key ktm-mode-map (kbd "¢") 'mc/edit-lines)
+    ;; (define-key ktm-mode-map (kbd "¢") 'mc/edit-lines)
+    (define-key ktm-mode-map (kbd "C-c p") 'find-file-in-project)
 
     (define-key ktm-mode-map [C-down-mouse-1] 'browse-url-at-mouse)
 

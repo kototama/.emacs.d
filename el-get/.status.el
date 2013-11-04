@@ -48,8 +48,17 @@
               (:name emacs-async :description "Simple library for asynchronous processing in Emacs" :type github :pkgname "jwiegley/emacs-async"))
  (expand-region status "installed" recipe
                 (:name expand-region :type github :pkgname "magnars/expand-region.el" :description "Expand region increases the selected region by semantic units. Just keep pressing the key until it selects what you want." :website "https://github.com/magnars/expand-region.el#readme" :features expand-region))
+ (fill-column-indicator status "installed" recipe
+                        (:name fill-column-indicator :type github :website "https://github.com/alpaker/Fill-Column-Indicator#readme" :description "An Emacs minor mode that graphically indicates the fill column." :pkgname "alpaker/Fill-Column-Indicator" :features fill-column-indicator))
+ (find-file-in-project status "installed" recipe
+                       (:name find-file-in-project :type github :pkgname "technomancy/find-file-in-project" :description "Quick access to project files in Emacs" :load "find-file-in-project.el" :compile
+                              ("find-file-in-project.el")))
+ (flx-ido status "installed" recipe
+          (:name flx-ido :description "Flx-ido mode" :type github :pkgname "lewang/flx"))
  (fuzzy status "installed" recipe
         (:name fuzzy :website "https://github.com/auto-complete/fuzzy-el" :description "Fuzzy matching utilities for GNU Emacs" :type github :pkgname "auto-complete/fuzzy-el"))
+ (god-mode status "installed" recipe
+           (:name god-mode :description "Global minor mode for entering Emacs commands without modifier keys." :type github :pkgname "chrisdone/god-mode"))
  (haskell-mode status "installed" recipe
                (:name haskell-mode :description "A Haskell editing mode" :type github :pkgname "haskell/haskell-mode" :load "haskell-site-file.el" :post-init
                       (progn
@@ -79,6 +88,8 @@
              (:name multi-term :description "A mode based on term.el, for managing multiple terminal buffers in Emacs." :type emacswiki :features multi-term))
  (multiple-cursors status "installed" recipe
                    (:name multiple-cursors :description "An experiment in adding multiple cursors to emacs" :type github :pkgname "magnars/multiple-cursors.el" :features multiple-cursors))
+ (nginx-mode status "installed" recipe
+             (:name nginx-mode :website "https://github.com/ajc/nginx-mode" :description "major mode for editing nginx config files" :type github :pkgname "ajc/nginx-mode"))
  (notmuch status "installed" recipe
           (:name notmuch :description "Run notmuch(thread-based email index, search and tagging) within emacs" :type git :url "git://notmuchmail.org/git/notmuch" :load-path
                  ("./emacs")
@@ -147,6 +158,8 @@
         (:name popup :website "https://github.com/auto-complete/popup-el" :description "Visual Popup Interface Library for Emacs" :type github :pkgname "auto-complete/popup-el"))
  (powerline status "installed" recipe
             (:name powerline :website "https://github.com/jonathanchu/emacs-powerline" :description "Powerline for Emacs" :type github :pkgname "jonathanchu/emacs-powerline" :features powerline))
+ (pretty-mode status "installed" recipe
+              (:name pretty-mode :description "Redisplay parts of the buffer as pretty symbols" :type emacswiki :features "pretty-mode"))
  (s status "installed" recipe
     (:name s :description "The long lost Emacs string manipulation library." :type github :pkgname "magnars/s.el" :features s))
  (undo-tree status "installed" recipe

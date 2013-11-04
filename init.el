@@ -75,7 +75,8 @@
                 ido-ubiquitous
                 hippie-exp
                 color-theme-kototama
-                auto-complete-config))
+                auto-complete-config
+                flx-ido))
   (require mode))
 
 (color-theme-kototama)

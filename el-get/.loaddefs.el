@@ -696,6 +696,97 @@ List of modes which derive from `text-mode' for which text mode expansions are n
 
 ;;;***
 
+;;;### (autoloads (turn-on-fci-mode fci-mode) "fill-column-indicator/fill-column-indicator"
+;;;;;;  "fill-column-indicator/fill-column-indicator.el" (21078 38967
+;;;;;;  222891 904000))
+;;; Generated autoloads from fill-column-indicator/fill-column-indicator.el
+
+(autoload 'fci-mode "fill-column-indicator/fill-column-indicator" "\
+Toggle fci-mode on and off.
+Fci-mode indicates the location of the fill column by drawing a
+thin line (a `rule') at the fill column.
+
+With prefix ARG, turn fci-mode on if and only if ARG is positive.
+
+The following options control the appearance of the fill-column
+rule: `fci-rule-column', `fci-rule-width', `fci-rule-color',
+`fci-rule-use-dashes', `fci-dash-pattern', `fci-rule-character',
+and `fci-rule-character-color'.  For further options, see the
+Customization menu or the package file.  (See the latter for tips
+on troubleshooting.)
+
+\(fn &optional ARG)" t nil)
+
+(autoload 'turn-on-fci-mode "fill-column-indicator/fill-column-indicator" "\
+Turn on fci-mode unconditionally.
+
+\(fn)" t nil)
+
+;;;***
+
+;;;### (autoloads (find-file-in-project) "find-file-in-project/find-file-in-project"
+;;;;;;  "find-file-in-project/find-file-in-project.el" (21111 49346
+;;;;;;  617923 534000))
+;;; Generated autoloads from find-file-in-project/find-file-in-project.el
+
+(autoload 'find-file-in-project "find-file-in-project/find-file-in-project" "\
+Prompt with a completing list of all files in the project to find one.
+
+The project's scope is defined as the first directory containing
+an `.emacs-project' file.  You can override this by locally
+setting the variable `ffip-project-root'.
+
+\(fn)" t nil)
+
+(defalias 'ffip 'find-file-in-project)
+
+(put 'ffip-patterns 'safe-local-variable 'listp)
+
+(put 'ffip-find-options 'safe-local-variable 'stringp)
+
+(put 'ffip-project-file 'safe-local-variable 'stringp)
+
+(put 'ffip-project-root 'safe-local-variable 'stringp)
+
+(put 'ffip-project-root-function 'safe-local-variable 'functionp)
+
+(put 'ffip-limit 'safe-local-variable 'integerp)
+
+;;;***
+
+;;;### (autoloads (flx-ido-mode) "flx-ido/flx-ido" "flx-ido/flx-ido.el"
+;;;;;;  (21111 49182 413109 292000))
+;;; Generated autoloads from flx-ido/flx-ido.el
+
+(defvar flx-ido-mode nil "\
+Non-nil if Flx-Ido mode is enabled.
+See the command `flx-ido-mode' for a description of this minor mode.")
+
+(custom-autoload 'flx-ido-mode "flx-ido/flx-ido" nil)
+
+(autoload 'flx-ido-mode "flx-ido/flx-ido" "\
+Toggle flx ido mode
+
+\(fn &optional ARG)" t nil)
+
+;;;***
+
+;;;### (autoloads (god-local-mode god-mode) "god-mode/god-mode" "god-mode/god-mode.el"
+;;;;;;  (21012 48070 910773 415000))
+;;; Generated autoloads from god-mode/god-mode.el
+
+(autoload 'god-mode "god-mode/god-mode" "\
+
+
+\(fn)" t nil)
+
+(autoload 'god-local-mode "god-mode/god-mode" "\
+Minor mode for running commands.
+
+\(fn &optional ARG)" t nil)
+
+;;;***
+
 ;;;### (autoloads (ghc-core-mode ghc-core-create-core) "haskell-mode/ghc-core"
 ;;;;;;  "haskell-mode/ghc-core.el" (20837 24199 995399 397000))
 ;;; Generated autoloads from haskell-mode/ghc-core.el
@@ -1792,6 +1883,20 @@ an exceedingly quick way of adding multiple cursors to multiple lines.
 
 ;;;***
 
+;;;### (autoloads (nginx-mode) "nginx-mode/nginx-mode" "nginx-mode/nginx-mode.el"
+;;;;;;  (21009 65342 367708 344000))
+;;; Generated autoloads from nginx-mode/nginx-mode.el
+
+(autoload 'nginx-mode "nginx-mode/nginx-mode" "\
+Major mode for highlighting nginx config files.
+
+The variable nginx-indent-level controls the amount of indentation.
+\\{nginx-mode-map}
+
+\(fn)" t nil)
+
+;;;***
+
 ;;;### (autoloads (notmuch-cycle-notmuch-buffers notmuch notmuch-search)
 ;;;;;;  "notmuch/emacs/notmuch" "notmuch/emacs/notmuch.el" (20834
 ;;;;;;  45355 185834 898000))
@@ -2705,7 +2810,7 @@ Call the customize function with org as argument.
 ;;;;;;  org-search-view org-agenda-list org-batch-store-agenda-views
 ;;;;;;  org-store-agenda-views org-batch-agenda-csv org-batch-agenda
 ;;;;;;  org-agenda org-toggle-sticky-agenda) "org-mode/lisp/org-agenda"
-;;;;;;  "org-mode/lisp/org-agenda.el" (20829 21604 606291 238000))
+;;;;;;  "org-mode/lisp/org-agenda.el" (20928 31655 108513 875000))
 ;;; Generated autoloads from org-mode/lisp/org-agenda.el
 
 (autoload 'org-toggle-sticky-agenda "org-mode/lisp/org-agenda" "\
@@ -3245,6 +3350,49 @@ Paredit behaves badly if parentheses are imbalanced, so exercise
 
 ;;;***
 
+;;;### (autoloads (turn-on-pretty-mode global-pretty-mode pretty-mode)
+;;;;;;  "pretty-mode/pretty-mode" "pretty-mode/pretty-mode.el" (21087
+;;;;;;  61556 351607 675000))
+;;; Generated autoloads from pretty-mode/pretty-mode.el
+
+(autoload 'pretty-mode "pretty-mode/pretty-mode" "\
+Toggle Pretty minor mode.
+With arg, turn Pretty minor mode on if arg is positive, off otherwise.
+
+Pretty mode builds on `font-lock-mode'. Instead of highlighting
+keywords, it replaces them with symbols. For example, lambda is
+displayed as λ in lisp modes.
+
+\(fn &optional ARG)" t nil)
+
+(defvar global-pretty-mode t "\
+Non-nil if Global-Pretty mode is enabled.
+See the command `global-pretty-mode' for a description of this minor mode.
+Setting this variable directly does not take effect;
+either customize it (see the info node `Easy Customization')
+or call the function `global-pretty-mode'.")
+
+(custom-autoload 'global-pretty-mode "pretty-mode/pretty-mode" nil)
+
+(autoload 'global-pretty-mode "pretty-mode/pretty-mode" "\
+Toggle Pretty mode in all buffers.
+With prefix ARG, enable Global-Pretty mode if ARG is positive;
+otherwise, disable it.  If called from Lisp, enable the mode if
+ARG is omitted or nil.
+
+Pretty mode is enabled in all buffers where
+`turn-on-pretty-if-desired' would do it.
+See `pretty-mode' for more information on Pretty mode.
+
+\(fn &optional ARG)" t nil)
+
+(autoload 'turn-on-pretty-mode "pretty-mode/pretty-mode" "\
+
+
+\(fn)" t nil)
+
+;;;***
+
 ;;;### (autoloads (global-undo-tree-mode undo-tree-mode) "undo-tree/undo-tree"
 ;;;;;;  "undo-tree/undo-tree.el" (20829 21666 622598 758000))
 ;;; Generated autoloads from undo-tree/undo-tree.el
@@ -3373,6 +3521,7 @@ See `yas-minor-mode' for more information on Yas minor mode.
 ;;;;;;  "expand-region/python-el-expansions.el" "expand-region/python-el-fgallina-expansions.el"
 ;;;;;;  "expand-region/python-mode-expansions.el" "expand-region/ruby-mode-expansions.el"
 ;;;;;;  "expand-region/text-mode-expansions.el" "expand-region/web-mode-expansions.el"
+;;;;;;  "fill-column-indicator/fci-osx-23-fix.el" "flx-ido/flx.el"
 ;;;;;;  "fuzzy/fuzzy.el" "haskell-mode/haskell-checkers.el" "haskell-mode/haskell-font-lock.el"
 ;;;;;;  "haskell-mode/haskell-ghci.el" "haskell-mode/haskell-hugs.el"
 ;;;;;;  "haskell-mode/haskell-package.el" "haskell-mode/haskell-simple-indent.el"
@@ -3453,7 +3602,7 @@ See `yas-minor-mode' for more information on Yas minor mode.
 ;;;;;;  "org-mode/lisp/ox-texinfo.el" "org-mode/lisp/ox.el" "ox-reveal/ox-reveal.el"
 ;;;;;;  "popup/popup.el" "powerline/powerline.el" "s/s.el" "wgrep/wgrep.el"
 ;;;;;;  "yasnippet/dropdown-list.el" "yasnippet/yasnippet-debug.el"
-;;;;;;  "yasnippet/yasnippet-tests.el") (20921 42454 808724 908000))
+;;;;;;  "yasnippet/yasnippet-tests.el") (21111 49347 36960 760000))
 
 ;;;***
 

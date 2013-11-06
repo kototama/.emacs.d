@@ -1,6 +1,9 @@
 (use-package js
   :init
   (progn
+    (use-package smartparens)
+    (use-package tern)
+    (use-package tern-auto-complete)
 
     (defun js-greek-lambda ()
        (font-lock-add-keywords nil `(("\\<function\\>"
@@ -16,9 +19,15 @@
 
     (defun my-js-mode-hook
       ()
+      (smartparens-mode)
+      (tern-mode)
+      (tern-ac-setup)
       (bind-key "<return>" 'my-return-and-indent js-mode-map))
 
     (add-hook 'js-mode-hook 'js-greek-lambda)
-    (add-hook 'js-mode-hook 'my-js-mode-hook)))
+    (add-hook 'js-mode-hook 'my-js-mode-hook)
+
+    )
+  )
 
 (provide 'setup-javascript)

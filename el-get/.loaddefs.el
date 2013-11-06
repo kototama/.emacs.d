@@ -4473,6 +4473,175 @@ See `pretty-mode' for more information on Pretty mode.
 
 ;;;***
 
+;;;### (autoloads (turn-off-show-smartparens-mode turn-on-show-smartparens-mode
+;;;;;;  show-smartparens-global-mode show-smartparens-mode turn-off-smartparens-mode
+;;;;;;  turn-on-smartparens-mode smartparens-global-mode turn-on-smartparens-strict-mode
+;;;;;;  smartparens-global-strict-mode smartparens-strict-mode smartparens-mode
+;;;;;;  sp-use-smartparens-bindings sp-use-paredit-bindings sp-cheat-sheet)
+;;;;;;  "smartparens/smartparens" "smartparens/smartparens.el" (21114
+;;;;;;  19745 76943 398000))
+;;; Generated autoloads from smartparens/smartparens.el
+
+(autoload 'sp-cheat-sheet "smartparens/smartparens" "\
+Generate a cheat sheet of all the smartparens interactive functions.
+
+Without a prefix argument, print only the short documentation and examples.
+
+With non-nil prefix argument, show the full documentation for each function.
+
+You can follow the links to the function or variable help page.
+To get back to the full list, use \\[help-go-back].
+
+You can use `beginning-of-defun' and `end-of-defun' to jump to
+the previous/next entry.
+
+Examples are fontified using the `font-lock-string-face' for
+better orientation.
+
+\(fn &optional ARG)" t nil)
+
+(defvar sp-keymap (make-sparse-keymap) "\
+Keymap used for `smartparens-mode'.")
+
+(autoload 'sp-use-paredit-bindings "smartparens/smartparens" "\
+Initiate `sp-keymap' with paredit-compatible bindings for
+corresponding functions provided by smartparens.  See variable
+`sp-paredit-bindings'.
+
+\(fn)" t nil)
+
+(autoload 'sp-use-smartparens-bindings "smartparens/smartparens" "\
+Initiate `sp-keymap' with smartparens bindings for navigation functions.
+See variable `sp-smartparens-bindings'.
+
+\(fn)" t nil)
+
+(autoload 'smartparens-mode "smartparens/smartparens" "\
+Toggle smartparens mode.
+
+You can enable pre-set bindings by customizing
+`sp-base-key-bindings' variable.  The current content of
+`sp-keymap' is:
+
+ \\{sp-keymap}
+
+\(fn &optional ARG)" t nil)
+
+(autoload 'smartparens-strict-mode "smartparens/smartparens" "\
+Toggle the strict smartparens mode.
+
+When strict mode is active, `delete-char', `kill-word' and their
+backward variants will skip over the pair delimiters in order to
+keep the structure always valid (the same way as `paredit-mode'
+does).  This is accomplished by remapping them to
+`sp-delete-char' and `sp-kill-word'.  There is also function
+`sp-kill-symbol' that deletes symbols instead of words, otherwise
+working exactly the same (it is not bound to any key by default).
+
+When strict mode is active, this is indicated with \"/s\"
+after the smartparens indicator in the mode list.
+
+\(fn &optional ARG)" t nil)
+
+(defvar smartparens-global-strict-mode nil "\
+Non-nil if Smartparens-Global-Strict mode is enabled.
+See the command `smartparens-global-strict-mode' for a description of this minor mode.
+Setting this variable directly does not take effect;
+either customize it (see the info node `Easy Customization')
+or call the function `smartparens-global-strict-mode'.")
+
+(custom-autoload 'smartparens-global-strict-mode "smartparens/smartparens" nil)
+
+(autoload 'smartparens-global-strict-mode "smartparens/smartparens" "\
+Toggle Smartparens-Strict mode in all buffers.
+With prefix ARG, enable Smartparens-Global-Strict mode if ARG is positive;
+otherwise, disable it.  If called from Lisp, enable the mode if
+ARG is omitted or nil.
+
+Smartparens-Strict mode is enabled in all buffers where
+`turn-on-smartparens-strict-mode' would do it.
+See `smartparens-strict-mode' for more information on Smartparens-Strict mode.
+
+\(fn &optional ARG)" t nil)
+
+(autoload 'turn-on-smartparens-strict-mode "smartparens/smartparens" "\
+Turn on `smartparens-mode'.
+
+\(fn)" t nil)
+
+(defvar smartparens-global-mode nil "\
+Non-nil if Smartparens-Global mode is enabled.
+See the command `smartparens-global-mode' for a description of this minor mode.
+Setting this variable directly does not take effect;
+either customize it (see the info node `Easy Customization')
+or call the function `smartparens-global-mode'.")
+
+(custom-autoload 'smartparens-global-mode "smartparens/smartparens" nil)
+
+(autoload 'smartparens-global-mode "smartparens/smartparens" "\
+Toggle Smartparens mode in all buffers.
+With prefix ARG, enable Smartparens-Global mode if ARG is positive;
+otherwise, disable it.  If called from Lisp, enable the mode if
+ARG is omitted or nil.
+
+Smartparens mode is enabled in all buffers where
+`turn-on-smartparens-mode' would do it.
+See `smartparens-mode' for more information on Smartparens mode.
+
+\(fn &optional ARG)" t nil)
+
+(autoload 'turn-on-smartparens-mode "smartparens/smartparens" "\
+Turn on `smartparens-mode'.
+
+\(fn)" t nil)
+
+(autoload 'turn-off-smartparens-mode "smartparens/smartparens" "\
+Turn off `smartparens-mode'.
+
+\(fn)" t nil)
+
+(autoload 'show-smartparens-mode "smartparens/smartparens" "\
+Toggle visualization of matching pairs.  When enabled, any
+matching pair is highlighted after `sp-show-pair-delay' seconds
+of Emacs idle time if the point is immediately in front or after
+a pair.  This mode works similarly to `show-paren-mode', but
+support custom pairs.
+
+\(fn &optional ARG)" t nil)
+
+(defvar show-smartparens-global-mode nil "\
+Non-nil if Show-Smartparens-Global mode is enabled.
+See the command `show-smartparens-global-mode' for a description of this minor mode.
+Setting this variable directly does not take effect;
+either customize it (see the info node `Easy Customization')
+or call the function `show-smartparens-global-mode'.")
+
+(custom-autoload 'show-smartparens-global-mode "smartparens/smartparens" nil)
+
+(autoload 'show-smartparens-global-mode "smartparens/smartparens" "\
+Toggle Show-Smartparens mode in all buffers.
+With prefix ARG, enable Show-Smartparens-Global mode if ARG is positive;
+otherwise, disable it.  If called from Lisp, enable the mode if
+ARG is omitted or nil.
+
+Show-Smartparens mode is enabled in all buffers where
+`turn-on-show-smartparens-mode' would do it.
+See `show-smartparens-mode' for more information on Show-Smartparens mode.
+
+\(fn &optional ARG)" t nil)
+
+(autoload 'turn-on-show-smartparens-mode "smartparens/smartparens" "\
+Turn on `show-smartparens-mode'.
+
+\(fn)" t nil)
+
+(autoload 'turn-off-show-smartparens-mode "smartparens/smartparens" "\
+Turn off `show-smartparens-mode'.
+
+\(fn)" t nil)
+
+;;;***
+
 ;;;### (autoloads (smex-initialize smex) "smex/smex" "smex/smex.el"
 ;;;;;;  (21114 19037 553434 973000))
 ;;; Generated autoloads from smex/smex.el
@@ -4484,6 +4653,33 @@ See `pretty-mode' for more information on Pretty mode.
 
 (autoload 'smex-initialize "smex/smex" "\
 
+
+\(fn)" t nil)
+
+;;;***
+
+;;;### (autoloads (tern-mode tern-use-server) "tern/emacs/tern" "tern/emacs/tern.el"
+;;;;;;  (21114 19283 774655 917000))
+;;; Generated autoloads from tern/emacs/tern.el
+
+(autoload 'tern-use-server "tern/emacs/tern" "\
+
+
+\(fn PORT)" t nil)
+
+(autoload 'tern-mode "tern/emacs/tern" "\
+Minor mode binding to the Tern JavaScript analyzer
+
+\(fn &optional ARG)" t nil)
+
+;;;***
+
+;;;### (autoloads (tern-ac-setup) "tern/emacs/tern-auto-complete"
+;;;;;;  "tern/emacs/tern-auto-complete.el" (21114 19283 774655 917000))
+;;; Generated autoloads from tern/emacs/tern-auto-complete.el
+
+(autoload 'tern-ac-setup "tern/emacs/tern-auto-complete" "\
+Setup auto-complete for tern-mode.
 
 \(fn)" t nil)
 
@@ -4714,8 +4910,11 @@ See `yas-minor-mode' for more information on Yas minor mode.
 ;;;;;;  "org-mode/lisp/ox-latex.el" "org-mode/lisp/ox-man.el" "org-mode/lisp/ox-md.el"
 ;;;;;;  "org-mode/lisp/ox-odt.el" "org-mode/lisp/ox-org.el" "org-mode/lisp/ox-publish.el"
 ;;;;;;  "org-mode/lisp/ox-texinfo.el" "org-mode/lisp/ox.el" "ox-reveal/ox-reveal.el"
+;;;;;;  "smartparens/smartparens-config.el" "smartparens/smartparens-html.el"
+;;;;;;  "smartparens/smartparens-latex.el" "smartparens/smartparens-lua.el"
+;;;;;;  "smartparens/smartparens-pkg.el" "smartparens/smartparens-ruby.el"
 ;;;;;;  "wgrep/wgrep-test.el" "yasnippet/yasnippet-debug.el" "yasnippet/yasnippet-tests.el")
-;;;;;;  (21114 19037 992727 992000))
+;;;;;;  (21114 19746 717200 580000))
 
 ;;;***
 

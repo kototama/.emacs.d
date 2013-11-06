@@ -3,17 +3,9 @@
 ;;; Code:
 
 
-;;;### (autoloads (ac-nrepl-popup-doc ac-nrepl-setup ac-nrepl-clear-class-cache)
-;;;;;;  "ac-nrepl/ac-nrepl" "ac-nrepl/ac-nrepl.el" (20829 35800 540685
-;;;;;;  56000))
+;;;### (autoloads (ac-nrepl-popup-doc ac-nrepl-setup) "ac-nrepl/ac-nrepl"
+;;;;;;  "ac-nrepl/ac-nrepl.el" (21114 18143 377000 988000))
 ;;; Generated autoloads from ac-nrepl/ac-nrepl.el
-
-(autoload 'ac-nrepl-clear-class-cache "ac-nrepl/ac-nrepl" "\
-Clear the class cache to prevent stale results.
-
-\(fn)" nil nil)
-
-(add-hook 'nrepl-connected-hook 'ac-nrepl-refresh-class-cache t)
 
 (defface ac-nrepl-candidate-face '((t (:inherit ac-candidate-face))) "\
 Face for nrepl candidates." :group (quote auto-complete))
@@ -36,7 +28,7 @@ Auto-complete source for nrepl ns-specific class completion.")
 (defvar ac-source-nrepl-all-classes (append '((candidates . ac-nrepl-candidates-all-classes) (symbol . "c")) ac-nrepl-source-defaults) "\
 Auto-complete source for nrepl all class completion.")
 
-(defvar ac-source-nrepl-java-methods (append '((candidates . ac-nrepl-candidates-java-methods) (symbol . "m") (action . ac-nrepl-delete-java-class-hint)) ac-nrepl-source-defaults) "\
+(defvar ac-source-nrepl-java-methods (append '((candidates . ac-nrepl-candidates-java-methods) (symbol . "m")) ac-nrepl-source-defaults) "\
 Auto-complete source for nrepl java method completion.")
 
 (defvar ac-source-nrepl-static-methods (append '((candidates . ac-nrepl-candidates-static-methods) (symbol . "s")) ac-nrepl-source-defaults) "\
@@ -57,7 +49,7 @@ A popup alternative to `nrepl-doc'.
 
 ;;;### (autoloads (ace-jump-mode ace-jump-line-mode ace-jump-word-mode
 ;;;;;;  ace-jump-char-mode ace-jump-mode-pop-mark) "ace-jump-mode/ace-jump-mode"
-;;;;;;  "ace-jump-mode/ace-jump-mode.el" (20867 43587 195702 270000))
+;;;;;;  "ace-jump-mode/ace-jump-mode.el" (21114 18147 421021 52000))
 ;;; Generated autoloads from ace-jump-mode/ace-jump-mode.el
 
 (autoload 'ace-jump-mode-pop-mark "ace-jump-mode/ace-jump-mode" "\
@@ -110,7 +102,7 @@ You can constrol whether use the case sensitive via
 
 ;;;### (autoloads (ack-and-a-half-find-file-same ack-and-a-half-find-file
 ;;;;;;  ack-and-a-half-same ack-and-a-half) "ack-and-a-half/ack-and-a-half"
-;;;;;;  "ack-and-a-half/ack-and-a-half.el" (20829 33927 135395 359000))
+;;;;;;  "ack-and-a-half/ack-and-a-half.el" (21114 18150 885038 224000))
 ;;; Generated autoloads from ack-and-a-half/ack-and-a-half.el
 
 (autoload 'ack-and-a-half "ack-and-a-half/ack-and-a-half" "\
@@ -154,7 +146,7 @@ Prompt to find a file found by ack in DIRECTORY.
 ;;;***
 
 ;;;### (autoloads (auto-complete) "auto-complete/auto-complete" "auto-complete/auto-complete.el"
-;;;;;;  (20829 21430 561428 196000))
+;;;;;;  (21114 18133 228950 672000))
 ;;; Generated autoloads from auto-complete/auto-complete.el
 
 (autoload 'auto-complete "auto-complete/auto-complete" "\
@@ -164,10 +156,10 @@ Start auto-completion at current point.
 
 ;;;***
 
-;;;### (autoloads (auto-indent-global-mode auto-indent-minor-mode-on
-;;;;;;  auto-indent-minor-mode auto-indent-eol-char-newline auto-indent-eol-newline)
-;;;;;;  "auto-indent-mode/auto-indent-mode" "auto-indent-mode/auto-indent-mode.el"
-;;;;;;  (20893 60849 853773 428000))
+;;;### (autoloads (auto-indent-global-mode auto-indent-mode-on auto-indent-mode
+;;;;;;  auto-indent-eol-char-newline auto-indent-eol-newline) "auto-indent-mode/auto-indent-mode"
+;;;;;;  "auto-indent-mode/auto-indent-mode.el" (21114 18155 165059
+;;;;;;  447000))
 ;;; Generated autoloads from auto-indent-mode/auto-indent-mode.el
 
 (autoload 'auto-indent-eol-newline "auto-indent-mode/auto-indent-mode" "\
@@ -180,16 +172,14 @@ Auto-indent function for `end-of-line', insert `auto-indent-eol-char', and then 
 
 \(fn)" t nil)
 
-(defalias 'auto-indent-mode 'auto-indent-minor-mode)
-
-(autoload 'auto-indent-minor-mode "auto-indent-mode/auto-indent-mode" "\
+(autoload 'auto-indent-mode "auto-indent-mode/auto-indent-mode" "\
 Auto Indent minor mode.
 
 With no argument, this command toggles the mode.
 positive prefix argument turns on the mode.
 Negative prefix argument turns off the mode.
 
-When auto-indent-minor-mode minor mode is enabled, yanking or pasting automatically indents
+When auto-indent-mode minor mode is enabled, yanking or pasting automatically indents
 
 Fall back to default, non-indented yanking by preceding the yanking commands with C-u.
 
@@ -199,7 +189,7 @@ http://www.emacswiki.org/emacs/AutoIndentation
 
 \(fn &optional ARG)" t nil)
 
-(autoload 'auto-indent-minor-mode-on "auto-indent-mode/auto-indent-mode" "\
+(autoload 'auto-indent-mode-on "auto-indent-mode/auto-indent-mode" "\
 Turn on auto-indent minor mode.
 
 \(fn)" t nil)
@@ -214,21 +204,97 @@ or call the function `auto-indent-global-mode'.")
 (custom-autoload 'auto-indent-global-mode "auto-indent-mode/auto-indent-mode" nil)
 
 (autoload 'auto-indent-global-mode "auto-indent-mode/auto-indent-mode" "\
-Toggle Auto-Indent minor mode in all buffers.
+Toggle Auto-Indent mode in all buffers.
 With prefix ARG, enable Auto-Indent-Global mode if ARG is positive;
 otherwise, disable it.  If called from Lisp, enable the mode if
 ARG is omitted or nil.
 
-Auto-Indent minor mode is enabled in all buffers where
-`auto-indent-minor-mode-on' would do it.
-See `auto-indent-minor-mode' for more information on Auto-Indent minor mode.
+Auto-Indent mode is enabled in all buffers where
+`auto-indent-mode-on' would do it.
+See `auto-indent-mode' for more information on Auto-Indent mode.
 
 \(fn &optional ARG)" t nil)
 
 ;;;***
 
+;;;### (autoloads (cider cider-jack-in) "cider/cider" "cider/cider.el"
+;;;;;;  (21114 18103 812804 803000))
+;;; Generated autoloads from cider/cider.el
+
+(autoload 'cider-jack-in "cider/cider" "\
+Start a nREPL server for the current project and connect to it.
+If PROMPT-PROJECT is t, then prompt for the project for which to
+start the server.
+
+\(fn &optional PROMPT-PROJECT)" t nil)
+
+(autoload 'cider "cider/cider" "\
+Connect to an nREPL server identified by HOST and PORT.
+
+\(fn HOST PORT)" t nil)
+
+(eval-after-load 'clojure-mode '(progn (define-key clojure-mode-map (kbd "C-c M-j") 'cider-jack-in) (define-key clojure-mode-map (kbd "C-c M-c") 'cider)))
+
+;;;***
+
+;;;### (autoloads (cider-disable-on-existing-clojure-buffers cider-enable-on-existing-clojure-buffers)
+;;;;;;  "cider/cider-interaction" "cider/cider-interaction.el" (21114
+;;;;;;  18103 804804 760000))
+;;; Generated autoloads from cider/cider-interaction.el
+
+(autoload 'cider-enable-on-existing-clojure-buffers "cider/cider-interaction" "\
+Enable interaction mode on existing Clojure buffers.
+See command `cider-mode'.
+
+\(fn)" t nil)
+
+(autoload 'cider-disable-on-existing-clojure-buffers "cider/cider-interaction" "\
+Disable interaction mode on existing Clojure buffers.
+See command `cider-mode'.
+
+\(fn)" t nil)
+
+;;;***
+
+;;;### (autoloads (cider-mode) "cider/cider-mode" "cider/cider-mode.el"
+;;;;;;  (21114 18103 812804 803000))
+;;; Generated autoloads from cider/cider-mode.el
+
+(autoload 'cider-mode "cider/cider-mode" "\
+Minor mode for REPL interaction from a Clojure buffer.
+
+\\{cider-mode-map}
+
+\(fn &optional ARG)" t nil)
+
+;;;***
+
+;;;### (autoloads (cider-selector) "cider/cider-selector" "cider/cider-selector.el"
+;;;;;;  (21114 18103 812804 803000))
+;;; Generated autoloads from cider/cider-selector.el
+
+(autoload 'cider-selector "cider/cider-selector" "\
+Select a new buffer by type, indicated by a single character.
+The user is prompted for a single character indicating the method by
+which to choose a new buffer.  The `?' character describes then
+available methods.  OTHER-WINDOW provides an optional target.
+
+See `def-cider-selector-method' for defining new methods.
+
+\(fn &optional OTHER-WINDOW)" t nil)
+
+;;;***
+
+;;;### (autoloads nil "cider/nrepl-client" "cider/nrepl-client.el"
+;;;;;;  (21114 18103 812804 803000))
+;;; Generated autoloads from cider/nrepl-client.el
+
+(add-hook 'nrepl-connected-hook 'cider-enable-on-existing-clojure-buffers)
+
+;;;***
+
 ;;;### (autoloads (cljsbuild-auto cljsbuild-mode) "cljsbuild-mode/cljsbuild-mode"
-;;;;;;  "cljsbuild-mode/cljsbuild-mode.el" (20867 44014 477821 40000))
+;;;;;;  "cljsbuild-mode/cljsbuild-mode.el" (21114 18167 605121 133000))
 ;;; Generated autoloads from cljsbuild-mode/cljsbuild-mode.el
 
 (autoload 'cljsbuild-mode "cljsbuild-mode/cljsbuild-mode" "\
@@ -244,7 +310,7 @@ Run \"lein cljsbuild auto\" in a background buffer.
 ;;;***
 
 ;;;### (autoloads (clojure-mode) "clojure-mode/clojure-mode" "clojure-mode/clojure-mode.el"
-;;;;;;  (20829 21449 717523 191000))
+;;;;;;  (21114 18087 408723 455000))
 ;;; Generated autoloads from clojure-mode/clojure-mode.el
 
 (autoload 'clojure-mode "clojure-mode/clojure-mode" "\
@@ -261,11 +327,7 @@ if that value is non-nil.
 
 \(fn)" t nil)
 
-(put 'clojure-test-ns-segment-position 'safe-local-variable 'integerp)
-
-(put 'clojure-mode-load-command 'safe-local-variable 'stringp)
-
-(add-to-list 'auto-mode-alist '("\\.clj\\'" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\\.clj[sx]?\\'" . clojure-mode))
 
 (add-to-list 'auto-mode-alist '("\\.dtm\\'" . clojure-mode))
 
@@ -277,8 +339,8 @@ if that value is non-nil.
 
 ;;;***
 
-;;;### (autoloads (clojure-test-mode) "clojure-mode/clojure-test-mode"
-;;;;;;  "clojure-mode/clojure-test-mode.el" (20829 21449 717523 191000))
+;;;### (autoloads (clojure-find-clojure-test clojure-test-mode) "clojure-mode/clojure-test-mode"
+;;;;;;  "clojure-mode/clojure-test-mode.el" (21114 18087 408723 455000))
 ;;; Generated autoloads from clojure-mode/clojure-test-mode.el
 
 (autoload 'clojure-test-mode "clojure-mode/clojure-test-mode" "\
@@ -288,9 +350,13 @@ A minor mode for running Clojure tests.
 
 \(fn &optional ARG)" t nil)
 
+(autoload 'clojure-find-clojure-test "clojure-mode/clojure-test-mode" "\
+
+
+\(fn)" nil nil)
+
 (defun clojure-test-maybe-enable nil "\
-Enable clojure-test-mode if the current buffer contains a namespace
-with a \"test.\" bit on it." (let ((ns (clojure-find-package))) (when (and ns (string-match "test\\(\\.\\|$\\)" ns)) (save-window-excursion (clojure-test-mode t)))))
+Enable clojure-test-mode if the current buffer contains a \"clojure.test\" bit in it." (when (clojure-find-clojure-test) (save-window-excursion (clojure-test-mode t))))
 
 (add-hook 'clojure-mode-hook 'clojure-test-maybe-enable)
 
@@ -301,7 +367,7 @@ with a \"test.\" bit on it." (let ((ns (clojure-find-package))) (when (and ns (s
 ;;;;;;  color-theme-print color-theme-install-at-point-for-current-frame
 ;;;;;;  color-theme-install-at-mouse color-theme-describe color-theme-select)
 ;;;;;;  "color-theme/color-theme" "color-theme/color-theme.el" (17529
-;;;;;;  41105))
+;;;;;;  41105 0 0))
 ;;; Generated autoloads from color-theme/color-theme.el
 
 (autoload 'color-theme-select "color-theme/color-theme" "\
@@ -437,7 +503,7 @@ Initialize the color theme package by loading color-theme-libraries.
 ;;;***
 
 ;;;### (autoloads (diminished-modes diminish-undo diminish) "diminish/diminish"
-;;;;;;  "diminish/diminish.el" (20920 38321 348805 363000))
+;;;;;;  "diminish/diminish.el" (21114 18173 145148 604000))
 ;;; Generated autoloads from diminish/diminish.el
 
 (autoload 'diminish "diminish/diminish" "\
@@ -483,8 +549,9 @@ what diminished modes would be on the mode-line if they were still minor.
 ;;;***
 
 ;;;### (autoloads (el-get-checksum el-get-make-recipes el-get-cd
-;;;;;;  el-get-self-update el-get-update-all el-get-version) "el-get/el-get"
-;;;;;;  "el-get/el-get.el" (20829 21226 52414 93000))
+;;;;;;  el-get-self-update el-get-update-packages-of-type el-get-update-all
+;;;;;;  el-get-version) "el-get/el-get" "el-get/el-get.el" (21114
+;;;;;;  17822 171408 219000))
 ;;; Generated autoloads from el-get/el-get.el
 
 (autoload 'el-get-version "el-get/el-get" "\
@@ -496,6 +563,11 @@ Message the current el-get version
 Performs update of all installed packages.
 
 \(fn &optional NO-PROMPT)" t nil)
+
+(autoload 'el-get-update-packages-of-type "el-get/el-get" "\
+Update all installed packages of type TYPE.
+
+\(fn TYPE)" t nil)
 
 (autoload 'el-get-self-update "el-get/el-get" "\
 Update el-get itself.  The standard recipe takes care of reloading the code.
@@ -521,7 +593,7 @@ Compute the checksum of the given package, and put it in the kill-ring
 ;;;***
 
 ;;;### (autoloads (el-get-list-packages) "el-get/el-get-list-packages"
-;;;;;;  "el-get/el-get-list-packages.el" (20829 21226 48414 67000))
+;;;;;;  "el-get/el-get-list-packages.el" (21114 17822 171408 219000))
 ;;; Generated autoloads from el-get/el-get-list-packages.el
 
 (autoload 'el-get-list-packages "el-get/el-get-list-packages" "\
@@ -532,15 +604,20 @@ Display a list of packages.
 ;;;***
 
 ;;;### (autoloads (elisp-slime-nav-describe-elisp-thing-at-point
-;;;;;;  elisp-slime-nav-find-elisp-thing-at-point elisp-slime-nav-mode)
-;;;;;;  "elisp-slime-nav/elisp-slime-nav" "elisp-slime-nav/elisp-slime-nav.el"
-;;;;;;  (20829 21501 877781 833000))
+;;;;;;  elisp-slime-nav-find-elisp-thing-at-point turn-on-elisp-slime-nav-mode
+;;;;;;  elisp-slime-nav-mode) "elisp-slime-nav/elisp-slime-nav" "elisp-slime-nav/elisp-slime-nav.el"
+;;;;;;  (21114 18176 65163 82000))
 ;;; Generated autoloads from elisp-slime-nav/elisp-slime-nav.el
 
 (autoload 'elisp-slime-nav-mode "elisp-slime-nav/elisp-slime-nav" "\
 Enable Slime-style navigation of elisp symbols using M-. and M-,
 
 \(fn &optional ARG)" t nil)
+
+(autoload 'turn-on-elisp-slime-nav-mode "elisp-slime-nav/elisp-slime-nav" "\
+Explicitly enable `elisp-slime-nav-mode'.
+
+\(fn)" nil nil)
 
 (autoload 'elisp-slime-nav-find-elisp-thing-at-point "elisp-slime-nav/elisp-slime-nav" "\
 Jump to the elisp thing at point, be it a function, variable, library or face.
@@ -557,12 +634,10 @@ Argument SYM-NAME thing to find.
 
 \(fn SYM-NAME)" t nil)
 
-(dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook)) (add-hook hook 'elisp-slime-nav-mode))
-
 ;;;***
 
 ;;;### (autoloads (async-start async-start-process) "emacs-async/async"
-;;;;;;  "emacs-async/async.el" (20921 42453 797588 691000))
+;;;;;;  "emacs-async/async.el" (21114 18179 433179 789000))
 ;;; Generated autoloads from emacs-async/async.el
 
 (autoload 'async-start-process "emacs-async/async" "\
@@ -627,7 +702,7 @@ returns nil.  It can still be useful, however, as an argument to
 ;;;***
 
 ;;;### (autoloads (er/expand-region) "expand-region/expand-region"
-;;;;;;  "expand-region/expand-region.el" (20829 21504 953797 88000))
+;;;;;;  "expand-region/expand-region.el" (21114 18184 33202 594000))
 ;;; Generated autoloads from expand-region/expand-region.el
 
 (autoload 'er/expand-region "expand-region/expand-region" "\
@@ -647,7 +722,7 @@ before calling `er/expand-region' for the first time.
 ;;;;;;  expand-region-skip-whitespace expand-region-autocopy-register
 ;;;;;;  expand-region-guess-python-mode expand-region-preferred-python-mode
 ;;;;;;  expand-region) "expand-region/expand-region-custom" "expand-region/expand-region-custom.el"
-;;;;;;  (20829 21504 953797 88000))
+;;;;;;  (21114 18184 29202 581000))
 ;;; Generated autoloads from expand-region/expand-region-custom.el
 
 (let ((loads (get 'expand-region 'custom-loads))) (if (member '"expand-region/expand-region-custom" loads) nil (put 'expand-region 'custom-loads (cons '"expand-region/expand-region-custom" loads))))
@@ -697,8 +772,8 @@ List of modes which derive from `text-mode' for which text mode expansions are n
 ;;;***
 
 ;;;### (autoloads (turn-on-fci-mode fci-mode) "fill-column-indicator/fill-column-indicator"
-;;;;;;  "fill-column-indicator/fill-column-indicator.el" (21078 38967
-;;;;;;  222891 904000))
+;;;;;;  "fill-column-indicator/fill-column-indicator.el" (21114 18189
+;;;;;;  365229 40000))
 ;;; Generated autoloads from fill-column-indicator/fill-column-indicator.el
 
 (autoload 'fci-mode "fill-column-indicator/fill-column-indicator" "\
@@ -725,8 +800,8 @@ Turn on fci-mode unconditionally.
 ;;;***
 
 ;;;### (autoloads (find-file-in-project) "find-file-in-project/find-file-in-project"
-;;;;;;  "find-file-in-project/find-file-in-project.el" (21111 49346
-;;;;;;  617923 534000))
+;;;;;;  "find-file-in-project/find-file-in-project.el" (21114 18192
+;;;;;;  345243 817000))
 ;;; Generated autoloads from find-file-in-project/find-file-in-project.el
 
 (autoload 'find-file-in-project "find-file-in-project/find-file-in-project" "\
@@ -755,7 +830,7 @@ setting the variable `ffip-project-root'.
 ;;;***
 
 ;;;### (autoloads (flx-ido-mode) "flx-ido/flx-ido" "flx-ido/flx-ido.el"
-;;;;;;  (21111 49182 413109 292000))
+;;;;;;  (21114 18196 121262 541000))
 ;;; Generated autoloads from flx-ido/flx-ido.el
 
 (defvar flx-ido-mode nil "\
@@ -771,12 +846,87 @@ Toggle flx ido mode
 
 ;;;***
 
+;;;### (autoloads (git-commit-mode) "git-modes/git-commit-mode" "git-modes/git-commit-mode.el"
+;;;;;;  (21114 18261 857588 502000))
+;;; Generated autoloads from git-modes/git-commit-mode.el
+
+(autoload 'git-commit-mode "git-modes/git-commit-mode" "\
+Major mode for editing git commit messages.
+
+This mode helps with editing git commit messages both by
+providing commands to do common tasks, and by highlighting the
+basic structure of and errors in git commit messages.
+
+\(fn)" t nil)
+
+(dolist (pattern '("/COMMIT_EDITMSG\\'" "/NOTES_EDITMSG\\'" "/MERGE_MSG\\'" "/TAG_EDITMSG\\'" "/PULLREQ_EDITMSG\\'")) (add-to-list 'auto-mode-alist (cons pattern 'git-commit-mode)))
+
+;;;***
+
+;;;### (autoloads (git-rebase-mode) "git-modes/git-rebase-mode" "git-modes/git-rebase-mode.el"
+;;;;;;  (21114 18261 857588 502000))
+;;; Generated autoloads from git-modes/git-rebase-mode.el
+
+(autoload 'git-rebase-mode "git-modes/git-rebase-mode" "\
+Major mode for editing of a Git rebase file.
+
+Rebase files are generated when you run 'git rebase -i' or run
+`magit-interactive-rebase'.  They describe how Git should perform
+the rebase.  See the documentation for git-rebase (e.g., by
+running 'man git-rebase' at the command line) for details.
+
+\(fn)" t nil)
+
+(add-to-list 'auto-mode-alist '("/git-rebase-todo\\'" . git-rebase-mode))
+
+;;;***
+
+;;;### (autoloads (gitattributes-mode) "git-modes/gitattributes-mode"
+;;;;;;  "git-modes/gitattributes-mode.el" (21114 18261 857588 502000))
+;;; Generated autoloads from git-modes/gitattributes-mode.el
+
+(autoload 'gitattributes-mode "git-modes/gitattributes-mode" "\
+A major mode for editing .gitattributes files.
+\\{gitattributes-mode-map}
+
+\(fn)" t nil)
+
+(dolist (pattern '("/\\.gitattributes\\'" "/\\.git/info/attributes\\'" "/git/attributes\\'")) (add-to-list 'auto-mode-alist (cons pattern #'gitattributes-mode)))
+
+;;;***
+
+;;;### (autoloads (gitconfig-mode) "git-modes/gitconfig-mode" "git-modes/gitconfig-mode.el"
+;;;;;;  (21114 18261 857588 502000))
+;;; Generated autoloads from git-modes/gitconfig-mode.el
+
+(autoload 'gitconfig-mode "git-modes/gitconfig-mode" "\
+A major mode for editing .gitconfig files.
+
+\(fn)" t nil)
+
+(dolist (pattern (list (rx "/.gitconfig" string-end) (rx "/.git/config" string-end) (rx "/git/config" string-end))) (add-to-list 'auto-mode-alist (cons pattern 'gitconfig-mode)))
+
+;;;***
+
+;;;### (autoloads (gitignore-mode) "git-modes/gitignore-mode" "git-modes/gitignore-mode.el"
+;;;;;;  (21114 18261 857588 502000))
+;;; Generated autoloads from git-modes/gitignore-mode.el
+
+(autoload 'gitignore-mode "git-modes/gitignore-mode" "\
+A major mode for editing .gitignore files.
+
+\(fn)" t nil)
+
+(dolist (pattern (list (rx "/.gitignore" string-end) (rx "/.git/info/exclude" string-end) (rx "/git/ignore" string-end))) (add-to-list 'auto-mode-alist (cons pattern 'gitignore-mode)))
+
+;;;***
+
 ;;;### (autoloads (god-local-mode god-mode) "god-mode/god-mode" "god-mode/god-mode.el"
-;;;;;;  (21012 48070 910773 415000))
+;;;;;;  (21114 18199 777280 664000))
 ;;; Generated autoloads from god-mode/god-mode.el
 
 (autoload 'god-mode "god-mode/god-mode" "\
-
+Toggle global God mode.
 
 \(fn)" t nil)
 
@@ -788,11 +938,11 @@ Minor mode for running commands.
 ;;;***
 
 ;;;### (autoloads (ghc-core-mode ghc-core-create-core) "haskell-mode/ghc-core"
-;;;;;;  "haskell-mode/ghc-core.el" (20837 24199 995399 397000))
+;;;;;;  "haskell-mode/ghc-core.el" (21114 18205 677309 926000))
 ;;; Generated autoloads from haskell-mode/ghc-core.el
 
 (autoload 'ghc-core-create-core "haskell-mode/ghc-core" "\
-Compiled and load the current buffer as tidy core
+Compile and load the current buffer as tidy core.
 
 \(fn)" t nil)
 
@@ -806,8 +956,8 @@ Major mode for GHC Core files.
 ;;;***
 
 ;;;### (autoloads (haskell-align-imports) "haskell-mode/haskell-align-imports"
-;;;;;;  "haskell-mode/haskell-align-imports.el" (20837 24199 995399
-;;;;;;  397000))
+;;;;;;  "haskell-mode/haskell-align-imports.el" (21114 18205 677309
+;;;;;;  926000))
 ;;; Generated autoloads from haskell-mode/haskell-align-imports.el
 
 (autoload 'haskell-align-imports "haskell-mode/haskell-align-imports" "\
@@ -818,7 +968,7 @@ Align all the imports in the buffer.
 ;;;***
 
 ;;;### (autoloads (haskell-c-mode) "haskell-mode/haskell-c" "haskell-mode/haskell-c.el"
-;;;;;;  (20837 24199 995399 397000))
+;;;;;;  (21114 18205 677309 926000))
 ;;; Generated autoloads from haskell-mode/haskell-c.el
 
 (add-to-list 'auto-mode-alist '("\\.hsc\\'" . haskell-c-mode))
@@ -830,8 +980,9 @@ Major mode for Haskell FFI files.
 
 ;;;***
 
-;;;### (autoloads (haskell-cabal-get-dir haskell-cabal-mode) "haskell-mode/haskell-cabal"
-;;;;;;  "haskell-mode/haskell-cabal.el" (20837 24199 995399 397000))
+;;;### (autoloads (haskell-cabal-visit-file haskell-cabal-get-dir
+;;;;;;  haskell-cabal-mode) "haskell-mode/haskell-cabal" "haskell-mode/haskell-cabal.el"
+;;;;;;  (21114 18205 677309 926000))
 ;;; Generated autoloads from haskell-mode/haskell-cabal.el
 
 (add-to-list 'auto-mode-alist '("\\.cabal\\'" . haskell-cabal-mode))
@@ -847,27 +998,82 @@ Get the Cabal dir for a new project. Various ways of figuring this out,
 
 \(fn)" nil nil)
 
+(autoload 'haskell-cabal-visit-file "haskell-mode/haskell-cabal" "\
+Locate and visit package description file for file visited by current buffer.
+This uses `haskell-cabal-find-file' to locate the closest
+\".cabal\" file and open it.  This command assumes a common Cabal
+project structure where the \".cabal\" file is in the top-folder
+of the project, and all files related to the project are in or
+below the top-folder.  If called with non-nil prefix argument
+OTHER-WINDOW use `find-file-other-window'.
+
+\(fn OTHER-WINDOW)" t nil)
+
 ;;;***
 
-;;;### (autoloads (haskell-decl-scan-mode) "haskell-mode/haskell-decl-scan"
-;;;;;;  "haskell-mode/haskell-decl-scan.el" (20837 24199 995399 397000))
+;;;### (autoloads (haskell-compile) "haskell-mode/haskell-compile"
+;;;;;;  "haskell-mode/haskell-compile.el" (21114 18205 677309 926000))
+;;; Generated autoloads from haskell-mode/haskell-compile.el
+
+(autoload 'haskell-compile "haskell-mode/haskell-compile" "\
+Compile the Haskell program including the current buffer.
+Tries to locate the next cabal description in current or parent
+folders via `haskell-cabal-find-dir' and if found, invoke
+`haskell-compile-cabal-build-command' from the cabal package root
+folder. If no cabal package could be detected,
+`haskell-compile-command' is used instead.
+
+If prefix argument EDIT-COMMAND is non-nil (and not a negative
+prefix `-'), `haskell-compile' prompts for custom compile
+command.
+
+If EDIT-COMMAND contains the negative prefix argument `-',
+`haskell-compile' calls the alternative command defined in
+`haskell-compile-cabal-build-alt-command' if a cabal package was
+detected.
+
+`haskell-compile' uses `haskell-compilation-mode' which is
+derived from `compilation-mode'. See Info
+node `(haskell-mode)compilation' for more details.
+
+\(fn &optional EDIT-COMMAND)" t nil)
+
+;;;***
+
+;;;### (autoloads (haskell-decl-scan-mode turn-on-haskell-decl-scan
+;;;;;;  haskell-ds-create-imenu-index) "haskell-mode/haskell-decl-scan"
+;;;;;;  "haskell-mode/haskell-decl-scan.el" (21114 18205 677309 926000))
 ;;; Generated autoloads from haskell-mode/haskell-decl-scan.el
 
+(autoload 'haskell-ds-create-imenu-index "haskell-mode/haskell-decl-scan" "\
+Function for finding `imenu' declarations in Haskell mode.
+Finds all declarations (classes, variables, imports, instances and
+datatypes) in a Haskell file for the `imenu' package.
+
+\(fn)" nil nil)
+
+(autoload 'turn-on-haskell-decl-scan "haskell-mode/haskell-decl-scan" "\
+Unconditionally activate `haskell-decl-scan-mode'.
+
+\(fn)" t nil)
+
 (autoload 'haskell-decl-scan-mode "haskell-mode/haskell-decl-scan" "\
-Minor mode for declaration scanning for Haskell mode.
-Top-level declarations are scanned and listed in the menu item \"Declarations\".
-Selecting an item from this menu will take point to the start of the
-declaration.
+Toggle Haskell declaration scanning minor mode on or off.
+With a prefix argument ARG, enable minor mode if ARG is
+positive, and disable it otherwise.  If called from Lisp, enable
+the mode if ARG is omitted or nil, and toggle it if ARG is `toggle'.
 
-\\[haskell-ds-forward-decl] and \\[haskell-ds-backward-decl] move forward and backward to the start of a declaration.
+See also info node `(haskell-mode)haskell-decl-scan-mode' for
+more details about this minor mode.
 
-Under XEmacs, the following keys are also defined:
+Top-level declarations are scanned and listed in the menu item
+\"Declarations\" (if enabled via option
+`haskell-decl-scan-add-to-menubar').  Selecting an item from this
+menu will take point to the start of the declaration.
 
-\\[fume-list-functions] lists the declarations of the current buffer,
-\\[fume-prompt-function-goto] prompts for a declaration to move to, and
-\\[fume-mouse-function-goto] moves to the declaration whose name is at point.
+\\[beginning-of-defun] and \\[end-of-defun] move forward and backward to the start of a declaration.
 
-This may link with `haskell-doc' (only for Emacs currently).
+This may link with `haskell-doc-mode'.
 
 For non-literate and LaTeX-style literate scripts, we assume the
 common convention that top-level declarations start at the first
@@ -879,28 +1085,21 @@ Anything in `font-lock-comment-face' is not considered for a
 declaration.  Therefore, using Haskell font locking with comments
 coloured in `font-lock-comment-face' improves declaration scanning.
 
-To turn on declaration scanning for all Haskell buffers, add this to
-.emacs:
-
-  (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
-
-To turn declaration scanning on for the current buffer, call
-`turn-on-haskell-decl-scan'.
-
 Literate Haskell scripts are supported: If the value of
-`haskell-literate' (automatically set by the Haskell mode of
-Moss&Thorn) is `bird', a Bird-style literate script is assumed.  If it
-is nil or `tex', a non-literate or LaTeX-style literate script is
+`haskell-literate' (set automatically by `literate-haskell-mode')
+is `bird', a Bird-style literate script is assumed.  If it is nil
+or `tex', a non-literate or LaTeX-style literate script is
 assumed, respectively.
 
-Invokes `haskell-decl-scan-mode-hook'.
+Invokes `haskell-decl-scan-mode-hook' on activation.
 
 \(fn &optional ARG)" t nil)
 
 ;;;***
 
-;;;### (autoloads (haskell-doc-show-type haskell-doc-mode) "haskell-mode/haskell-doc"
-;;;;;;  "haskell-mode/haskell-doc.el" (20837 24199 999399 411000))
+;;;### (autoloads (haskell-doc-show-type haskell-doc-current-info
+;;;;;;  haskell-doc-mode) "haskell-mode/haskell-doc" "haskell-mode/haskell-doc.el"
+;;;;;;  (21114 18205 681309 941000))
 ;;; Generated autoloads from haskell-mode/haskell-doc.el
 
 (autoload 'haskell-doc-mode "haskell-mode/haskell-doc" "\
@@ -910,6 +1109,14 @@ See variable docstring.
 \(fn &optional ARG)" t nil)
 
 (defalias 'turn-on-haskell-doc-mode 'haskell-doc-mode)
+
+(defalias 'turn-on-haskell-doc 'haskell-doc-mode)
+
+(autoload 'haskell-doc-current-info "haskell-mode/haskell-doc" "\
+Return the info about symbol at point.
+Meant for `eldoc-documentation-function'.
+
+\(fn)" nil nil)
 
 (autoload 'haskell-doc-show-type "haskell-mode/haskell-doc" "\
 Show the type of the function near point.
@@ -922,9 +1129,25 @@ current buffer.
 
 ;;;***
 
-;;;### (autoloads (haskell-indent-mode) "haskell-mode/haskell-indent"
-;;;;;;  "haskell-mode/haskell-indent.el" (20837 24199 999399 411000))
+;;;### (autoloads (haskell-font-lock-choose-keywords) "haskell-mode/haskell-font-lock"
+;;;;;;  "haskell-mode/haskell-font-lock.el" (21114 18205 681309 941000))
+;;; Generated autoloads from haskell-mode/haskell-font-lock.el
+
+(autoload 'haskell-font-lock-choose-keywords "haskell-mode/haskell-font-lock" "\
+
+
+\(fn)" nil nil)
+
+;;;***
+
+;;;### (autoloads (haskell-indent-mode turn-on-haskell-indent) "haskell-mode/haskell-indent"
+;;;;;;  "haskell-mode/haskell-indent.el" (21114 18205 681309 941000))
 ;;; Generated autoloads from haskell-mode/haskell-indent.el
+
+(autoload 'turn-on-haskell-indent "haskell-mode/haskell-indent" "\
+Turn on ``intelligent'' Haskell indentation mode.
+
+\(fn)" nil nil)
 
 (autoload 'haskell-indent-mode "haskell-mode/haskell-indent" "\
 ``Intelligent'' Haskell indentation mode.
@@ -954,8 +1177,9 @@ Invokes `haskell-indent-hook' if not nil.
 
 ;;;***
 
-;;;### (autoloads (haskell-indentation-mode) "haskell-mode/haskell-indentation"
-;;;;;;  "haskell-mode/haskell-indentation.el" (20837 24200 3399 437000))
+;;;### (autoloads (turn-on-haskell-indentation haskell-indentation-mode)
+;;;;;;  "haskell-mode/haskell-indentation" "haskell-mode/haskell-indentation.el"
+;;;;;;  (21114 18205 685309 960000))
 ;;; Generated autoloads from haskell-mode/haskell-indentation.el
 
 (autoload 'haskell-indentation-mode "haskell-mode/haskell-indentation" "\
@@ -966,21 +1190,29 @@ autofill-mode.
 
 \(fn &optional ARG)" t nil)
 
+(autoload 'turn-on-haskell-indentation "haskell-mode/haskell-indentation" "\
+Turn on the haskell-indentation minor mode.
+
+\(fn)" t nil)
+
 ;;;***
 
-;;;### (autoloads (haskell-interactive-mode-echo haskell-interactive-switch
-;;;;;;  haskell-interactive-bring haskell-interactive-mode) "haskell-mode/haskell-interactive-mode"
-;;;;;;  "haskell-mode/haskell-interactive-mode.el" (20837 24200 3399
-;;;;;;  437000))
+;;;### (autoloads (haskell-interactive-mode-reset-error haskell-interactive-mode-echo
+;;;;;;  haskell-interactive-switch haskell-interactive-bring haskell-interactive-mode)
+;;;;;;  "haskell-mode/haskell-interactive-mode" "haskell-mode/haskell-interactive-mode.el"
+;;;;;;  (21114 18205 689309 981000))
 ;;; Generated autoloads from haskell-mode/haskell-interactive-mode.el
 
 (autoload 'haskell-interactive-mode "haskell-mode/haskell-interactive-mode" "\
 Interactive mode for Haskell.
 
+See Info node `(haskell-mode)haskell-interactive-mode' for more
+information.
+
 Key bindings:
 \\{haskell-interactive-mode-map}
 
-\(fn SESSION)" t nil)
+\(fn)" t nil)
 
 (autoload 'haskell-interactive-bring "haskell-mode/haskell-interactive-mode" "\
 Bring up the interactive mode for this session.
@@ -995,12 +1227,17 @@ Switch to the interactive mode for this session.
 (autoload 'haskell-interactive-mode-echo "haskell-mode/haskell-interactive-mode" "\
 Echo a read only piece of text before the prompt.
 
-\(fn SESSION MESSAGE)" nil nil)
+\(fn SESSION MESSAGE &optional MODE)" nil nil)
+
+(autoload 'haskell-interactive-mode-reset-error "haskell-mode/haskell-interactive-mode" "\
+Reset the error cursor position.
+
+\(fn SESSION)" t nil)
 
 ;;;***
 
 ;;;### (autoloads (haskell-menu) "haskell-mode/haskell-menu" "haskell-mode/haskell-menu.el"
-;;;;;;  (20837 24200 3399 437000))
+;;;;;;  (21114 18205 689309 981000))
 ;;; Generated autoloads from haskell-mode/haskell-menu.el
 
 (autoload 'haskell-menu "haskell-mode/haskell-menu" "\
@@ -1011,47 +1248,50 @@ Launch the Haskell sessions menu.
 ;;;***
 
 ;;;### (autoloads (haskell-hayoo haskell-hoogle literate-haskell-mode
-;;;;;;  haskell-mode) "haskell-mode/haskell-mode" "haskell-mode/haskell-mode.el"
-;;;;;;  (20837 24200 3399 437000))
+;;;;;;  haskell-mode haskell-customize haskell-mode-view-news haskell-version)
+;;;;;;  "haskell-mode/haskell-mode" "haskell-mode/haskell-mode.el"
+;;;;;;  (21114 18205 693310 7000))
 ;;; Generated autoloads from haskell-mode/haskell-mode.el
 
-(when load-file-name (add-to-list 'load-path (file-name-directory load-file-name)))
+(autoload 'haskell-version "haskell-mode/haskell-mode" "\
+Show the `haskell-mode` version in the echo area.
+With prefix argument HERE, insert it at point.
+When FULL is non-nil, use a verbose version string.
+When MESSAGE is non-nil, display a message with the version.
+
+\(fn &optional HERE)" t nil)
+
+(autoload 'haskell-mode-view-news "haskell-mode/haskell-mode" "\
+Display information on recent changes to haskell-mode.
+
+\(fn)" t nil)
+
+(autoload 'haskell-customize "haskell-mode/haskell-mode" "\
+Browse the haskell customize sub-tree.
+This calls 'customize-browse' with haskell as argument and makes
+sure all haskell customize definitions have been loaded.
+
+\(fn)" t nil)
+
+(defvar haskell-mode-map (let ((map (make-sparse-keymap))) (define-key map [24 4] 'inferior-haskell-send-decl) (define-key map [3 26] 'switch-to-haskell) (define-key map [3 12] 'inferior-haskell-load-file) (define-key map [3 2] 'switch-to-haskell) (define-key map (kbd "C-c C-t") 'inferior-haskell-type) (define-key map (kbd "C-c C-i") 'inferior-haskell-info) (define-key map (kbd "C-c M-.") 'inferior-haskell-find-definition) (define-key map (kbd "C-c C-d") 'inferior-haskell-find-haddock) (define-key map [3 22] 'haskell-check) (define-key map (kbd "C-c C-.") 'haskell-mode-format-imports) (define-key map [remap delete-indentation] 'haskell-delete-indentation) map) "\
+Keymap used in Haskell mode.")
 
 (autoload 'haskell-mode "haskell-mode/haskell-mode" "\
 Major mode for editing Haskell programs.
-Blank lines separate paragraphs, comments start with `-- '.
+
+See also Info node `(haskell-mode)Getting Started' for more
+information about this mode.
+
 \\<haskell-mode-map>
 Literate scripts are supported via `literate-haskell-mode'.
 The variable `haskell-literate' indicates the style of the script in the
 current buffer.  See the documentation on this variable for more details.
 
-Modules can hook in via `haskell-mode-hook'.  The following modules
-are supported with an `autoload' command:
+Use `haskell-version' to find out what version of Haskell mode you are
+currently using.
 
-   `haskell-decl-scan', Graeme E Moss
-     Scans top-level declarations, and places them in a menu.
-
-   `haskell-doc', Hans-Wolfgang Loidl
-     Echoes types of functions or syntax of keywords when the cursor is idle.
-
-   `haskell-indentation', Kristof Bastiaensen
-     Intelligent semi-automatic indentation Mk2
-
-   `haskell-indent', Guy Lapalme
-     Intelligent semi-automatic indentation.
-
-   `haskell-simple-indent', Graeme E Moss and Heribert Schuetz
-     Simple indentation.
-
-Module X is activated using the command `turn-on-X'.  For example,
-`haskell-indent' is activated using `turn-on-haskell-indent'.
-For more information on a module, see the help for its `X-mode'
-function.  Some modules can be deactivated using `turn-off-X'.  (Note
-that `haskell-doc' is irregular in using `turn-(on/off)-haskell-doc-mode'.)
-
-Use `haskell-version' to find out what version this is.
-
-Invokes `haskell-mode-hook'.
+Additional Haskell mode modules can be hooked in via `haskell-mode-hook';
+see documentation for that variable for more details.
 
 \(fn)" t nil)
 
@@ -1080,21 +1320,45 @@ Do a Hayoo search for QUERY.
 
 ;;;***
 
-;;;### (autoloads (haskell-move-nested) "haskell-mode/haskell-move-nested"
-;;;;;;  "haskell-mode/haskell-move-nested.el" (20837 24200 3399 437000))
+;;;### (autoloads (haskell-move-nested-left haskell-move-nested-right
+;;;;;;  haskell-move-nested) "haskell-mode/haskell-move-nested" "haskell-mode/haskell-move-nested.el"
+;;;;;;  (21114 18205 693310 7000))
 ;;; Generated autoloads from haskell-mode/haskell-move-nested.el
 
 (autoload 'haskell-move-nested "haskell-mode/haskell-move-nested" "\
+Shift the nested off-side-rule block adjacent to point by COLS columns to the right.
 
+In Transient Mark mode, if the mark is active, operate on the contents
+of the region instead.
 
-\(fn COLUMNS)" nil nil)
+\(fn COLS)" nil nil)
+
+(autoload 'haskell-move-nested-right "haskell-mode/haskell-move-nested" "\
+Increase indentation of the following off-side-rule block adjacent to point.
+
+Use a numeric prefix argument to indicate amount of indentation to apply.
+
+In Transient Mark mode, if the mark is active, operate on the contents
+of the region instead.
+
+\(fn COLS)" t nil)
+
+(autoload 'haskell-move-nested-left "haskell-mode/haskell-move-nested" "\
+Decrease indentation of the following off-side-rule block adjacent to point.
+
+Use a numeric prefix argument to indicate amount of indentation to apply.
+
+In Transient Mark mode, if the mark is active, operate on the contents
+of the region instead.
+
+\(fn COLS)" t nil)
 
 ;;;***
 
 ;;;### (autoloads (haskell-navigate-imports-return haskell-navigate-imports-go
 ;;;;;;  haskell-navigate-imports) "haskell-mode/haskell-navigate-imports"
-;;;;;;  "haskell-mode/haskell-navigate-imports.el" (20837 24200 3399
-;;;;;;  437000))
+;;;;;;  "haskell-mode/haskell-navigate-imports.el" (21114 18205 693310
+;;;;;;  7000))
 ;;; Generated autoloads from haskell-mode/haskell-navigate-imports.el
 
 (autoload 'haskell-navigate-imports "haskell-mode/haskell-navigate-imports" "\
@@ -1117,15 +1381,26 @@ Return to the non-import point we were at before going to the module list.
 
 ;;;### (autoloads (haskell-process haskell-process-start haskell-process-cabal
 ;;;;;;  haskell-process-cabal-build haskell-process-load-or-reload
-;;;;;;  haskell-process-reload-file haskell-process-load-file haskell-process-generate-tags)
-;;;;;;  "haskell-mode/haskell-process" "haskell-mode/haskell-process.el"
-;;;;;;  (20837 24200 3399 437000))
+;;;;;;  haskell-process-reload-file haskell-process-load-file haskell-process-do-info
+;;;;;;  haskell-process-do-type haskell-process-generate-tags) "haskell-mode/haskell-process"
+;;;;;;  "haskell-mode/haskell-process.el" (21114 18205 693310 7000))
 ;;; Generated autoloads from haskell-mode/haskell-process.el
 
 (autoload 'haskell-process-generate-tags "haskell-mode/haskell-process" "\
 Regenerate the TAGS table.
 
 \(fn &optional AND-THEN-FIND-THIS-TAG)" t nil)
+
+(autoload 'haskell-process-do-type "haskell-mode/haskell-process" "\
+Print the type of the given expression.
+
+\(fn &optional INSERT-VALUE)" t nil)
+
+(autoload 'haskell-process-do-info "haskell-mode/haskell-process" "\
+Print info on the identifier at point.
+If PROMPT-VALUE is non-nil, request identifier via mini-buffer.
+
+\(fn &optional PROMPT-VALUE)" t nil)
 
 (autoload 'haskell-process-load-file "haskell-mode/haskell-process" "\
 Load the current buffer file.
@@ -1164,9 +1439,28 @@ Get the current process from the current session.
 
 ;;;***
 
-;;;### (autoloads (haskell-session-process haskell-session) "haskell-mode/haskell-session"
-;;;;;;  "haskell-mode/haskell-session.el" (20837 24200 3399 437000))
+;;;### (autoloads (haskell-session-process haskell-session haskell-session-maybe
+;;;;;;  haskell-session-installed-modules haskell-session-all-modules)
+;;;;;;  "haskell-mode/haskell-session" "haskell-mode/haskell-session.el"
+;;;;;;  (21114 18205 693310 7000))
 ;;; Generated autoloads from haskell-mode/haskell-session.el
+
+(autoload 'haskell-session-all-modules "haskell-mode/haskell-session" "\
+Get all modules -- installed or in the current project.
+If DONTCREATE is non-nil don't create a new session.
+
+\(fn &optional DONTCREATE)" nil nil)
+
+(autoload 'haskell-session-installed-modules "haskell-mode/haskell-session" "\
+Get the modules installed in the current package set.
+If DONTCREATE is non-nil don't create a new session.
+
+\(fn &optional DONTCREATE)" nil nil)
+
+(autoload 'haskell-session-maybe "haskell-mode/haskell-session" "\
+Maybe get the Haskell session, return nil if there isn't one.
+
+\(fn)" nil nil)
 
 (autoload 'haskell-session "haskell-mode/haskell-session" "\
 Get the Haskell session, prompt if there isn't one or fail.
@@ -1182,7 +1476,7 @@ Get the session process.
 
 ;;;### (autoloads (haskell-show-parse haskell-show-parse-and-insert
 ;;;;;;  haskell-show-replace) "haskell-mode/haskell-show" "haskell-mode/haskell-show.el"
-;;;;;;  (20837 24200 7399 452000))
+;;;;;;  (21114 18205 693310 7000))
 ;;; Generated autoloads from haskell-mode/haskell-show.el
 
 (autoload 'haskell-show-replace "haskell-mode/haskell-show" "\
@@ -1204,9 +1498,34 @@ Parse the given input into a tree.
 
 ;;;***
 
+;;;### (autoloads (turn-on-haskell-simple-indent haskell-simple-indent-mode)
+;;;;;;  "haskell-mode/haskell-simple-indent" "haskell-mode/haskell-simple-indent.el"
+;;;;;;  (21114 18205 693310 7000))
+;;; Generated autoloads from haskell-mode/haskell-simple-indent.el
+
+(autoload 'haskell-simple-indent-mode "haskell-mode/haskell-simple-indent" "\
+Simple Haskell indentation mode that uses simple heuristic.
+In this minor mode, `indent-for-tab-command' (bound to <tab> by
+default) will move the cursor to the next indent point in the
+previous nonblank line, whereas `haskell-simple-indent-backtab'
+\(bound to <backtab> by default) will move the cursor the
+previous indent point.  An indent point is a non-whitespace
+character following whitespace.
+
+Runs `haskell-simple-indent-hook' on activation.
+
+\(fn &optional ARG)" t nil)
+
+(autoload 'turn-on-haskell-simple-indent "haskell-mode/haskell-simple-indent" "\
+Turn on function `haskell-simple-indent-mode'.
+
+\(fn)" t nil)
+
+;;;***
+
 ;;;### (autoloads (haskell-sort-imports) "haskell-mode/haskell-sort-imports"
-;;;;;;  "haskell-mode/haskell-sort-imports.el" (20837 24200 7399
-;;;;;;  452000))
+;;;;;;  "haskell-mode/haskell-sort-imports.el" (21114 18205 693310
+;;;;;;  7000))
 ;;; Generated autoloads from haskell-mode/haskell-sort-imports.el
 
 (autoload 'haskell-sort-imports "haskell-mode/haskell-sort-imports" "\
@@ -1218,7 +1537,7 @@ Sort the import list at the point.
 
 ;;;### (autoloads (haskell-is-prefix-of haskell-string-take haskell-trim)
 ;;;;;;  "haskell-mode/haskell-string" "haskell-mode/haskell-string.el"
-;;;;;;  (20837 24200 7399 452000))
+;;;;;;  (21114 18205 697310 20000))
 ;;; Generated autoloads from haskell-mode/haskell-string.el
 
 (autoload 'haskell-trim "haskell-mode/haskell-string" "\
@@ -1238,11 +1557,35 @@ Is x string a prefix of y string?
 
 ;;;***
 
+;;;### (autoloads (turn-on-haskell-unicode-input-method) "haskell-mode/haskell-unicode-input-method"
+;;;;;;  "haskell-mode/haskell-unicode-input-method.el" (21114 18205
+;;;;;;  697310 20000))
+;;; Generated autoloads from haskell-mode/haskell-unicode-input-method.el
+
+(autoload 'turn-on-haskell-unicode-input-method "haskell-mode/haskell-unicode-input-method" "\
+Set input method `haskell-unicode'.
+See Info node `Unicode(haskell-mode)' for more details.
+
+\(fn)" t nil)
+
+;;;***
+
+;;;### (autoloads (haskell-yas-complete) "haskell-mode/haskell-yas"
+;;;;;;  "haskell-mode/haskell-yas.el" (21114 18205 697310 20000))
+;;; Generated autoloads from haskell-mode/haskell-yas.el
+
+(autoload 'haskell-yas-complete "haskell-mode/haskell-yas" "\
+
+
+\(fn &rest ARGS)" nil nil)
+
+;;;***
+
 ;;;### (autoloads (inferior-haskell-find-haddock inferior-haskell-find-definition
 ;;;;;;  inferior-haskell-info inferior-haskell-kind inferior-haskell-type
 ;;;;;;  inferior-haskell-send-decl inferior-haskell-load-and-run
 ;;;;;;  inferior-haskell-load-file switch-to-haskell) "haskell-mode/inf-haskell"
-;;;;;;  "haskell-mode/inf-haskell.el" (20837 24200 7399 452000))
+;;;;;;  "haskell-mode/inf-haskell.el" (21114 18205 697310 20000))
 ;;; Generated autoloads from haskell-mode/inf-haskell.el
 
 (defalias 'run-haskell 'switch-to-haskell)
@@ -1311,8 +1654,8 @@ we load it.
 ;;;***
 
 ;;;### (autoloads (highlight-parentheses-mode) "highlight-parentheses/highlight-parentheses"
-;;;;;;  "highlight-parentheses/highlight-parentheses.el" (20829 21530
-;;;;;;  213922 344000))
+;;;;;;  "highlight-parentheses/highlight-parentheses.el" (21114 18249
+;;;;;;  653527 983000))
 ;;; Generated autoloads from highlight-parentheses/highlight-parentheses.el
 
 (autoload 'highlight-parentheses-mode "highlight-parentheses/highlight-parentheses" "\
@@ -1322,14 +1665,288 @@ Minor mode to highlight the surrounding parentheses.
 
 ;;;***
 
-;;;### (autoloads (ido-ubiquitous-function-compatibility-exceptions
-;;;;;;  ido-ubiquitous-command-compatibility-exceptions ido-ubiquitous-function-exceptions
-;;;;;;  ido-ubiquitous-command-exceptions ido-ubiquitous-mode ido-ubiquitous)
-;;;;;;  "ido-ubiquitous/ido-ubiquitous" "ido-ubiquitous/ido-ubiquitous.el"
-;;;;;;  (20829 21446 305506 281000))
+;;;### (autoloads (hlt-copy-props hlt-mouse-copy-props hlt-yank-props
+;;;;;;  hlt-toggle-use-overlays-flag hlt-mouse-face-each-line hlt-highlight-single-quotations
+;;;;;;  hlt-replace-highlight-face hlt-unhighlight-region-for-face
+;;;;;;  hlt-unhighlight-region hlt-highlight-regexp-to-end hlt-highlight-regexp-region
+;;;;;;  hlt-highlight-region hlt-highlight hlt-eraser-mouse hlt-highlighter-mouse
+;;;;;;  hlt-eraser hlt-highlighter hlt-choose-default-face hlt-default-copy/yank-props
+;;;;;;  hlt-use-overlays-flag hlt-max-region-no-warning) "highlight/highlight"
+;;;;;;  "highlight/highlight.el" (21114 18248 269521 127000))
+;;; Generated autoloads from highlight/highlight.el
+
+(defvar hlt-max-region-no-warning 100000 "\
+*Maximum size (chars) of region to highlight without confirmation.
+This is used only for highlighting of a regexp, which can be slow.")
+
+(custom-autoload 'hlt-max-region-no-warning "highlight/highlight" t)
+
+(defvar hlt-use-overlays-flag 'only "\
+*Non-nil means use overlays to highlight; nil means use text properties.
+This value also affects some actions, such as unhighlighting, for text
+that is highlighted.  If the value is `only' (the default value), then
+those actions only affect overlay highlighting.  Otherwise, they
+affect both kinds of highlighting.")
+
+(custom-autoload 'hlt-use-overlays-flag "highlight/highlight" t)
+
+(defvar hlt-default-copy/yank-props '(face) "\
+*Properties that `hlt-copy-props' and `hlt-yank-props' use by default.
+You can use a prefix argument with those commands to override the
+default behavior.
+Either a list of properties (symbols) or `t', meaning all properties.")
+
+(custom-autoload 'hlt-default-copy/yank-props "highlight/highlight" t)
+
+(autoload 'hlt-choose-default-face "highlight/highlight" "\
+Choose a face for highlighting.
+
+\(fn FACE)" t nil)
+
+(autoload 'hlt-highlighter "highlight/highlight" "\
+Highlight the text you drag the mouse over.
+The face used is the last face that was used for highlighting.
+You can use command `hlt-choose-default-face' to choose a different face.
+
+\(fn START-EVENT)" t nil)
+
+(autoload 'hlt-eraser "highlight/highlight" "\
+Erase highlights that you click or drag the mouse over.
+If `hlt-use-overlays-flag' is non-nil, then remove overlay
+highlighting for the last face that was used for highlighting.  (You
+can use command `hlt-choose-default-face' first to choose a different
+face.)  If `hlt-use-overlays-flag' is not `only', then remove
+text-property highlighting for *ALL* faces (not just highlighting
+faces).  This means, in particular, that a value of nil erases both
+overlays for the last face and text properties for all faces.
+
+\(fn START-EVENT)" t nil)
+
+(autoload 'hlt-highlighter-mouse "highlight/highlight" "\
+Same as `hlt-highlighter', but for binding to a menu item.
+
+\(fn)" t nil)
+
+(autoload 'hlt-eraser-mouse "highlight/highlight" "\
+Same as `hlt-eraser', but for binding to a menu item.
+
+\(fn)" t nil)
+
+(autoload 'hlt-highlight "highlight/highlight" "\
+Highlight region, regexp (PREFIX +), or unhighlight region (PREFIX -).
+PREFIX arg non-negative means `hlt-highlight-regexp-region'
+PREFIX arg negative means `hlt-unhighlight-region'
+PREFIX arg nil means `hlt-highlight-region'.
+If the region is not active or it is empty, then use the whole buffer.
+The face used is the last face that was used for highlighting.
+You can use command `hlt-choose-default-face' to choose a different face.
+
+\(fn &optional PREFIX)" t nil)
+
+(autoload 'hlt-highlight-region "highlight/highlight" "\
+Highlight either the region/buffer or new input that you type.
+Use the region if active, or the buffer otherwise.
+
+If *all* of the following are true, the apply the last-used face as a
+text property to the next and subsequent chars that you type, and add
+that face to a facemenu menu (`Text Properties' or one of its
+submenus):
+ * You call this command interactively.
+ * You use no prefix arg.
+ * Option `prop-use-overlays-flag' is nil
+ * The last property used for highlighting was `face'.
+
+Otherwise, the behavior respects `hlt-use-overlays-flag' and depends
+on the optional arguments, as follows:
+
+ Optional args START and END are the limits of the area to act on.
+  They default to the region limits.  If the region is not active or
+  it is empty, then use the whole buffer.
+
+ Optional 3rd arg FACE is the face to use.
+  Interactively, this is the last face that was used for highlighting.
+  (You can use command `hlt-choose-default-face' to choose a different face.)
+
+ Optional 4th arg MSG-P non-nil means to display a progress message.
+  Interactively, MSG-P is t.
+
+Optional 5th arg MOUSE-P non-nil means use property `mouse-face', not
+ `face'.  Interactively, MOUSE-P is provided by the prefix arg.
+
+\(fn &optional START END FACE MSG-P MOUSE-P)" t nil)
+
+(autoload 'hlt-highlight-regexp-region "highlight/highlight" "\
+Highlight regular expression REGEXP in region/buffer.
+Use the region if active, or the buffer otherwise.
+Optional args START and END are the limits of the area to act on.
+  They default to the region limits.
+Optional 4th arg FACE is the face to use.
+  Interactively, this is the last face that was used for highlighting.
+  (You can use command `hlt-choose-default-face' to choose a different face.)
+Optional 5th arg MSG-P:
+  t means to treat this as an interactive call when deciding to
+    display all messages.
+  non-nil & non-t means to display only error and warning messages.
+Optional 6th arg MOUSE-P non-nil means to use `mouse-face' property,
+  not `face'.  Interactively, this is provided by the prefix arg.
+Optional 7th arg NTH determines which regexp subgroup is highlighted.
+  If nil or 0, the entire regexp is highlighted.  Otherwise, the NTH
+  regexp subgroup (\"\\\\(...\\\\)\" expression) is highlighted.
+  (NTH is not available interactively.)
+
+\(fn &optional START END REGEXP FACE MSG-P MOUSE-P NTH)" t nil)
+
+(autoload 'hlt-highlight-regexp-to-end "highlight/highlight" "\
+Highlight text after cursor that matches REGEXP.
+The behavior respects `hlt-use-overlays-flag' and depends on the
+optional arguments, as follows:
+
+ Optional 2nd arg FACE is the face to use.
+  Interactively, this is the last face that was used for highlighting.
+  (You can use command `hlt-choose-default-face' to choose a different
+  face.)
+
+ Optional 3rd arg MSG-P non-nil means to display a progress message.
+  Interactively, MSG-P is t.
+
+ Optional 4th arg MOUSE-P non-nil means use property `mouse-face', not
+ `face'.  Interactively, MOUSE-P is provided by the prefix arg.
+
+ Optional 5th arg NTH determines which regexp subgroup is highlighted.
+  If nil or 0, the entire regexp is highlighted.  Otherwise, the NTH
+  regexp subgroup (\"\\\\(...\\\\)\" expression) is highlighted.
+  (NTH is not available interactively.)
+
+\(fn REGEXP &optional FACE MSG-P MOUSE-P NTH)" t nil)
+
+(autoload 'hlt-unhighlight-region "highlight/highlight" "\
+Remove all highlighting in region or buffer.
+Use the region if active, or the buffer otherwise.
+The arguments are the same as those for `hlt-highlight-region'.
+
+If `hlt-use-overlays-flag' is non-nil, then remove overlay highlighting.
+If `hlt-use-overlays-flag' is not `only', then remove text-property
+highlighting.  This means, in particular, that a value of nil removes
+both overlays and text properties.
+
+\(fn &optional START END FACE MSG-P MOUSE-P)" t nil)
+
+(autoload 'hlt-unhighlight-region-for-face "highlight/highlight" "\
+Remove any highlighting in the region that uses FACE.
+Same as `hlt-unhighlight-region', but removes only highlighting
+that uses FACE.  Interactively, you are prompted for the face.
+
+This works only for overlay highlighting, not text-property
+highlighting.
+
+Note: When text in the region has been highlighted using more than one
+face, unhighlighting for one of those faces can mean that adjacent
+highlighting outside the region appears to change.  That outside text
+still has the same multiple-overlay face highlighting, but the overlay
+stacking order is not the same as it was.
+
+Optional arg FACE is the face to use.
+  Interactively, this is the last face that was used for highlighting.
+  (You can use command `hlt-choose-default-face' to choose a different face.)
+Optional args START and END are the limits of the area to act on.
+  They default to the region limits.
+Optional arg MOUSE-P non-nil means use `mouse-face' property, not
+  `face'.  Interactively, MOUSE-P is provided by the prefix arg.
+
+\(fn &optional FACE START END MOUSE-P)" t nil)
+
+(autoload 'hlt-replace-highlight-face "highlight/highlight" "\
+Replace OLD-FACE by NEW-FACE in overlay highlighting in the region.
+This command applies only to overlay highlighting created by library
+`highlight.el'.
+
+Update the last-used highlighting face.
+
+With a prefix argument, replace OLD-FACE as the `mouse-face' property,
+ not the `face' property.
+
+Other arguments:
+ Optional args START and END are the limits of the area to act on.
+  They default to the region limits.  If the region is not active or
+  it is empty, then use the whole buffer.
+ Optional arg MSG-P non-nil means display a progress message.
+ Optional arg MOUSE-P non-nil means use `mouse-face' property, not
+  `face'.  Interactively, MOUSE-P is provided by the prefix arg.
+
+\(fn OLD-FACE NEW-FACE &optional START END MSG-P MOUSE-P)" t nil)
+
+(autoload 'hlt-highlight-single-quotations "highlight/highlight" "\
+Highlight single-quoted text in the region.
+This means, for example, commands and keys between `'s: `foobar'.
+If the region is not active or it is empty, then use the whole buffer.
+With a prefix argument, prompt for the highlighting face to use.
+Otherwise, use the last face used for highlighting.
+ You can also use command `hlt-choose-default-face' to choose a different face.
+
+\(fn &optional FACE)" t nil)
+
+(autoload 'hlt-mouse-face-each-line "highlight/highlight" "\
+Put `mouse-face' on each line of buffer in region.
+If the region is active and not empty, then limit mouse-face
+highlighting to the region.  Otherwise, use the whole buffer.
+With a prefix argument, prompt for the highlighting face to use.
+Otherwise, use the last face used for highlighting.
+ You can also use command `hlt-choose-default-face' to choose a different face.
+Optional args START and END are the limits of the area to act on.
+  They default to the region limits.
+Optional arg MSG-P non-nil means display a progress message.
+
+\(fn &optional START END FACE MSG-P)" t nil)
+
+(autoload 'hlt-toggle-use-overlays-flag "highlight/highlight" "\
+Toggle `hlt-use-overlays-flag'.
+If the current value is non-nil, it is set to nil.
+If the current value is nil, it is set to the last non-nil value.
+
+\(fn)" t nil)
+
+(defalias 'hlt-paste-props 'hlt-yank-props)
+
+(autoload 'hlt-yank-props "highlight/highlight" "\
+Yank (paste) copied text properties over the active region.
+Interactively, do nothing if there is no nonempty active region.
+By default, yank only the copied properties defined by
+ `hlt-default-copy/yank-props'.
+With a plain or non-negative prefix arg, yank all copied properties.
+With a negative prefix arg, you are prompted for the copied properties
+ to yank.  To finish entering properties, hit `RET RET' (i.e., twice).
+
+NOTE: If the list of copied text properties is empty, then yanking
+      REMOVES ALL PROPERTIES from the text in the region.  This
+      provides an easy way to UNpropertize text.
+
+\(fn START END &optional ARG MSGP)" t nil)
+
+(autoload 'hlt-mouse-copy-props "highlight/highlight" "\
+Same as `hlt-copy-props', but copy at mouse pointer, not at point.
+
+\(fn &optional EVENT ARG MSGP)" t nil)
+
+(autoload 'hlt-copy-props "highlight/highlight" "\
+Copy text properties at point for use by `hlt-yank-props'.
+Properties are copied to `hlt-copied-props'.
+By default, copy the properties defined by
+ `hlt-default-copy/yank-props'.
+With a plain or non-negative prefix arg, copy all properties.
+With a negative prefix arg, you are prompted for the properties to
+ copy.  To finish entering properties, hit `RET RET' (i.e., twice).
+
+\(fn &optional POSITION ARG MSGP)" t nil)
+
+;;;***
+
+;;;### (autoloads (ido-ubiquitous-mode) "ido-ubiquitous/ido-ubiquitous"
+;;;;;;  "ido-ubiquitous/ido-ubiquitous.el" (21114 18257 385566 327000))
 ;;; Generated autoloads from ido-ubiquitous/ido-ubiquitous.el
 
-(let ((loads (get 'ido-ubiquitous 'custom-loads))) (if (member '"ido-ubiquitous/ido-ubiquitous" loads) nil (put 'ido-ubiquitous 'custom-loads (cons '"ido-ubiquitous/ido-ubiquitous" loads))))
+(define-obsolete-variable-alias 'ido-ubiquitous 'ido-ubiquitous-mode "0.8")
+
+(define-obsolete-function-alias 'ido-ubiquitous 'ido-ubiquitous-mode "0.8")
 
 (defvar ido-ubiquitous-mode nil "\
 Non-nil if Ido-Ubiquitous mode is enabled.
@@ -1345,87 +1962,54 @@ Use `ido-completing-read' instead of `completing-read' almost everywhere.
 
   This mode has no effect unles `ido-mode' is also enabled.
 
-  If this mode causes problems for a function, you can force the
-  function to use the original completing read by using the macro
-  `ido-ubiquitous-disable-in'. For example, if a
-  function `foo' cannot work with ido-style completion, evaluate
-  the following (for example by putting it in your .emacs file):
-
-    (ido-ubiquitous-disable-in foo)
+  If this mode causes problems for a function, you can customize
+  when ido completion is or is not used by customizing
+  `ido-ubiquitous-command-overrides' or
+  `ido-ubiquitous-function-overrides'.
 
 \(fn &optional ARG)" t nil)
 
-(define-obsolete-variable-alias 'ido-ubiquitous 'ido-ubiquitous-mode "0.8")
-
-(define-obsolete-function-alias 'ido-ubiquitous 'ido-ubiquitous-mode "0.8")
-
-(defvar ido-ubiquitous-command-exceptions 'nil "\
-List of commands that should not be affected by `ido-ubiquitous'.
-
-Even when `ido-ubiquitous' mode is enabled, these commands will
-continue to use `completing-read' instead of
-`ido-completing-read'.
-
-Only *interactive* commands should go here. To disable
-ido-ubiquitous in non-interactive functions, customize
-`ido-ubiquitous-function-exceptions'.
-
-Note: this feature depends on the variable `this-command' being
-properly set to the name of the currently executing command.
-Depending on how the command is onvoked, this may or may not
-happen, so this feature may simply not work in some cases.")
-
-(custom-autoload 'ido-ubiquitous-command-exceptions "ido-ubiquitous/ido-ubiquitous" t)
-
-(define-obsolete-variable-alias 'ido-ubiquitous-exceptions 'ido-ubiquitous-command-exceptions "0.4")
-
-(defvar ido-ubiquitous-function-exceptions '(grep-read-files) "\
-List of functions in which to disable ido-ubiquitous.
-
-If you need to add a function to this list, please also file a
-bug report at
-https://github.com/DarwinAwardWinner/ido-ubiquitous/issues
-
-Note that certain functions, such as `read-file-name', must
-always have ido-ubiquitous disabled, and cannot be added
-here. (They are effectively a permanent part of this list
-already.)")
-
-(custom-autoload 'ido-ubiquitous-function-exceptions "ido-ubiquitous/ido-ubiquitous" nil)
-
-(defvar ido-ubiquitous-command-compatibility-exceptions 'nil "\
-List of commands in which to disable compatibility.
-
-See `ido-ubiquitous-enable-compatibility' for a description of
-the compatibility behavior. If this behavior causes a command to
-break, add that command to this list to disable compatibility
-mode for just that command.
-
-Only *interactive* commands should go here. To disable
-compatibility mode in non-interactive functions, customize
-`ido-ubiquitous-function-compatibility-exceptions'.")
-
-(custom-autoload 'ido-ubiquitous-command-compatibility-exceptions "ido-ubiquitous/ido-ubiquitous" t)
-
-(defvar ido-ubiquitous-function-compatibility-exceptions 'nil "\
-List of functions in which to disable ido-ubiquitous compatibility mode.
-
-See `ido-ubiquitous-enable-compatibility' for a description of
-the compatibility behavior. If this behavior causes a function to
-break, add that function to this list to disable compatibility
-mode for just that command.
-
-If you need to add a function to this list, please also file a
-bug report at
-https://github.com/DarwinAwardWinner/ido-ubiquitous/issues")
-
-(custom-autoload 'ido-ubiquitous-function-compatibility-exceptions "ido-ubiquitous/ido-ubiquitous" nil)
-
 ;;;***
 
-;;;### (autoloads (magit-status) "magit/magit" "magit/magit.el" (20829
-;;;;;;  35612 103750 666000))
+;;;### (autoloads (magit-run-gitk magit-run-git-gui-blame magit-run-git-gui
+;;;;;;  magit-grep magit-show magit-show-file-revision magit-init
+;;;;;;  magit-branch-manager magit-add-change-log-entry-other-window
+;;;;;;  magit-add-change-log-entry magit-wazzup magit-diff-unstaged
+;;;;;;  magit-diff-staged magit-diff-working-tree magit-diff magit-save-index
+;;;;;;  magit-cherry magit-reflog-head magit-reflog magit-file-log
+;;;;;;  magit-log-long-ranged magit-log-long magit-log-ranged magit-log
+;;;;;;  magit-submodule-sync magit-submodule-init magit-submodule-update-init
+;;;;;;  magit-submodule-update magit-stash-snapshot magit-stash magit-delete-tag
+;;;;;;  magit-tag magit-commit magit-push magit-push-tags magit-git-command
+;;;;;;  magit-shell-command magit-pull magit-remote-update magit-fetch-current
+;;;;;;  magit-fetch magit-reset-working-tree magit-reset-head-hard
+;;;;;;  magit-reset-head magit-interactive-rebase magit-rename-remote
+;;;;;;  magit-remove-remote magit-add-remote magit-rename-branch
+;;;;;;  magit-delete-branch magit-create-branch magit-checkout magit-unstage-all
+;;;;;;  magit-stage-all magit-merge-abort magit-merge magit-status
+;;;;;;  magit-show-commit) "magit/magit" "magit/magit.el" (21114
+;;;;;;  18275 205654 696000))
 ;;; Generated autoloads from magit/magit.el
+
+(autoload 'magit-show-commit "magit/magit" "\
+Show information about a commit.
+Show it in the buffer named by `magit-commit-buffer-name'.
+COMMIT can be any valid name for a commit in the current Git
+repository.
+
+When called interactively or when SELECT is non-nil, switch to
+the commit buffer using `pop-to-buffer'.
+
+Unless INHIBIT-HISTORY is non-nil, the commit currently shown
+will be pushed onto `magit-back-navigation-history' and
+`magit-forward-navigation-history' will be cleared.
+
+Noninteractively, if the commit is already displayed and SCROLL
+is provided, call SCROLL's function definition in the commit
+window.  (`scroll-up' and `scroll-down' are typically passed in
+for this argument.)
+
+\(fn COMMIT &optional SCROLL INHIBIT-HISTORY SELECT)" t nil)
 
 (autoload 'magit-status "magit/magit" "\
 Open a Magit status buffer for the Git repository containing DIR.
@@ -1439,10 +2023,428 @@ when asking for user input.
 
 \(fn DIR)" t nil)
 
+(autoload 'magit-merge "magit/magit" "\
+Merge REVISION into the current 'HEAD', leaving changes uncommitted.
+With a prefix argument, skip editing the log message and commit.
+\('git merge [--no-commit] REVISION').
+
+\(fn REVISION &optional DO-COMMIT)" t nil)
+
+(autoload 'magit-merge-abort "magit/magit" "\
+Abort the current merge operation.
+
+\(fn)" t nil)
+
+(autoload 'magit-stage-all "magit/magit" "\
+Add all remaining changes in tracked files to staging area.
+With a prefix argument, add remaining untracked files as well.
+\('git add [-u] .').
+
+\(fn &optional INCLUDING-UNTRACKED)" t nil)
+
+(autoload 'magit-unstage-all "magit/magit" "\
+Remove all changes from staging area.
+\('git reset --mixed HEAD').
+
+\(fn)" t nil)
+
+(autoload 'magit-checkout "magit/magit" "\
+Switch 'HEAD' to REVISION and update working tree.
+Fails if working tree or staging area contain uncommitted changes.
+If REVISION is a remote branch, offer to create a local tracking branch.
+\('git checkout [-b] REVISION').
+
+\(fn REVISION)" t nil)
+
+(autoload 'magit-create-branch "magit/magit" "\
+Switch 'HEAD' to new BRANCH at revision PARENT and update working tree.
+Fails if working tree or staging area contain uncommitted changes.
+\('git checkout -b BRANCH REVISION').
+
+\(fn BRANCH PARENT)" t nil)
+
+(autoload 'magit-delete-branch "magit/magit" "\
+Delete the BRANCH.
+If the branch is the current one, offers to switch to `master' first.
+With prefix, forces the removal even if it hasn't been merged.
+Works with local or remote branches.
+\('git branch [-d|-D] BRANCH' or 'git push <remote-part-of-BRANCH> :refs/heads/BRANCH').
+
+\(fn BRANCH &optional FORCE)" t nil)
+
+(autoload 'magit-rename-branch "magit/magit" "\
+Rename branch OLD to NEW.
+With prefix, forces the rename even if NEW already exists.
+\('git branch [-m|-M] OLD NEW').
+
+\(fn OLD NEW &optional FORCE)" t nil)
+
+(autoload 'magit-add-remote "magit/magit" "\
+Add the REMOTE and fetch it.
+\('git remote add REMOTE URL').
+
+\(fn REMOTE URL)" t nil)
+
+(autoload 'magit-remove-remote "magit/magit" "\
+Delete the REMOTE.
+\('git remote rm REMOTE').
+
+\(fn REMOTE)" t nil)
+
+(autoload 'magit-rename-remote "magit/magit" "\
+Rename remote OLD to NEW.
+\('git remote rename OLD NEW').
+
+\(fn OLD NEW)" t nil)
+
+(autoload 'magit-interactive-rebase "magit/magit" "\
+Start a git rebase -i session, old school-style.
+
+\(fn COMMIT)" t nil)
+
+(autoload 'magit-reset-head "magit/magit" "\
+Switch 'HEAD' to REVISION, keeping prior working tree and staging area.
+Any differences from REVISION become new changes to be committed.
+With prefix argument, all uncommitted changes in working tree
+and staging area are lost.
+\('git reset [--soft|--hard] REVISION').
+
+\(fn REVISION &optional HARD)" t nil)
+
+(autoload 'magit-reset-head-hard "magit/magit" "\
+Switch 'HEAD' to REVISION, losing all changes.
+Uncomitted changes in both working tree and staging area are lost.
+\('git reset --hard REVISION').
+
+\(fn REVISION)" t nil)
+
+(autoload 'magit-reset-working-tree "magit/magit" "\
+Revert working tree and clear changes from staging area.
+\('git reset --hard HEAD').
+
+With a prefix arg, also remove untracked files.
+With two prefix args, remove ignored files as well.
+
+\(fn &optional ARG)" t nil)
+
+(autoload 'magit-fetch "magit/magit" "\
+Fetch from REMOTE.
+
+\(fn REMOTE)" t nil)
+
+(autoload 'magit-fetch-current "magit/magit" "\
+Run fetch for default remote.
+
+If there is no default remote, ask for one.
+
+\(fn)" t nil)
+
+(autoload 'magit-remote-update "magit/magit" "\
+Update all remotes.
+
+\(fn)" t nil)
+
+(autoload 'magit-pull "magit/magit" "\
+Run git pull.
+
+If there is no default remote, the user is prompted for one and
+its values is saved with git config.  If there is no default
+merge branch, the user is prompted for one and its values is
+saved with git config.  With a prefix argument, the default
+remote is not used and the user is prompted for a remote.  With
+two prefix arguments, the default merge branch is not used and
+the user is prompted for a merge branch.  Values entered by the
+user because of prefix arguments are not saved with git config.
+
+\(fn)" t nil)
+
+(autoload 'magit-shell-command "magit/magit" "\
+Perform arbitrary shell COMMAND.
+
+\(fn COMMAND)" t nil)
+
+(autoload 'magit-git-command "magit/magit" "\
+Perform arbitrary Git COMMAND.
+
+Similar to `magit-shell-command', but involves slightly less
+typing and automatically refreshes the status buffer.
+
+\(fn COMMAND)" t nil)
+
+(autoload 'magit-push-tags "magit/magit" "\
+Push tags to a remote repository.
+
+Push tags to the current branch's remote.  If that isn't set push
+to \"origin\" or if that remote doesn't exit but only a single
+remote is defined use that.  Otherwise or with a prefix argument
+ask the user what remote to use.
+
+\(fn)" t nil)
+
+(autoload 'magit-push "magit/magit" "\
+Push the current branch to a remote repository.
+
+By default push to the remote specified by the git-config(1) option
+branch.<name>.remote or else origin.  Otherwise or with a prefix
+argument instead ask the user what remote to push to.
+
+When pushing to branch.<name>.remote push to the branch specified by
+branch.<name>.merge.  When pushing to another remote or if the latter
+option is not set push to the remote branch with the same name as the
+local branch being pushed.  With two or more prefix arguments instead
+ask the user what branch to push to.  In this last case actually push
+even if `magit-set-upstream-on-push's value is `refuse'.
+
+\(fn)" t nil)
+
+(autoload 'magit-commit "magit/magit" "\
+Create a new commit on HEAD.
+With a prefix argument amend to the commit at HEAD instead.
+\('git commit [--amend]').
+
+\(fn &optional AMENDP)" t nil)
+
+(autoload 'magit-tag "magit/magit" "\
+Create a new tag with the given NAME at REV.
+With a prefix argument annotate the tag.
+\('git tag [--annotate] NAME REV').
+
+\(fn NAME REV &optional ANNOTATE)" t nil)
+
+(autoload 'magit-delete-tag "magit/magit" "\
+Delete the tag with the given NAME.
+\('git tag -d NAME').
+
+\(fn NAME)" t nil)
+
+(autoload 'magit-stash "magit/magit" "\
+Create new stash of working tree and staging area named DESCRIPTION.
+Working tree and staging area revert to the current 'HEAD'.
+With prefix argument, changes in staging area are kept.
+\('git stash save [--keep-index] DESCRIPTION')
+
+\(fn DESCRIPTION)" t nil)
+
+(autoload 'magit-stash-snapshot "magit/magit" "\
+Create new stash of working tree and staging area; keep changes in place.
+\('git stash save \"Snapshot...\"; git stash apply stash@{0}')
+
+\(fn)" t nil)
+
+(autoload 'magit-submodule-update "magit/magit" "\
+Update the submodule of the current git repository.
+With a prefix arg, do a submodule update --init.
+
+\(fn &optional INIT)" t nil)
+
+(autoload 'magit-submodule-update-init "magit/magit" "\
+Update and init the submodule of the current git repository.
+
+\(fn)" t nil)
+
+(autoload 'magit-submodule-init "magit/magit" "\
+Initialize the submodules.
+
+\(fn)" t nil)
+
+(autoload 'magit-submodule-sync "magit/magit" "\
+Synchronizes submodule's remote URL configuration.
+
+\(fn)" t nil)
+
+(autoload 'magit-log "magit/magit" "\
+
+
+\(fn &optional RANGE)" t nil)
+
+(autoload 'magit-log-ranged "magit/magit" "\
+
+
+\(fn RANGE)" t nil)
+
+(autoload 'magit-log-long "magit/magit" "\
+
+
+\(fn &optional RANGE)" t nil)
+
+(autoload 'magit-log-long-ranged "magit/magit" "\
+
+
+\(fn RANGE)" t nil)
+
+(autoload 'magit-file-log "magit/magit" "\
+Display the log for the currently visited file or another one.
+With a prefix argument show the log graph.
+
+\(fn FILE &optional USE-GRAPH)" t nil)
+
+(autoload 'magit-reflog "magit/magit" "\
+
+
+\(fn REF)" t nil)
+
+(autoload 'magit-reflog-head "magit/magit" "\
+
+
+\(fn)" t nil)
+
+(autoload 'magit-cherry "magit/magit" "\
+
+
+\(fn HEAD UPSTREAM)" t nil)
+
+(autoload 'magit-save-index "magit/magit" "\
+Add the content of current file as if it was the index.
+
+\(fn)" t nil)
+
+(autoload 'magit-diff "magit/magit" "\
+
+
+\(fn RANGE &optional WORKING ARGS)" t nil)
+
+(autoload 'magit-diff-working-tree "magit/magit" "\
+
+
+\(fn REV)" t nil)
+
+(autoload 'magit-diff-staged "magit/magit" "\
+Show differences between index and HEAD.
+
+\(fn)" t nil)
+
+(autoload 'magit-diff-unstaged "magit/magit" "\
+Show differences between working tree and index.
+
+\(fn)" t nil)
+
+(autoload 'magit-wazzup "magit/magit" "\
+
+
+\(fn BRANCH)" t nil)
+
+(autoload 'magit-add-change-log-entry "magit/magit" "\
+Find change log file and add date entry and item for current change.
+This differs from `add-change-log-entry' (which see) in that
+it acts on the current hunk in a Magit buffer instead of on
+a position in a file-visiting buffer.
+
+\(fn &optional WHOAMI FILE-NAME OTHER-WINDOW)" t nil)
+
+(autoload 'magit-add-change-log-entry-other-window "magit/magit" "\
+
+
+\(fn &optional WHOAMI FILE-NAME)" t nil)
+
+(autoload 'magit-branch-manager "magit/magit" "\
+
+
+\(fn)" t nil)
+
+(autoload 'magit-init "magit/magit" "\
+Initialize git repository in the DIR directory.
+
+\(fn DIR)" t nil)
+
+(autoload 'magit-show-file-revision "magit/magit" "\
+Open a new buffer showing the current file in the revision at point.
+
+\(fn)" t nil)
+
+(autoload 'magit-show "magit/magit" "\
+Return a buffer containing the file FILENAME, as stored in COMMIT.
+
+COMMIT may be one of the following:
+- A string with the name of a commit, such as \"HEAD\" or
+  \"dae86e\".  See 'git help revisions' for syntax.
+- The symbol 'index, indicating that you want the version in
+  Git's index or staging area.
+- The symbol 'working, indicating that you want the version in
+  the working directory.  In this case you'll get a buffer
+  visiting the file.  If there's already a buffer visiting that
+  file, you'll get that one.
+
+When called interactively or when SELECT is non-nil, make the
+buffer active, either in another window or (with a prefix
+argument) in the current window.
+
+\(fn COMMIT FILENAME &optional SELECT PREFIX)" t nil)
+
+(autoload 'magit-grep "magit/magit" "\
+
+
+\(fn PATTERN)" t nil)
+
+(autoload 'magit-run-git-gui "magit/magit" "\
+Run `git gui' for the current git repository.
+
+\(fn)" t nil)
+
+(autoload 'magit-run-git-gui-blame "magit/magit" "\
+Run `git gui blame' on the given FILENAME and COMMIT.
+Interactively run it for the current file and the HEAD, with a
+prefix let the user choose.  When the current buffer is visiting
+FILENAME instruct blame to center around the line point is on.
+
+\(fn COMMIT FILENAME &optional LINENUM)" t nil)
+
+(autoload 'magit-run-gitk "magit/magit" "\
+Run `gitk --all' for the current git repository.
+
+\(fn)" t nil)
+
+;;;***
+
+;;;### (autoloads (magit-bisect-run magit-bisect-visualize magit-bisect-log
+;;;;;;  magit-bisect-skip magit-bisect-bad magit-bisect-good magit-bisect-reset
+;;;;;;  magit-bisect-start) "magit/magit-bisect" "magit/magit-bisect.el"
+;;;;;;  (21114 18275 185654 596000))
+;;; Generated autoloads from magit/magit-bisect.el
+
+(autoload 'magit-bisect-start "magit/magit-bisect" "\
+Start a bisect session.
+
+\(fn)" t nil)
+
+(autoload 'magit-bisect-reset "magit/magit-bisect" "\
+Quit a bisect session.
+
+\(fn)" t nil)
+
+(autoload 'magit-bisect-good "magit/magit-bisect" "\
+Tell git that the current revision is good during a bisect session.
+
+\(fn)" t nil)
+
+(autoload 'magit-bisect-bad "magit/magit-bisect" "\
+Tell git that the current revision is bad during a bisect session.
+
+\(fn)" t nil)
+
+(autoload 'magit-bisect-skip "magit/magit-bisect" "\
+Tell git to skip the current revision during a bisect session.
+
+\(fn)" t nil)
+
+(autoload 'magit-bisect-log "magit/magit-bisect" "\
+Show the bisect log.
+
+\(fn)" t nil)
+
+(autoload 'magit-bisect-visualize "magit/magit-bisect" "\
+Show the remaining suspects with gitk.
+
+\(fn)" t nil)
+
+(autoload 'magit-bisect-run "magit/magit-bisect" "\
+Bisect automatically by running commands after each step.
+
+\(fn COMMAND)" t nil)
+
 ;;;***
 
 ;;;### (autoloads (magit-blame-mode) "magit/magit-blame" "magit/magit-blame.el"
-;;;;;;  (20829 35612 95750 630000))
+;;;;;;  (21114 18275 185654 596000))
 ;;; Generated autoloads from magit/magit-blame.el
 
 (autoload 'magit-blame-mode "magit/magit-blame" "\
@@ -1452,25 +2454,29 @@ Display blame information inline.
 
 ;;;***
 
-;;;### (autoloads (turn-on-magit-flow magit-flow-mode) "magit/magit-flow"
-;;;;;;  "magit/magit-flow.el" (20829 35612 95750 630000))
-;;; Generated autoloads from magit/magit-flow.el
-
-(autoload 'magit-flow-mode "magit/magit-flow" "\
-FLOW support for Magit
-
-\(fn &optional ARG)" t nil)
-
-(autoload 'turn-on-magit-flow "magit/magit-flow" "\
-Unconditionally turn on `magit-flow-mode'.
-
-\(fn)" nil nil)
-
-;;;***
-
-;;;### (autoloads (turn-on-magit-stgit magit-stgit-mode) "magit/magit-stgit"
-;;;;;;  "magit/magit-stgit.el" (20829 35612 95750 630000))
+;;;### (autoloads (turn-on-magit-stgit magit-stgit-mode magit-stgit-rebase
+;;;;;;  magit-stgit-repair magit-stgit-refresh) "magit/magit-stgit"
+;;;;;;  "magit/magit-stgit.el" (21114 18275 189654 620000))
 ;;; Generated autoloads from magit/magit-stgit.el
+
+(autoload 'magit-stgit-refresh "magit/magit-stgit" "\
+Refresh the contents of a patch in an StGit series.
+If there is no marked patch in the series, refreshes the current
+patch.  Otherwise, refreshes the marked patch.
+
+\(fn)" t nil)
+
+(autoload 'magit-stgit-repair "magit/magit-stgit" "\
+Repair StGit metadata if branch was modified with git commands.
+In the case of Git commits these will be imported as new patches
+into the series.
+
+\(fn)" t nil)
+
+(autoload 'magit-stgit-rebase "magit/magit-stgit" "\
+Rebase an StGit patch series.
+
+\(fn)" t nil)
 
 (autoload 'magit-stgit-mode "magit/magit-stgit" "\
 StGit support for Magit
@@ -1484,9 +2490,48 @@ Unconditionally turn on `magit-stgit-mode'.
 
 ;;;***
 
-;;;### (autoloads (turn-on-magit-svn magit-svn-mode) "magit/magit-svn"
-;;;;;;  "magit/magit-svn.el" (20829 35612 95750 630000))
+;;;### (autoloads (turn-on-magit-svn magit-svn-mode magit-svn-fetch-externals
+;;;;;;  magit-svn-remote-update magit-svn-dcommit magit-svn-rebase
+;;;;;;  magit-svn-create-tag magit-svn-create-branch magit-svn-find-rev)
+;;;;;;  "magit/magit-svn" "magit/magit-svn.el" (21114 18275 189654
+;;;;;;  620000))
 ;;; Generated autoloads from magit/magit-svn.el
+
+(autoload 'magit-svn-find-rev "magit/magit-svn" "\
+Find commit for svn REVISION in BRANCH.
+
+\(fn REV &optional BRANCH)" t nil)
+
+(autoload 'magit-svn-create-branch "magit/magit-svn" "\
+Create svn branch NAME.
+
+\(fn NAME)" t nil)
+
+(autoload 'magit-svn-create-tag "magit/magit-svn" "\
+Create svn tag NAME.
+
+\(fn NAME)" t nil)
+
+(autoload 'magit-svn-rebase "magit/magit-svn" "\
+Run git-svn rebase.
+
+\(fn)" t nil)
+
+(autoload 'magit-svn-dcommit "magit/magit-svn" "\
+Run git-svn dcommit.
+
+\(fn)" t nil)
+
+(autoload 'magit-svn-remote-update "magit/magit-svn" "\
+Run git-svn fetch.
+
+\(fn)" t nil)
+
+(autoload 'magit-svn-fetch-externals "magit/magit-svn" "\
+Loops through all external repos found by `magit-svn-external-directories'
+   and runs git svn fetch, and git svn rebase on each of them.
+
+\(fn)" t nil)
 
 (autoload 'magit-svn-mode "magit/magit-svn" "\
 SVN support for Magit
@@ -1501,7 +2546,7 @@ Unconditionally turn on `magit-svn-mode'.
 ;;;***
 
 ;;;### (autoloads (turn-on-magit-topgit magit-topgit-mode) "magit/magit-topgit"
-;;;;;;  "magit/magit-topgit.el" (20829 35612 95750 630000))
+;;;;;;  "magit/magit-topgit.el" (21114 18275 189654 620000))
 ;;; Generated autoloads from magit/magit-topgit.el
 
 (autoload 'magit-topgit-mode "magit/magit-topgit" "\
@@ -1516,31 +2561,17 @@ Unconditionally turn on `magit-topgit-mode'.
 
 ;;;***
 
-;;;### (autoloads (global-magit-wip-save-mode magit-wip-save-mode
-;;;;;;  magit-wip-mode) "magit/magit-wip" "magit/magit-wip.el" (20829
-;;;;;;  35612 95750 630000))
+;;;### (autoloads (global-magit-wip-save-mode magit-wip-save-mode)
+;;;;;;  "magit/magit-wip" "magit/magit-wip.el" (21114 18275 189654
+;;;;;;  620000))
 ;;; Generated autoloads from magit/magit-wip.el
-
-(defvar magit-wip-mode nil "\
-Non-nil if Magit-Wip mode is enabled.
-See the command `magit-wip-mode' for a description of this minor mode.
-Setting this variable directly does not take effect;
-either customize it (see the info node `Easy Customization')
-or call the function `magit-wip-mode'.")
-
-(custom-autoload 'magit-wip-mode "magit/magit-wip" nil)
-
-(autoload 'magit-wip-mode "magit/magit-wip" "\
-In Magit log buffers; give wip refs a special appearance.
-
-\(fn &optional ARG)" t nil)
 
 (autoload 'magit-wip-save-mode "magit/magit-wip" "\
 Magit support for committing to a work-in-progress ref.
 
-When this minor mode is turned on and a file is saved inside a writable
-git repository then it is also committed to a special work-in-progress
-ref.
+When this minor mode is turned on and a file is saved inside a
+writable git repository then it is also committed to a special
+work-in-progress ref.
 
 \(fn &optional ARG)" t nil)
 
@@ -1567,32 +2598,17 @@ See `magit-wip-save-mode' for more information on Magit-Wip-Save mode.
 
 ;;;***
 
-;;;### (autoloads (rebase-mode) "magit/rebase-mode" "magit/rebase-mode.el"
-;;;;;;  (20829 35612 103750 666000))
-;;; Generated autoloads from magit/rebase-mode.el
-
-(autoload 'rebase-mode "magit/rebase-mode" "\
-Major mode for editing of a Git rebase file.
-
-Rebase files are generated when you run 'git rebase -i' or run
-`magit-interactive-rebase'.  They describe how Git should perform
-the rebase.  See the documentation for git-rebase (e.g., by
-running 'man git-rebase' at the command line) for details.
-
-\(fn)" t nil)
-
-(add-to-list 'auto-mode-alist '("git-rebase-todo" . rebase-mode))
-
-;;;***
-
 ;;;### (autoloads (gfm-mode markdown-mode) "markdown-mode/markdown-mode"
-;;;;;;  "markdown-mode/markdown-mode.el" (20829 21533 401938 153000))
+;;;;;;  "markdown-mode/markdown-mode.el" (21114 18283 305694 860000))
 ;;; Generated autoloads from markdown-mode/markdown-mode.el
 
 (autoload 'markdown-mode "markdown-mode/markdown-mode" "\
 Major mode for editing Markdown files.
 
 \(fn)" t nil)
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 
 (autoload 'gfm-mode "markdown-mode/markdown-mode" "\
 Major mode for editing GitHub Flavored Markdown files.
@@ -1603,7 +2619,7 @@ Major mode for editing GitHub Flavored Markdown files.
 
 ;;;### (autoloads (restore-frame maximize-frame x-restore-frame x-maximize-frame
 ;;;;;;  w32-restore-frame w32-maximize-frame) "maxframe/maxframe"
-;;;;;;  "maxframe/maxframe.el" (20829 21539 41966 127000))
+;;;;;;  "maxframe/maxframe.el" (21114 18287 317714 753000))
 ;;; Generated autoloads from maxframe/maxframe.el
 
 (autoload 'w32-maximize-frame "maxframe/maxframe" "\
@@ -1641,51 +2657,9 @@ Restores a maximized frame.  See `maximize-frame'.
 
 ;;;***
 
-;;;### (autoloads (multi-term-dedicated-select multi-term-dedicated-toggle
-;;;;;;  multi-term-dedicated-open multi-term-prev multi-term-next
-;;;;;;  multi-term) "multi-term/multi-term" "multi-term/multi-term.el"
-;;;;;;  (20829 21540 437973 40000))
-;;; Generated autoloads from multi-term/multi-term.el
-
-(autoload 'multi-term "multi-term/multi-term" "\
-Create new term buffer.
-Will prompt you shell name when you type `C-u' before this command.
-
-\(fn)" t nil)
-
-(autoload 'multi-term-next "multi-term/multi-term" "\
-Go to the next term buffer.
-If OFFSET is `non-nil', will goto next term buffer with OFFSET.
-
-\(fn &optional OFFSET)" t nil)
-
-(autoload 'multi-term-prev "multi-term/multi-term" "\
-Go to the previous term buffer.
-If OFFSET is `non-nil', will goto previous term buffer with OFFSET.
-
-\(fn &optional OFFSET)" t nil)
-
-(autoload 'multi-term-dedicated-open "multi-term/multi-term" "\
-Open dedicated `multi-term' window.
-Will prompt you shell name when you type `C-u' before this command.
-
-\(fn)" t nil)
-
-(autoload 'multi-term-dedicated-toggle "multi-term/multi-term" "\
-Toggle dedicated `multi-term' window.
-
-\(fn)" t nil)
-
-(autoload 'multi-term-dedicated-select "multi-term/multi-term" "\
-Select the `multi-term' dedicated window.
-
-\(fn)" t nil)
-
-;;;***
-
 ;;;### (autoloads (mc/edit-beginnings-of-lines mc/edit-ends-of-lines
 ;;;;;;  mc/edit-lines) "multiple-cursors/mc-edit-lines" "multiple-cursors/mc-edit-lines.el"
-;;;;;;  (20829 21543 129986 395000))
+;;;;;;  (21114 18316 457859 256000))
 ;;; Generated autoloads from multiple-cursors/mc-edit-lines.el
 
 (autoload 'mc/edit-lines "multiple-cursors/mc-edit-lines" "\
@@ -1709,14 +2683,14 @@ Add one cursor to the beginning of each line in the active region.
 
 ;;;### (autoloads (mc/mark-sgml-tag-pair mc/add-cursor-on-click mc/mark-all-symbols-like-this-in-defun
 ;;;;;;  mc/mark-all-words-like-this-in-defun mc/mark-all-like-this-in-defun
-;;;;;;  mc/mark-all-like-this-dwim mc/mark-more-like-this-extended
+;;;;;;  mc/mark-all-dwim mc/mark-all-like-this-dwim mc/mark-more-like-this-extended
 ;;;;;;  mc/mark-all-in-region mc/mark-all-symbols-like-this mc/mark-all-words-like-this
-;;;;;;  mc/mark-all-like-this mc/unmark-previous-like-this mc/unmark-next-like-this
-;;;;;;  mc/mark-previous-lines mc/mark-next-lines mc/mark-previous-symbol-like-this
-;;;;;;  mc/mark-previous-word-like-this mc/mark-previous-like-this
-;;;;;;  mc/mark-next-symbol-like-this mc/mark-next-word-like-this
-;;;;;;  mc/mark-next-like-this) "multiple-cursors/mc-mark-more" "multiple-cursors/mc-mark-more.el"
-;;;;;;  (20829 21543 129986 395000))
+;;;;;;  mc/mark-all-like-this mc/skip-to-previous-like-this mc/skip-to-next-like-this
+;;;;;;  mc/unmark-previous-like-this mc/unmark-next-like-this mc/mark-previous-lines
+;;;;;;  mc/mark-next-lines mc/mark-previous-symbol-like-this mc/mark-previous-word-like-this
+;;;;;;  mc/mark-previous-like-this mc/mark-next-symbol-like-this
+;;;;;;  mc/mark-next-word-like-this mc/mark-next-like-this) "multiple-cursors/mc-mark-more"
+;;;;;;  "multiple-cursors/mc-mark-more.el" (21114 18316 457859 256000))
 ;;; Generated autoloads from multiple-cursors/mc-mark-more.el
 
 (autoload 'mc/mark-next-like-this "multiple-cursors/mc-mark-more" "\
@@ -1766,12 +2740,22 @@ With zero ARG, skip the last one and mark next.
 (autoload 'mc/unmark-next-like-this "multiple-cursors/mc-mark-more" "\
 Deselect next part of the buffer matching the currently active region.
 
-\(fn ARG)" t nil)
+\(fn)" t nil)
 
 (autoload 'mc/unmark-previous-like-this "multiple-cursors/mc-mark-more" "\
 Deselect prev part of the buffer matching the currently active region.
 
-\(fn ARG)" t nil)
+\(fn)" t nil)
+
+(autoload 'mc/skip-to-next-like-this "multiple-cursors/mc-mark-more" "\
+Skip the current one and select the next part of the buffer matching the currently active region.
+
+\(fn)" t nil)
+
+(autoload 'mc/skip-to-previous-like-this "multiple-cursors/mc-mark-more" "\
+Skip the current one and select the prev part of the buffer matching the currently active region.
+
+\(fn)" t nil)
 
 (autoload 'mc/mark-all-like-this "multiple-cursors/mc-mark-more" "\
 Find and mark all the parts of the buffer matching the currently active region
@@ -1795,19 +2779,22 @@ Find and mark all the parts in the region matching the given search
 
 (autoload 'mc/mark-more-like-this-extended "multiple-cursors/mc-mark-more" "\
 Like mark-more-like-this, but then lets you adjust with arrows key.
-The actual adjustment made depends on the final component of the
-key-binding used to invoke the command, with all modifiers removed:
+The adjustments work like this:
 
-   <up>    Mark previous like this
-   <down>  Mark next like this
-   <left>  If last was previous, skip it
-           If last was next, remove it
-   <right> If last was next, skip it
-           If last was previous, remove it
+   <up>    Mark previous like this and set direction to 'up
+   <down>  Mark next like this and set direction to 'down
 
-Then, continue to read input events and further add or move marks
-as long as the input event read (with all modifiers removed)
-is one of the above.
+If direction is 'up:
+
+   <left>  Skip past the cursor furthest up
+   <right> Remove the cursor furthest up
+
+If direction is 'down:
+
+   <left>  Remove the cursor furthest down
+   <right> Skip past the cursor furthest down
+
+The bindings for these commands can be changed. See `mc/mark-more-like-this-extended-keymap'.
 
 \(fn)" t nil)
 
@@ -1816,6 +2803,18 @@ Tries to guess what you want to mark all of.
 Can be pressed multiple times to increase selection.
 
 With prefix, it behaves the same as original `mc/mark-all-like-this'
+
+\(fn ARG)" t nil)
+
+(autoload 'mc/mark-all-dwim "multiple-cursors/mc-mark-more" "\
+Tries even harder to guess what you want to mark all of.
+
+If the region is active and spans multiple lines, it will behave
+as if `mc/mark-all-in-region'. With the prefix ARG, it will call
+`mc/edit-lines' instead.
+
+If the region is inactive or on a single line, it will behave like 
+`mc/mark-all-like-this-dwim'.
 
 \(fn ARG)" t nil)
 
@@ -1846,9 +2845,21 @@ Mark the tag we're in and its pair for renaming.
 
 ;;;***
 
+;;;### (autoloads (mc/mark-pop) "multiple-cursors/mc-mark-pop" "multiple-cursors/mc-mark-pop.el"
+;;;;;;  (21114 18316 461859 269000))
+;;; Generated autoloads from multiple-cursors/mc-mark-pop.el
+
+(autoload 'mc/mark-pop "multiple-cursors/mc-mark-pop" "\
+Add a cursor at the current point, pop off mark ring and jump
+to the popped mark.
+
+\(fn)" t nil)
+
+;;;***
+
 ;;;### (autoloads (mc/sort-regions mc/reverse-regions mc/insert-numbers)
 ;;;;;;  "multiple-cursors/mc-separate-operations" "multiple-cursors/mc-separate-operations.el"
-;;;;;;  (20829 21543 129986 395000))
+;;;;;;  (21114 18316 461859 269000))
 ;;; Generated autoloads from multiple-cursors/mc-separate-operations.el
 
 (autoload 'mc/insert-numbers "multiple-cursors/mc-separate-operations" "\
@@ -1869,8 +2880,8 @@ Insert increasing numbers for each cursor, starting at 0 or ARG.
 ;;;***
 
 ;;;### (autoloads (set-rectangular-region-anchor) "multiple-cursors/rectangular-region-mode"
-;;;;;;  "multiple-cursors/rectangular-region-mode.el" (20829 21543
-;;;;;;  133986 414000))
+;;;;;;  "multiple-cursors/rectangular-region-mode.el" (21114 18316
+;;;;;;  461859 269000))
 ;;; Generated autoloads from multiple-cursors/rectangular-region-mode.el
 
 (autoload 'set-rectangular-region-anchor "multiple-cursors/rectangular-region-mode" "\
@@ -1884,7 +2895,7 @@ an exceedingly quick way of adding multiple cursors to multiple lines.
 ;;;***
 
 ;;;### (autoloads (nginx-mode) "nginx-mode/nginx-mode" "nginx-mode/nginx-mode.el"
-;;;;;;  (21009 65342 367708 344000))
+;;;;;;  (21114 18320 121877 420000))
 ;;; Generated autoloads from nginx-mode/nginx-mode.el
 
 (autoload 'nginx-mode "nginx-mode/nginx-mode" "\
@@ -1897,24 +2908,11 @@ The variable nginx-indent-level controls the amount of indentation.
 
 ;;;***
 
-;;;### (autoloads (notmuch-cycle-notmuch-buffers notmuch notmuch-search)
-;;;;;;  "notmuch/emacs/notmuch" "notmuch/emacs/notmuch.el" (20834
-;;;;;;  45355 185834 898000))
+;;;### (autoloads (notmuch-cycle-notmuch-buffers notmuch) "notmuch/emacs/notmuch"
+;;;;;;  "notmuch/emacs/notmuch.el" (21114 18328 129917 129000))
 ;;; Generated autoloads from notmuch/emacs/notmuch.el
 
-(autoload 'notmuch-search "notmuch/emacs/notmuch" "\
-Run \"notmuch search\" with the given `query' and display results.
-
-If `query' is nil, it is read interactively from the minibuffer.
-Other optional parameters are used as follows:
-
-  oldest-first: A Boolean controlling the sort order of returned threads
-  target-thread: A thread ID (without the thread: prefix) that will be made
-                 current if it appears in the search results.
-  target-line: The line number to move to if the target thread does not
-               appear in the search results.
-
-\(fn &optional QUERY OLDEST-FIRST TARGET-THREAD TARGET-LINE CONTINUATION)" t nil)
+(put 'notmuch-search 'notmuch-doc "Search for messages.")
 
 (autoload 'notmuch "notmuch/emacs/notmuch" "\
 Run notmuch and display saved searches, known tags, etc.
@@ -1932,7 +2930,7 @@ notmuch buffers exist, run `notmuch'.
 ;;;***
 
 ;;;### (autoloads (notmuch-hello) "notmuch/emacs/notmuch-hello" "notmuch/emacs/notmuch-hello.el"
-;;;;;;  (20921 29842 560591 117000))
+;;;;;;  (21114 18328 121917 95000))
 ;;; Generated autoloads from notmuch/emacs/notmuch-hello.el
 
 (autoload 'notmuch-hello "notmuch/emacs/notmuch-hello" "\
@@ -1943,11 +2941,13 @@ Run notmuch and display saved searches, known tags, etc.
 ;;;***
 
 ;;;### (autoloads (notmuch-show) "notmuch/emacs/notmuch-show" "notmuch/emacs/notmuch-show.el"
-;;;;;;  (20834 45355 177834 864000))
+;;;;;;  (21114 18328 125917 110000))
 ;;; Generated autoloads from notmuch/emacs/notmuch-show.el
 
 (autoload 'notmuch-show "notmuch/emacs/notmuch-show" "\
 Run \"notmuch show\" with the given thread ID and display results.
+
+ELIDE-TOGGLE, if non-nil, inverts the default elide behavior.
 
 The optional PARENT-BUFFER is the notmuch-search buffer from
 which this notmuch-show command was executed, (so that the
@@ -1963,54 +2963,12 @@ which the message thread is shown. If it is nil (which occurs
 when the command is called interactively) the argument to the
 function is used.
 
-\(fn THREAD-ID &optional PARENT-BUFFER QUERY-CONTEXT BUFFER-NAME)" t nil)
-
-;;;***
-
-;;;### (autoloads (nrepl nrepl-jack-in nrepl-disable-on-existing-clojure-buffers
-;;;;;;  nrepl-enable-on-existing-clojure-buffers nrepl-interaction-mode)
-;;;;;;  "nrepl/nrepl" "nrepl/nrepl.el" (20829 35787 328619 561000))
-;;; Generated autoloads from nrepl/nrepl.el
-
-(autoload 'nrepl-interaction-mode "nrepl/nrepl" "\
-Minor mode for nrepl interaction from a Clojure buffer.
-
-\\{nrepl-interaction-mode-map}
-
-\(fn &optional ARG)" t nil)
-
-(autoload 'nrepl-enable-on-existing-clojure-buffers "nrepl/nrepl" "\
-Enable interaction mode on existing Clojure buffers.
-See command `nrepl-interaction-mode'.
-
-\(fn)" t nil)
-
-(autoload 'nrepl-disable-on-existing-clojure-buffers "nrepl/nrepl" "\
-Disable interaction mode on existing Clojure buffers.
-See command `nrepl-interaction-mode'.
-
-\(fn)" t nil)
-
-(autoload 'nrepl-jack-in "nrepl/nrepl" "\
-Start a nREPL server for the current project and connect to it.
-If PROMPT-PROJECT is t, then prompt for the project for which to
-start the server.
-
-\(fn &optional PROMPT-PROJECT)" t nil)
-
-(add-hook 'nrepl-connected-hook 'nrepl-enable-on-existing-clojure-buffers)
-
-(autoload 'nrepl "nrepl/nrepl" "\
-Connect nrepl to HOST and PORT.
-
-\(fn HOST PORT)" t nil)
-
-(eval-after-load 'clojure-mode '(progn (define-key clojure-mode-map (kbd "C-c M-j") 'nrepl-jack-in) (define-key clojure-mode-map (kbd "C-c M-c") 'nrepl)))
+\(fn THREAD-ID &optional ELIDE-TOGGLE PARENT-BUFFER QUERY-CONTEXT BUFFER-NAME)" t nil)
 
 ;;;***
 
 ;;;### (autoloads (nyan-mode) "nyan-mode/nyan-mode" "nyan-mode/nyan-mode.el"
-;;;;;;  (20866 26796 822474 860000))
+;;;;;;  (21114 18436 894456 469000))
 ;;; Generated autoloads from nyan-mode/nyan-mode.el
 
 (defvar nyan-mode nil "\
@@ -2034,7 +2992,7 @@ option `scroll-bar-mode'.
 ;;;***
 
 ;;;### (autoloads (offlineimap) "offlineimap/offlineimap" "offlineimap/offlineimap.el"
-;;;;;;  (20829 21552 390032 311000))
+;;;;;;  (21114 18438 430464 86000))
 ;;; Generated autoloads from offlineimap/offlineimap.el
 
 (autoload 'offlineimap "offlineimap/offlineimap" "\
@@ -2044,106 +3002,9 @@ Start OfflineIMAP.
 
 ;;;***
 
-;;;### (autoloads (org-export-html5presentationize-generate-css org-export-as-html5presentation
-;;;;;;  org-export-region-as-html5presentation org-replace-region-by-html5presentation
-;;;;;;  org-export-as-html5presentation-to-buffer org-export-as-html5presentation-batch
-;;;;;;  org-export-as-html5presentation-and-open) "org-html5presentation/org-html5presentation"
-;;;;;;  "org-html5presentation/org-html5presentation.el" (20921 34103
-;;;;;;  924183 929000))
-;;; Generated autoloads from org-html5presentation/org-html5presentation.el
-
-(put 'org-export-html5presentation-style-include-default 'safe-local-variable 'booleanp)
-
-(put 'org-export-html5presentation-style 'safe-local-variable 'stringp)
-
-(put 'org-export-html5presentation-style-extra 'safe-local-variable 'stringp)
-
-(autoload 'org-export-as-html5presentation-and-open "org-html5presentation/org-html5presentation" "\
-Export the outline as HTML and immediately open it with a browser.
-If there is an active region, export only the region.
-The prefix ARG specifies how many levels of the outline should become
-headlines.  The default is 3.  Lower levels will become bulleted lists.
-
-\(fn ARG)" t nil)
-
-(autoload 'org-export-as-html5presentation-batch "org-html5presentation/org-html5presentation" "\
-Call the function `org-export-as-html5presentation'.
-This function can be used in batch processing as:
-emacs   --batch
-        --load=$HOME/lib/emacs/org.el
-        --eval \"(setq org-export-headline-levels 2)\"
-	--visit=MyFile --funcall org-export-as-html5presentation-batch
-
-\(fn)" nil nil)
-
-(autoload 'org-export-as-html5presentation-to-buffer "org-html5presentation/org-html5presentation" "\
-Call `org-export-as-html5presentation` with output to a temporary buffer.
-No file is created.  The prefix ARG is passed through to `org-export-as-html5presentation'.
-
-\(fn ARG)" t nil)
-
-(autoload 'org-replace-region-by-html5presentation "org-html5presentation/org-html5presentation" "\
-Assume the current region has org-mode syntax, and convert it to HTML.
-This can be used in any buffer.  For example, you could write an
-itemized list in org-mode syntax in an HTML buffer and then use this
-command to convert it.
-
-\(fn BEG END)" t nil)
-
-(autoload 'org-export-region-as-html5presentation "org-html5presentation/org-html5presentation" "\
-Convert region from BEG to END in org-mode buffer to HTML.
-If prefix arg BODY-ONLY is set, omit file header, footer, and table of
-contents, and only produce the region of converted text, useful for
-cut-and-paste operations.
-If BUFFER is a buffer or a string, use/create that buffer as a target
-of the converted HTML.  If BUFFER is the symbol `string', return the
-produced HTML as a string and leave not buffer behind.  For example,
-a Lisp program could call this function in the following way:
-
-  (setq html (org-export-region-as-html5presentation beg end t 'string))
-
-When called interactively, the output buffer is selected, and shown
-in a window.  A non-interactive call will only return the buffer.
-
-\(fn BEG END &optional ORG-HTML5PRESENTATION-BODY-ONLY BUFFER)" t nil)
-
-(autoload 'org-export-as-html5presentation "org-html5presentation/org-html5presentation" "\
-Export the outline as a pretty HTML file.
-If there is an active region, export only the region.  The prefix
-ARG specifies how many levels of the outline should become
-headlines.  The default is 3.  Lower levels will become bulleted
-lists.  HIDDEN is obsolete and does nothing.
-EXT-PLIST is a property list with external parameters overriding
-org-mode's default settings, but still inferior to file-local
-settings.  When TO-BUFFER is non-nil, create a buffer with that
-name and export to that buffer.  If TO-BUFFER is the symbol
-`string', don't leave any buffer behind but just return the
-resulting HTML as a string.  When BODY-ONLY is set, don't produce
-the file header and footer, simply return the content of
-<body>...</body>, without even the body tags themselves.  When
-PUB-DIR is set, use this as the publishing directory.
-
-\(fn ARG &optional HIDDEN EXT-PLIST TO-BUFFER ORG-HTML5PRESENTATION-BODY-ONLY PUB-DIR)" t nil)
-
-(autoload 'org-export-html5presentationize-generate-css "org-html5presentation/org-html5presentation" "\
-Create the CSS for all font definitions in the current Emacs session.
-Use this to create face definitions in your CSS style file that can then
-be used by code snippets transformed by htmlize.
-This command just produces a buffer that contains class definitions for all
-faces used in the current Emacs session.  You can copy and paste the ones you
-need into your CSS file.
-
-If you then set `org-export-html5presentationize-output-type' to `css', calls to
-the function `org-export-html5presentationize-region-for-paste' will produce code
-that uses these same face definitions.
-
-\(fn)" t nil)
-
-;;;***
-
 ;;;### (autoloads (htmlize-many-files-dired htmlize-many-files htmlize-file
 ;;;;;;  htmlize-region htmlize-buffer) "org-mode/contrib/lisp/htmlize"
-;;;;;;  "org-mode/contrib/lisp/htmlize.el" (20829 21604 510290 758000))
+;;;;;;  "org-mode/contrib/lisp/htmlize.el" (21114 18510 586821 885000))
 ;;; Generated autoloads from org-mode/contrib/lisp/htmlize.el
 
 (autoload 'htmlize-buffer "org-mode/contrib/lisp/htmlize" "\
@@ -2209,8 +3070,8 @@ HTMLize dired-marked files.
 ;;;***
 
 ;;;### (autoloads (org-bullets-mode) "org-mode/contrib/lisp/org-bullets"
-;;;;;;  "org-mode/contrib/lisp/org-bullets.el" (20829 21604 510290
-;;;;;;  758000))
+;;;;;;  "org-mode/contrib/lisp/org-bullets.el" (21114 18510 586821
+;;;;;;  885000))
 ;;; Generated autoloads from org-mode/contrib/lisp/org-bullets.el
 
 (autoload 'org-bullets-mode "org-mode/contrib/lisp/org-bullets" "\
@@ -2221,8 +3082,8 @@ UTF-8 bullets for `org-mode'.
 ;;;***
 
 ;;;### (autoloads (org-contacts) "org-mode/contrib/lisp/org-contacts"
-;;;;;;  "org-mode/contrib/lisp/org-contacts.el" (20829 21604 514290
-;;;;;;  787000))
+;;;;;;  "org-mode/contrib/lisp/org-contacts.el" (21114 18510 590821
+;;;;;;  906000))
 ;;; Generated autoloads from org-mode/contrib/lisp/org-contacts.el
 
 (autoload 'org-contacts "org-mode/contrib/lisp/org-contacts" "\
@@ -2234,8 +3095,8 @@ Create agenda view for contacts matching NAME.
 
 ;;;### (autoloads (org-registry-update org-registry-insinuate org-registry-initialize
 ;;;;;;  org-registry-visit org-registry-show) "org-mode/contrib/lisp/org-registry"
-;;;;;;  "org-mode/contrib/lisp/org-registry.el" (20829 21604 526290
-;;;;;;  839000))
+;;;;;;  "org-mode/contrib/lisp/org-registry.el" (21114 18510 602821
+;;;;;;  965000))
 ;;; Generated autoloads from org-mode/contrib/lisp/org-registry.el
 
 (autoload 'org-registry-show "org-mode/contrib/lisp/org-registry" "\
@@ -2272,8 +3133,54 @@ Update the registry for the current Org file.
 
 ;;;***
 
+;;;### (autoloads (org-screenshot-show-unused org-screenshot-rotate-next
+;;;;;;  org-screenshot-rotate-prev org-screenshot-take) "org-mode/contrib/lisp/org-screenshot"
+;;;;;;  "org-mode/contrib/lisp/org-screenshot.el" (21114 18510 602821
+;;;;;;  965000))
+;;; Generated autoloads from org-mode/contrib/lisp/org-screenshot.el
+
+(autoload 'org-screenshot-take "org-mode/contrib/lisp/org-screenshot" "\
+Take a screenshot and insert link to it at point, if image
+display is already on (see \\[org-toggle-inline-images])
+screenshot will be displayed as an image
+
+Screen area for the screenshot is selected with the mouse, left
+click on a window screenshots that window, while left click and
+drag selects a region. Pressing any key cancels the screen shot
+
+With `C-u' universal argument waits one second after target is
+selected before taking the screenshot. With double `C-u' wait two
+seconds.
+
+With triple `C-u' wait 3 seconds, and also rings the bell when
+screenshot is done, any more `C-u' after that increases delay by
+2 seconds
+
+\(fn &optional DELAY)" t nil)
+
+(autoload 'org-screenshot-rotate-prev "org-mode/contrib/lisp/org-screenshot" "\
+Rotate last screenshot with one of the previously taken
+screenshots from the same directory. If DIR is negative, rotate
+in the other direction
+
+\(fn DIR)" t nil)
+
+(autoload 'org-screenshot-rotate-next "org-mode/contrib/lisp/org-screenshot" "\
+Rotate last screenshot with one of the previously taken
+screenshots from the same directory. If DIR is negative, rotate
+in the other direction
+
+\(fn DIR)" t nil)
+
+(autoload 'org-screenshot-show-unused "org-mode/contrib/lisp/org-screenshot" "\
+Open A Dired buffer with unused screenshots marked
+
+\(fn)" t nil)
+
+;;;***
+
 ;;;### (autoloads (org-toc-show) "org-mode/contrib/lisp/org-toc"
-;;;;;;  "org-mode/contrib/lisp/org-toc.el" (20829 21604 526290 839000))
+;;;;;;  "org-mode/contrib/lisp/org-toc.el" (21114 18510 606821 989000))
 ;;; Generated autoloads from org-mode/contrib/lisp/org-toc.el
 
 (autoload 'org-toc-show "org-mode/contrib/lisp/org-toc" "\
@@ -2285,7 +3192,7 @@ Show the table of contents of the current Org-mode buffer.
 
 ;;;### (autoloads (org-track-compile-org org-track-fetch-package)
 ;;;;;;  "org-mode/contrib/lisp/org-track" "org-mode/contrib/lisp/org-track.el"
-;;;;;;  (20829 21604 526290 839000))
+;;;;;;  (21114 18510 606821 989000))
 ;;; Generated autoloads from org-mode/contrib/lisp/org-track.el
 
 (autoload 'org-track-fetch-package "org-mode/contrib/lisp/org-track" "\
@@ -2307,8 +3214,8 @@ DIRECTORY is where the directory org-mode/ lives (i.e. the
 ;;;***
 
 ;;;### (autoloads (org-freemind-export-to-freemind) "org-mode/contrib/lisp/ox-freemind"
-;;;;;;  "org-mode/contrib/lisp/ox-freemind.el" (20829 21604 530290
-;;;;;;  867000))
+;;;;;;  "org-mode/contrib/lisp/ox-freemind.el" (21114 18510 610822
+;;;;;;  5000))
 ;;; Generated autoloads from org-mode/contrib/lisp/ox-freemind.el
 
 (autoload 'org-freemind-export-to-freemind "org-mode/contrib/lisp/ox-freemind" "\
@@ -2345,8 +3252,8 @@ Return output file's name.
 
 ;;;### (autoloads (org-koma-letter-export-to-pdf org-koma-letter-export-to-latex
 ;;;;;;  org-koma-letter-export-as-latex) "org-mode/contrib/lisp/ox-koma-letter"
-;;;;;;  "org-mode/contrib/lisp/ox-koma-letter.el" (20829 21604 534290
-;;;;;;  880000))
+;;;;;;  "org-mode/contrib/lisp/ox-koma-letter.el" (21114 18510 610822
+;;;;;;  5000))
 ;;; Generated autoloads from org-mode/contrib/lisp/ox-koma-letter.el
 
 (autoload 'org-koma-letter-export-as-latex "org-mode/contrib/lisp/ox-koma-letter" "\
@@ -2371,7 +3278,7 @@ contents of hidden elements.
 When optional argument BODY-ONLY is non-nil, only write code
 between \"\\begin{letter}\" and \"\\end{letter}\".
 
-EXT-PLIST, when provided, is a property list with external
+EXT-PLIST, when provided, is a proeprty list with external
 parameters overriding Org default settings, but still inferior to
 file-local settings.
 
@@ -2448,7 +3355,7 @@ Return PDF file's name.
 
 ;;;### (autoloads (org-rss-publish-to-rss org-rss-export-to-rss org-rss-export-as-rss)
 ;;;;;;  "org-mode/contrib/lisp/ox-rss" "org-mode/contrib/lisp/ox-rss.el"
-;;;;;;  (20829 21604 534290 880000))
+;;;;;;  (21114 18510 610822 5000))
 ;;; Generated autoloads from org-mode/contrib/lisp/ox-rss.el
 
 (autoload 'org-rss-export-as-rss "org-mode/contrib/lisp/ox-rss" "\
@@ -2512,9 +3419,10 @@ Return output file name.
 
 ;;;***
 
-;;;### (autoloads (org-taskjuggler-export-and-open org-taskjuggler-export)
-;;;;;;  "org-mode/contrib/lisp/ox-taskjuggler" "org-mode/contrib/lisp/ox-taskjuggler.el"
-;;;;;;  (20829 21604 534290 880000))
+;;;### (autoloads (org-taskjuggler-export-process-and-open org-taskjuggler-export-and-process
+;;;;;;  org-taskjuggler-export) "org-mode/contrib/lisp/ox-taskjuggler"
+;;;;;;  "org-mode/contrib/lisp/ox-taskjuggler.el" (21114 18510 614822
+;;;;;;  24000))
 ;;; Generated autoloads from org-mode/contrib/lisp/ox-taskjuggler.el
 
 (autoload 'org-taskjuggler-export "org-mode/contrib/lisp/ox-taskjuggler" "\
@@ -2553,8 +3461,8 @@ Return output file's name.
 
 \(fn &optional ASYNC SUBTREEP VISIBLE-ONLY)" t nil)
 
-(autoload 'org-taskjuggler-export-and-open "org-mode/contrib/lisp/ox-taskjuggler" "\
-Export current buffer to a TaskJuggler file and open it.
+(autoload 'org-taskjuggler-export-and-process "org-mode/contrib/lisp/ox-taskjuggler" "\
+Export current buffer to a TaskJuggler file and process it.
 
 The exporter looks for a tree with tag that matches
 `org-taskjuggler-project-tag' and takes this as the tasks for
@@ -2581,7 +3489,20 @@ first.
 When optional argument VISIBLE-ONLY is non-nil, don't export
 contents of hidden elements.
 
-Open file with the TaskJuggler GUI.
+Return a list of reports.
+
+\(fn &optional SUBTREEP VISIBLE-ONLY)" t nil)
+
+(autoload 'org-taskjuggler-export-process-and-open "org-mode/contrib/lisp/ox-taskjuggler" "\
+Export current buffer to a TaskJuggler file, process and open it.
+
+Export and process the file using
+`org-taskjuggler-export-and-process' and open the generated
+reports with a browser.
+
+If you are targeting TaskJuggler 2.4 (see
+`org-taskjuggler-target-version') the processing and display of
+the reports is done using the TaskJuggler GUI.
 
 \(fn &optional SUBTREEP VISIBLE-ONLY)" t nil)
 
@@ -2592,14 +3513,24 @@ Open file with the TaskJuggler GUI.
 ;;;;;;  org-open-at-point-global org-insert-link-global org-store-link
 ;;;;;;  org-run-like-in-org-mode turn-on-orgstruct++ turn-on-orgstruct
 ;;;;;;  orgstruct-mode org-global-cycle org-cycle org-mode org-clock-persistence-insinuate
-;;;;;;  turn-on-orgtbl org-version org-babel-do-load-languages) "org-mode/lisp/org"
-;;;;;;  "org-mode/lisp/org.el" (20829 21604 654291 473000))
+;;;;;;  turn-on-orgtbl org-version org-babel-load-file org-babel-do-load-languages)
+;;;;;;  "org-mode/lisp/org" "org-mode/lisp/org.el" (21114 18510 738822
+;;;;;;  643000))
 ;;; Generated autoloads from org-mode/lisp/org.el
 
 (autoload 'org-babel-do-load-languages "org-mode/lisp/org" "\
 Load the languages defined in `org-babel-load-languages'.
 
 \(fn SYM VALUE)" nil nil)
+
+(autoload 'org-babel-load-file "org-mode/lisp/org" "\
+Load Emacs Lisp source code blocks in the Org-mode FILE.
+This function exports the source code using `org-babel-tangle'
+and then loads the resulting file using `load-file'.  With prefix
+arg (noninteractively: 2nd arg) COMPILE the tangled Emacs Lisp
+file to byte-code before it is loaded.
+
+\(fn FILE &optional COMPILE)" t nil)
 
 (autoload 'org-version "org-mode/lisp/org" "\
 Show the org-mode version in the echo area.
@@ -2810,7 +3741,7 @@ Call the customize function with org as argument.
 ;;;;;;  org-search-view org-agenda-list org-batch-store-agenda-views
 ;;;;;;  org-store-agenda-views org-batch-agenda-csv org-batch-agenda
 ;;;;;;  org-agenda org-toggle-sticky-agenda) "org-mode/lisp/org-agenda"
-;;;;;;  "org-mode/lisp/org-agenda.el" (20928 31655 108513 875000))
+;;;;;;  "org-mode/lisp/org-agenda.el" (21114 18510 686822 385000))
 ;;; Generated autoloads from org-mode/lisp/org-agenda.el
 
 (autoload 'org-toggle-sticky-agenda "org-mode/lisp/org-agenda" "\
@@ -3072,7 +4003,7 @@ to override `appt-message-warning-time'.
 
 ;;;### (autoloads (org-capture-import-remember-templates org-capture
 ;;;;;;  org-capture-string) "org-mode/lisp/org-capture" "org-mode/lisp/org-capture.el"
-;;;;;;  (20829 21604 606291 238000))
+;;;;;;  (21114 18510 690822 401000))
 ;;; Generated autoloads from org-mode/lisp/org-capture.el
 
 (autoload 'org-capture-string "org-mode/lisp/org-capture" "\
@@ -3116,7 +4047,7 @@ Set `org-capture-templates' to be similar to `org-remember-templates'.
 
 ;;;### (autoloads (org-agenda-columns org-insert-columns-dblock org-dblock-write:columnview
 ;;;;;;  org-columns) "org-mode/lisp/org-colview" "org-mode/lisp/org-colview.el"
-;;;;;;  (20829 21604 610291 265000))
+;;;;;;  (21114 18510 694822 425000))
 ;;; Generated autoloads from org-mode/lisp/org-colview.el
 
 (autoload 'org-columns "org-mode/lisp/org-colview" "\
@@ -3160,7 +4091,7 @@ Turn on or update column view in the agenda.
 ;;;***
 
 ;;;### (autoloads (org-check-version) "org-mode/lisp/org-compat"
-;;;;;;  "org-mode/lisp/org-compat.el" (20829 21604 610291 265000))
+;;;;;;  "org-mode/lisp/org-compat.el" (21114 18510 694822 425000))
 ;;; Generated autoloads from org-mode/lisp/org-compat.el
 
 (autoload 'org-check-version "org-mode/lisp/org-compat" "\
@@ -3171,7 +4102,7 @@ Try very hard to provide sensible version strings.
 ;;;***
 
 ;;;### (autoloads (org-load-noerror-mustsuffix) "org-mode/lisp/org-macs"
-;;;;;;  "org-mode/lisp/org-macs.el" (20829 21604 626291 343000))
+;;;;;;  "org-mode/lisp/org-macs.el" (21114 18510 706822 485000))
 ;;; Generated autoloads from org-mode/lisp/org-macs.el
 
 (autoload 'org-load-noerror-mustsuffix "org-mode/lisp/org-macs" "\
@@ -3182,7 +4113,7 @@ Load FILE with optional arguments NOERROR and MUSTSUFFIX.  Drop the MUSTSUFFIX a
 ;;;***
 
 ;;;### (autoloads (org-git-version org-release) "org-mode/lisp/org-version"
-;;;;;;  "org-mode/lisp/org-version.el" (20829 21606 714301 698000))
+;;;;;;  "org-mode/lisp/org-version.el" (21114 18513 694837 296000))
 ;;; Generated autoloads from org-mode/lisp/org-version.el
 
 (autoload 'org-release "org-mode/lisp/org-version" "\
@@ -3208,7 +4139,7 @@ The location of ODT styles.")
 ;;;;;;  org-tree-slide-presentation-profile org-tree-slide-simple-profile
 ;;;;;;  org-tree-slide-content org-tree-slide-without-init-play org-tree-slide-play-with-timer
 ;;;;;;  org-tree-slide-mode) "org-tree-slide/org-tree-slide" "org-tree-slide/org-tree-slide.el"
-;;;;;;  (20921 34144 240383 837000))
+;;;;;;  (21114 18532 510930 605000))
 ;;; Generated autoloads from org-tree-slide/org-tree-slide.el
 
 (autoload 'org-tree-slide-mode "org-tree-slide/org-tree-slide" "\
@@ -3334,25 +4265,174 @@ Toggle show COMMENT item or not
 ;;;***
 
 ;;;### (autoloads (paredit-mode) "paredit/paredit" "paredit/paredit.el"
-;;;;;;  (20829 21624 258388 685000))
+;;;;;;  (21114 18374 486147 6000))
 ;;; Generated autoloads from paredit/paredit.el
 
 (autoload 'paredit-mode "paredit/paredit" "\
 Minor mode for pseudo-structurally editing Lisp code.
 With a prefix argument, enable Paredit Mode even if there are
-  imbalanced parentheses in the buffer.
-Paredit behaves badly if parentheses are imbalanced, so exercise
+  unbalanced parentheses in the buffer.
+Paredit behaves badly if parentheses are unbalanced, so exercise
   caution when forcing Paredit Mode to be enabled, and consider
-  fixing imbalanced parentheses instead.
+  fixing unbalanced parentheses instead.
 \\<paredit-mode-map>
 
 \(fn &optional ARG)" t nil)
 
 ;;;***
 
+;;;### (autoloads (pkg-info-version-info pkg-info-package-version
+;;;;;;  pkg-info-defining-library-version pkg-info-library-version)
+;;;;;;  "pkg-info/pkg-info" "pkg-info/pkg-info.el" (21114 18098 556778
+;;;;;;  739000))
+;;; Generated autoloads from pkg-info/pkg-info.el
+
+(autoload 'pkg-info-library-version "pkg-info/pkg-info" "\
+Get the version in the header of LIBRARY.
+
+LIBRARY is either a symbol denoting a named feature, or a library
+name as string.
+
+If SHOW is non-nil, show the version in the minibuffer.
+
+Return the version from the header of LIBRARY as list.  Signal an
+error if the LIBRARY was not found or had no proper header.
+
+See Info node `(elisp)Library Headers' for more information
+about library headers.
+
+\(fn LIBRARY &optional SHOW)" t nil)
+
+(autoload 'pkg-info-defining-library-version "pkg-info/pkg-info" "\
+Get the version of the library defining FUNCTION.
+
+If SHOW is non-nil, show the version in mini-buffer.
+
+This function is mainly intended to find the version of a major
+or minor mode, i.e.
+
+   (pkg-info-defining-library-version 'flycheck-mode)
+
+Return the version of the library defining FUNCTION (as by
+`pkg-info-locate-library-version').  Signal an error if FUNCTION
+is not a valid function, if its defining library was not found,
+or if the library had no proper version header.
+
+\(fn FUNCTION &optional SHOW)" t nil)
+
+(autoload 'pkg-info-package-version "pkg-info/pkg-info" "\
+Get the version of an installed PACKAGE.
+
+If SHOW is non-nil, show the version in the minibuffer.
+
+Return the version as list, or nil if PACKAGE is not installed.
+
+\(fn PACKAGE &optional SHOW)" t nil)
+
+(autoload 'pkg-info-version-info "pkg-info/pkg-info" "\
+Obtain complete version info for LIBRARY and PACKAGE.
+
+LIBRARY is a symbol denoting a named feature, or a library name
+as string.  PACKAGE is a symbol denoting an ELPA package.  If
+omitted or nil, default to LIBRARY.
+
+If SHOW is non-nil, show the version in the minibuffer.
+
+When called interactively, prompt for LIBRARY.  When called
+interactively with prefix argument, prompt for PACKAGE as well.
+
+Return a string with complete version information for LIBRARY.
+This version information contains the version from the headers of
+LIBRARY, and the version of the installed PACKAGE, the LIBRARY is
+part of.  If PACKAGE is not installed, or if the PACKAGE version
+is the same as the LIBRARY version, do not include a package
+version.
+
+\(fn LIBRARY &optional PACKAGE SHOW)" t nil)
+
+;;;***
+
+;;;### (autoloads (powerline-fill powerline-raw defpowerline powerline-concat
+;;;;;;  powerline-mouse powerline-hud) "powerline/powerline" "powerline/powerline.el"
+;;;;;;  (21114 18159 433080 607000))
+;;; Generated autoloads from powerline/powerline.el
+
+(autoload 'powerline-hud "powerline/powerline" "\
+Return an XPM of relative buffer location using FACE1 and FACE2 of optional WIDTH.
+
+\(fn FACE1 FACE2 &optional WIDTH)" nil nil)
+
+(autoload 'powerline-mouse "powerline/powerline" "\
+Return mouse handler for CLICK-GROUP given CLICK-TYPE and STRING.
+
+\(fn CLICK-GROUP CLICK-TYPE STRING)" nil nil)
+
+(autoload 'powerline-concat "powerline/powerline" "\
+Concatonate STRINGS and pad sides by spaces.
+
+\(fn &rest STRINGS)" nil nil)
+
+(autoload 'defpowerline "powerline/powerline" "\
+Create function NAME by wrapping BODY with powerline padding an propetization.
+
+\(fn NAME BODY)" nil t)
+
+(autoload 'powerline-raw "powerline/powerline" "\
+Render STR as mode-line data using FACE and optionally PAD import on left (l) or right (r).
+
+\(fn STR &optional FACE PAD)" nil nil)
+
+(autoload 'powerline-fill "powerline/powerline" "\
+Return empty space using FACE and leaving RESERVE space on the right.
+
+\(fn FACE RESERVE)" nil nil)
+
+(defpowerline powerline-major-mode (propertize (format-mode-line mode-name) 'mouse-face 'mode-line-highlight 'help-echo "Major mode\nmouse-1: Display major mode menu\nmouse-2: Show help for major mode\nmouse-3: Toggle minor modes" 'local-map (let ((map (make-sparse-keymap))) (define-key map [mode-line down-mouse-1] `(menu-item ,(purecopy "Menu Bar") ignore :filter (lambda (_) (mouse-menu-major-mode-map)))) (define-key map [mode-line mouse-2] 'describe-mode) (define-key map [mode-line down-mouse-3] mode-line-mode-menu) map)))
+
+(defpowerline powerline-minor-modes (mapconcat (lambda (mm) (propertize mm 'mouse-face 'mode-line-highlight 'help-echo "Minor mode\n mouse-1: Display minor mode menu\n mouse-2: Show help for minor mode\n mouse-3: Toggle minor modes" 'local-map (let ((map (make-sparse-keymap))) (define-key map [mode-line down-mouse-1] (powerline-mouse 'minor 'menu mm)) (define-key map [mode-line mouse-2] (powerline-mouse 'minor 'help mm)) (define-key map [mode-line down-mouse-3] (powerline-mouse 'minor 'menu mm)) (define-key map [header-line down-mouse-3] (powerline-mouse 'minor 'menu mm)) map))) (split-string (format-mode-line minor-mode-alist)) (propertize " " 'face face)))
+
+(defpowerline powerline-narrow (let (real-point-min real-point-max) (save-excursion (save-restriction (widen) (setq real-point-min (point-min) real-point-max (point-max)))) (when (or (/= real-point-min (point-min)) (/= real-point-max (point-max))) (propertize "Narrow" 'mouse-face 'mode-line-highlight 'help-echo "mouse-1: Remove narrowing from the current buffer" 'local-map (make-mode-line-mouse-map 'mouse-1 'mode-line-widen)))))
+
+(defpowerline powerline-vc (when (and (buffer-file-name (current-buffer)) vc-mode) (format-mode-line '(vc-mode vc-mode))))
+
+(defpowerline powerline-buffer-size (propertize (if powerline-buffer-size-suffix "%I" "%i") 'mouse-face 'mode-line-highlight 'local-map (make-mode-line-mouse-map 'mouse-1 (lambda nil (interactive) (setq powerline-buffer-size-suffix (not powerline-buffer-size-suffix)) (force-mode-line-update)))))
+
+(defpowerline powerline-buffer-id (format-mode-line mode-line-buffer-identification))
+
+(defpowerline powerline-process (cond ((symbolp mode-line-process) (symbol-value mode-line-process)) ((listp mode-line-process) (format-mode-line mode-line-process)) (t mode-line-process)))
+
+;;;***
+
+;;;### (autoloads (powerline-nano-theme powerline-vim-theme powerline-center-theme
+;;;;;;  powerline-default-theme) "powerline/powerline-themes" "powerline/powerline-themes.el"
+;;;;;;  (21114 18159 433080 607000))
+;;; Generated autoloads from powerline/powerline-themes.el
+
+(autoload 'powerline-default-theme "powerline/powerline-themes" "\
+Setup the default mode-line.
+
+\(fn)" t nil)
+
+(autoload 'powerline-center-theme "powerline/powerline-themes" "\
+Setup a mode-line with major and minor modes centered.
+
+\(fn)" t nil)
+
+(autoload 'powerline-vim-theme "powerline/powerline-themes" "\
+Setup a Vim-like mode-line.
+
+\(fn)" t nil)
+
+(autoload 'powerline-nano-theme "powerline/powerline-themes" "\
+Setup a nano-like mode-line.
+
+\(fn)" t nil)
+
+;;;***
+
 ;;;### (autoloads (turn-on-pretty-mode global-pretty-mode pretty-mode)
-;;;;;;  "pretty-mode/pretty-mode" "pretty-mode/pretty-mode.el" (21087
-;;;;;;  61556 351607 675000))
+;;;;;;  "pretty-mode/pretty-mode" "pretty-mode/pretty-mode.el" (21114
+;;;;;;  18538 422959 913000))
 ;;; Generated autoloads from pretty-mode/pretty-mode.el
 
 (autoload 'pretty-mode "pretty-mode/pretty-mode" "\
@@ -3394,7 +4474,7 @@ See `pretty-mode' for more information on Pretty mode.
 ;;;***
 
 ;;;### (autoloads (global-undo-tree-mode undo-tree-mode) "undo-tree/undo-tree"
-;;;;;;  "undo-tree/undo-tree.el" (20829 21666 622598 758000))
+;;;;;;  "undo-tree/undo-tree.el" (21114 18547 663005 737000))
 ;;; Generated autoloads from undo-tree/undo-tree.el
 
 (autoload 'undo-tree-mode "undo-tree/undo-tree" "\
@@ -3413,7 +4493,7 @@ The following keys are available in `undo-tree-mode':
 
 Within the undo-tree visualizer, the following keys are available:
 
-  \\{undo-tree-visualizer-map}
+  \\{undo-tree-visualizer-mode-map}
 
 \(fn &optional ARG)" t nil)
 
@@ -3441,7 +4521,7 @@ See `undo-tree-mode' for more information on Undo-Tree mode.
 ;;;***
 
 ;;;### (autoloads (vr/query-replace vr/replace) "visual-regexp/visual-regexp"
-;;;;;;  "visual-regexp/visual-regexp.el" (20862 13050 174230 664000))
+;;;;;;  "visual-regexp/visual-regexp.el" (21114 18164 781107 129000))
 ;;; Generated autoloads from visual-regexp/visual-regexp.el
 
 (autoload 'vr/replace "visual-regexp/visual-regexp" "\
@@ -3456,8 +4536,62 @@ Use vr/query-replace like you would use query-replace-regexp.
 
 ;;;***
 
+;;;### (autoloads (wgrep-setup) "wgrep/wgrep" "wgrep/wgrep.el" (21114
+;;;;;;  18551 539024 957000))
+;;; Generated autoloads from wgrep/wgrep.el
+
+(autoload 'wgrep-setup "wgrep/wgrep" "\
+Setup wgrep preparation.
+
+\(fn)" nil nil)
+(add-hook 'grep-setup-hook 'wgrep-setup)
+
+;;;***
+
+;;;### (autoloads (wgrep-ack-setup wgrep-ack-and-a-half-setup) "wgrep/wgrep-ack"
+;;;;;;  "wgrep/wgrep-ack.el" (21114 18551 539024 957000))
+;;; Generated autoloads from wgrep/wgrep-ack.el
+
+(autoload 'wgrep-ack-and-a-half-setup "wgrep/wgrep-ack" "\
+
+
+\(fn)" nil nil)
+
+(autoload 'wgrep-ack-setup "wgrep/wgrep-ack" "\
+
+
+\(fn)" nil nil)
+(add-hook 'ack-and-a-half-mode-hook 'wgrep-ack-and-a-half-setup)
+(add-hook 'ack-mode-hook 'wgrep-ack-setup)
+
+;;;***
+
+;;;### (autoloads (wgrep-ag-setup) "wgrep/wgrep-ag" "wgrep/wgrep-ag.el"
+;;;;;;  (21114 18551 539024 957000))
+;;; Generated autoloads from wgrep/wgrep-ag.el
+
+(autoload 'wgrep-ag-setup "wgrep/wgrep-ag" "\
+
+
+\(fn)" nil nil)
+(add-hook 'ag-mode-hook 'wgrep-ag-setup)
+
+;;;***
+
+;;;### (autoloads (wgrep-helm-setup) "wgrep/wgrep-helm" "wgrep/wgrep-helm.el"
+;;;;;;  (21114 18551 539024 957000))
+;;; Generated autoloads from wgrep/wgrep-helm.el
+
+(autoload 'wgrep-helm-setup "wgrep/wgrep-helm" "\
+
+
+\(fn)" nil nil)
+(add-hook 'helm-grep-mode-hook 'wgrep-helm-setup)
+
+;;;***
+
 ;;;### (autoloads (yas-global-mode yas-minor-mode) "yasnippet/yasnippet"
-;;;;;;  "yasnippet/yasnippet.el" (20829 21673 154631 157000))
+;;;;;;  "yasnippet/yasnippet.el" (21114 18560 467069 233000))
 ;;; Generated autoloads from yasnippet/yasnippet.el
 
 (autoload 'yas-minor-mode "yasnippet/yasnippet" "\
@@ -3499,43 +4633,7 @@ See `yas-minor-mode' for more information on Yas minor mode.
 
 ;;;***
 
-;;;### (autoloads nil nil ("auto-complete-emacs-lisp/auto-complete-emacs-lisp.el"
-;;;;;;  "auto-complete/auto-complete-config.el" "auto-complete/auto-complete-pkg.el"
-;;;;;;  "cl-lib/cl-lib-autoloads.el" "cl-lib/cl-lib-pkg.el" "cl-lib/cl-lib.el"
-;;;;;;  "color-theme/color-theme-autoloads.el" "control-lock/control-lock.el"
-;;;;;;  "dash/dash.el" "el-get/el-get-autoloads.el" "el-get/el-get-build.el"
-;;;;;;  "el-get/el-get-byte-compile.el" "el-get/el-get-core.el" "el-get/el-get-custom.el"
-;;;;;;  "el-get/el-get-dependencies.el" "el-get/el-get-install.el"
-;;;;;;  "el-get/el-get-methods.el" "el-get/el-get-notify.el" "el-get/el-get-recipes.el"
-;;;;;;  "el-get/el-get-status.el" "emacs-async/async-file.el" "emacs-async/async-pkg.el"
-;;;;;;  "emacs-async/async-test.el" "emacs-async/dired-async.el"
-;;;;;;  "emacs-async/helm-async.el" "emacs-async/smtpmail-async.el"
-;;;;;;  "expand-region/cc-mode-expansions.el" "expand-region/clojure-mode-expansions.el"
-;;;;;;  "expand-region/cperl-mode-expansions.el" "expand-region/css-mode-expansions.el"
-;;;;;;  "expand-region/erlang-mode-expansions.el" "expand-region/expand-region-core.el"
-;;;;;;  "expand-region/expand-region-pkg.el" "expand-region/feature-mode-expansions.el"
-;;;;;;  "expand-region/html-mode-expansions.el" "expand-region/js-mode-expansions.el"
-;;;;;;  "expand-region/js2-mode-expansions.el" "expand-region/jsp-expansions.el"
-;;;;;;  "expand-region/latex-mode-expansions.el" "expand-region/nxml-mode-expansions.el"
-;;;;;;  "expand-region/octave-expansions.el" "expand-region/org-mode-expansions.el"
-;;;;;;  "expand-region/python-el-expansions.el" "expand-region/python-el-fgallina-expansions.el"
-;;;;;;  "expand-region/python-mode-expansions.el" "expand-region/ruby-mode-expansions.el"
-;;;;;;  "expand-region/text-mode-expansions.el" "expand-region/web-mode-expansions.el"
-;;;;;;  "fill-column-indicator/fci-osx-23-fix.el" "flx-ido/flx.el"
-;;;;;;  "fuzzy/fuzzy.el" "haskell-mode/haskell-checkers.el" "haskell-mode/haskell-font-lock.el"
-;;;;;;  "haskell-mode/haskell-ghci.el" "haskell-mode/haskell-hugs.el"
-;;;;;;  "haskell-mode/haskell-package.el" "haskell-mode/haskell-simple-indent.el"
-;;;;;;  "haskell-mode/haskell-site-file.el" "highlight-sexp/highlight-sexp.el"
-;;;;;;  "ido-ubiquitous/ido-ubiquitous-autoloads.el" "ido-ubiquitous/ido-ubiquitous-pkg.el"
-;;;;;;  "magit/magit-bisect.el" "magit/magit-key-mode.el" "multiple-cursors/mc-cycle-cursors.el"
-;;;;;;  "multiple-cursors/multiple-cursors-core.el" "multiple-cursors/multiple-cursors-pkg.el"
-;;;;;;  "multiple-cursors/multiple-cursors.el" "notmuch/emacs/coolj.el"
-;;;;;;  "notmuch/emacs/notmuch-address.el" "notmuch/emacs/notmuch-crypto.el"
-;;;;;;  "notmuch/emacs/notmuch-lib.el" "notmuch/emacs/notmuch-maildir-fcc.el"
-;;;;;;  "notmuch/emacs/notmuch-message.el" "notmuch/emacs/notmuch-mua.el"
-;;;;;;  "notmuch/emacs/notmuch-print.el" "notmuch/emacs/notmuch-query.el"
-;;;;;;  "notmuch/emacs/notmuch-tag.el" "notmuch/emacs/notmuch-wash.el"
-;;;;;;  "nrepl-eval-sexp-fu/nrepl-eval-sexp-fu.el" "org-mode/contrib/lisp/ob-eukleides.el"
+;;;### (autoloads nil nil ("org-mode/contrib/lisp/ob-eukleides.el"
 ;;;;;;  "org-mode/contrib/lisp/ob-fomus.el" "org-mode/contrib/lisp/ob-julia.el"
 ;;;;;;  "org-mode/contrib/lisp/ob-mathomatic.el" "org-mode/contrib/lisp/ob-oz.el"
 ;;;;;;  "org-mode/contrib/lisp/ob-tcl.el" "org-mode/contrib/lisp/org-annotate-file.el"
@@ -3545,32 +4643,32 @@ See `yas-minor-mode' for more information on Yas minor mode.
 ;;;;;;  "org-mode/contrib/lisp/org-contribdir.el" "org-mode/contrib/lisp/org-depend.el"
 ;;;;;;  "org-mode/contrib/lisp/org-drill.el" "org-mode/contrib/lisp/org-elisp-symbol.el"
 ;;;;;;  "org-mode/contrib/lisp/org-eval-light.el" "org-mode/contrib/lisp/org-eval.el"
-;;;;;;  "org-mode/contrib/lisp/org-expiry.el" "org-mode/contrib/lisp/org-favtable.el"
-;;;;;;  "org-mode/contrib/lisp/org-git-link.el" "org-mode/contrib/lisp/org-interactive-query.el"
+;;;;;;  "org-mode/contrib/lisp/org-expiry.el" "org-mode/contrib/lisp/org-git-link.el"
+;;;;;;  "org-mode/contrib/lisp/org-index.el" "org-mode/contrib/lisp/org-interactive-query.el"
 ;;;;;;  "org-mode/contrib/lisp/org-invoice.el" "org-mode/contrib/lisp/org-jira.el"
 ;;;;;;  "org-mode/contrib/lisp/org-learn.el" "org-mode/contrib/lisp/org-mac-iCal.el"
-;;;;;;  "org-mode/contrib/lisp/org-mac-link-grabber.el" "org-mode/contrib/lisp/org-mairix.el"
+;;;;;;  "org-mode/contrib/lisp/org-mac-link.el" "org-mode/contrib/lisp/org-mairix.el"
 ;;;;;;  "org-mode/contrib/lisp/org-man.el" "org-mode/contrib/lisp/org-mew.el"
 ;;;;;;  "org-mode/contrib/lisp/org-mime.el" "org-mode/contrib/lisp/org-mtags.el"
 ;;;;;;  "org-mode/contrib/lisp/org-notify.el" "org-mode/contrib/lisp/org-notmuch.el"
 ;;;;;;  "org-mode/contrib/lisp/org-panel.el" "org-mode/contrib/lisp/org-screen.el"
 ;;;;;;  "org-mode/contrib/lisp/org-secretary.el" "org-mode/contrib/lisp/org-static-mathjax.el"
 ;;;;;;  "org-mode/contrib/lisp/org-sudoku.el" "org-mode/contrib/lisp/org-velocity.el"
-;;;;;;  "org-mode/contrib/lisp/org-vm.el" "org-mode/contrib/lisp/org-w3m.el"
-;;;;;;  "org-mode/contrib/lisp/org-wikinodes.el" "org-mode/contrib/lisp/org-wl.el"
-;;;;;;  "org-mode/contrib/lisp/orgtbl-sqlinsert.el" "org-mode/contrib/lisp/ox-confluence.el"
+;;;;;;  "org-mode/contrib/lisp/org-vm.el" "org-mode/contrib/lisp/org-wikinodes.el"
+;;;;;;  "org-mode/contrib/lisp/org-wl.el" "org-mode/contrib/lisp/orgtbl-sqlinsert.el"
+;;;;;;  "org-mode/contrib/lisp/ox-bibtex.el" "org-mode/contrib/lisp/ox-confluence.el"
 ;;;;;;  "org-mode/contrib/lisp/ox-deck.el" "org-mode/contrib/lisp/ox-groff.el"
 ;;;;;;  "org-mode/contrib/lisp/ox-s5.el" "org-mode/lisp/ob-C.el"
-;;;;;;  "org-mode/lisp/ob-R.el" "org-mode/lisp/ob-asymptote.el" "org-mode/lisp/ob-awk.el"
-;;;;;;  "org-mode/lisp/ob-calc.el" "org-mode/lisp/ob-clojure.el"
+;;;;;;  "org-mode/lisp/ob-R.el" "org-mode/lisp/ob-abc.el" "org-mode/lisp/ob-asymptote.el"
+;;;;;;  "org-mode/lisp/ob-awk.el" "org-mode/lisp/ob-calc.el" "org-mode/lisp/ob-clojure.el"
 ;;;;;;  "org-mode/lisp/ob-comint.el" "org-mode/lisp/ob-core.el" "org-mode/lisp/ob-css.el"
-;;;;;;  "org-mode/lisp/ob-ditaa.el" "org-mode/lisp/ob-dot.el" "org-mode/lisp/ob-emacs-lisp.el"
-;;;;;;  "org-mode/lisp/ob-eval.el" "org-mode/lisp/ob-exp.el" "org-mode/lisp/ob-fortran.el"
-;;;;;;  "org-mode/lisp/ob-gnuplot.el" "org-mode/lisp/ob-haskell.el"
-;;;;;;  "org-mode/lisp/ob-io.el" "org-mode/lisp/ob-java.el" "org-mode/lisp/ob-js.el"
-;;;;;;  "org-mode/lisp/ob-keys.el" "org-mode/lisp/ob-latex.el" "org-mode/lisp/ob-ledger.el"
-;;;;;;  "org-mode/lisp/ob-lilypond.el" "org-mode/lisp/ob-lisp.el"
-;;;;;;  "org-mode/lisp/ob-lob.el" "org-mode/lisp/ob-makefile.el"
+;;;;;;  "org-mode/lisp/ob-ditaa.el" "org-mode/lisp/ob-dot.el" "org-mode/lisp/ob-ebnf.el"
+;;;;;;  "org-mode/lisp/ob-emacs-lisp.el" "org-mode/lisp/ob-eval.el"
+;;;;;;  "org-mode/lisp/ob-exp.el" "org-mode/lisp/ob-fortran.el" "org-mode/lisp/ob-gnuplot.el"
+;;;;;;  "org-mode/lisp/ob-haskell.el" "org-mode/lisp/ob-io.el" "org-mode/lisp/ob-java.el"
+;;;;;;  "org-mode/lisp/ob-js.el" "org-mode/lisp/ob-keys.el" "org-mode/lisp/ob-latex.el"
+;;;;;;  "org-mode/lisp/ob-ledger.el" "org-mode/lisp/ob-lilypond.el"
+;;;;;;  "org-mode/lisp/ob-lisp.el" "org-mode/lisp/ob-lob.el" "org-mode/lisp/ob-makefile.el"
 ;;;;;;  "org-mode/lisp/ob-matlab.el" "org-mode/lisp/ob-maxima.el"
 ;;;;;;  "org-mode/lisp/ob-mscgen.el" "org-mode/lisp/ob-ocaml.el"
 ;;;;;;  "org-mode/lisp/ob-octave.el" "org-mode/lisp/ob-org.el" "org-mode/lisp/ob-perl.el"
@@ -3590,19 +4688,18 @@ See `yas-minor-mode' for more information on Yas minor mode.
 ;;;;;;  "org-mode/lisp/org-gnus.el" "org-mode/lisp/org-habit.el"
 ;;;;;;  "org-mode/lisp/org-id.el" "org-mode/lisp/org-indent.el" "org-mode/lisp/org-info.el"
 ;;;;;;  "org-mode/lisp/org-inlinetask.el" "org-mode/lisp/org-install.el"
-;;;;;;  "org-mode/lisp/org-irc.el" "org-mode/lisp/org-list.el" "org-mode/lisp/org-mac-message.el"
-;;;;;;  "org-mode/lisp/org-macro.el" "org-mode/lisp/org-mhe.el" "org-mode/lisp/org-mobile.el"
+;;;;;;  "org-mode/lisp/org-irc.el" "org-mode/lisp/org-list.el" "org-mode/lisp/org-macro.el"
+;;;;;;  "org-mode/lisp/org-mhe.el" "org-mode/lisp/org-mobile.el"
 ;;;;;;  "org-mode/lisp/org-mouse.el" "org-mode/lisp/org-pcomplete.el"
 ;;;;;;  "org-mode/lisp/org-plot.el" "org-mode/lisp/org-protocol.el"
 ;;;;;;  "org-mode/lisp/org-rmail.el" "org-mode/lisp/org-src.el" "org-mode/lisp/org-table.el"
-;;;;;;  "org-mode/lisp/org-timer.el" "org-mode/lisp/ox-ascii.el"
+;;;;;;  "org-mode/lisp/org-timer.el" "org-mode/lisp/org-w3m.el" "org-mode/lisp/ox-ascii.el"
 ;;;;;;  "org-mode/lisp/ox-beamer.el" "org-mode/lisp/ox-html.el" "org-mode/lisp/ox-icalendar.el"
 ;;;;;;  "org-mode/lisp/ox-latex.el" "org-mode/lisp/ox-man.el" "org-mode/lisp/ox-md.el"
 ;;;;;;  "org-mode/lisp/ox-odt.el" "org-mode/lisp/ox-org.el" "org-mode/lisp/ox-publish.el"
 ;;;;;;  "org-mode/lisp/ox-texinfo.el" "org-mode/lisp/ox.el" "ox-reveal/ox-reveal.el"
-;;;;;;  "popup/popup.el" "powerline/powerline.el" "s/s.el" "wgrep/wgrep.el"
-;;;;;;  "yasnippet/dropdown-list.el" "yasnippet/yasnippet-debug.el"
-;;;;;;  "yasnippet/yasnippet-tests.el") (21111 49347 36960 760000))
+;;;;;;  "wgrep/wgrep-test.el" "yasnippet/yasnippet-debug.el" "yasnippet/yasnippet-tests.el")
+;;;;;;  (21114 18560 944577 368000))
 
 ;;;***
 

@@ -2813,7 +2813,7 @@ If the region is active and spans multiple lines, it will behave
 as if `mc/mark-all-in-region'. With the prefix ARG, it will call
 `mc/edit-lines' instead.
 
-If the region is inactive or on a single line, it will behave like 
+If the region is inactive or on a single line, it will behave like
 `mc/mark-all-like-this-dwim'.
 
 \(fn ARG)" t nil)
@@ -4473,6 +4473,22 @@ See `pretty-mode' for more information on Pretty mode.
 
 ;;;***
 
+;;;### (autoloads (smex-initialize smex) "smex/smex" "smex/smex.el"
+;;;;;;  (21114 19037 553434 973000))
+;;; Generated autoloads from smex/smex.el
+
+(autoload 'smex "smex/smex" "\
+
+
+\(fn)" t nil)
+
+(autoload 'smex-initialize "smex/smex" "\
+
+
+\(fn)" t nil)
+
+;;;***
+
 ;;;### (autoloads (global-undo-tree-mode undo-tree-mode) "undo-tree/undo-tree"
 ;;;;;;  "undo-tree/undo-tree.el" (21114 18547 663005 737000))
 ;;; Generated autoloads from undo-tree/undo-tree.el
@@ -4699,7 +4715,7 @@ See `yas-minor-mode' for more information on Yas minor mode.
 ;;;;;;  "org-mode/lisp/ox-odt.el" "org-mode/lisp/ox-org.el" "org-mode/lisp/ox-publish.el"
 ;;;;;;  "org-mode/lisp/ox-texinfo.el" "org-mode/lisp/ox.el" "ox-reveal/ox-reveal.el"
 ;;;;;;  "wgrep/wgrep-test.el" "yasnippet/yasnippet-debug.el" "yasnippet/yasnippet-tests.el")
-;;;;;;  (21114 18560 944577 368000))
+;;;;;;  (21114 19037 992727 992000))
 
 ;;;***
 

@@ -167,6 +167,9 @@
 
     (define-key ktm-mode-map [C-down-mouse-1] 'browse-url-at-mouse)
 
+    (define-key ktm-mode-map (kbd "M-x") 'smex)
+    (define-key ktm-mode-map (kbd "M-X") 'smex-major-mode-commands)
+
     ktm-mode-map)
 
   :gkeymaproup 'ktm-mode)

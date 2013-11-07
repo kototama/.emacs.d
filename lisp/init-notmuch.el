@@ -230,7 +230,7 @@ Such a list can be computed with `notmuch-hello-query-counts'."
       (add-hook 'notmuch-show-hook 'my-notmuch-show-hook)
       (add-hook 'notmuch-search-hook 'my-notmuch-search-hook)
 
-      (defadvice notmuch-hello (after jump-to-registero-unread-or-inbox activate)
+      (defadvice notmuch (after jump-to-registero-unread-or-inbox activate)
         (notmuch-jump-to-unread-or-inbox))
 
       (defadvice notmuch-hello (before replace-insert activate)
@@ -262,6 +262,6 @@ Such a list can be computed with `notmuch-hello-query-counts'."
                   (flyspell-mode))))
 
   :bind (("C-c m n" . notmuch-mua-new-mail)
-         ("C-c m m" . notmuch-hello)))
+         ("C-c m m" . notmuch)))
 
 (provide 'init-notmuch)

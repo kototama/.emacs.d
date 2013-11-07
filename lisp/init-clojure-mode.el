@@ -24,18 +24,12 @@
           (defun my-clojure-compile-on-save ()
             (interactive)
             (save-buffer)
-            (when (and (get-buffer "*nrepl*")
+            (when (and (boundp 'nrepl-port)
                        (s-ends-with? ".clj" buffer-file-name)
                        (not (s-ends-with? "project.clj" buffer-file-name)))
-              ;; when connected to nrepl and inside a Clojure
-              ;; but not ClojureScript file, automatically
+              ;; when connected to cider and inside a Clojure file, automatically
               ;; loads the file into the REPL upon saving
-              (nrepl-load-current-buffer)))
-
-          (defun my-clojure-switch-to-nrepl-buffer
-            ()
-            (interactive)
-            (switch-to-buffer-other-window "*nrepl*"))
+              (cider-load-current-buffer)))
 
           (defun my-clojure-mode-hook ()
             (use-package cider

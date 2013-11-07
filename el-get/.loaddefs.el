@@ -846,6 +846,33 @@ Toggle flx ido mode
 
 ;;;***
 
+;;;### (autoloads (flymake-jslint-load flymake-jslint-args flymake-jslint-command
+;;;;;;  flymake-jslint-detect-trailing-comma) "flymake-jslint/flymake-jslint"
+;;;;;;  "flymake-jslint/flymake-jslint.el" (21115 29588 171513 204000))
+;;; Generated autoloads from flymake-jslint/flymake-jslint.el
+
+(defvar flymake-jslint-detect-trailing-comma t "\
+Whether or not to report warnings about trailing commas.")
+
+(custom-autoload 'flymake-jslint-detect-trailing-comma "flymake-jslint/flymake-jslint" t)
+
+(defvar flymake-jslint-command (if (executable-find "jsl") "jsl" "jslint") "\
+Name (and optionally full path) of jslint executable.")
+
+(custom-autoload 'flymake-jslint-command "flymake-jslint/flymake-jslint" t)
+
+(defvar flymake-jslint-args (unless (string-equal "jsl" flymake-jslint-command) (mapcar 'symbol-name '(--white --undef --nomen --regexp --plusplus --bitwise --newcap --sloppy --vars --eqeq))) "\
+Command-line args for jslint executable.")
+
+(custom-autoload 'flymake-jslint-args "flymake-jslint/flymake-jslint" t)
+
+(autoload 'flymake-jslint-load "flymake-jslint/flymake-jslint" "\
+Configure flymake mode to check the current buffer's javascript syntax.
+
+\(fn)" t nil)
+
+;;;***
+
 ;;;### (autoloads (git-commit-mode) "git-modes/git-commit-mode" "git-modes/git-commit-mode.el"
 ;;;;;;  (21114 18261 857588 502000))
 ;;; Generated autoloads from git-modes/git-commit-mode.el
@@ -4845,7 +4872,7 @@ See `yas-minor-mode' for more information on Yas minor mode.
 
 ;;;***
 
-;;;### (autoloads nil nil ("org-mode/contrib/lisp/ob-eukleides.el"
+;;;### (autoloads nil nil ("flymake-easy/flymake-easy.el" "org-mode/contrib/lisp/ob-eukleides.el"
 ;;;;;;  "org-mode/contrib/lisp/ob-fomus.el" "org-mode/contrib/lisp/ob-julia.el"
 ;;;;;;  "org-mode/contrib/lisp/ob-mathomatic.el" "org-mode/contrib/lisp/ob-oz.el"
 ;;;;;;  "org-mode/contrib/lisp/ob-tcl.el" "org-mode/contrib/lisp/org-annotate-file.el"
@@ -4914,7 +4941,7 @@ See `yas-minor-mode' for more information on Yas minor mode.
 ;;;;;;  "smartparens/smartparens-latex.el" "smartparens/smartparens-lua.el"
 ;;;;;;  "smartparens/smartparens-pkg.el" "smartparens/smartparens-ruby.el"
 ;;;;;;  "wgrep/wgrep-test.el" "yasnippet/yasnippet-debug.el" "yasnippet/yasnippet-tests.el")
-;;;;;;  (21114 19746 717200 580000))
+;;;;;;  (21115 29588 557623 400000))
 
 ;;;***
 

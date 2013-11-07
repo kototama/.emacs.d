@@ -59,6 +59,12 @@
                        (:name find-file-in-project :type github :pkgname "technomancy/find-file-in-project" :description "Quick access to project files in Emacs"))
  (flx-ido status "installed" recipe
           (:name flx-ido :description "Flx-ido mode" :type github :pkgname "lewang/flx"))
+ (flymake-easy status "installed" recipe
+               (:name flymake-easy :type github :description "Helpers for easily building flymake checkers" :pkgname "purcell/flymake-easy" :website "http://github.com/purcell/flymake-easy"))
+ (flymake-jslint status "installed" recipe
+                 (:name flymake-jslint :description "An Emacs flymake handler for syntax-checking Javascript source code using jslint or jsl." :type github :depends
+                        (flymake-easy)
+                        :pkgname "purcell/flymake-jslint"))
  (fuzzy status "installed" recipe
         (:name fuzzy :website "https://github.com/auto-complete/fuzzy-el" :description "Fuzzy matching utilities for GNU Emacs" :type github :pkgname "auto-complete/fuzzy-el"))
  (git-modes status "installed" recipe

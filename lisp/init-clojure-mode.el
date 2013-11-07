@@ -38,31 +38,24 @@
             (switch-to-buffer-other-window "*nrepl*"))
 
           (defun my-clojure-mode-hook ()
-            (use-package nrepl
+            (use-package cider
               :init
               (progn
 
+                (use-package clojure-test-mode)
                 (use-package ac-nrepl)
 
-                (defun my-nrepl-init-mode-hook
+                (defun my-cider-init-mode-hook
                   ()
+                  (ac-nrepl-setup)
                   (auto-complete-mode 1)
-                  (paredit-mode 1)
-                  (bind-key "<S-return>" 'nrepl-return nrepl-mode-map))
+                  (bind-key "<S-return>" 'cider-repl-return cider-mode-map))
 
-                (defun my-nrepl-show-server-buffer
-                  ()
-                  (interactive)
-                  (switch-to-buffer "*nrepl-server*")
-                  (ktm-mode 1))
-
-                (add-hook 'nrepl-mode-hook 'my-nrepl-init-mode-hook)
-                (add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
-                (add-hook 'nrepl-interaction-mode-hook
-                          'ac-nrepl-setup)))
+                (add-hook 'cider-repl-mode-hook 'my-cider-init-mode-hook)
+                (add-hook 'cider-repl-mode-hook 'paredit-mode)))
 
             (setq nrepl-popup-stacktraces nil)
-            (setq nrepl-popup-stacktraces-in-repl t)
+            (setq cider-popup-stacktraces-in-repl t)
 
             (paredit-mode t)
             (show-paren-mode t)
@@ -81,16 +74,8 @@
             (eldoc-mode 0)
 
 	    (bind-key "C-*" 'earmuffy)
-            ;; (bind-key "C-c n j" 'nrepl-jack-in clojure-mode-map)
-            (bind-key "C-c n n" 'my-clojure-switch-to-nrepl-buffer clojure-mode-map)
-            ;; (bind-key "C-c n q" 'nrepl-quit clojure-mode-map)
             (bind-key "C-x C-s" 'my-clojure-compile-on-save clojure-mode-map)
-            (bind-key "C-c n b" 'my-nrepl-show-server-buffer clojure-mode-map)
-            ;; (bind-key "€" 'nrepl-eval-last-expression
-	    ;; clojure-mode-map)
-            (bind-key "<f5>" 'nrepl-eval-buffer clojure-mode-map)
-            (bind-key "<return>" 'paredit-newline clojure-mode-map)
-            (bind-key "M-." 'nrepl-jump clojure-mode-map)
+            (bind-key "M-." 'cider-jump clojure-mode-map)
             (bind-key "M-n" 'move-down-a-few-lines
                       clojure-test-mode-map)
             )

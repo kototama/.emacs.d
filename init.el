@@ -48,17 +48,10 @@
 ;; for org-much
 (add-to-list 'load-path "~/.emacs.d/el-get/org-mode/contrib/lisp")
 
-(dolist (pconf '(;; setup-hippie
-		 setup-lisp
+(dolist (pconf '(setup-lisp
                  setup-javascript
-		 ;; line-utils
-		 ;; screen-utils
-		 ;; file-utils
-		 ;; setup-programming
 		 ktm-mode
-		 sane-defaults
-		 ;; setup-ldap
-		 ))
+		 sane-defaults))
   (require pconf))
 
 (when at-work
@@ -73,7 +66,7 @@
                 yasnippet
                 ido
                 ido-ubiquitous
-                hippie-exp
+                ;; hippie-exp
                 color-theme-kototama
                 auto-complete-config
                 flx-ido))

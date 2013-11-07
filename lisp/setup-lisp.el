@@ -4,7 +4,7 @@
                       lisp-mode
                       inferior-lisp-mode
                       lisp-interaction-mode
-                      slime-repl-mode))
+                      cider-repl-mode))
 
 (defvar lisp-mode-hooks
   (mapcar (function
@@ -175,15 +175,24 @@
 
               (defun my-paredit-mode-hook
                 ()
-                (bind-key "C-S-d" 'paredit-duplicate-after-point paredit-mode-map)
-                (bind-key "C-k" 'paredit-eager-kill-line paredit-mode-map)
-                (bind-key "M-R" 'paredit-raise-sexp paredit-mode-map)
-                (bind-key "C-M-a" 'paredit-backward paredit-mode-map)
-                (bind-key "C-M-S-a" 'beginning-of-defun
-                          paredit-mode-map)
-                (bind-key "M-S-b" 'paredit-backward paredit-mode-map))
+                ;; (define-key paredit-mode-map (kbd "<return>") nil)
+                ;; (define-key paredit-mode-map (kbd "<S-return>") nil)
+                ;; (bind-key "C-S-d" 'paredit-duplicate-after-point paredit-mode-map)
+                ;; (bind-key "C-k" 'paredit-eager-kill-line paredit-mode-map)
+                ;; (bind-key "M-R" 'paredit-raise-sexp paredit-mode-map)
+                ;; (bind-key "C-M-a" 'paredit-backward paredit-mode-map)
+                ;; (bind-key "C-M-S-a" 'beginning-of-defun
+                ;;           paredit-mode-map)
+                ;; (bind-key "M-S-b" 'paredit-backward paredit-mode-map)
+                )
 
               (add-hook 'paredit-mode-hook 'my-paredit-mode-hook)))
+
+      (eval-after-load 'paredit
+        '(progn
+           (define-key paredit-mode-map (kbd "<return>") nil)
+           (define-key paredit-mode-map (kbd "<S-return>") nil)))
+
 
     (defun my-lisp-mode-hook ()
       (initialize-lisp-mode)

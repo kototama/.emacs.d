@@ -1,0 +1,5 @@
+(:name flymake-jslint
+       :description "An Emacs flymake handler for syntax-checking Javascript source code using jslint or jsl."
+       :type github
+       :depends (flymake-easy)
+       :pkgname "purcell/flymake-jslint")

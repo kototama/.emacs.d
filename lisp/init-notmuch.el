@@ -165,6 +165,11 @@ Such a list can be computed with `notmuch-hello-query-counts'."
 	   (if (member "markos" (notmuch-show-get-tags))
 	       "-markos" "+markos"))))
 
+      (defun my-notmuch-search-remove-unread-tag
+        ()
+        (interactive)
+        (notmuch-search-tag '("-unread")))
+
       (define-key notmuch-show-mode-map (kbd "M-r")
         (lambda ()
           "remove unread tag for message"
@@ -173,9 +178,7 @@ Such a list can be computed with `notmuch-hello-query-counts'."
            (if (member "unread" (notmuch-show-get-tags))
                "-unread" "+unread"))))
 
-      (bind-key "r" (lambda ()
-                      (interactive)
-                      (notmuch-search-tag "-unread")) notmuch-search-mode-map)
+      (bind-key "r" 'my-notmuch-search-remove-unread-tag notmuch-search-mode-map)
       (bind-key "r" 'notmuch-show-reply notmuch-show-mode-map)
       (bind-key "R" 'notmuch-show-reply-sender notmuch-show-mode-map))
 

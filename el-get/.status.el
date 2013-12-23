@@ -164,10 +164,15 @@
                        (boundp 'package-subdirectory-regexp)
                      (defconst package-subdirectory-regexp "^\\([^.].*\\)-\\([0-9]+\\(?:[.][0-9]+\\)*\\)$" "Regular expression matching the name of\n a package subdirectory. The first subexpression is the package\n name. The second subexpression is the version string."))
                    (setq package-archives
-                         '(("ELPA" . "http://tromey.com/elpa/")
-                           ("gnu" . "http://elpa.gnu.org/packages/")
-                           ("marmalade" . "http://marmalade-repo.org/packages/")
-                           ("SC" . "http://joseito.republika.pl/sunrise-commander/"))))))
+                         (bound-and-true-p package-archives))
+                   (mapc
+                    (lambda
+                      (pa)
+                      (add-to-list 'package-archives pa 'append))
+                    '(("ELPA" . "http://tromey.com/elpa/")
+                      ("gnu" . "http://elpa.gnu.org/packages/")
+                      ("marmalade" . "http://marmalade-repo.org/packages/")
+                      ("SC" . "http://joseito.republika.pl/sunrise-commander/"))))))
  (paredit status "installed" recipe
           (:name paredit :description "Minor mode for editing parentheses" :type http :prepare
                  (progn
@@ -176,13 +181,9 @@
                  :url "http://mumble.net/~campbell/emacs/paredit.el"))
  (pkg-info status "installed" recipe
            (:name pkg-info :description "Provide information about Emacs packages." :type github :pkgname "lunaryorn/pkg-info.el" :depends
-                  (s epl)))
+                  (dash epl)))
  (popup status "installed" recipe
-        (:name popup :website "https://github.com/auto-complete/popup-el" :description "Visual Popup Interface Library for Emacs" :type github :pkgname "auto-complete/popup-el"))
- (powerline status "installed" recipe
-            (:name powerline :website "https://github.com/milkypostman/powerline" :depends
-                   (cl-lib)
-                   :description "Powerline for Emacs" :type github :pkgname "milkypostman/powerline" :load-path "." :features powerline))
+        (:name popup :website "https://github.com/auto-complete/popup-el" :description "Visual Popup Interface Library for Emacs" :type github :submodule nil :pkgname "auto-complete/popup-el"))
  (pretty-mode status "installed" recipe
               (:name pretty-mode :description "Redisplay parts of the buffer as pretty symbols" :type emacswiki :features "pretty-mode"))
  (s status "installed" recipe
@@ -220,4 +221,4 @@
                                 (concat el-get-dir
                                         (file-name-as-directory "yasnippet")
                                         "snippets")))))
-                   :compile nil :submodule nil)))
+                   :compile nil :submodule t)))

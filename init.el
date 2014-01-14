@@ -75,6 +75,7 @@
 (color-theme-kototama)
 (ido-mode t)
 (global-undo-tree-mode t)
+;; (global-flycheck-mode t)
 (show-paren-mode t)
 (winner-mode t)
 (column-number-mode t)

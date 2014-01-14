@@ -2,10 +2,9 @@
   :init (progn
           (defun my-coffee-mode-hook
             ()
-            (setq whitespace-action '(auto-cleanup))
-            (setq whitespace-style '(trailing space-before-tab indentation empty
-                                              space-after-tab))
-            (custom-set-variables '(coffee-tab-width 2))
-            (flycheck-mode))
+            (setq coffee-tab-width 2)
+            (flycheck-mode)
+            (smartparens-mode)
+            (auto-indent-mode 0))
 
           (add-hook 'coffee-mode-hook 'my-coffee-mode-hook)))

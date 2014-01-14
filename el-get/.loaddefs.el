@@ -362,25 +362,6 @@ Enable clojure-test-mode if the current buffer contains a \"clojure.test\" bit i
 
 ;;;***
 
-;;;### (autoloads (coffee-mode) "coffee-mode/coffee-mode" "coffee-mode/coffee-mode.el"
-;;;;;;  (21204 1713 127275 381000))
-;;; Generated autoloads from coffee-mode/coffee-mode.el
-
-(autoload 'coffee-mode "coffee-mode/coffee-mode" "\
-Major mode for editing CoffeeScript.
-
-\(fn)" t nil)
-
-(add-to-list 'auto-mode-alist '("\\.coffee\\'" . coffee-mode))
-
-(add-to-list 'auto-mode-alist '("\\.iced\\'" . coffee-mode))
-
-(add-to-list 'auto-mode-alist '("Cakefile\\'" . coffee-mode))
-
-(add-to-list 'interpreter-mode-alist '("coffee" . coffee-mode))
-
-;;;***
-
 ;;;### (autoloads (color-theme-initialize color-theme-submit color-theme-install
 ;;;;;;  color-theme-compare color-theme-make-snapshot color-theme-analyze-defun
 ;;;;;;  color-theme-print color-theme-install-at-point-for-current-frame
@@ -862,127 +843,6 @@ See the command `flx-ido-mode' for a description of this minor mode.")
 Toggle flx ido mode
 
 \(fn &optional ARG)" t nil)
-
-;;;***
-
-;;;### (autoloads (flycheck-define-error-level flycheck-info flycheck-def-option-var
-;;;;;;  flycheck-def-config-file-var global-flycheck-mode flycheck-mode)
-;;;;;;  "flycheck/flycheck" "flycheck/flycheck.el" (21205 1681 290214
-;;;;;;  887000))
-;;; Generated autoloads from flycheck/flycheck.el
-
-(defconst flycheck-mode-line-lighter " FlyC" "\
-The standard lighter for flycheck mode.")
-
-(autoload 'flycheck-mode "flycheck/flycheck" "\
-Minor mode for on-the-fly syntax checking.
-
-When called interactively, toggle `flycheck-mode'.  With prefix
-ARG, enable `flycheck-mode' if ARG is positive, otherwise disable
-it.
-
-When called from Lisp, enable `flycheck-mode' if ARG is omitted,
-nil or positive.  If ARG is `toggle', toggle `flycheck-mode'.
-Otherwise behave as if called interactively.
-
-In `flycheck-mode' the buffer is automatically syntax-checked
-using the first suitable syntax checker from `flycheck-checkers'.
-Use `flycheck-select-checker' to select a checker for the current
-buffer manually.
-
-\\{flycheck-mode-map}
-
-\(fn &optional ARG)" t nil)
-
-(defvar global-flycheck-mode nil "\
-Non-nil if Global-Flycheck mode is enabled.
-See the command `global-flycheck-mode' for a description of this minor mode.
-Setting this variable directly does not take effect;
-either customize it (see the info node `Easy Customization')
-or call the function `global-flycheck-mode'.")
-
-(custom-autoload 'global-flycheck-mode "flycheck/flycheck" nil)
-
-(autoload 'global-flycheck-mode "flycheck/flycheck" "\
-Toggle Flycheck mode in all buffers.
-With prefix ARG, enable Global-Flycheck mode if ARG is positive;
-otherwise, disable it.  If called from Lisp, enable the mode if
-ARG is omitted or nil.
-
-Flycheck mode is enabled in all buffers where
-`flycheck-mode-on-safe' would do it.
-See `flycheck-mode' for more information on Flycheck mode.
-
-\(fn &optional ARG)" t nil)
-
-(autoload 'flycheck-def-config-file-var "flycheck/flycheck" "\
-Define SYMBOL as config file variable for CHECKER, with default FILE-NAME.
-
-SYMBOL is declared as customizable variable (see `defcustom`)
-providing a configuration file for CHECKER.  The CHECKER argument
-is used for documentation purposes only.  If given use FILE-NAME
-as initial value.
-
-The variable is declared with `defcustom', and declared
-buffer-local.  CUSTOM-ARGS are forwarded to `defcustom'
-
-Use this together with the `config-file' cell in syntax checker
-commands.
-
-\(fn SYMBOL CHECKER &optional FILE-NAME &rest CUSTOM-ARGS)" nil t)
-
-(put 'flycheck-def-config-file-var 'lisp-indent-function '3)
-
-(autoload 'flycheck-def-option-var "flycheck/flycheck" "\
-Define SYMBOL as option variable with INIT-VALUE for CHECKER.
-
-INIT-VALUE is the initial value for the new variable.  DOCSTRING
-is its docstring.
-
-The variable is declared with `defcustom', and declared
-buffer-local.  CUSTOM-ARGS are forwarded to `defcustom'.
-
-Use this together with the `option' cell in syntax checker
-commands.
-
-\(fn SYMBOL INIT-VALUE CHECKER DOCSTRING &rest CUSTOM-ARGS)" nil t)
-
-(put 'flycheck-def-option-var 'lisp-indent-function '3)
-
-(put 'flycheck-def-option-var 'doc-string-elt '4)
-
-(autoload 'flycheck-info "flycheck/flycheck" "\
-Open the Flycheck manual.
-
-\(fn)" t nil)
-
-(autoload 'flycheck-define-error-level "flycheck/flycheck" "\
-Define a new error LEVEL with PROPERTIES.
-
-The following PROPERTIES constitute an error level:
-
-`:overlay-category CATEGORY'
-     A symbol denoting the overlay category to use for error
-     highlight overlays for this level.  See Info
-     node `(elisp)Overlay properties' for more information about
-     overlay categories.
-
-`:fringe-bitmap BITMAP'
-     A fringe bitmap symbol denoting the bitmap to use for fringe
-     indicators for this level.  See Info node `(elisp)Fringe
-     Bitmaps' for more information about fringe bitmaps.
-
-`:fringe-face FACE'
-     A face symbol denoting the face to use for fringe indicators
-     for this level.
-
-`:error-list-face FACE'
-     A face symbol denoting the face to use for messages of this
-     level in the error list.  See `flycheck-list-errors'.
-
-\(fn LEVEL &rest PROPERTIES)" nil nil)
-
-(put 'flycheck-define-error-level 'lisp-indent-function '1)
 
 ;;;***
 
@@ -3076,7 +2936,7 @@ The variable nginx-indent-level controls the amount of indentation.
 ;;;***
 
 ;;;### (autoloads (notmuch-cycle-notmuch-buffers notmuch) "notmuch/emacs/notmuch"
-;;;;;;  "notmuch/emacs/notmuch.el" (21122 15148 135109 826000))
+;;;;;;  "notmuch/emacs/notmuch.el" (21114 18328 129917 129000))
 ;;; Generated autoloads from notmuch/emacs/notmuch.el
 
 (put 'notmuch-search 'notmuch-doc "Search for messages.")
@@ -3108,7 +2968,7 @@ Run notmuch and display saved searches, known tags, etc.
 ;;;***
 
 ;;;### (autoloads (notmuch-show) "notmuch/emacs/notmuch-show" "notmuch/emacs/notmuch-show.el"
-;;;;;;  (21122 15148 131109 800000))
+;;;;;;  (21114 18328 125917 110000))
 ;;; Generated autoloads from notmuch/emacs/notmuch-show.el
 
 (autoload 'notmuch-show "notmuch/emacs/notmuch-show" "\
@@ -5012,35 +4872,34 @@ See `yas-minor-mode' for more information on Yas minor mode.
 
 ;;;***
 
-;;;### (autoloads nil nil ("f/f.el" "flymake-easy/flymake-easy.el"
-;;;;;;  "org-mode/contrib/lisp/ob-eukleides.el" "org-mode/contrib/lisp/ob-fomus.el"
-;;;;;;  "org-mode/contrib/lisp/ob-julia.el" "org-mode/contrib/lisp/ob-mathomatic.el"
-;;;;;;  "org-mode/contrib/lisp/ob-oz.el" "org-mode/contrib/lisp/ob-tcl.el"
-;;;;;;  "org-mode/contrib/lisp/org-annotate-file.el" "org-mode/contrib/lisp/org-bibtex-extras.el"
-;;;;;;  "org-mode/contrib/lisp/org-bookmark.el" "org-mode/contrib/lisp/org-checklist.el"
-;;;;;;  "org-mode/contrib/lisp/org-choose.el" "org-mode/contrib/lisp/org-collector.el"
-;;;;;;  "org-mode/contrib/lisp/org-colview-xemacs.el" "org-mode/contrib/lisp/org-contribdir.el"
-;;;;;;  "org-mode/contrib/lisp/org-depend.el" "org-mode/contrib/lisp/org-drill.el"
-;;;;;;  "org-mode/contrib/lisp/org-elisp-symbol.el" "org-mode/contrib/lisp/org-eval-light.el"
-;;;;;;  "org-mode/contrib/lisp/org-eval.el" "org-mode/contrib/lisp/org-expiry.el"
-;;;;;;  "org-mode/contrib/lisp/org-git-link.el" "org-mode/contrib/lisp/org-index.el"
-;;;;;;  "org-mode/contrib/lisp/org-interactive-query.el" "org-mode/contrib/lisp/org-invoice.el"
-;;;;;;  "org-mode/contrib/lisp/org-jira.el" "org-mode/contrib/lisp/org-learn.el"
-;;;;;;  "org-mode/contrib/lisp/org-mac-iCal.el" "org-mode/contrib/lisp/org-mac-link.el"
-;;;;;;  "org-mode/contrib/lisp/org-mairix.el" "org-mode/contrib/lisp/org-man.el"
-;;;;;;  "org-mode/contrib/lisp/org-mew.el" "org-mode/contrib/lisp/org-mime.el"
-;;;;;;  "org-mode/contrib/lisp/org-mtags.el" "org-mode/contrib/lisp/org-notify.el"
-;;;;;;  "org-mode/contrib/lisp/org-notmuch.el" "org-mode/contrib/lisp/org-panel.el"
-;;;;;;  "org-mode/contrib/lisp/org-screen.el" "org-mode/contrib/lisp/org-secretary.el"
-;;;;;;  "org-mode/contrib/lisp/org-static-mathjax.el" "org-mode/contrib/lisp/org-sudoku.el"
-;;;;;;  "org-mode/contrib/lisp/org-velocity.el" "org-mode/contrib/lisp/org-vm.el"
-;;;;;;  "org-mode/contrib/lisp/org-wikinodes.el" "org-mode/contrib/lisp/org-wl.el"
-;;;;;;  "org-mode/contrib/lisp/orgtbl-sqlinsert.el" "org-mode/contrib/lisp/ox-bibtex.el"
-;;;;;;  "org-mode/contrib/lisp/ox-confluence.el" "org-mode/contrib/lisp/ox-deck.el"
-;;;;;;  "org-mode/contrib/lisp/ox-groff.el" "org-mode/contrib/lisp/ox-s5.el"
-;;;;;;  "org-mode/lisp/ob-C.el" "org-mode/lisp/ob-R.el" "org-mode/lisp/ob-abc.el"
-;;;;;;  "org-mode/lisp/ob-asymptote.el" "org-mode/lisp/ob-awk.el"
-;;;;;;  "org-mode/lisp/ob-calc.el" "org-mode/lisp/ob-clojure.el"
+;;;### (autoloads nil nil ("flymake-easy/flymake-easy.el" "org-mode/contrib/lisp/ob-eukleides.el"
+;;;;;;  "org-mode/contrib/lisp/ob-fomus.el" "org-mode/contrib/lisp/ob-julia.el"
+;;;;;;  "org-mode/contrib/lisp/ob-mathomatic.el" "org-mode/contrib/lisp/ob-oz.el"
+;;;;;;  "org-mode/contrib/lisp/ob-tcl.el" "org-mode/contrib/lisp/org-annotate-file.el"
+;;;;;;  "org-mode/contrib/lisp/org-bibtex-extras.el" "org-mode/contrib/lisp/org-bookmark.el"
+;;;;;;  "org-mode/contrib/lisp/org-checklist.el" "org-mode/contrib/lisp/org-choose.el"
+;;;;;;  "org-mode/contrib/lisp/org-collector.el" "org-mode/contrib/lisp/org-colview-xemacs.el"
+;;;;;;  "org-mode/contrib/lisp/org-contribdir.el" "org-mode/contrib/lisp/org-depend.el"
+;;;;;;  "org-mode/contrib/lisp/org-drill.el" "org-mode/contrib/lisp/org-elisp-symbol.el"
+;;;;;;  "org-mode/contrib/lisp/org-eval-light.el" "org-mode/contrib/lisp/org-eval.el"
+;;;;;;  "org-mode/contrib/lisp/org-expiry.el" "org-mode/contrib/lisp/org-git-link.el"
+;;;;;;  "org-mode/contrib/lisp/org-index.el" "org-mode/contrib/lisp/org-interactive-query.el"
+;;;;;;  "org-mode/contrib/lisp/org-invoice.el" "org-mode/contrib/lisp/org-jira.el"
+;;;;;;  "org-mode/contrib/lisp/org-learn.el" "org-mode/contrib/lisp/org-mac-iCal.el"
+;;;;;;  "org-mode/contrib/lisp/org-mac-link.el" "org-mode/contrib/lisp/org-mairix.el"
+;;;;;;  "org-mode/contrib/lisp/org-man.el" "org-mode/contrib/lisp/org-mew.el"
+;;;;;;  "org-mode/contrib/lisp/org-mime.el" "org-mode/contrib/lisp/org-mtags.el"
+;;;;;;  "org-mode/contrib/lisp/org-notify.el" "org-mode/contrib/lisp/org-notmuch.el"
+;;;;;;  "org-mode/contrib/lisp/org-panel.el" "org-mode/contrib/lisp/org-screen.el"
+;;;;;;  "org-mode/contrib/lisp/org-secretary.el" "org-mode/contrib/lisp/org-static-mathjax.el"
+;;;;;;  "org-mode/contrib/lisp/org-sudoku.el" "org-mode/contrib/lisp/org-velocity.el"
+;;;;;;  "org-mode/contrib/lisp/org-vm.el" "org-mode/contrib/lisp/org-wikinodes.el"
+;;;;;;  "org-mode/contrib/lisp/org-wl.el" "org-mode/contrib/lisp/orgtbl-sqlinsert.el"
+;;;;;;  "org-mode/contrib/lisp/ox-bibtex.el" "org-mode/contrib/lisp/ox-confluence.el"
+;;;;;;  "org-mode/contrib/lisp/ox-deck.el" "org-mode/contrib/lisp/ox-groff.el"
+;;;;;;  "org-mode/contrib/lisp/ox-s5.el" "org-mode/lisp/ob-C.el"
+;;;;;;  "org-mode/lisp/ob-R.el" "org-mode/lisp/ob-abc.el" "org-mode/lisp/ob-asymptote.el"
+;;;;;;  "org-mode/lisp/ob-awk.el" "org-mode/lisp/ob-calc.el" "org-mode/lisp/ob-clojure.el"
 ;;;;;;  "org-mode/lisp/ob-comint.el" "org-mode/lisp/ob-core.el" "org-mode/lisp/ob-css.el"
 ;;;;;;  "org-mode/lisp/ob-ditaa.el" "org-mode/lisp/ob-dot.el" "org-mode/lisp/ob-ebnf.el"
 ;;;;;;  "org-mode/lisp/ob-emacs-lisp.el" "org-mode/lisp/ob-eval.el"
@@ -5082,7 +4941,7 @@ See `yas-minor-mode' for more information on Yas minor mode.
 ;;;;;;  "smartparens/smartparens-latex.el" "smartparens/smartparens-lua.el"
 ;;;;;;  "smartparens/smartparens-pkg.el" "smartparens/smartparens-ruby.el"
 ;;;;;;  "wgrep/wgrep-test.el" "yasnippet/yasnippet-debug.el" "yasnippet/yasnippet-tests.el")
-;;;;;;  (21205 1682 42595 74000))
+;;;;;;  (21115 29588 557623 400000))
 
 ;;;***
 

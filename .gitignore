@@ -1,2 +1,7 @@
 *.elc
 el-get*
+auto-save-list*
+ac-comphist*
+*#*
+*.tern*
+*url*

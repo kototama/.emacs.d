@@ -50,8 +50,8 @@
 
 (dolist (pconf '(setup-lisp
                  setup-javascript
-		 ktm-mode
-		 sane-defaults))
+                 ktm-mode
+                 sane-defaults))
   (require pconf))
 
 (when at-work
@@ -75,6 +75,7 @@
 (color-theme-kototama)
 (ido-mode t)
 (global-undo-tree-mode t)
+;; (global-flycheck-mode t)
 (show-paren-mode t)
 (winner-mode t)
 (column-number-mode t)
@@ -84,14 +85,18 @@
 ;; load keybindings
 (ktm-global-mode 1)
 (auto-indent-global-mode 1)
+(global-whitespace-mode t)
 
 (dolist (mode '(undo-tree-mode
                 paredit-mode
                 ktm-mode))
   (diminish mode))
 
-(setq whitespace-style '(face tabs trailing lines empty))
 
+(setq whitespace-action '(auto-cleanup))
+;; (setq whitespace-style '(face tabs trailing lines empty))
+(setq whitespace-style '(trailing space-before-tab indentation empty
+                                  space-after-tab))
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
 ;; fonts

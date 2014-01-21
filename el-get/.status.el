@@ -34,7 +34,16 @@
 				    '("\\.coffee$" . coffee-mode))
 		       (add-to-list 'auto-mode-alist
 				    '("Cakefile" . coffee-mode))
-		       (setq coffee-js-mode 'javascript-mode))))
+		       (setq coffee-js-mode 'javascript-mode))
+		     :init
+		     (progn
+		       (defun my-coffee-mode-hook nil
+			 (setq coffee-tab-width 2)
+			 (flycheck-mode)
+			 (smartparens-mode)
+			 (auto-indent-mode 0))
+		       (add-hook 'coffee-mode-hook 'my-coffee-mode-hook))
+		     :symbol coffee-mode))
  (color-theme status "installed" recipe
 	      (:name color-theme :description "An Emacs-Lisp package with more than 50 color themes for your use. For questions about color-theme" :website "http://www.nongnu.org/color-theme/" :type http-tar :options
 		     ("xzf")
@@ -179,10 +188,15 @@
 		       (boundp 'package-subdirectory-regexp)
 		     (defconst package-subdirectory-regexp "^\\([^.].*\\)-\\([0-9]+\\(?:[.][0-9]+\\)*\\)$" "Regular expression matching the name of\n a package subdirectory. The first subexpression is the package\n name. The second subexpression is the version string."))
 		   (setq package-archives
-			 '(("ELPA" . "http://tromey.com/elpa/")
-			   ("gnu" . "http://elpa.gnu.org/packages/")
-			   ("marmalade" . "http://marmalade-repo.org/packages/")
-			   ("SC" . "http://joseito.republika.pl/sunrise-commander/"))))))
+			 (bound-and-true-p package-archives))
+		   (mapc
+		    (lambda
+		      (pa)
+		      (add-to-list 'package-archives pa 'append))
+		    '(("ELPA" . "http://tromey.com/elpa/")
+		      ("gnu" . "http://elpa.gnu.org/packages/")
+		      ("marmalade" . "http://marmalade-repo.org/packages/")
+		      ("SC" . "http://joseito.republika.pl/sunrise-commander/"))))))
  (paredit status "installed" recipe
 	  (:name paredit :description "Minor mode for editing parentheses" :type http :prepare
 		 (progn

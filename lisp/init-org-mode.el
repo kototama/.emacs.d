@@ -40,12 +40,12 @@
           (use-package org-octopress
             :init
             (progn
-              (setq org-octopress-directory-top       "~/Documents/Projects/Blog/octopress/source")
-              (setq org-octopress-directory-posts     "~/Documents/Projects/Blog/octopress/source/_posts")
-              (setq org-octopress-directory-org-top   "~/Documents/Projects/Blog/octopress/source")
-              (setq org-octopress-directory-org-posts "~/Documents/Projects/Blog/octopress/source/_org_posts")
+              (setq org-octopress-directory-top       "~/documents/projects/blog/octopress/source")
+              (setq org-octopress-directory-posts     "~/documents/projects/blog/octopress/source/_posts")
+              (setq org-octopress-directory-org-top   "~/documents/projects/blog/octopress/source")
+              (setq org-octopress-directory-org-posts "~/documents/projects/blog/octopress/source/_org_posts")
               (setq org-octopress-setup-file
-                    "~/Documents/Projects/Blog/setupfile.org")
+                    "~/documents/projects/blog/setupfile.org")
               (setq org-jekyll-comments "true")))
 
           (setq org-default-notes-file "~/Documents/Notes/todo.org")

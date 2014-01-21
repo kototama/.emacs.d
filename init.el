@@ -111,7 +111,7 @@
 (server-start)
 
 ;; window
-(add-hook 'window-setup-hook 'maximize-frame t)
+;; (add-hook 'window-setup-hook 'maximize-frame t)
 
 
 (defun anarcat/time-to-ms (time)

@@ -1,11 +1,14 @@
 (require 'package)
 
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(setq package-archives
+      '(("melpa" . "http://melpa.milkbox.net/packages/")
+        ("org" . "http://orgmode.org/elpa/")))
 
 ;; loads packages used during the configuration
-(load-file "~/.emacs.d/site-lisp/dash.el/dash.el")
+(add-to-list 'load-path "~/.emacs.d/site-lisp/dash.el/")
 (load-file "~/.emacs.d/site-lisp/package/package+.el")
+
+(require 'dash)
 
 (defvar user-packages nil "The list of external packages used by the user.")
 
@@ -43,7 +46,8 @@ specific configurations and are store in
                 magit
                 magit
                 markdown-mode
-                org
+;;                org
+;;                org-plus-contrib
                 paredit
                 smex
                 use-package

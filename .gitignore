@@ -5,4 +5,7 @@ ac-comphist*
 *#*
 *.tern*
 *url*
-app**
+elpa/
+*~
+session*
+.mc-*

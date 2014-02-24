@@ -1,0 +1,9 @@
+#[submodule "site-lisp/package"]
+#	path = site-lisp/package
+#	url = https://github.com/zenspider/package.git
+[submodule "site-lisp/dash.el"]
+	path = site-lisp/dash.el
+	url = https://github.com/magnars/dash.el.git
+[submodule "site-lisp/package"]
+	path = site-lisp/package
+	url = https://github.com/zenspider/package.git

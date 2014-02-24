@@ -23,10 +23,11 @@ from ```$HOME/.eroles/login@hostname/setup.el```.
 ## Configuration
 
 User/machine specific configuration can be define in
-```$HOME/.eroles/login@hostname/init.el```
 
-All configuration files matching "init-.*.el" and defined in the
-```~/.emacs.d/lisp``` are loaded on startup.
+    $HOME/.eroles/login@hostname/init.el
+
+All configuration files matching ```init-.*.el``` and defined in the
+```~/.emacs.d/lisp``` directory are loaded on startup.
 
 ## Keybindings
 

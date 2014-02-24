@@ -1,3 +1,3 @@
 (use-package smex
-  (:bind (("M-x" . smex))))
+  :bind (("M-x" . smex)))
 

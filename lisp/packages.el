@@ -46,8 +46,8 @@ specific configurations and are store in
                 magit
                 magit
                 markdown-mode
-;;                org
-;;                org-plus-contrib
+                org
+                org-plus-contrib
                 paredit
                 smex
                 use-package

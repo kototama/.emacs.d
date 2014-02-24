@@ -5,7 +5,7 @@ init:
 	git submodule update
 
 compile:
-	emacs -batch -l ~/.emacs.d/init.el -f batch-byte-compile ./init.el ./lisp/*.el
+	emacs -batch -l ~/.emacs.d/init.el -f batch-byte-compile ./init.el ./lisp/*.el `find ~/.eroles -name \*.el`
 
 # Install MELPA packages
 install:

@@ -33,19 +33,20 @@ specific configurations and are store in
 
 ;; adds common packages
 (add-packages '(
-                use-package
+                auto-async-byte-compile
+                auto-indent-mode
                 cider
                 clojure-mode
-                markdown-mode
-                paredit
                 color-theme
-                ido-ubiquitous
-                auto-indent-mode
-                smex
-                magit
                 elisp-slime-nav
+                ido-ubiquitous
                 magit
-                auto-async-byte-compile
+                magit
+                markdown-mode
+                org
+                paredit
+                smex
+                use-package
                 ))
 
 (provide 'packages)

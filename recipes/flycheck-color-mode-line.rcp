@@ -1,6 +1,0 @@
-(:name flycheck-color-mode-line
-       :description "An Emacs minor-mode for Flycheck which colors the mode line
-       according to the Flycheck state of the current buffer."
-       :type github
-       :depends (flycheck)
-       :pkgname "flycheck/flycheck-color-mode-line")

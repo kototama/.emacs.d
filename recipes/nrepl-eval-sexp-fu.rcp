@@ -1,7 +1,0 @@
-(:name nrepl-eval-sexp-fu
-       :description "Fancy highlighting of sexps on eval"
-       :depends (highlight paredit)
-       :type github
-       :pkgname "samaaron/nrepl-eval-sexp-fu"
-       :features nrepl-eval-sexp-fu)
-

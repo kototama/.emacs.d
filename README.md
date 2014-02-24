@@ -23,11 +23,11 @@ User/machine specific packages can be defined with the
 
 ## Configuration
 
-User/machine specific configuration can be define in:
+User/machine specific configuration can be defined in:
 
     $HOME/.eroles/login@hostname/init.el
 
-All configuration files matching ```init-.*.el``` and defined in the
+All configuration files matching ```init-.*.el``` in the
 ```~/.emacs.d/lisp``` directory are loaded on startup.
 
 ## Keybindings

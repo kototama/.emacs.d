@@ -17,12 +17,13 @@ Emacs Lisp files.
 Common packages are defined in ```~/.emacs.d/lisp/packages.el```.
 
 User/machine specific packages can be defined with the
-```add-packages``` function within a ```setup.el``` define in 
-from ```$HOME/.eroles/login@hostname/setup.el```.
+```add-packages``` function in:
+
+    $HOME/.eroles/login@hostname/setup.el
 
 ## Configuration
 
-User/machine specific configuration can be define in
+User/machine specific configuration can be define in:
 
     $HOME/.eroles/login@hostname/init.el
 

@@ -6,8 +6,7 @@
 
 (require 'packages)
 
-;; installs missing packages
-;; (install-user-packages)
+;;; initialize ELPA packages
 
 (package-initialize)
 

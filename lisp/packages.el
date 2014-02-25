@@ -41,6 +41,7 @@ specific configurations and are store in
                 cider
                 clojure-mode
                 color-theme
+                coffee-mode
                 elisp-slime-nav
                 ido-ubiquitous
                 magit

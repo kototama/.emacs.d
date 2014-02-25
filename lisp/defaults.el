@@ -47,4 +47,8 @@
 ;; saves a lot of recent files
 (setq recentf-max-menu-items 300)
 
+;; defines functions that can be executed by buffer local definitions
+(setq safe-local-variable-values
+      '((eval org-global-cycle)))
+
 (provide 'defaults)

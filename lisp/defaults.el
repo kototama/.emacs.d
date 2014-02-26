@@ -2,7 +2,7 @@
 
 ;; saves backup files in the ~/.emacs.d/tmp directory
 (setq auto-save-file-name-transforms
-      `((".*"  ,(concat user-emacs-directory "tmp")) t))
+      `((".*"  ,(concat user-emacs-directory "tmp/")) t))
 
 ;; no menubar
 (menu-bar-mode 0)

@@ -52,6 +52,7 @@ specific configurations and are store in
                 paredit
                 smex
                 use-package
+                visual-regexp
                 ))
 
 (provide 'packages)

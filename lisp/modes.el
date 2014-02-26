@@ -2,7 +2,8 @@
   '(
     ido-mode
     winner-mode
-    show-paren-mode))
+    show-paren-mode
+    column-number-mode))
 
 (dolist (m user-active-modes)
   (funcall m t))

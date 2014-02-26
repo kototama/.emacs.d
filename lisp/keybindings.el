@@ -1,7 +1,7 @@
 (defvar user-key-bindings
   '(("C-;" . comment-region)
     ("C-S-j" . join-line)
-    ("<C-return>" . switch-to-buffer)
+    ;; ("<C-return>" . switch-to-buffer)
     ))
 
 (defun install-keybindings

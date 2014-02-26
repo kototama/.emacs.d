@@ -92,6 +92,13 @@
 ;;; * org
 
 (use-package org
+  :config
+  (progn
+    (defun my-common-org-mode-hook
+      ()
+      (setq org-use-speed-commands t))
+
+    (add-hook 'org-mode-hook 'my-common-org-mode-hook))
   :bind (("C-c o a" . org-agenda)
          ("C-c o o" . org-open-at-point)))
 

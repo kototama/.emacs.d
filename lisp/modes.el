@@ -1,5 +1,6 @@
 (defvar user-active-modes
-  '(ido-mode
+  '(
+    ido-mode
     winner-mode
     show-paren-mode))
 

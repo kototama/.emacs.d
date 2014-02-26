@@ -1,8 +1,12 @@
 (blink-cursor-mode 0)
 
-;; saves backup files in the ~/.emacs.d/tmp directory
+;; saves backup and tmp files in the ~/.emacs.d/tmp directory
+(setq backup-directory-alist
+      `((".*" . ,(concat user-emacs-directory "backups/"))))
+
 (setq auto-save-file-name-transforms
-      `((".*"  ,(concat user-emacs-directory "tmp/\\2")) t))
+      `((".*"  ,(concat user-emacs-directory "backups/") t)))
+
 
 ;; no menubar
 (menu-bar-mode 0)

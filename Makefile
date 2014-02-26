@@ -1,6 +1,9 @@
-all: init install compile
+all: dirs submodules install compile
 
-init:
+dirs:
+	if [ ! -d "backups" ]; then mkdir backups; fi
+
+submodules:
 	git submodule init
 	git submodule update
 

@@ -120,6 +120,11 @@
     (set-face-background 'show-paren-match-face "purple")
     (set-face-foreground 'show-paren-match-face "black")))
 
+;;; * uniquify
+(use-package uniquify
+  :init
+  (progn
+    (setq uniquify-buffer-name-style 'forward)))
 ;;; * end of file
 
 (provide 'config)

@@ -1,4 +1,5 @@
 ;;; helper functions to manipulate files
+(require 's)
 
 ;; renaming
 
@@ -64,6 +65,10 @@ and returns the file names satisfying the `filter-fn` function."
 (defun js-file-p
   (file)
   (string= ".js" (s-right 3 file)))
+
+(defun coffee-file-p
+  (file)
+  (string= ".coffee" (s-right 7 file)))
 
 ;; encoding functions
 

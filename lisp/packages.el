@@ -50,6 +50,7 @@ specific configurations and are store in
                 org
                 org-plus-contrib
                 paredit
+                s
                 smex
                 use-package
                 visual-regexp

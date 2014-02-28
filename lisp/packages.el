@@ -32,28 +32,34 @@ specific configurations and are store in
   (interactive)
   ;; adds the user/machine specific packages
   (load-role-file "setup.el")
+  (define-common-packages)
   (apply #'package-manifest user-packages))
 
-;; adds common packages
-(add-packages '(
-                auto-async-byte-compile
-                auto-indent-mode
-                cider
-                clojure-mode
-                color-theme
-                coffee-mode
-                elisp-slime-nav
-                ido-ubiquitous
-                magit
-                magit
-                markdown-mode
-                org
-                org-plus-contrib
-                paredit
-                s
-                smex
-                use-package
-                visual-regexp
-                ))
+(defun define-common-packages
+  ()
+  (interactive)
+  (add-packages '(
+                 auto-async-byte-compile
+                 auto-indent-mode
+                 cider
+                 clojure-mode
+                 color-theme
+                 coffee-mode
+                 elisp-slime-nav
+                 ido-ubiquitous
+                 haskell-mode
+                 magit
+                 magit
+                 markdown-mode
+                 org
+                 org-plus-contrib
+                 paredit
+                 s
+                 smex
+                 use-package
+                 visual-regexp
+                 )))
+
+(define-common-packages)
 
 (provide 'packages)

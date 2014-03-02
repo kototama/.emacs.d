@@ -58,6 +58,7 @@ specific configurations and are store in
                  smex
                  use-package
                  visual-regexp
+                 flycheck-haskell
                  )))
 
 (define-common-packages)

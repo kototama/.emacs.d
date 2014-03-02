@@ -7,3 +7,6 @@
 [submodule "site-lisp/package"]
 	path = site-lisp/package
 	url = https://github.com/zenspider/package.git
+[submodule "site-lisp/structured-haskell-mode"]
+	path = site-lisp/structured-haskell-mode
+	url = git@github.com:chrisdone/structured-haskell-mode.git

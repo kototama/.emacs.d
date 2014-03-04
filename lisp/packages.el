@@ -59,6 +59,7 @@ specific configurations and are store in
                  use-package
                  visual-regexp
                  flycheck-haskell
+                 dired-open
                  )))
 
 (define-common-packages)

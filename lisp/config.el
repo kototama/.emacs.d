@@ -39,6 +39,18 @@
   (progn
     (setq coffee-tab-width 2)))
 
+;;; * dired
+(use-package dired
+  :config
+  (progn
+    (use-package dired-open
+      :config
+      (progn
+       (defun my-dired-open-hook
+         ()
+         (local-set-key (kbd "<S-return>") 'dired-open-xdg))
+
+       (add-hook 'dired-mode-hook 'my-dired-open-hook)))))
 ;;; * ido
 
 (use-package ido-mode

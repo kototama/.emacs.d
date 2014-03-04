@@ -23,6 +23,15 @@
 
   (add-hook 'cider-repl-mode-hook 'my-cider-mode-hook))
 
+;;; * clojure
+(use-package clojure-mode
+  :config
+  (progn
+    (defun my-clojure-mode-hook
+      ()
+      (paredit-mode t))
+
+    (add-hook 'clojure-mode-hook 'my-clojure-mode-hook)))
 ;;; * coffee
 
 (use-package coffee-mode
@@ -79,7 +88,8 @@
 
     (defun my-minibuffer-mode-hook
       ()
-      (paredit-mode 1))
+      ;; (paredit-mode 1)
+      )
 
     (add-hook 'emacs-lisp-mode-hook 'my-emacs-lisp-mode-hook)
     (add-hook 'minibuffer-setup-hook 'my-minibuffer-mode-hook)))
@@ -100,7 +110,9 @@
 
     (add-hook 'org-mode-hook 'my-common-org-mode-hook))
   :bind (("C-c o a" . org-agenda)
-         ("C-c o o" . org-open-at-point)))
+         ("C-c o o" . org-open-at-point)
+         ("C-c o l" . org-store-link)
+         ("C-c o L" . org-insert-link)))
 
 ;;; * org-capture
 

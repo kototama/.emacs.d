@@ -9,3 +9,5 @@ elpa/
 *~
 session*
 .mc-*
+/.org-id-locations
+/tramp

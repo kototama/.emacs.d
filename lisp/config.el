@@ -60,6 +60,7 @@
     (setq ido-everywhere t)
     (setq ido-use-virtual-buffers t)
     (setq ido-ignore-extensions t)
+    (setq ido-default-buffer-method #'selected-window)
 
     (ido-mode 1)
 

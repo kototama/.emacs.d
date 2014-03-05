@@ -1,7 +1,14 @@
 (setq user-key-bindings
       '(("C-S-j" . join-line)
         ("M-n" . forward-paragraph)
-        ("M-p" . backward-paragraph)))
+        ("M-p" . backward-paragraph)
+        ("M-o" . other-window)
+        ("M-S-o" . (lambda ()
+                     (interactive)
+                     (other-window -1)))
+        ("C-S-k" . (lambda ()
+                     (interactive)
+                     (kill-buffer (current-buffer))))))
 
 (defun install-keybindings
   ()

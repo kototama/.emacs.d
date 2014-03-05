@@ -27,8 +27,7 @@ User/machine specific configuration can be defined in:
 
     $HOME/.eroles/login@hostname/init.el
 
-All configuration files matching ```init-.*.el``` in the
-```~/.emacs.d/lisp``` directory are loaded on startup.
+Configurations are stored in the ```~/.emacs.d/lisp/config.el``` with org-like sections accessible with ```orgstruct-mode```.
 
 ## Keybindings
 

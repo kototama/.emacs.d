@@ -1,10 +1,7 @@
 (setq user-key-bindings
-  '(("C-;" . comment-region)
-    ("C-S-j" . join-line)
-    ("M-n" . forward-paragraph)
-    ("M-p" . backward-paragraph)
-    ;; ("<C-return>" . switch-to-buffer)
-    ))
+      '(("C-S-j" . join-line)
+        ("M-n" . forward-paragraph)
+        ("M-p" . backward-paragraph)))
 
 (defun install-keybindings
   ()

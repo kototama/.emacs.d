@@ -56,6 +56,11 @@
 (use-package ido-mode
   :init
   (progn
+
+    (use-package ido-ubiquitous
+      :init
+      (ido-ubiquitous))
+    
     (setq ido-enable-flex-matching t)
     (setq ido-everywhere t)
     (setq ido-use-virtual-buffers t)
@@ -63,19 +68,20 @@
     (setq ido-default-buffer-method #'selected-window)
 
     (ido-mode 1)
+    
+    (defun my-ido-setup-hook
+        ()
+      ;; Go straight home
+      (define-key ido-file-completion-map
+        (kbd "~")
+        (lambda ()
+          (interactive)
+          ;; type ~~ to go the ~/.emacs.d
+          (cond ((looking-back "~/") (insert ".emacs.d/"))
+                ((looking-back "/") (insert "~/"))
+                (t (call-interactively 'self-insert-command))))))
 
-    (add-hook 'ido-setup-hook
-              (lambda ()
-                ;; Go straight home
-                (define-key ido-file-completion-map
-                  (kbd "~")
-                  (lambda ()
-                    (interactive)
-                    ;; type ~~ to go the ~/.emacs.d
-                    (cond ((looking-back "~/") (insert ".emacs.d/"))
-                          ((looking-back "/") (insert "~/"))
-                          (t (call-interactively 'self-insert-command)))))))
-    )
+    (add-hook 'ido-setup-hook 'my-ido-setup-hook))
   :bind (("C-S-o" . ido-switch-buffer)))
 
 ;;; * lisp

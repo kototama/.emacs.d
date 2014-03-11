@@ -25,4 +25,3 @@
 
 (provide 'color-theme-kototama)
 
-(color-theme-kototama)

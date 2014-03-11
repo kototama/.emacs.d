@@ -1,7 +1,8 @@
 (require 'package)
 
 (setq package-archives
-      '(("melpa" . "http://melpa.milkbox.net/packages/")
+      '(("gnu" . "http://elpa.gnu.org/packages/")
+        ("melpa" . "http://melpa.milkbox.net/packages/")
         ("org" . "http://orgmode.org/elpa/")))
 
 ;; loads packages used during the configuration

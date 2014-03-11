@@ -1,5 +1,3 @@
-(require 'color-theme-kototama)
-
 ;; installs inconsolate fonts if presents
 (when (eq window-system 'x)
   (condition-case nil

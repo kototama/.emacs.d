@@ -42,6 +42,10 @@
   (progn
     (setq coffee-tab-width 2)))
 
+;;; * color-theme
+(use-package color-theme
+             :config
+             (require 'color-theme-kototama))
 ;;; * dired
 (use-package dired
   :config
@@ -54,6 +58,8 @@
          (local-set-key (kbd "<S-return>") 'dired-open-xdg))
 
        (add-hook 'dired-mode-hook 'my-dired-open-hook)))))
+;;; * dired+
+(use-package dired+)
 ;;; * ido
 
 (use-package ido-mode
@@ -92,8 +98,8 @@
 (use-package lisp-mode
   :config
   (progn
-    (use-package paredit)
-    (use-package elisp-slime-nav)
+    
+    
 
     (use-package auto-async-byte-compile
       :config
@@ -103,10 +109,20 @@
                   'enable-auto-async-byte-compile-mode)))
     
     (defun my-emacs-lisp-mode-hook
-      ()
-      (paredit-mode t)
-      (auto-indent-mode t)
-      (elisp-slime-nav-mode t))
+        ()
+      (use-package paredit
+        :config
+        (paredit-mode t))
+
+      (use-package elisp-slime-nav
+        :config
+        (elisp-slime-nav-mode t))
+
+      (use-package auto-indent
+        :config
+        (auto-indent-mode t))
+      
+      )
 
     (defun my-minibuffer-mode-hook
       ()

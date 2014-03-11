@@ -56,10 +56,10 @@ specific configurations and are store in
                  paredit
                  s
                  smex
-                 use-package
                  visual-regexp
                  flycheck-haskell
                  dired-open
+                 dired+
                  )))
 
 (define-common-packages)

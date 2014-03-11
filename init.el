@@ -15,8 +15,7 @@
 (require 'defaults)
 (require 'appearance)
 
-;; uses use-package to configure packages
-(require 'use-package)
+;; loads package configurations
 (require 'config)
 
 ;; activates default modes

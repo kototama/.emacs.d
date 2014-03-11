@@ -1,5 +1,7 @@
 ;;; * beginning of file
 
+(add-to-list 'load-path "~/.emacs.d/site-lisp/use-package/")
+(message "Loading use-package")
 (require 'use-package)
 
 
@@ -159,13 +161,17 @@
 (use-package org-capture
   :bind (("C-c o r" . org-capture)))
 
-;;; * org-sync
-(use-package os
-  :load-path "site-lisp/org-sync"
-  )
+;;; * org-plus-contrib
+(use-package org-plus-contrib
+  :config
+  (use-package os
+    :load-path "site-lisp/org-sync"
+    )) 
+
 ;;; * smex
 
 (use-package smex
+  :disabled t
   :bind (("M-x" . smex)))
 
 ;;; * show-paren-mode

@@ -8,7 +8,8 @@
                      (other-window -1)))
         ("C-S-k" . (lambda ()
                      (interactive)
-                     (kill-buffer (current-buffer))))))
+                     (kill-buffer (current-buffer))))
+        ("M-g m" . pop-to-mark-command)))
 
 (defun install-keybindings
   ()

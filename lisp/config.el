@@ -1,7 +1,6 @@
 ;;; * beginning of file
 
 (add-to-list 'load-path "~/.emacs.d/site-lisp/use-package/")
-(message "Loading use-package")
 (require 'use-package)
 
 

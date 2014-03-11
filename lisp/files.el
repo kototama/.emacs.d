@@ -1,4 +1,5 @@
 ;;; helper functions to manipulate files
+(load-file "~/.emacs.d/site-lisp/s/s.el")
 (require 's)
 
 ;; renaming

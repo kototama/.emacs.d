@@ -163,7 +163,7 @@
   :bind (("C-c o r" . org-capture)))
 
 ;;; * org-plus-contrib
-(use-package org-plus-contrib
+(use-package org-element
   :config
   (use-package os
     :load-path "site-lisp/org-sync"

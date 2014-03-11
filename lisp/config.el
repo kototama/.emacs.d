@@ -47,7 +47,8 @@
 ;;; * color-theme
 (use-package color-theme
              :config
-             (require 'color-theme-kototama))
+             (require 'color-theme-kototama)
+             (color-theme-kototama))
 ;;; * dired
 (use-package dired
   :config

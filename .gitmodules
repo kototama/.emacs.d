@@ -13,3 +13,6 @@
 [submodule "site-lisp/org-sync"]
 	path = site-lisp/org-sync
 	url = git://orgmode.org/org-sync.git
+[submodule "site-lisp/use-package"]
+	path = site-lisp/use-package
+	url = https://github.com/jwiegley/use-package

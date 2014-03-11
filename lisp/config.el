@@ -172,7 +172,6 @@
 ;;; * smex
 
 (use-package smex
-  :disabled t
   :bind (("M-x" . smex)))
 
 ;;; * show-paren-mode

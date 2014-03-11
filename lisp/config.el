@@ -29,7 +29,10 @@
   (progn
     (defun my-clojure-mode-hook
       ()
-      (paredit-mode t))
+      (paredit-mode t)
+      
+      ;; indents ring context function properly
+      (put 'context 'clojure-indent-function 2))
 
     (add-hook 'clojure-mode-hook 'my-clojure-mode-hook)))
 ;;; * coffee
@@ -116,7 +119,9 @@
 ;;; * magit
 
 (use-package magit
-  :bind (("C-c g s" . magit-status)))
+  :bind (("C-c g s" . magit-status)
+         ("C-c g l" . magit-file-log)
+         ("C-c g L" . magit-log)))
 
 ;;; * org
 
@@ -138,6 +143,10 @@
 (use-package org-capture
   :bind (("C-c o r" . org-capture)))
 
+;;; * org-sync
+(use-package os
+  :load-path "site-lisp/org-sync"
+  )
 ;;; * smex
 
 (use-package smex

@@ -162,12 +162,15 @@
 (use-package org-capture
   :bind (("C-c o r" . org-capture)))
 
-;;; * org-plus-contrib
+;;; * org-sync
 (use-package org-element
   :config
   (use-package os
     :load-path "site-lisp/org-sync"
-    )) 
+    :config 
+    (progn
+      (mapc 'load
+            '("org-element" "os" "os-bb" "os-github" "os-rmine"))))) 
 
 ;;; * smex
 

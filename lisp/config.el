@@ -31,7 +31,7 @@
     (defun my-clojure-mode-hook
       ()
       (paredit-mode t)
-      
+      (auto-indent-mode t)
       ;; indents ring context function properly
       (put 'context 'clojure-indent-function 2))
 
@@ -101,8 +101,6 @@
   :config
   (progn
     
-    
-
     (use-package auto-async-byte-compile
       :config
       (progn

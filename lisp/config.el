@@ -77,6 +77,7 @@
     (setq ido-use-virtual-buffers t)
     (setq ido-ignore-extensions t)
     (setq ido-default-buffer-method #'selected-window)
+    (setq ido-max-directory-size 100000)
 
     (ido-mode 1)
     

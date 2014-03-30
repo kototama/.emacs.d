@@ -19,3 +19,6 @@
 [submodule "site-lisp/s"]
 	path = site-lisp/s
 	url = https://github.com/magnars/s.el
+[submodule "site-lisp/ghc-mod"]
+	path = site-lisp/ghc-mod
+	url = https://github.com/kazu-yamamoto/ghc-mod.git

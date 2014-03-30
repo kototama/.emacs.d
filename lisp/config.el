@@ -192,23 +192,33 @@
 (use-package haskell-mode
   :config
   (progn
-    (use-package shm
-      :load-path "site-lisp/structured-haskell-mode/elisp"
-      :config
-      (progn
-        (add-hook 'haskell-mode-hook 'structured-haskell-mode)
-        (setq exec-path
-              (append exec-path
-                      '(concat user-emacs-directory "site-lisp/structured-haskell-mode/.cabal-sandbox/bin")))))
+    ;; (use-package shm
+    ;;   :load-path "site-lisp/structured-haskell-mode/elisp"
+    ;;   :config
+    ;;   (progn
+    ;;     ;; (add-hook 'haskell-mode-hook 'structured-haskell-mode)
+    ;;     (setq exec-path
+    ;;           (append exec-path
+    ;;                   '(concat user-emacs-directory "site-lisp/structured-haskell-mode/.cabal-sandbox/bin")))))
 
     (defun my-haskell-mode-hook
       ()
-      (flycheck-mode))
+      ;; (flycheck-mode)
+
+      )
+    
+    (use-package ghc
+      :config
+      (progn
+        (add-hook 'haskell-mode-hook 'ghc-init)))
 
     (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+
     ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
     (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
     ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
+
+    
     
     (add-hook 'haskell-mode-hook 'my-haskell-mode-hook)
     ))

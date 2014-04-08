@@ -52,6 +52,7 @@ specific configurations and are store in
                  magit
                  magit
                  markdown-mode
+                 multi-cursors
                  org
                  org-plus-contrib
                  paredit

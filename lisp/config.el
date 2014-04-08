@@ -113,7 +113,8 @@
         ()
       (use-package paredit
         :config
-        (paredit-mode t))
+        (paredit-mode t)
+        (auto-indent-mode t))
 
       (use-package elisp-slime-nav
         :config
@@ -140,6 +141,10 @@
          ("C-c g l" . magit-file-log)
          ("C-c g L" . magit-log)))
 
+;;; * multiple-cursors
+(use-package multiple-cursors
+  :bind (("C-S-c C-S-c" . mc/edit-lines)))
+
 ;;; * org
 
 (use-package org
@@ -147,6 +152,7 @@
   (progn
     (defun my-common-org-mode-hook
       ()
+      (setq org-refile-targets '((nil :maxlevel . 2)))
       (setq org-use-speed-commands t))
 
     (add-hook 'org-mode-hook 'my-common-org-mode-hook))
@@ -223,6 +229,15 @@
     
     (add-hook 'haskell-mode-hook 'my-haskell-mode-hook)
     ))
+;;; * paredit
+(use-package paredit
+  :config
+  (progn
+    (defun my-paredit-mode-hook
+      ()
+      (local-set-key (kbd "M-q") 'fill-paragraph))
+
+    (add-hook 'paredit-mode-hook 'my-paredit-mode-hook)))
 ;;; * end of file
 
 (provide 'config)

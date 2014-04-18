@@ -208,6 +208,9 @@
     ;;           (append exec-path
     ;;                   '(concat user-emacs-directory "site-lisp/structured-haskell-mode/.cabal-sandbox/bin")))))
 
+    (use-package hdevtools
+      :load-path "site-lisp/hdevtools-emacs")
+    
     (defun my-haskell-mode-hook
       ()
       (flycheck-mode)
@@ -224,9 +227,6 @@
     ;;     (setq ghc-check-command
     ;;           (expand-file-name "~/.emacs.d/site-lisp/ghc-mod/.cabal-sandbox/bin/ghc-mod"))
     ;;     (add-hook 'haskell-mode-hook 'ghc-init)))
-
-    ;; (use-package hdevtools
-    ;;   :load-path "site-lisp/hdevtools-emacs")
 
     (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 

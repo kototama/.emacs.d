@@ -22,3 +22,6 @@
 [submodule "site-lisp/ghc-mod"]
 	path = site-lisp/ghc-mod
 	url = https://github.com/kazu-yamamoto/ghc-mod.git
+[submodule "site-lisp/hdevtools-emacs"]
+	path = site-lisp/hdevtools-emacs
+	url = git@github.com:lightquake/hdevtools-emacs.git

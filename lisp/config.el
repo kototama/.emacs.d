@@ -193,6 +193,41 @@
 (use-package haskell-mode
   :config
   (progn
+    (defun hdevtools/get-type-infos ()
+      "Get a list of type infos for identifiers containing point."
+      (let* ((line-number (line-number-at-pos))
+             ;; emacs numbers columns from 0, Haskell numbers columns from 1.
+             (col-number (1+ (current-column)))
+             (file-name (buffer-file-name))
+             (hdevtools-buffer (get-buffer-create "*hdevtools*"))
+             (current-file (buffer-file-name))
+             (project-dir (locate-dominating-file current-file "cabal.sandbox.config"))
+             (sandbox-dir (concat project-dir  ".cabal-sandbox"))
+             (packages-dir (car (directory-files sandbox-dir t ".+-packages.conf.d"))))
+        (message "packages-dir=%s" packages-dir)
+        (message "cmd:%s" (concat "hdevtools"  "type" "-g" "-fdefer-type-errors" 
+                                  "-g-no-user-package-conf"
+                                  (concat "-g-package-conf=" packages-dir)
+                                  "-g-isrc"
+                                  "-g -Wall"
+                                  "-g-ilib"
+                                  "-g-idist/build/autogen"
+                                  file-name
+                                  (number-to-string line-number)
+                                  (number-to-string col-number)))
+        (with-current-buffer hdevtools-buffer
+          (erase-buffer)
+          (call-process "hdevtools" nil t nil "type" "-g" "-fdefer-type-errors" 
+                        "-g-no-user-package-conf"
+                        (concat "-g-package-conf=" packages-dir)
+                        "-g-isrc"
+                        "-g -Wall"
+                        "-g-ilib"
+                        "-g-idist/build/autogen"
+                        file-name
+                        (number-to-string line-number)
+                        (number-to-string col-number)))
+        (hdevtools//parse-type-info (current-buffer) hdevtools-buffer)))
     ;; (use-package shm
     ;;   :load-path "site-lisp/structured-haskell-mode/elisp"
     ;;   :config
@@ -205,12 +240,18 @@
     (defun my-haskell-mode-hook
       ()
       ;; (flycheck-mode)
-
+      (local-set-key (kbd "M-p") nil)
+      (local-set-key (kbd "M-n") nil)
       )
     
     (use-package ghc
+      :load-path "site-lisp/ghc-mod/elisp"
       :config
       (progn
+        (setq ghc-module-command
+              (expand-file-name "~/.emacs.d/site-lisp/ghc-mod/.cabal-sandbox/bin/ghc-mod"))
+        (setq ghc-check-command
+              (expand-file-name "~/.emacs.d/site-lisp/ghc-mod/.cabal-sandbox/bin/ghc-mod"))
         (add-hook 'haskell-mode-hook 'ghc-init)))
 
     (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)

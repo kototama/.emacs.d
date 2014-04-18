@@ -60,6 +60,7 @@ specific configurations and are store in
                  smex
                  visual-regexp
                  flycheck-haskell
+                 flycheck-hdevtools
                  dired-open
                  dired+
                  )))

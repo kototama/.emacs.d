@@ -216,6 +216,7 @@
       (flycheck-mode)
       (local-set-key (kbd "M-p") nil)
       (local-set-key (kbd "M-n") nil)
+      (local-set-key (kbd "C-c C-t") 'hdevtools/show-type-info)
       )
     
     ;; (use-package ghc

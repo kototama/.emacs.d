@@ -28,6 +28,6 @@
 (load-role-file "init.el")
 
 ;; starts the emacs server
-(condition-case nil
-    (server-start)
-  (error (message "Emacs server is already started.")))
+(require 'server)
+(unless (server-running-p)
+  (server-start))

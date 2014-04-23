@@ -150,10 +150,43 @@
 (use-package org
   :config
   (progn
+    
+    (defun jtc-org-tasks-closed-in-month (&optional month year match-string)
+      "Produces an org agenda tags view list of the tasks completed 
+in the specified month and year. Month parameter expects a number 
+from 1 to 12. Year parameter expects a four digit number. Defaults 
+to the current month when arguments are not provided. Additional search
+criteria can be provided via the optional match-string argument "
+      (interactive)
+      (let* ((today (calendar-current-date))
+             (for-month (or month (calendar-extract-month today)))
+             (for-year  (or year  (calendar-extract-year today))))
+        (org-tags-view nil 
+                       (concat
+                        match-string
+                        (format "+CLOSED>=\"[%d-%02d-01]\"" 
+                                for-year for-month)
+                        (format "+CLOSED<=\"[%d-%02d-%02d]\"" 
+                                for-year for-month 
+                                (calendar-last-day-of-month for-month for-year))))))
+
+    (defun jtc-tasks-last-month ()
+      "Produces an org agenda tags view list of all the tasks completed
+last month."
+      (interactive)
+      (let* ((today (calendar-current-date))
+             (for-month (calendar-extract-month today))
+             (for-year  (calendar-extract-year today)))
+        (calendar-increment-month for-month for-year -1)
+        (jtc-org-tasks-closed-in-month 
+         for-month for-year "+TODO=\"DONE\"")))
+    
     (defun my-common-org-mode-hook
       ()
       (setq org-refile-targets '((nil :maxlevel . 2)))
-      (setq org-use-speed-commands t))
+      (setq org-use-speed-commands t)
+      (setq org-archive-location "::* Archived Tasks")
+      (setq org-log-done 'time))
 
     (add-hook 'org-mode-hook 'my-common-org-mode-hook))
   :bind (("C-c o a" . org-agenda)

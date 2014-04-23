@@ -241,16 +241,26 @@ last month."
     ;;           (append exec-path
     ;;                   '(concat user-emacs-directory "site-lisp/structured-haskell-mode/.cabal-sandbox/bin")))))
 
+    (use-package hdevtools
+      :load-path "site-lisp/hdevtools-emacs")
+    
     (defun my-haskell-mode-hook
       ()
-      ;; (flycheck-mode)
-
+      (flycheck-mode)
+      (local-set-key (kbd "M-p") nil)
+      (local-set-key (kbd "M-n") nil)
+      (local-set-key (kbd "C-c C-t") 'hdevtools/show-type-info)
       )
     
-    (use-package ghc
-      :config
-      (progn
-        (add-hook 'haskell-mode-hook 'ghc-init)))
+    ;; (use-package ghc
+    ;;   :load-path "site-lisp/ghc-mod/elisp"
+    ;;   :config
+    ;;   (progn
+    ;;     (setq ghc-module-command
+    ;;           (expand-file-name "~/.emacs.d/site-lisp/ghc-mod/.cabal-sandbox/bin/ghc-mod"))
+    ;;     (setq ghc-check-command
+    ;;           (expand-file-name "~/.emacs.d/site-lisp/ghc-mod/.cabal-sandbox/bin/ghc-mod"))
+    ;;     (add-hook 'haskell-mode-hook 'ghc-init)))
 
     (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 
@@ -271,6 +281,11 @@ last month."
       (local-set-key (kbd "M-q") 'fill-paragraph))
 
     (add-hook 'paredit-mode-hook 'my-paredit-mode-hook)))
+;;; * flycheck
+(use-package flycheck
+  :config
+  (progn
+    (use-package flycheck-hdevtools)))
 ;;; * end of file
 
 (provide 'config)

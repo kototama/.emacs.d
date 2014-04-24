@@ -150,7 +150,8 @@
 (use-package org
   :config
   (progn
-    
+    (setq org-reverse-note-order t)
+
     (defun jtc-org-tasks-closed-in-month (&optional month year match-string)
       "Produces an org agenda tags view list of the tasks completed 
 in the specified month and year. Month parameter expects a number 

@@ -1,7 +1,7 @@
 (require 'package)
 
 (setq package-archives
-      '(("gnu" . "http://elpa.gnu.org/packages/")
+      '(;; ("gnu" . "http://elpa.gnu.org/packages/")
         ("melpa" . "http://melpa.milkbox.net/packages/")
         ("org" . "http://orgmode.org/elpa/")))
 
@@ -52,7 +52,7 @@ specific configurations and are store in
                  magit
                  magit
                  markdown-mode
-                 multi-cursors
+                 multiple-cursors
                  org
                  org-plus-contrib
                  paredit

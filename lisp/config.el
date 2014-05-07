@@ -248,9 +248,11 @@ last month."
     (defun my-haskell-mode-hook
       ()
       (flycheck-mode)
+      (flycheck-select-checkers 'haskell-hdevtools)
       (local-set-key (kbd "M-p") nil)
       (local-set-key (kbd "M-n") nil)
       (local-set-key (kbd "C-c C-t") 'hdevtools/show-type-info)
+      
       )
     
     ;; (use-package ghc

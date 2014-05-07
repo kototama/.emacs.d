@@ -287,6 +287,13 @@ last month."
   :config
   (progn
     (use-package flycheck-hdevtools)))
+;;; * css-mode
+(use-package css-mode
+  :init
+  (add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
+  :config
+  (progn
+    (add-hook 'css-mode-hook 'auto-indent-mode)))
 ;;; * end of file
 
 (provide 'config)

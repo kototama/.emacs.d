@@ -48,6 +48,13 @@
              :config
              (require 'color-theme-kototama)
              (color-theme-kototama))
+;;; * css-mode
+(use-package css-mode
+  :init
+  (add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
+  :config
+  (progn
+    (add-hook 'css-mode-hook 'auto-indent-mode)))
 ;;; * dired
 (use-package dired
   :config
@@ -62,6 +69,51 @@
        (add-hook 'dired-mode-hook 'my-dired-open-hook)))))
 ;;; * dired+
 (use-package dired+)
+;;; * flycheck
+(use-package flycheck
+  :config
+  (progn
+    (use-package flycheck-hdevtools)))
+;;; * haskell
+(use-package haskell-mode
+  :config
+  (progn
+    ;; (use-package shm
+    ;;   :load-path "site-lisp/structured-haskell-mode/elisp"
+    ;;   :config
+    ;;   (progn
+    ;;     ;; (add-hook 'haskell-mode-hook 'structured-haskell-mode)
+    ;;     (setq exec-path
+    ;;           (append exec-path
+    ;;                   '(concat user-emacs-directory "site-lisp/structured-haskell-mode/.cabal-sandbox/bin")))))
+    
+    ;; (use-package ghc
+    ;;   :load-path "site-lisp/ghc-mod/elisp"
+    ;;   :config
+    ;;   (progn
+    ;;     (setq ghc-module-command
+    ;;           (expand-file-name "~/.emacs.d/site-lisp/ghc-mod/.cabal-sandbox/bin/ghc-mod"))
+    ;;     (setq ghc-check-command
+    ;;           (expand-file-name "~/.emacs.d/site-lisp/ghc-mod/.cabal-sandbox/bin/ghc-mod"))
+    ;;     (add-hook 'haskell-mode-hook 'ghc-init)))
+
+    (use-package hdevtools
+      :load-path "site-lisp/hdevtools-emacs")
+    
+    (defun my-haskell-mode-hook
+      ()
+      (turn-on-haskell-indentation)
+      (turn-on-haskell-doc-mode)
+      (flycheck-mode)
+      (flycheck-select-checkers 'haskell-hdevtools)
+      (local-set-key (kbd "M-p") nil)
+      (local-set-key (kbd "M-n") nil)
+      (local-set-key (kbd "C-c C-t") 'hdevtools/show-type-info)
+      
+      )
+
+    (add-hook 'haskell-mode-hook 'my-haskell-mode-hook)
+    ))
 ;;; * ido
 
 (use-package ido-mode
@@ -95,6 +147,11 @@
 
     (add-hook 'ido-setup-hook 'my-ido-setup-hook))
   :bind (("C-S-o" . ido-switch-buffer)))
+
+;;; * javascript
+(use-package js-mode
+  :config
+  (add-hook 'js-mode-hook 'auto-indent-mode))
 
 ;;; * lisp
 
@@ -210,6 +267,15 @@ last month."
       (mapc 'load
             '("org-element" "os" "os-bb" "os-github" "os-rmine"))))) 
 
+;;; * paredit
+(use-package paredit
+  :config
+  (progn
+    (defun my-paredit-mode-hook
+      ()
+      (local-set-key (kbd "M-q") 'fill-paragraph))
+
+    (add-hook 'paredit-mode-hook 'my-paredit-mode-hook)))
 ;;; * smex
 
 (use-package smex
@@ -229,67 +295,6 @@ last month."
   :init
   (progn
     (setq uniquify-buffer-name-style 'forward)))
-;;; * haskell
-(use-package haskell-mode
-  :config
-  (progn
-   ;; (use-package shm
-   ;;   :load-path "site-lisp/structured-haskell-mode/elisp"
-   ;;   :config
-   ;;   (progn
-   ;;     ;; (add-hook 'haskell-mode-hook 'structured-haskell-mode)
-   ;;     (setq exec-path
-   ;;           (append exec-path
-   ;;                   '(concat user-emacs-directory "site-lisp/structured-haskell-mode/.cabal-sandbox/bin")))))
-   
-   ;; (use-package ghc
-   ;;   :load-path "site-lisp/ghc-mod/elisp"
-   ;;   :config
-   ;;   (progn
-   ;;     (setq ghc-module-command
-   ;;           (expand-file-name "~/.emacs.d/site-lisp/ghc-mod/.cabal-sandbox/bin/ghc-mod"))
-   ;;     (setq ghc-check-command
-   ;;           (expand-file-name "~/.emacs.d/site-lisp/ghc-mod/.cabal-sandbox/bin/ghc-mod"))
-   ;;     (add-hook 'haskell-mode-hook 'ghc-init)))
-
-    (use-package hdevtools
-      :load-path "site-lisp/hdevtools-emacs")
-    
-    (defun my-haskell-mode-hook
-      ()
-      (turn-on-haskell-indentation)
-      (turn-on-haskell-doc-mode)
-      (flycheck-mode)
-      (flycheck-select-checkers 'haskell-hdevtools)
-      (local-set-key (kbd "M-p") nil)
-      (local-set-key (kbd "M-n") nil)
-      (local-set-key (kbd "C-c C-t") 'hdevtools/show-type-info)
-      
-      )
-
-    (add-hook 'haskell-mode-hook 'my-haskell-mode-hook)
-    ))
-;;; * paredit
-(use-package paredit
-  :config
-  (progn
-    (defun my-paredit-mode-hook
-      ()
-      (local-set-key (kbd "M-q") 'fill-paragraph))
-
-    (add-hook 'paredit-mode-hook 'my-paredit-mode-hook)))
-;;; * flycheck
-(use-package flycheck
-  :config
-  (progn
-    (use-package flycheck-hdevtools)))
-;;; * css-mode
-(use-package css-mode
-  :init
-  (add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
-  :config
-  (progn
-    (add-hook 'css-mode-hook 'auto-indent-mode)))
 ;;; * end of file
 
 (provide 'config)

@@ -28,6 +28,23 @@
 (use-package clojure-mode
   :config
   (progn
+    (defun cider-insert-required-ns-in-repl
+      ()
+      (interactive)
+      (save-excursion
+        (goto-char 0)
+        (if (re-search-forward ":require" nil t)
+            (let ((pos-first-require (1+ (point))))
+              (re-search-forward ")")
+              (let* ((pos-last-require (1- (point)))
+                     (requires (buffer-substring-no-properties pos-first-require pos-last-require))
+                     (quoted-requires (replace-regexp-in-string "\n +\\(\\[\\)" "\n'[" requires))
+                     (form (concat "(require '" quoted-requires ")")))
+                (switch-to-buffer-other-window (cider-find-or-create-repl-buffer))
+                (goto-char (max-char))
+                (insert form)))
+          (message ":require form not found"))))
+    
     (defun my-clojure-mode-hook
       ()
       (paredit-mode t)

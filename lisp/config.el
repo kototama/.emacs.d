@@ -19,6 +19,9 @@
   (defun my-cider-mode-hook
     ()
     (paredit-mode t)
+    (setq cider-repl-pop-to-buffer-on-connect nil)
+    (setq cider-popup-stacktraces t)
+    (setq cider-repl-popup-stacktraces t)
     ;; (bind-key "<S-return>" 'cider-repl-return cider-mode-map)
     )
 

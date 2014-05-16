@@ -129,7 +129,7 @@
       (local-set-key (kbd "M-p") nil)
       (local-set-key (kbd "M-n") nil)
       (local-set-key (kbd "C-c C-t") 'hdevtools/show-type-info)
-      
+      (local-set-key (kbd "C-c C-k") 'recompile)      
       )
 
     (add-hook 'haskell-mode-hook 'my-haskell-mode-hook)
@@ -316,47 +316,6 @@ last month."
   (progn
     (setq uniquify-buffer-name-style 'forward)))
 <<<<<<< HEAD
-;;; * haskell
-(use-package haskell-mode
-  :config
-  (progn
-   ;; (use-package shm
-   ;;   :load-path "site-lisp/structured-haskell-mode/elisp"
-   ;;   :config
-   ;;   (progn
-   ;;     ;; (add-hook 'haskell-mode-hook 'structured-haskell-mode)
-   ;;     (setq exec-path
-   ;;           (append exec-path
-   ;;                   '(concat user-emacs-directory "site-lisp/structured-haskell-mode/.cabal-sandbox/bin")))))
-   
-   ;; (use-package ghc
-   ;;   :load-path "site-lisp/ghc-mod/elisp"
-   ;;   :config
-   ;;   (progn
-   ;;     (setq ghc-module-command
-   ;;           (expand-file-name "~/.emacs.d/site-lisp/ghc-mod/.cabal-sandbox/bin/ghc-mod"))
-   ;;     (setq ghc-check-command
-   ;;           (expand-file-name "~/.emacs.d/site-lisp/ghc-mod/.cabal-sandbox/bin/ghc-mod"))
-   ;;     (add-hook 'haskell-mode-hook 'ghc-init)))
-
-    (use-package hdevtools
-      :load-path "site-lisp/hdevtools-emacs")
-    
-    (defun my-haskell-mode-hook
-      ()
-      (turn-on-haskell-indentation)
-      (turn-on-haskell-doc-mode)
-      (flycheck-mode)
-      (flycheck-select-checkers 'haskell-hdevtools)
-      (local-set-key (kbd "M-p") nil)
-      (local-set-key (kbd "M-n") nil)
-      (local-set-key (kbd "C-c C-t") 'hdevtools/show-type-info)
-      (local-set-key (kbd "C-c C-k") 'recompile)
-      
-      )
-
-    (add-hook 'haskell-mode-hook 'my-haskell-mode-hook)
-    ))
 ;;; * paredit
 (use-package paredit
   :config

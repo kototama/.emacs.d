@@ -264,6 +264,7 @@ last month."
       (local-set-key (kbd "M-p") nil)
       (local-set-key (kbd "M-n") nil)
       (local-set-key (kbd "C-c C-t") 'hdevtools/show-type-info)
+      (local-set-key (kbd "C-c C-k") 'recompile)
       
       )
 

@@ -315,7 +315,6 @@ last month."
   :init
   (progn
     (setq uniquify-buffer-name-style 'forward)))
-<<<<<<< HEAD
 ;;; * paredit
 (use-package paredit
   :config

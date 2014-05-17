@@ -55,4 +55,7 @@
 (setq safe-local-variable-values
       '((eval org-global-cycle)))
 
+;; shift + movements do not activate a selection
+(setq shift-select-mode nil)
+
 (provide 'defaults)

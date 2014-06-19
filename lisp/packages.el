@@ -44,6 +44,7 @@ specific configurations and are store in
                  auto-indent-mode
                  cider
                  clojure-mode
+                 clojure-test-mode
                  color-theme
                  coffee-mode
                  elisp-slime-nav

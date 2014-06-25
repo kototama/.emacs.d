@@ -52,6 +52,7 @@
       ()
       (paredit-mode t)
       (auto-indent-mode t)
+      (clojure-test-mode t)
       ;; indents ring context function properly
       (put 'context 'clojure-indent-function 2))
 

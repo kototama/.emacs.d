@@ -3,6 +3,7 @@
 
 ;; loads user defined functions to manage packages
 (add-to-list 'load-path "~/.emacs.d/lisp")
+(add-to-list 'load-path "~/.eroles/common")
 
 (require 'packages)
 
@@ -31,3 +32,4 @@
 (require 'server)
 (unless (server-running-p)
   (server-start))
+

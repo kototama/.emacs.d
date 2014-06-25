@@ -48,6 +48,7 @@ specific configurations and are store in
                  color-theme
                  coffee-mode
                  elisp-slime-nav
+		 elfeed
                  ido-ubiquitous
                  haskell-mode
                  magit

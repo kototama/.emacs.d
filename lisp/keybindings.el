@@ -10,6 +10,6 @@
 (bind-key* "C-S-k"  (lambda ()
                        (interactive)
                        (kill-buffer (current-buffer))))'
-(bind-key* "M-g m"  'pop-to-mark-command)
+(bind-key* "C-c p"  'pop-to-mark-command)
 
 (provide 'keybindings)

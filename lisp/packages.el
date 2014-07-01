@@ -39,33 +39,33 @@ specific configurations and are store in
 (defun define-common-packages
   ()
   (interactive)
-  (add-packages '(
-                 auto-async-byte-compile
-                 auto-indent-mode
-                 cider
-                 clojure-mode
-                 clojure-test-mode
-                 color-theme
-                 coffee-mode
-                 elisp-slime-nav
-		 elfeed
-                 ido-ubiquitous
-                 haskell-mode
-                 magit
-                 magit
-                 markdown-mode
-                 multiple-cursors
-                 org
-                 org-plus-contrib
-                 paredit
-                 s
-                 smex
-                 visual-regexp
-                 flycheck-haskell
-                 flycheck-hdevtools
-                 dired-open
-                 dired+
-                 )))
+  (add-packages '(elfeed
+                  auto-async-byte-compile
+                  auto-indent-mode
+                  cider
+                  clojure-mode
+                  clojure-test-mode
+                  coffee-mode
+                  color-theme
+                  dired+
+                  dired-open
+                  elisp-slime-nav
+                  flycheck-haskell
+                  flycheck-hdevtools
+                  haskell-mode
+                  ido-ubiquitous
+                  imenu
+                  magit
+                  magit
+                  markdown-mode
+                  multiple-cursors
+                  org
+                  org-plus-contrib
+                  paredit
+                  s
+                  smex
+                  visual-regexp
+                  )))
 
 (define-common-packages)
 

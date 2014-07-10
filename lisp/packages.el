@@ -55,6 +55,7 @@ specific configurations and are store in
                   haskell-mode
                   ido-ubiquitous
                   imenu
+                  jade-mode
                   magit
                   magit
                   markdown-mode

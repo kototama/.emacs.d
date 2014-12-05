@@ -25,6 +25,9 @@
 ;; setup global keybindings
 (require 'keybindings)
 
+;; setup keyboard accents
+(require 'iso-transl)
+
 ;; adds the user/machine specific configuration
 (load-role-file "init.el")
 

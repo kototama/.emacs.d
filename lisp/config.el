@@ -47,6 +47,11 @@
                 (goto-char (max-char))
                 (insert form)))
           (message ":require form not found"))))
+
+    (defun clojure-show-defs
+      ()
+      (interactive)
+      (occur "def"))
     
     (defun my-clojure-mode-hook
       ()
@@ -169,6 +174,9 @@
     (add-hook 'ido-setup-hook 'my-ido-setup-hook))
   :bind (("C-S-o" . ido-switch-buffer)))
 
+;;; * imenu
+(use-package imenu
+  :bind ("C-c i" . imenu))
 ;;; * javascript
 (use-package js-mode
   :config

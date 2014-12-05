@@ -1,5 +1,6 @@
 (require 'bind-key)
 
+(bind-key* "C-c p"  'pop-to-mark-command)
 (bind-key* "C-S-j"  'join-line)
 (bind-key* "M-n"  'forward-paragraph)
 (bind-key* "M-p"  'backward-paragraph)
@@ -9,7 +10,7 @@
                        (other-window -1)))
 (bind-key* "C-S-k"  (lambda ()
                        (interactive)
-                       (kill-buffer (current-buffer))))'
-(bind-key* "M-g m"  'pop-to-mark-command)
+                       (kill-buffer (current-buffer))))
+
 
 (provide 'keybindings)

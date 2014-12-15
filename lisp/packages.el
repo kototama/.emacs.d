@@ -65,6 +65,7 @@ specific configurations and are store in
                   paredit
                   s
                   smex
+                  sparql-mode
                   visual-regexp
                   )))
 

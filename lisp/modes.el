@@ -6,6 +6,7 @@
     column-number-mode
     delete-selection-mode
     global-company-mode
+    ace-jump-mode
     ))
 
 (dolist (m user-active-modes)

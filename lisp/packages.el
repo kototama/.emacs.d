@@ -39,7 +39,8 @@ specific configurations and are store in
 (defun define-common-packages
   ()
   (interactive)
-  (add-packages '(elfeed
+  (add-packages '(ace-jump-mode
+                  elfeed
                   auto-async-byte-compile
                   auto-indent-mode
                   cider

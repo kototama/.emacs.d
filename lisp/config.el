@@ -11,6 +11,9 @@
 ;;   (load-file file))
 
 
+;;; * ace-jump
+(use-package ace-jump-mode
+  :bind (("M-g j" . ace-jump-mode)))
 ;;; * cider
 
 (use-package cider-repl

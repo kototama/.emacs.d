@@ -55,6 +55,7 @@
     
     (defun my-clojure-mode-hook
       ()
+      (message "my-clojure-mode-hook")
       (paredit-mode t)
       (auto-indent-mode t)
       (clojure-test-mode t)
@@ -74,6 +75,11 @@
              :config
              (require 'color-theme-kototama)
              (color-theme-kototama))
+;;; * company
+(use-package company
+  :config
+  (progn
+    (setq company-idle-delay 0)))
 ;;; * css-mode
 (use-package css-mode
   :init
@@ -305,6 +311,14 @@ last month."
       (local-set-key (kbd "M-q") 'fill-paragraph))
 
     (add-hook 'paredit-mode-hook 'my-paredit-mode-hook)))
+;;; * python
+(use-package python
+  :config
+  (progn
+    (defun my-python-mode-hook
+      ())
+
+    (add-hook 'python-mode-hook 'my-python-mode-hook)))
 ;;; * smex
 
 (use-package smex

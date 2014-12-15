@@ -4,7 +4,9 @@
     winner-mode
     show-paren-mode
     column-number-mode
-    delete-selection-mode))
+    delete-selection-mode
+    global-company-mode
+    ))
 
 (dolist (m user-active-modes)
   (funcall m t))

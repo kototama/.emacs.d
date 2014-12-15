@@ -47,6 +47,7 @@ specific configurations and are store in
                   clojure-test-mode
                   coffee-mode
                   color-theme
+                  company-mode
                   dired+
                   dired-open
                   elisp-slime-nav

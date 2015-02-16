@@ -58,4 +58,7 @@
 ;; shift + movements do not activate a selection
 (setq shift-select-mode nil)
 
+;; fix emacs closing slowly on some systems
+(setq x-select-enable-clipboard-manager nil)
+
 (provide 'defaults)

@@ -9,7 +9,7 @@
 	url = https://github.com/zenspider/package.git
 [submodule "site-lisp/structured-haskell-mode"]
 	path = site-lisp/structured-haskell-mode
-	url = git@github.com:chrisdone/structured-haskell-mode.git
+	url = https://github.com/chrisdone/structured-haskell-mode.git
 [submodule "site-lisp/org-sync"]
 	path = site-lisp/org-sync
 	url = git://orgmode.org/org-sync.git

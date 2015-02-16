@@ -49,7 +49,7 @@ specific configurations and are store in
                   ;; clojure-test-mode
                   coffee-mode
                   color-theme
-                  ;; company-mode
+                  company
                   dired+
                   dired-open
                   elisp-slime-nav

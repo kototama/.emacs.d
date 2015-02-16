@@ -39,26 +39,25 @@ specific configurations and are store in
 (defun define-common-packages
   ()
   (interactive)
-  (add-packages '(ace-jump-mode
+  (add-packages '(
+		  ace-jump-mode
                   elfeed
                   auto-async-byte-compile
                   auto-indent-mode
-                  cider
+                  ;; cider
                   clojure-mode
-                  clojure-test-mode
+                  ;; clojure-test-mode
                   coffee-mode
                   color-theme
-                  company-mode
+                  ;; company-mode
                   dired+
                   dired-open
                   elisp-slime-nav
-                  flycheck-haskell
-                  flycheck-hdevtools
+                  ;; flycheck-haskell
+                  ;; flycheck-hdevtools
                   haskell-mode
                   ido-ubiquitous
                   imenu
-                  jade-mode
-                  magit
                   magit
                   markdown-mode
                   multiple-cursors
@@ -67,7 +66,7 @@ specific configurations and are store in
                   paredit
                   s
                   smex
-                  sparql-mode
+                  ;; sparql-mode
                   visual-regexp
                   )))
 

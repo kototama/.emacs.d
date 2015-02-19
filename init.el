@@ -15,6 +15,7 @@
 
 (require 'defaults)
 (require 'appearance)
+(require 'layout)
 
 ;; loads package configurations
 (require 'config)

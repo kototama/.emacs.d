@@ -179,9 +179,14 @@
 (use-package imenu
   :bind ("C-c i" . imenu))
 ;;; * javascript
-(use-package js-mode
+(use-package js3-mode
   :config
-  (add-hook 'js-mode-hook 'auto-indent-mode))
+  (progn
+    (defun my-js3-mode-hook
+        ()
+      (auto-indent-mode)
+      (setq js3-indent-level 4))
+    (add-hook 'js3-mode-hook 'my-js3-mode-hook)))
 
 ;;; * lisp
 

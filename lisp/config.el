@@ -185,7 +185,8 @@
     (defun my-js3-mode-hook
         ()
       (auto-indent-mode)
-      (setq js3-indent-level 4))
+      (setq js3-indent-level 4)
+      (whitespace-mode))
     (add-hook 'js3-mode-hook 'my-js3-mode-hook)))
 
 ;;; * lisp
@@ -347,6 +348,13 @@ last month."
       (local-set-key (kbd "M-q") 'fill-paragraph))
 
     (add-hook 'paredit-mode-hook 'my-paredit-mode-hook)))
+;;; * whitespace-mode
+(use-package whitespace
+  :init
+  (progn
+    (setq whitespace-style '(face tabs trailing lines-tail space-before-tab
+                                  newline indentation empty space-after-tab
+                                  tab-mark newline-mark))))
 ;;; * end of file
 
 (provide 'config)

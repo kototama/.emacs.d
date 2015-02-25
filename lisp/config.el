@@ -317,7 +317,8 @@ last month."
   :config
   (progn
     (defun my-python-mode-hook
-      ())
+        ()
+      (whitespace-mode))
 
     (add-hook 'python-mode-hook 'my-python-mode-hook)))
 ;;; * smex

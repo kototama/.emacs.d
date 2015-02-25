@@ -187,6 +187,24 @@
       (auto-indent-mode)
       (setq js3-indent-level 4)
       (whitespace-mode))
+
+    ;; for Jasmine
+    (defun js-xit-tests
+        ()
+      (interactive)
+      (save-excursion
+        (goto-char (point-min))
+        (while (re-search-forward "\\(^ +\\)it" nil t)
+          (replace-match "\\1xit" nil nil))))
+
+    (defun js-unxit-tests
+        ()
+      (interactive)
+      (save-excursion
+        (goto-char (point-min))
+        (while (re-search-forward "\\(^ +\\)xit" nil t)
+          (replace-match "\\1it" nil nil))))
+
     (add-hook 'js3-mode-hook 'my-js3-mode-hook)))
 
 ;;; * lisp

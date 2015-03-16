@@ -334,6 +334,9 @@ last month."
 (use-package python
   :config
   (progn
+
+    (elpy-enable)
+
     (defun my-python-mode-hook
         ()
       (whitespace-mode))
@@ -373,7 +376,8 @@ last month."
   (progn
     (setq whitespace-style '(face tabs trailing lines-tail space-before-tab
                                   newline indentation empty space-after-tab
-                                  tab-mark newline-mark))))
+                                  tab-mark ;; newline-mark
+                                  ))))
 ;;; * end of file
 
 (provide 'config)

@@ -3,7 +3,8 @@
 (setq package-archives
       '(;; ("gnu" . "http://elpa.gnu.org/packages/")
         ("melpa" . "http://melpa.milkbox.net/packages/")
-        ("org" . "http://orgmode.org/elpa/")))
+        ("org" . "http://orgmode.org/elpa/")
+        ("elpy" . "http://jorgenschaefer.github.io/packages/")))
 
 ;; loads packages used during the configuration
 (add-to-list 'load-path "~/.emacs.d/site-lisp/dash.el/")

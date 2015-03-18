@@ -22,6 +22,6 @@ the current position of point, then move it to the beginning of the line."
       (when (eq pt (point))
         (beginning-of-line)))))
 
-(bind-key* "C-a" 'smart-line-beginning)
+;; (bind-key* "C-a" 'smart-line-beginning)
 
 (provide 'keybindings)

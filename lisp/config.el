@@ -330,6 +330,12 @@ last month."
       (local-set-key (kbd "M-q") 'fill-paragraph))
 
     (add-hook 'paredit-mode-hook 'my-paredit-mode-hook)))
+;;; * projectile
+(use-package projectile
+  :init
+  (progn
+    projectile-global-mode)
+  :bind ("M-g f" . projectile-find-file))
 ;;; * python
 (use-package python
   :config

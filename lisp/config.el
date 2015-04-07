@@ -334,7 +334,8 @@ last month."
 (use-package projectile
   :init
   (progn
-    projectile-global-mode)
+    (setq projectile-keymap-prefix (kbd "C-c M-p"))
+    (projectile-global-mode))
   :bind ("M-g f" . projectile-find-file))
 ;;; * python
 (use-package python

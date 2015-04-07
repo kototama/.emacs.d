@@ -360,8 +360,8 @@ last month."
 (use-package paren
   :init
   (progn
-    (set-face-background 'show-paren-match-face "purple")
-    (set-face-foreground 'show-paren-match-face "black")))
+    (set-face-background 'show-paren-match "purple")
+    (set-face-foreground 'show-paren-match "black")))
 
 ;;; * twitter
 (use-package twittering-mode

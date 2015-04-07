@@ -357,6 +357,16 @@ last month."
     (set-face-background 'show-paren-match-face "purple")
     (set-face-foreground 'show-paren-match-face "black")))
 
+;;; * twitter
+(use-package twittering-mode
+  :config
+  (progn
+    (defun load-twitter-credentials
+        ()
+      (interactive)
+      (twittering-load-private-info)))
+  :bind (("C-c t l" . load-twitter-credentials)
+         ("C-c t t" . twit)))
 ;;; * uniquify
 (use-package uniquify
   :init

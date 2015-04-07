@@ -339,7 +339,8 @@ last month."
 
     (defun my-python-mode-hook
         ()
-      (whitespace-mode))
+      (whitespace-mode)
+      (setq python-indent-offset 4))
 
     (add-hook 'python-mode-hook 'my-python-mode-hook)))
 ;;; * smex

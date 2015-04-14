@@ -96,6 +96,15 @@
        (add-hook 'dired-mode-hook 'my-dired-open-hook)))))
 ;;; * dired+
 (use-package dired+)
+;;; * elpy
+(use-package elpy
+  :config
+  (progn
+    (defun my-elpy-mode-hook ()
+      (setq elpy-rpc-backend "jedi")
+      (setq elpy-rpc-timeout 3))
+
+      (add-hook 'elpy-mode-hook 'my-elpy-mode-hook)))
 ;;; * flycheck
 (use-package flycheck
   :config

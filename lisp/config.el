@@ -6,10 +6,10 @@
 ;;; * ace-jump
 (use-package ace-jump-mode
   :bind (("M-g j" . ace-jump-mode)))
-;;; * cider
+;;; * cider-repl
 
 (use-package cider-repl
-  :init
+  :config
   
   (defun my-cider-mode-hook
     ()

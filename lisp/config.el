@@ -402,9 +402,9 @@ last month."
   :init
   (progn
     (setq whitespace-style '(face tabs trailing lines-tail space-before-tab
-                                  newline indentation empty space-after-tab
-                                  tab-mark ;; newline-mark
-                                  ))))
+                                 newline indentation empty space-after-tab
+                                 tab-mark ;; newline-mark
+                                 ))))
 ;;; * end of file
 
 (provide 'config)

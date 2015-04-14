@@ -355,8 +355,9 @@ last month."
 
     (defun my-python-mode-hook
         ()
-      (whitespace-mode)
-      (setq python-indent-offset 4))
+      (setq elpy-rpc-backend "jedi")
+      (setq python-indent-offset 4)
+      (whitespace-mode))
 
     (add-hook 'python-mode-hook 'my-python-mode-hook)))
 ;;; * smex

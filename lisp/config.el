@@ -102,7 +102,8 @@
   (progn
     (defun my-elpy-mode-hook ()
       (setq elpy-rpc-backend "jedi")
-      (setq elpy-rpc-timeout 3))
+      (setq elpy-rpc-timeout 3)
+      (setq elpy-test-runner 'elpy-test-pytest-runner))
 
       (add-hook 'elpy-mode-hook 'my-elpy-mode-hook)))
 ;;; * flycheck

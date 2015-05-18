@@ -61,4 +61,7 @@
 ;; fix emacs closing slowly on some systems
 (setq x-select-enable-clipboard-manager nil)
 
+;; use aspell instead of ispell
+(setq-default ispell-program-name "aspell")
+
 (provide 'defaults)

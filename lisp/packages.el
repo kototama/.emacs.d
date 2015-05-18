@@ -69,6 +69,7 @@ specific configurations and are store in
                   smex
                   ;; sparql-mode
                   visual-regexp
+                  whitespace-cleanup-mode
                   )))
 
 (define-common-packages)

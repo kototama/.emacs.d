@@ -354,11 +354,18 @@ last month."
 
     (elpy-enable)
 
+    (defun python-set-breakpoint
+        ()
+      (interactive)
+      (insert "import pudb; pudb.set_trace() #  noqa")
+      )
+
     (defun my-python-mode-hook
         ()
       (setq elpy-rpc-backend "jedi")
       (setq python-indent-offset 4)
-      (whitespace-mode))
+      (whitespace-mode)
+      (whitespace-cleanup-mode))
 
     (add-hook 'python-mode-hook 'my-python-mode-hook)))
 ;;; * smex

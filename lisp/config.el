@@ -404,7 +404,8 @@ last month."
 (use-package whitespace
   :init
   (progn
-    (setq whitespace-style '(face tabs trailing lines-tail space-before-tab
+    (setq whitespace-style '(face tabs trailing ;; lines-tail
+                                  space-before-tab
                                  newline indentation empty space-after-tab
                                  tab-mark ;; newline-mark
                                  ))))

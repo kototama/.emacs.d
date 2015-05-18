@@ -389,7 +389,8 @@ last month."
 (use-package uniquify
   :init
   (progn
-    (setq uniquify-buffer-name-style 'forward)))
+    (setq uniquify-buffer-name-style 'forward)
+    (setq uniquify-strip-common-suffix nil)))
 ;;; * paredit
 (use-package paredit
   :config

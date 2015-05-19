@@ -11,3 +11,8 @@ session*
 .mc-*
 /.org-id-locations
 /tramp
+.python-environments
+smex-items
+ido.last
+projectile-bookmarks.eld
+recentf

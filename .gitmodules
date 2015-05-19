@@ -28,3 +28,6 @@
 [submodule "site-lisp/notmuch"]
 	path = site-lisp/notmuch
 	url = git://notmuchmail.org/git/notmuch
+[submodule "site-lisp/magit"]
+	path = site-lisp/magit
+	url = git@github.com:magit/magit.git

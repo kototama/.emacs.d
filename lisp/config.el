@@ -260,7 +260,8 @@
 (use-package magit
   :bind (("C-c g s" . magit-status)
          ("C-c g l" . magit-file-log)
-         ("C-c g L" . magit-log)))
+         ("C-c g L" . magit-log))
+  :load-path "site-lisp/magit")
 
 ;;; * multiple-cursors
 (use-package multiple-cursors
@@ -365,7 +366,8 @@ last month."
       (setq elpy-rpc-backend "jedi")
       (setq python-indent-offset 4)
       (whitespace-mode)
-      (whitespace-cleanup-mode))
+      (whitespace-cleanup-mode)
+      )
 
     (add-hook 'python-mode-hook 'my-python-mode-hook)))
 ;;; * smex

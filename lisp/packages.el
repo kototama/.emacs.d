@@ -59,7 +59,6 @@ specific configurations and are store in
                   haskell-mode
                   ido-ubiquitous
                   imenu
-                  magit
                   markdown-mode
                   multiple-cursors
                   org

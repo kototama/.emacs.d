@@ -258,6 +258,9 @@
 ;;; * magit
 
 (use-package magit
+  :config
+  (progn
+    (require 'magit-blame))
   :bind (("C-c g s" . magit-status)
          ("C-c g l" . magit-file-log)
          ("C-c g L" . magit-log))

@@ -343,7 +343,7 @@ last month."
     (add-hook 'paredit-mode-hook 'my-paredit-mode-hook)))
 ;;; * projectile
 (use-package projectile
-  :init
+  :config
   (progn
     (setq projectile-keymap-prefix (kbd "C-c M-p"))
     (projectile-global-mode))

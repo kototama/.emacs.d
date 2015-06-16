@@ -1,6 +1,5 @@
 (defvar user-active-modes
   '(
-    ido-mode
     winner-mode
     show-paren-mode
     column-number-mode

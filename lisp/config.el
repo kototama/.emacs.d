@@ -74,7 +74,8 @@
 (use-package company
   :config
   (progn
-    (setq company-idle-delay 0)))
+    (setq company-idle-delay 0)
+    (global-company-mode)))
 ;;; * css-mode
 (use-package css-mode
   :init

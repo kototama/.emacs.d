@@ -5,7 +5,6 @@
     show-paren-mode
     column-number-mode
     delete-selection-mode
-    global-company-mode
     ))
 
 (dolist (m user-active-modes)

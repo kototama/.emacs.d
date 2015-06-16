@@ -350,7 +350,8 @@ last month."
   (progn
     (setq projectile-keymap-prefix (kbd "C-c M-p"))
     (projectile-global-mode))
-  :bind ("M-g f" . projectile-find-file))
+  :bind (("C-c f f" . projectile-find-file)
+         ("C-c f d" . projectile-find-dir)))
 ;;; * python
 (use-package python
   :config

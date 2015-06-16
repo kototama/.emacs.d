@@ -64,6 +64,7 @@ specific configurations and are store in
                   org
                   org-plus-contrib
                   paredit
+                  projectile
                   s
                   smex
                   ;; sparql-mode

@@ -374,6 +374,26 @@ last month."
       (whitespace-cleanup-mode)
       )
 
+    (defun python-get-test-filename
+        (filename)
+      "Return the name of the test file."
+      (let ((dir (file-name-directory filename)))
+       (if (string-suffix-p "__init__.py" filename)
+           (concat dir "test_init.py")
+         (concat dir "test_" (file-name-nondirectory filename)))))
+
+    (defun python-test-file
+        ()
+      "Open the test file for the current buffer in an another
+window and run the unit tests. "
+      (interactive)
+      (delete-other-windows)
+      (buffer-file-name)
+      (find-file-other-window (python-get-test-filename (buffer-file-name)))
+      (split-window-below)
+      (elpy-test)
+      (enlarge-window 3))
+
     (add-hook 'python-mode-hook 'my-python-mode-hook)))
 ;;; * smex
 

@@ -262,7 +262,7 @@
   :bind (("C-c g s" . magit-status)
          ("C-c g l" . magit-file-log)
          ("C-c g L" . magit-log))
-  :load-path "~/.emacs.d/site-lisp/magit/lisp/")
+  :load-path "site-lisp/magit/lisp/")
 
 ;;; * multiple-cursors
 (use-package multiple-cursors

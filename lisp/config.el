@@ -259,13 +259,10 @@
 ;;; * magit
 
 (use-package magit
-  :config
-  (progn
-    (require 'magit-blame))
   :bind (("C-c g s" . magit-status)
          ("C-c g l" . magit-file-log)
          ("C-c g L" . magit-log))
-  :load-path "site-lisp/magit")
+  :load-path "~/.emacs.d/site-lisp/magit/lisp/")
 
 ;;; * multiple-cursors
 (use-package multiple-cursors

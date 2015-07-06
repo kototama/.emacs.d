@@ -64,4 +64,8 @@
 ;; use aspell instead of ispell
 (setq-default ispell-program-name "aspell")
 
+;; prevent magit 2.1 to hang emacs
+;; see http://magit.vc/manual/magit/Emacs-245-hangs-when-loading-Magit.html#Emacs-245-hangs-when-loading-Magit
+(setq tramp-ssh-controlmaster-options nil)
+
 (provide 'defaults)

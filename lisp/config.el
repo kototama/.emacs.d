@@ -259,6 +259,25 @@
 ;;; * magit
 
 (use-package magit
+  :config
+  (progn
+    ;; https://emacs.stackexchange.com/questions/13772/how-to-prevent-magit-to-ask-where-to-push-a-branch
+    (defun my-magit-mode-hook
+        ()
+
+      (defun magit-push-arguments-maybe-upstream (magit-push-popup-fun &rest args)
+        "Enable --set-upstream switch if there isn't a current upstream."
+        (let ((magit-push-arguments
+               (if (magit-get-remote) magit-push-arguments
+                 (cons "--set-upstream" magit-push-arguments))))
+          (apply magit-push-popup-fun args)))
+
+      (advice-add 'magit-push-popup :around #'magit-push-arguments-maybe-upstream))
+
+    (message "magit-use-package-config")
+    (setq magit-completing-read-function #'magit-ido-completing-read)
+
+    (add-hook 'magit-mode-hook 'my-magit-mode-hook))
   :bind (("C-c g s" . magit-status)
          ("C-c g l" . magit-file-log)
          ("C-c g L" . magit-log))

@@ -6,11 +6,11 @@
 ;;; * ace-jump
 (use-package ace-jump-mode
   :bind (("M-g j" . ace-jump-mode)))
-;;; * cider-repl
 
+;;; * cider-repl
 (use-package cider-repl
   :config
-  
+
   (defun my-cider-mode-hook
     ()
     (paredit-mode t)
@@ -47,7 +47,7 @@
       ()
       (interactive)
       (occur "def"))
-    
+
     (defun my-clojure-mode-hook
       ()
       (message "my-clojure-mode-hook")
@@ -58,8 +58,8 @@
       (put 'context 'clojure-indent-function 2))
 
     (add-hook 'clojure-mode-hook 'my-clojure-mode-hook)))
-;;; * coffee
 
+;;; * coffee
 (use-package coffee-mode
   :config
   (progn
@@ -70,12 +70,14 @@
              :config
              (require 'color-theme-kototama)
              (color-theme-kototama))
+
 ;;; * company
 (use-package company
   :config
   (progn
     (setq company-idle-delay 0)
     (global-company-mode)))
+
 ;;; * css-mode
 (use-package css-mode
   :init
@@ -83,6 +85,7 @@
   :config
   (progn
     (add-hook 'css-mode-hook 'auto-indent-mode)))
+
 ;;; * dired
 (use-package dired
   :config
@@ -95,8 +98,10 @@
          (local-set-key (kbd "<S-return>") 'dired-open-xdg))
 
        (add-hook 'dired-mode-hook 'my-dired-open-hook)))))
+
 ;;; * dired+
 (use-package dired+)
+
 ;;; * elpy
 (use-package elpy
   :config
@@ -106,12 +111,14 @@
       (setq elpy-rpc-timeout 3)
       (setq elpy-test-runner 'elpy-test-pytest-runner))
 
-      (add-hook 'elpy-mode-hook 'my-elpy-mode-hook)))
+    (add-hook 'elpy-mode-hook 'my-elpy-mode-hook)))
+
 ;;; * flycheck
 (use-package flycheck
   :config
   (progn
     (use-package flycheck-hdevtools)))
+
 ;;; * haskell
 (use-package haskell-mode
   :config
@@ -124,7 +131,7 @@
     ;;     (setq exec-path
     ;;           (append exec-path
     ;;                   '(concat user-emacs-directory "site-lisp/structured-haskell-mode/.cabal-sandbox/bin")))))
-    
+
     ;; (use-package ghc
     ;;   :load-path "site-lisp/ghc-mod/elisp"
     ;;   :config
@@ -137,7 +144,7 @@
 
     (use-package hdevtools
       :load-path "site-lisp/hdevtools-emacs")
-    
+
     (defun my-haskell-mode-hook
       ()
       (turn-on-haskell-indentation)
@@ -147,13 +154,13 @@
       (local-set-key (kbd "M-p") nil)
       (local-set-key (kbd "M-n") nil)
       (local-set-key (kbd "C-c C-t") 'hdevtools/show-type-info)
-      (local-set-key (kbd "C-c C-k") 'recompile)      
+      (local-set-key (kbd "C-c C-k") 'recompile)
       )
 
     (add-hook 'haskell-mode-hook 'my-haskell-mode-hook)
     ))
-;;; * ido
 
+;;; * ido
 (use-package ido-mode
   :init
   (progn
@@ -161,7 +168,7 @@
     (use-package ido-ubiquitous
       :init
       (ido-ubiquitous))
-    
+
     (setq ido-enable-flex-matching t)
     (setq ido-everywhere t)
     (setq ido-use-virtual-buffers t)
@@ -170,7 +177,7 @@
     (setq ido-max-directory-size 100000)
 
     (ido-mode 1)
-    
+
     (defun my-ido-setup-hook
         ()
       ;; Go straight home
@@ -189,6 +196,7 @@
 ;;; * imenu
 (use-package imenu
   :bind ("C-c i" . imenu))
+
 ;;; * javascript
 (use-package js3-mode
   :config
@@ -219,18 +227,17 @@
     (add-hook 'js3-mode-hook 'my-js3-mode-hook)))
 
 ;;; * lisp
-
 (use-package lisp-mode
   :config
   (progn
-    
+
     (use-package auto-async-byte-compile
       :config
       (progn
         (setq auto-async-byte-compile-suppress-warnings t)
         (add-hook 'emacs-lisp-mode-hook
                   'enable-auto-async-byte-compile-mode)))
-    
+
     (defun my-emacs-lisp-mode-hook
         ()
       (use-package paredit
@@ -244,9 +251,7 @@
 
       (use-package auto-indent
         :config
-        (auto-indent-mode t))
-      
-      )
+        (auto-indent-mode t)))
 
     (defun my-minibuffer-mode-hook
       ()
@@ -257,7 +262,6 @@
     (add-hook 'minibuffer-setup-hook 'my-minibuffer-mode-hook)))
 
 ;;; * magit
-
 (use-package magit
   :config
   (progn
@@ -288,29 +292,28 @@
   :bind (("C-S-c C-S-c" . mc/edit-lines)))
 
 ;;; * org
-
 (use-package org
   :config
   (progn
     (setq org-reverse-note-order t)
 
     (defun jtc-org-tasks-closed-in-month (&optional month year match-string)
-      "Produces an org agenda tags view list of the tasks completed 
-in the specified month and year. Month parameter expects a number 
-from 1 to 12. Year parameter expects a four digit number. Defaults 
+      "Produces an org agenda tags view list of the tasks completed
+in the specified month and year. Month parameter expects a number
+from 1 to 12. Year parameter expects a four digit number. Defaults
 to the current month when arguments are not provided. Additional search
 criteria can be provided via the optional match-string argument "
       (interactive)
       (let* ((today (calendar-current-date))
              (for-month (or month (calendar-extract-month today)))
              (for-year  (or year  (calendar-extract-year today))))
-        (org-tags-view nil 
+        (org-tags-view nil
                        (concat
                         match-string
-                        (format "+CLOSED>=\"[%d-%02d-01]\"" 
+                        (format "+CLOSED>=\"[%d-%02d-01]\""
                                 for-year for-month)
-                        (format "+CLOSED<=\"[%d-%02d-%02d]\"" 
-                                for-year for-month 
+                        (format "+CLOSED<=\"[%d-%02d-%02d]\""
+                                for-year for-month
                                 (calendar-last-day-of-month for-month for-year))))))
 
     (defun jtc-tasks-last-month ()
@@ -321,9 +324,9 @@ last month."
              (for-month (calendar-extract-month today))
              (for-year  (calendar-extract-year today)))
         (calendar-increment-month for-month for-year -1)
-        (jtc-org-tasks-closed-in-month 
+        (jtc-org-tasks-closed-in-month
          for-month for-year "+TODO=\"DONE\"")))
-    
+
     (defun my-common-org-mode-hook
       ()
       (setq org-refile-targets '((nil :maxlevel . 2)))
@@ -338,7 +341,6 @@ last month."
          ("C-c o L" . org-insert-link)))
 
 ;;; * org-capture
-
 (use-package org-capture
   :bind (("C-c o r" . org-capture)))
 
@@ -347,10 +349,10 @@ last month."
   :config
   (use-package os
     :load-path "site-lisp/org-sync"
-    :config 
+    :config
     (progn
       (mapc 'load
-            '("org-element" "os" "os-bb" "os-github" "os-rmine"))))) 
+            '("org-element" "os" "os-bb" "os-github" "os-rmine")))))
 
 ;;; * paredit
 (use-package paredit
@@ -361,6 +363,7 @@ last month."
       (local-set-key (kbd "M-q") 'fill-paragraph))
 
     (add-hook 'paredit-mode-hook 'my-paredit-mode-hook)))
+
 ;;; * projectile
 (use-package projectile
   :config
@@ -369,6 +372,7 @@ last month."
     (projectile-global-mode))
   :bind (("C-c f f" . projectile-find-file)
          ("C-c f d" . projectile-find-dir)))
+
 ;;; * python
 (use-package python
   :config
@@ -411,14 +415,13 @@ window and run the unit tests. "
       (enlarge-window 3))
 
     (add-hook 'python-mode-hook 'my-python-mode-hook)))
-;;; * smex
 
+;;; * smex
 (use-package smex
   :demand t
   :bind (("M-x" . smex)))
 
 ;;; * show-paren-mode
-
 (use-package paren
   :init
   (progn
@@ -435,12 +438,14 @@ window and run the unit tests. "
       (twittering-load-private-info)))
   :bind (("C-c t l" . load-twitter-credentials)
          ("C-c t t" . twit)))
+
 ;;; * uniquify
 (use-package uniquify
   :init
   (progn
     (setq uniquify-buffer-name-style 'forward)
     (setq uniquify-strip-common-suffix nil)))
+
 ;;; * paredit
 (use-package paredit
   :config
@@ -450,6 +455,7 @@ window and run the unit tests. "
       (local-set-key (kbd "M-q") 'fill-paragraph))
 
     (add-hook 'paredit-mode-hook 'my-paredit-mode-hook)))
+
 ;;; * whitespace-mode
 (use-package whitespace
   :init
@@ -459,8 +465,8 @@ window and run the unit tests. "
                                  newline indentation empty space-after-tab
                                  tab-mark ;; newline-mark
                                  ))))
-;;; * end of file
 
+;;; * end of file
 (provide 'config)
 
 ;; Local Variables:

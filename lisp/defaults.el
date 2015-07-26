@@ -68,4 +68,14 @@
 ;; see http://magit.vc/manual/magit/Emacs-245-hangs-when-loading-Magit.html#Emacs-245-hangs-when-loading-Magit
 (setq tramp-ssh-controlmaster-options nil)
 
+;; missing function in Emacs < 24.4
+(when (<= (string-to-number emacs-version) 24.3)
+  (defun string-suffix-p (str1 str2 &optional ignore-case)
+    (let ((begin2 (- (length str2) (length str1)))
+          (end2 (length str2)))
+      (when (< begin2 0) (setq begin2 0))
+      (eq t (compare-strings str1 nil nil
+                             str2 begin2 end2
+                             ignore-case)))))
+
 (provide 'defaults)

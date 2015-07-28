@@ -265,6 +265,22 @@
 (use-package magit
   :config
   (progn
+
+    ;; http://endlessparentheses.com/create-github-prs-from-emacs-with-magit.html
+    (require 's)
+
+    (defun visit-pull-request-url ()
+      "Visit the current branch's PR on Github."
+      (interactive)
+      (browse-url
+       (format "https://github.com/%s/pull/new/%s"
+               (car (s-split ".git"
+                             (cadr (s-split ":"
+                                            (magit-get "remote"
+                                                       (magit-get-remote)
+                                                       "url")))))
+               (cdr (magit-get-remote-branch)))))
+
     ;; https://emacs.stackexchange.com/questions/13772/how-to-prevent-magit-to-ask-where-to-push-a-branch
     (defun my-magit-mode-hook
         ()
@@ -278,7 +294,8 @@
 
       (advice-add 'magit-push-popup :around #'magit-push-arguments-maybe-upstream))
 
-    (message "magit-use-package-config")
+    (define-key magit-mode-map "v" #'visit-pull-request-url)
+
     (setq magit-completing-read-function #'magit-ido-completing-read)
 
     (add-hook 'magit-mode-hook 'my-magit-mode-hook))

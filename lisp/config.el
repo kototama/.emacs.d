@@ -123,6 +123,58 @@
 (use-package haskell-mode
   :config
   (progn
+
+    (setq haskell-process-type 'stack-ghci)
+
+    (add-hook 'flycheck-mode-hook #'flycheck-haskell-setup)
+
+    ;; http://ioctl.it/posts/2015-07-03-stack-flycheck.html
+    (flycheck-define-checker haskell-stack
+      "A Haskell syntax and type checker using ghc.
+
+See URL `http://www.haskell.org/ghc/'."
+      :command ("stack" "ghc" "--" "-Wall" "-fno-code"
+                (option-flag "-no-user-package-db"
+                             flycheck-ghc-no-user-package-database)
+                (option-list "-package-db" flycheck-ghc-package-databases)
+                (option-list "-i" flycheck-ghc-search-path concat)
+                ;; Include the parent directory of the current module tree, to
+                ;; properly resolve local imports
+                (eval (concat
+                       "-i"
+                       (flycheck-module-root-directory
+                        (flycheck-find-in-buffer flycheck-haskell-module-re))))
+                (option-list "-X" flycheck-ghc-language-extensions concat)
+                (eval flycheck-ghc-args)
+                "-x" (eval
+                      (pcase major-mode
+                        (`haskell-mode "hs")
+                        (`literate-haskell-mode "lhs")))
+                source)
+      :error-patterns
+      ((warning line-start (file-name) ":" line ":" column ":"
+                (or " " "\n    ") "Warning:" (optional "\n")
+                (message
+                 (one-or-more " ") (one-or-more not-newline)
+                 (zero-or-more "\n"
+                               (one-or-more " ")
+                               (one-or-more not-newline)))
+                line-end)
+       (error line-start (file-name) ":" line ":" column ":"
+              (or (message (one-or-more not-newline))
+                  (and "\n"
+                       (message
+                        (one-or-more " ") (one-or-more not-newline)
+                        (zero-or-more "\n"
+                                      (one-or-more " ")
+                                      (one-or-more not-newline)))))
+              line-end))
+      :error-filter
+      (lambda (errors)
+        (flycheck-sanitize-errors (flycheck-dedent-error-messages errors)))
+      :modes (haskell-mode literate-haskell-mode)
+      :next-checkers ((warning . haskell-hlint)))
+    
     ;; (use-package shm
     ;;   :load-path "site-lisp/structured-haskell-mode/elisp"
     ;;   :config
@@ -150,11 +202,12 @@
       (turn-on-haskell-indentation)
       (turn-on-haskell-doc-mode)
       (flycheck-mode)
-      (flycheck-select-checkers 'haskell-hdevtools)
+      ;; (flycheck-select-checkers 'haskell-hdevtools)
       (local-set-key (kbd "M-p") nil)
       (local-set-key (kbd "M-n") nil)
       (local-set-key (kbd "C-c C-t") 'hdevtools/show-type-info)
       (local-set-key (kbd "C-c C-k") 'recompile)
+      (flycheck-select-checker 'haskell-stack)
       )
 
     (add-hook 'haskell-mode-hook 'my-haskell-mode-hook)
@@ -395,7 +448,10 @@ last month."
   :config
   (progn
 
-    (elpy-enable)
+    (use-package elpy
+      :config
+      (progn
+        (elpy-enable)))
 
     (defun python-set-breakpoint
         ()

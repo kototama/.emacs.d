@@ -42,6 +42,7 @@ specific configurations and are store in
   ()
   (interactive)
   (add-packages '(
+                  ack-menu
 		  ace-jump-mode
                   elfeed
                   auto-async-byte-compile

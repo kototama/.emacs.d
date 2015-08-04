@@ -55,7 +55,8 @@ specific configurations and are store in
                   dired+
                   dired-open
                   elisp-slime-nav
-                  ;; flycheck-haskell
+                  flycheck
+                  flycheck-haskell
                   ;; flycheck-hdevtools
                   haskell-mode
                   ido-ubiquitous

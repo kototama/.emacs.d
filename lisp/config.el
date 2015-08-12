@@ -106,12 +106,15 @@
 (use-package elpy
   :config
   (progn
+
     (defun my-elpy-mode-hook ()
       (setq elpy-rpc-backend "jedi")
       (setq elpy-rpc-timeout 3)
-      (setq elpy-test-runner 'elpy-test-pytest-runner))
+      (setq elpy-test-runner 'elpy-test-pytest-runner)
+      (local-set-key (kbd "M-.") 'python-goto-definition))
 
-    (add-hook 'elpy-mode-hook 'my-elpy-mode-hook)))
+    (add-hook 'elpy-mode-hook 'my-elpy-mode-hook)
+    ))
 
 ;;; * flycheck
 (use-package flycheck
@@ -448,10 +451,14 @@ last month."
   :config
   (progn
 
-    (use-package elpy
-      :config
-      (progn
-        (elpy-enable)))
+    (defun python-goto-definition
+        ()
+      (interactive)
+      (condition-case nil
+          (elpy-goto-definition)
+        (error
+         (etags-select-find-tag-at-point)))
+      )
 
     (defun python-set-breakpoint
         ()
@@ -465,6 +472,7 @@ last month."
       (setq python-indent-offset 4)
       (whitespace-mode)
       (whitespace-cleanup-mode)
+      (local-set-key (kbd "M-.") 'python-goto-definition)
       )
 
     (defun python-get-test-filename

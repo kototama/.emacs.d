@@ -56,6 +56,7 @@ specific configurations and are store in
                   dired+
                   dired-open
                   elisp-slime-nav
+                  etags-select
                   flycheck
                   flycheck-haskell
                   ;; flycheck-hdevtools

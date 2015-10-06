@@ -360,6 +360,8 @@ See URL `http://www.haskell.org/ghc/'."
          ("C-c g L" . magit-log))
   :load-path "site-lisp/magit/lisp/")
 
+;;; * magit-blame
+(use-package magit-blame)
 ;;; * multiple-cursors
 (use-package multiple-cursors
   :bind (("C-S-c C-S-c" . mc/edit-lines)))
@@ -369,6 +371,7 @@ See URL `http://www.haskell.org/ghc/'."
   :config
   (progn
     (setq org-reverse-note-order t)
+    (setq org-src-fontify-natively t)
 
     (defun jtc-org-tasks-closed-in-month (&optional month year match-string)
       "Produces an org agenda tags view list of the tasks completed
@@ -405,7 +408,8 @@ last month."
       (setq org-refile-targets '((nil :maxlevel . 2)))
       (setq org-use-speed-commands t)
       (setq org-archive-location "::* Archived Tasks")
-      (setq org-log-done 'time))
+      (setq org-log-done 'time)
+      (setq org-export-with-sub-superscripts nil))
 
     (add-hook 'org-mode-hook 'my-common-org-mode-hook))
   :bind (("C-c o a" . org-agenda)
@@ -468,6 +472,7 @@ last month."
 
     (defun my-python-mode-hook
         ()
+      (elpy-mode)
       (setq elpy-rpc-backend "jedi")
       (setq python-indent-offset 4)
       (whitespace-mode)

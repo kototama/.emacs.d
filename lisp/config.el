@@ -77,8 +77,9 @@
 (use-package company
   :config
   (progn
-    (setq company-idle-delay 0)
-    (global-company-mode)))
+    (setq company-idle-delay 0.5)
+    ;; (global-company-mode)
+    ))
 
 ;;; * css-mode
 (use-package css-mode
@@ -117,13 +118,14 @@
 
     (add-hook 'elpy-mode-hook 'my-elpy-mode-hook)
     )
-  :disabled t)
+  )
 
 ;;; * flycheck
 (use-package flycheck
   :config
   (progn
-    (use-package flycheck-hdevtools)))
+    (use-package flycheck-hdevtools
+      :disabled t)))
 
 ;;; * haskell
 (use-package haskell-mode

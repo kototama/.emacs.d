@@ -20,7 +20,9 @@
     ;; (bind-key "<S-return>" 'cider-repl-return cider-mode-map)
     )
 
-  (add-hook 'cider-repl-mode-hook 'my-cider-mode-hook))
+  (add-hook 'cider-repl-mode-hook 'my-cider-mode-hook)
+
+  :disabled t)
 
 ;;; * clojure
 (use-package clojure-mode

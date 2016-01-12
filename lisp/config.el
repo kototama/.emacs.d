@@ -108,13 +108,14 @@
   (progn
 
     (defun my-elpy-mode-hook ()
-      (setq elpy-rpc-backend "jedi")
+      (setq elpy-rpc-backend "rope")
       (setq elpy-rpc-timeout 3)
       (setq elpy-test-runner 'elpy-test-pytest-runner)
       (local-set-key (kbd "M-.") 'python-goto-definition))
 
     (add-hook 'elpy-mode-hook 'my-elpy-mode-hook)
-    ))
+    )
+  :disabled t)
 
 ;;; * flycheck
 (use-package flycheck
@@ -305,9 +306,10 @@ See URL `http://www.haskell.org/ghc/'."
         :config
         (elisp-slime-nav-mode t))
 
-      (use-package auto-indent
-        :config
-        (auto-indent-mode t)))
+      ;; (use-package auto-indent
+      ;;   :config
+      ;;   (auto-indent-mode t))
+      )
 
     (defun my-minibuffer-mode-hook
       ()

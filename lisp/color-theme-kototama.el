@@ -15,7 +15,7 @@
       (flyspell-incorrect ((t (:foreground "OrangeRed" :underline t :weight normal))))
       (font-lock-comment-face ((t (:foreground "SteelBlue1"))))
       (font-lock-function-name-face ((t (:foreground "gold"))))
-      (font-lock-keyword-face ((t (:foreground "springgreen"))))
+      (font-lock-keyword-face ((t (:foreground "light slate blue"))))
       (font-lock-type-face ((t (:foreground "PaleGreen"))))
       (font-lock-variable-name-face ((t (:foreground "plum"))))
       (font-lock-builtin-face ((t (:foreground "LightSteelBlue"))))

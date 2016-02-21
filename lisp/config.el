@@ -20,7 +20,9 @@
     ;; (bind-key "<S-return>" 'cider-repl-return cider-mode-map)
     )
 
-  (add-hook 'cider-repl-mode-hook 'my-cider-mode-hook))
+  (add-hook 'cider-repl-mode-hook 'my-cider-mode-hook)
+
+  :disabled t)
 
 ;;; * clojure
 (use-package clojure-mode
@@ -75,8 +77,9 @@
 (use-package company
   :config
   (progn
-    (setq company-idle-delay 0)
-    (global-company-mode)))
+    (setq company-idle-delay 0.5)
+    ;; (global-company-mode)
+    ))
 
 ;;; * css-mode
 (use-package css-mode
@@ -108,19 +111,21 @@
   (progn
 
     (defun my-elpy-mode-hook ()
-      (setq elpy-rpc-backend "jedi")
+      (setq elpy-rpc-backend "rope")
       (setq elpy-rpc-timeout 3)
       (setq elpy-test-runner 'elpy-test-pytest-runner)
       (local-set-key (kbd "M-.") 'python-goto-definition))
 
     (add-hook 'elpy-mode-hook 'my-elpy-mode-hook)
-    ))
+    )
+  )
 
 ;;; * flycheck
 (use-package flycheck
   :config
   (progn
-    (use-package flycheck-hdevtools)))
+    (use-package flycheck-hdevtools
+      :disabled t)))
 
 ;;; * haskell
 (use-package haskell-mode
@@ -305,9 +310,10 @@ See URL `http://www.haskell.org/ghc/'."
         :config
         (elisp-slime-nav-mode t))
 
-      (use-package auto-indent
-        :config
-        (auto-indent-mode t)))
+      ;; (use-package auto-indent
+      ;;   :config
+      ;;   (auto-indent-mode t))
+      )
 
     (defun my-minibuffer-mode-hook
       ()
@@ -360,6 +366,8 @@ See URL `http://www.haskell.org/ghc/'."
          ("C-c g L" . magit-log))
   :load-path "site-lisp/magit/lisp/")
 
+;;; * magit-blame
+(use-package magit-blame)
 ;;; * multiple-cursors
 (use-package multiple-cursors
   :bind (("C-S-c C-S-c" . mc/edit-lines)))
@@ -369,6 +377,7 @@ See URL `http://www.haskell.org/ghc/'."
   :config
   (progn
     (setq org-reverse-note-order t)
+    (setq org-src-fontify-natively t)
 
     (defun jtc-org-tasks-closed-in-month (&optional month year match-string)
       "Produces an org agenda tags view list of the tasks completed
@@ -405,7 +414,8 @@ last month."
       (setq org-refile-targets '((nil :maxlevel . 2)))
       (setq org-use-speed-commands t)
       (setq org-archive-location "::* Archived Tasks")
-      (setq org-log-done 'time))
+      (setq org-log-done 'time)
+      (setq org-export-with-sub-superscripts nil))
 
     (add-hook 'org-mode-hook 'my-common-org-mode-hook))
   :bind (("C-c o a" . org-agenda)
@@ -468,6 +478,7 @@ last month."
 
     (defun my-python-mode-hook
         ()
+      (elpy-mode)
       (setq elpy-rpc-backend "jedi")
       (setq python-indent-offset 4)
       (whitespace-mode)

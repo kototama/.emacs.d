@@ -1,39 +1,42 @@
-;; enables the use of packages
-(require 'package)
+;; number of bytes of consing before a garbage collection is invoked
+;; 100 mega bytes
+(setq gc-cons-threshold (* 100 1024 1024))
 
-;; loads user defined functions to manage packages
-(add-to-list 'load-path "~/.emacs.d/lisp")
-(add-to-list 'load-path "~/.eroles/common")
+(let ((file-name-handler-alist nil))
 
-(require 'packages)
+  ;; enables the use of packages
+  (require 'package)
 
-;;; initialize ELPA packages
+  ;; loads user defined functions to manage packages
+  (add-to-list 'load-path "~/.emacs.d/lisp")
+  (add-to-list 'load-path "~/.eroles/common")
 
-(package-initialize)
+  (require 'packages)
 
-;;; loads the common settings
+  ;; initialize ELPA packages
+  (package-initialize)
 
-(require 'defaults)
-(require 'appearance)
-(require 'layout)
+  ;; loads the common settings
+  (require 'defaults)
+  (require 'appearance)
+  (require 'layout)
 
-;; loads package configurations
-(require 'config)
+  ;; loads package configurations
+  (require 'config)
 
-;; activates default modes
-(require 'modes)
+  ;; activates default modes
+  (require 'modes)
 
-;; setup global keybindings
-(require 'keybindings)
+  ;; setup global keybindings
+  (require 'keybindings)
 
-;; setup keyboard accents
-(require 'iso-transl)
+  ;; setup keyboard accents
+  (require 'iso-transl)
 
-;; adds the user/machine specific configuration
-(load-role-file "init.el")
+  ;; adds the user/machine specific configuration
+  (load-role-file "init.el")
 
-;; starts the emacs server
-(require 'server)
-(unless (server-running-p)
-  (server-start))
-
+  ;; starts the emacs server
+  (require 'server)
+  (unless (server-running-p)
+    (server-start)))

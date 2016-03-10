@@ -42,6 +42,7 @@ specific configurations and are store in
   ()
   (interactive)
   (add-packages '(
+                  ack ;; for wgrep-ack
                   ack-menu
 		  ace-jump-mode
                   elfeed
@@ -50,7 +51,6 @@ specific configurations and are store in
                   ;; cider
                   clojure-mode
                   ;; clojure-test-mode
-                  coffee-mode
                   color-theme
                   company
                   dired+
@@ -71,9 +71,9 @@ specific configurations and are store in
                   projectile
                   s
                   smex
-                  ;; sparql-mode
                   visual-regexp
                   whitespace-cleanup-mode
+                  wgrep-ack
                   )))
 
 (define-common-packages)

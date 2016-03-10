@@ -127,6 +127,20 @@
     (use-package flycheck-hdevtools
       :disabled t)))
 
+;;; * grep
+
+(use-package grep
+  :config
+  (progn
+    (when (string-suffix-p "/fish" (getenv "SHELL"))
+      ;; for grep-find
+      (grep-apply-setting 'grep-find-command "find <D> -type f -exec grep -nH -e <R> \\{\\} +")
+      ;; for rgrep
+      (grep-apply-setting 'grep-find-template
+                          "find . <X> -type f <F> -exec grep <C> -nH -e <R> \\{\\} \\\;")
+      )))
+
+
 ;;; * haskell
 (use-package haskell-mode
   :config
@@ -507,19 +521,6 @@ window and run the unit tests. "
       (enlarge-window 3))
 
     (add-hook 'python-mode-hook 'my-python-mode-hook)))
-
-;;; * rgrep
-
-(use-package grep
-  :config
-  (progn
-    (when (string-suffix-p "/fish" (getenv "SHELL"))
-      ;; for grep-find
-      (grep-apply-setting 'grep-find-command "find <D> -type f -exec grep -nH -e <R> \\{\\} +")
-      ;; for rgrep
-      (grep-apply-setting 'grep-find-template
-                          "find . <X> -type f <F> -exec grep <C> -nH -e <R> \\{\\} \\\;")
-      )))
 
 ;;; * smex
 (use-package smex

@@ -78,13 +78,4 @@
                              str2 begin2 end2
                              ignore-case)))))
 
-;; configure find grep for fish shell, if necessary
-(when (string-suffix-p "/fish" (getenv "SHELL"))
-  ;; for grep-find
-  (grep-apply-setting 'grep-find-command "find <D> -type f -exec grep -nH -e <R> \\{\\} +")
-  ;; for rgrep
-  (grep-apply-setting 'grep-find-template
-        "find . <X> -type f <F> -exec grep <C> -nH -e <R> \\{\\} \\\;")
-  )
-
 (provide 'defaults)

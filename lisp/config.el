@@ -361,6 +361,8 @@ See URL `http://www.haskell.org/ghc/'."
     (defun my-magit-mode-hook
         ()
 
+      (setq ediff-window-setup-function 'ediff-setup-windows-plain)
+
       (defun magit-push-arguments-maybe-upstream (magit-push-popup-fun &rest args)
         "Enable --set-upstream switch if there isn't a current upstream."
         (let ((magit-push-arguments

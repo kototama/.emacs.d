@@ -575,6 +575,8 @@ window and run the unit tests. "
                                  ))))
 
 
+;;; * wgrep
+(use-package wgrep)
 ;;; * end of file
 (provide 'config)
 

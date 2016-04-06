@@ -572,7 +572,14 @@ window and run the unit tests. "
                                   space-before-tab
                                  newline indentation empty space-after-tab
                                  tab-mark ;; newline-mark
-                                 ))))
+                                 ))
+
+    (defun my-whitespace-mode-hook
+        ()
+      (set-face-background 'whitespace-trailing "yellow"))
+
+    (add-hook 'whitespace-mode-hook 'my-whitespace-mode-hook))
+  )
 
 
 ;;; * wgrep

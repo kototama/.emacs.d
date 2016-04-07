@@ -15,13 +15,16 @@
       (flyspell-incorrect ((t (:foreground "OrangeRed" :underline t :weight normal))))
       (font-lock-comment-face ((t (:foreground "SteelBlue1"))))
       (font-lock-function-name-face ((t (:foreground "gold"))))
-      (font-lock-keyword-face ((t (:foreground "light slate blue"))))
+      
       (font-lock-type-face ((t (:foreground "PaleGreen"))))
       (font-lock-variable-name-face ((t (:foreground "plum"))))
       (font-lock-builtin-face ((t (:foreground "LightSteelBlue"))))
       (font-lock-string-face ((t (:foreground "light salmon"))))
       (mode-line ((t (:foreground "black" :background "light slate gray"))))
-      (region ((t (:foreground nil :background "#555555")))))))
+      (region ((t (:foreground nil :background "#555555"))))
+      ;; (font-lock-keyword-face ((t (:foreground "DodgerBlue1"))))
+      (font-lock-keyword-face ((t (:foreground "mediumpurple1"))))
+      )))
 
 (provide 'color-theme-kototama)
 

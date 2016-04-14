@@ -1,6 +1,3 @@
-#[submodule "site-lisp/package"]
-#	path = site-lisp/package
-#	url = https://github.com/zenspider/package.git
 [submodule "site-lisp/dash.el"]
 	path = site-lisp/dash.el
 	url = https://github.com/magnars/dash.el.git
@@ -10,9 +7,6 @@
 [submodule "site-lisp/structured-haskell-mode"]
 	path = site-lisp/structured-haskell-mode
 	url = https://github.com/chrisdone/structured-haskell-mode.git
-[submodule "site-lisp/org-sync"]
-	path = site-lisp/org-sync
-	url = git://orgmode.org/org-sync.git
 [submodule "site-lisp/use-package"]
 	path = site-lisp/use-package
 	url = https://github.com/jwiegley/use-package

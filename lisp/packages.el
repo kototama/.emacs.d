@@ -2,7 +2,6 @@
 
 (setq package-archives
       '(("gnu" . "http://elpa.gnu.org/packages/")
-        ;; ("marmalade" . "https://marmalade-repo.org/packages/")
         ("melpa" . "http://melpa.milkbox.net/packages/")
         ("org" . "http://orgmode.org/elpa/")
         ("elpy" . "http://jorgenschaefer.github.io/packages/")))
@@ -48,7 +47,6 @@ specific configurations and are store in
                   elfeed
                   auto-async-byte-compile
                   auto-indent-mode
-                  ;; cider
                   clojure-mode
                   ;; clojure-test-mode
                   color-theme

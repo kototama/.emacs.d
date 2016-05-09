@@ -426,14 +426,21 @@ last month."
          for-month for-year "+TODO=\"DONE\"")))
 
     (defun my-common-org-mode-hook
-      ()
+        ()
+      (message "my-common-org-mode-hook")
       (setq org-refile-targets '((nil :maxlevel . 2)))
       (setq org-use-speed-commands t)
       (setq org-archive-location "::* Archived Tasks")
       (setq org-log-done 'time)
-      (setq org-export-with-sub-superscripts nil))
+      (setq org-export-with-sub-superscripts nil)
+      (condition-case nil
+          (progn
+            (require 'org-bullets)
+            (org-bullets-mode 1))
+        (message "org-bullets not installed")))
 
     (add-hook 'org-mode-hook 'my-common-org-mode-hook))
+
   :bind (("C-c o a" . org-agenda)
          ("C-c o o" . org-open-at-point)
          ("C-c o l" . org-store-link)

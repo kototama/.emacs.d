@@ -64,6 +64,7 @@ specific configurations and are store in
                   markdown-mode
                   multiple-cursors
                   org
+                  org-bullets
                   org-plus-contrib
                   paredit
                   projectile

@@ -19,6 +19,3 @@
 [submodule "site-lisp/hdevtools-emacs"]
 	path = site-lisp/hdevtools-emacs
 	url = https://github.com/lightquake/hdevtools-emacs.git
-[submodule "site-lisp/magit"]
-	path = site-lisp/magit
-	url = git@github.com:magit/magit.git

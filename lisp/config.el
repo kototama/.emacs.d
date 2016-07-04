@@ -273,13 +273,12 @@ See URL `http://www.haskell.org/ghc/'."
   :bind ("C-c i" . imenu))
 
 ;;; * javascript
-(use-package js3-mode
+(use-package js
   :config
   (progn
-    (defun my-js3-mode-hook
+    (defun my-js-mode-hook
         ()
       (auto-indent-mode)
-      (setq js3-indent-level 4)
       (whitespace-mode))
 
     ;; for Jasmine
@@ -299,7 +298,7 @@ See URL `http://www.haskell.org/ghc/'."
         (while (re-search-forward "\\(^ +\\)xit" nil t)
           (replace-match "\\1it" nil nil))))
 
-    (add-hook 'js3-mode-hook 'my-js3-mode-hook)))
+    (add-hook 'js-mode-hook 'my-js-mode-hook)))
 
 ;;; * lisp
 (use-package lisp-mode

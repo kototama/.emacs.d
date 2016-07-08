@@ -235,6 +235,12 @@ See URL `http://www.haskell.org/ghc/'."
     (add-hook 'haskell-mode-hook 'my-haskell-mode-hook)
     ))
 
+;;; * hl
+(use-package hl-line
+  :config
+  (progn
+    (set-face-background 'hl-line "dark slate blue")
+    ))
 ;;; * ido
 (use-package ido-mode
   :init

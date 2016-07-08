@@ -540,6 +540,7 @@ window and run the unit tests. "
 
 ;;; * twitter
 (use-package twittering-mode
+  :disabled t
   :config
   (progn
     (defun load-twitter-credentials

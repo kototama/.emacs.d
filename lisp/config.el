@@ -282,10 +282,12 @@ See URL `http://www.haskell.org/ghc/'."
 (use-package js
   :config
   (progn
+
     (defun my-js-mode-hook
         ()
       (auto-indent-mode)
-      (whitespace-mode))
+      (whitespace-mode)
+      (flycheck-mode))
 
     ;; for Jasmine
     (defun js-xit-tests

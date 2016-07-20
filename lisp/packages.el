@@ -74,6 +74,7 @@ specific configurations and are store in
                   visual-regexp
                   whitespace-cleanup-mode
                   wgrep-ack
+                  yaml-mode
                   )))
 
 (define-common-packages)

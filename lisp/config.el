@@ -5,7 +5,7 @@
 
 ;;; * ace-jump
 (use-package ace-jump-mode
-  :bind (("M-g j" . ace-jump-mode)))
+  :bind (("M-SPC" . ace-jump-mode)))
 
 ;;; * cider-repl
 (use-package cider-repl

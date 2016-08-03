@@ -1,3 +1,6 @@
+;;; Define all keybindings which are not related to a particular mode.
+;;; Keybindings specific to a mode are defined in config.el
+
 (require 'bind-key)
 
 (bind-key* "C-c p"  'pop-to-mark-command)

@@ -36,6 +36,9 @@
   ;; adds the user/machine specific configuration
   (load-role-file "init.el")
 
+  ;; loads files lib
+  (require 'files)
+
   ;; starts the emacs server
   (require 'server)
   (unless (server-running-p)

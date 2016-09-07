@@ -61,6 +61,7 @@ specific configurations and are store in
                   haskell-mode
                   ido-ubiquitous
                   imenu
+                  intero
                   magit
                   markdown-mode
                   multiple-cursors

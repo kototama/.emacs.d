@@ -490,6 +490,12 @@ window and run the unit tests. "
 
     (add-hook 'paredit-mode-hook 'my-paredit-mode-hook)))
 
+;;; * purescript
+(use-package purescript-mode
+  :init
+  (progn
+    (add-hook 'purescript-mode-hook 'turn-on-purescript-indentation)))
+
 ;;; * whitespace-mode
 (use-package whitespace
   :init

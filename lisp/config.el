@@ -494,7 +494,16 @@ window and run the unit tests. "
 (use-package purescript-mode
   :init
   (progn
-    (add-hook 'purescript-mode-hook 'turn-on-purescript-indentation)))
+
+    (eval-after-load 'flycheck
+      '(flycheck-purescript-setup))
+
+    (defun my-purescript-hook ()
+      (turn-on-purescript-indentation)
+      (flycheck-mode))
+
+    (add-hook 'purescript-mode-hook 'my-purescript-hook)
+    ))
 
 ;;; * whitespace-mode
 (use-package whitespace

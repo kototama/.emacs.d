@@ -491,7 +491,7 @@ window and run the unit tests. "
     (add-hook 'paredit-mode-hook 'my-paredit-mode-hook)))
 
 ;;; * purescript
-(use-package purescript-mode
+(use-package psc-ide
   :init
   (progn
 
@@ -499,8 +499,10 @@ window and run the unit tests. "
       '(flycheck-purescript-setup))
 
     (defun my-purescript-hook ()
-      (turn-on-purescript-indentation)
-      (flycheck-mode))
+      (psc-ide-mode)
+      (company-mode)
+      (flycheck-mode)
+      (turn-on-purescript-indentation))
 
     (add-hook 'purescript-mode-hook 'my-purescript-hook)
     ))

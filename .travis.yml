@@ -7,6 +7,6 @@ script:
   - cd ..
   - mv $TRAVIS_BUILD_DIR ~/.emacs.d
   - cd ~/.emacs.d
-  - emacs --version
+  - emacs24 --version
   - make
-  - emacs -l ~/.emacs.d/init.el -batch --eval='(message "Working")'
+  - emacs24 -l ~/.emacs.d/init.el -batch --eval='(message "Working")'

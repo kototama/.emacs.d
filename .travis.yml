@@ -1,3 +1,4 @@
+dist: trusty
 language: shell
 script:
   - cd $TRAVIS_BUILD_DIR

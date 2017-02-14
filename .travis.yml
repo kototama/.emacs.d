@@ -1,4 +1,4 @@
 language: shell
 script:
-  make
-  emacs -l ~/.emacs.d/init.el -batch --eval='(message "Working")'
+  - make
+  - emacs -l ~/.emacs.d/init.el -batch --eval='(message "Working")'

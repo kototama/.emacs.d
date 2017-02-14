@@ -73,6 +73,7 @@ specific configurations and are store in
                   s
                   smarparens
                   smex
+                  undo-tree
                   visual-regexp
                   whitespace-cleanup-mode
                   wgrep-ack

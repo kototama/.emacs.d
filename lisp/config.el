@@ -481,6 +481,11 @@ window and run the unit tests. "
     (setq uniquify-buffer-name-style 'forward)
     (setq uniquify-strip-common-suffix nil)))
 
+;;; * undo-tree
+(use-package undo-tree
+  :config
+  (progn
+    (global-undo-tree-mode)))
 ;;; * paredit
 (use-package paredit
   :config
@@ -521,6 +526,8 @@ window and run the unit tests. "
     (defun my-whitespace-mode-hook
         ()
       (set-face-background 'whitespace-trailing "yellow"))
+
+    (global-whitespace-mode)
 
     (add-hook 'whitespace-mode-hook 'my-whitespace-mode-hook))
   )

@@ -1,4 +1,8 @@
 language: shell
 script:
+  - cd $TRAVIS_BUILD_DIR
+  - cd ..
+  - mv $TRAVIS_BUILD_DIR ~/.emacs.d
+  - cd ~/.emacs.d
   - make
   - emacs -l ~/.emacs.d/init.el -batch --eval='(message "Working")'

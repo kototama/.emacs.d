@@ -4,7 +4,7 @@ language: shell
 script:
   - sudo apt-get install build-essential
   - sudo apt-get build-dep emacs24
-  - wget http://ftp.gnu.org/gnu/emacs/emacs-24.4.1.tar.gz
+  - wget http://ftp.gnu.org/gnu/emacs/emacs-24.4.tar.gz
   - tar -xf emacs-24.4.tar.* && cd emacs-24.4
   - ./configure
   - make

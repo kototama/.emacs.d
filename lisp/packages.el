@@ -76,7 +76,7 @@ specific configurations and are store in
                   psc-ide
                   purescript-mode
                   s
-                  smarparens
+                  smartparens
                   smex
                   undo-tree
                   visual-regexp

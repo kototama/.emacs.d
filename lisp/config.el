@@ -450,6 +450,16 @@ window and run the unit tests. "
 
     (add-hook 'python-mode-hook 'my-python-mode-hook)))
 
+;;; * smartparens
+(use-package smartparens
+  :config
+  (progn
+    ;; (set-face-foreground 'sp-pair-overlay-face nil)
+
+    (defun my-smarparens-mode-hook ()
+      (set-face-background 'sp-pair-overlay-face "DodgerBlue4"))
+
+    (add-hook 'smartparens-mode-hook 'my-smarparens-mode-hook)))
 ;;; * smex
 (use-package smex
   :demand t

@@ -2,11 +2,17 @@ dist: trusty
 sudo: required
 language: shell
 script:
-  - sudo apt-get install emacs24
+  - sudo apt-get install build-essential
+  - sudo apt-get build-dep emacs24
+  - wget http://ftp.gnu.org/gnu/emacs/emacs-24.4.1.tar.gz
+  - tar -xf emacs-24.4.tar.* && cd emacs-24.4
+  - ./configure
+  - make
+  - sudo make install
   - cd $TRAVIS_BUILD_DIR
   - cd ..
   - mv $TRAVIS_BUILD_DIR ~/.emacs.d
   - cd ~/.emacs.d
-  - emacs24 --version
+  - emacs-24.4 --version
   - make
-  - emacs24 -l ~/.emacs.d/init.el -batch --eval='(message "Working")'
+  - emacs-24.4 -l ~/.emacs.d/init.el -batch --eval='(message "Working")'

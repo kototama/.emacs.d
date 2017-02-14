@@ -4,7 +4,9 @@
       '(("gnu" . "http://elpa.gnu.org/packages/")
         ("melpa" . "http://melpa.org/packages/")
         ("org" . "http://orgmode.org/elpa/")
-        ("elpy" . "http://jorgenschaefer.github.io/packages/")))
+        ;; ("elpy" . "http://jorgenschaefer.github.io/packages/")
+        '("emacs-pe" . "https://emacs-pe.github.io/packages/")
+        ))
 
 ;; loads packages used during the configuration
 (add-to-list 'load-path "~/.emacs.d/site-lisp/dash.el/")

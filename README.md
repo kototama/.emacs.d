@@ -1,3 +1,5 @@
+<img src="https://travis-ci.org/kototama/.emacs.d.svg?branch=master" />
+
 # Emacs configuration
 
 A super lean Emacs configuration with [MELPA](http://melpa.milkbox.net/) and [use-package](https://github.com/jwiegley/use-package).

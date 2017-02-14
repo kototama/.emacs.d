@@ -57,6 +57,7 @@ specific configurations and are store in
                   etags-select
                   flycheck
                   flycheck-haskell
+                  flycheck-purescript
                   ;; flycheck-hdevtools
                   haskell-mode
                   ido-ubiquitous
@@ -70,6 +71,8 @@ specific configurations and are store in
                   org-plus-contrib
                   paredit
                   projectile
+                  psc-ide
+                  purescript-mode
                   s
                   smarparens
                   smex

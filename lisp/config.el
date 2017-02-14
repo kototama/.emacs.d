@@ -208,7 +208,8 @@
         ()
       (auto-indent-mode)
       (whitespace-mode)
-      (flycheck-mode))
+      (flycheck-mode)
+      (smartparens-mode))
 
     ;; for Jasmine
     (defun js-xit-tests

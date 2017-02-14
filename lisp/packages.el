@@ -71,6 +71,7 @@ specific configurations and are store in
                   paredit
                   projectile
                   s
+                  smarparens
                   smex
                   visual-regexp
                   whitespace-cleanup-mode

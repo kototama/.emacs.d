@@ -518,6 +518,7 @@ window and run the unit tests. "
       (psc-ide-mode)
       (company-mode)
       (flycheck-mode)
+      (smartparens-mode)
       (turn-on-purescript-indentation))
 
     (add-hook 'purescript-mode-hook 'my-purescript-hook)

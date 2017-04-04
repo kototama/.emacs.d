@@ -535,7 +535,8 @@ window and run the unit tests. "
 
     (defun my-whitespace-mode-hook
         ()
-      (set-face-background 'whitespace-trailing "yellow"))
+      (set-face-foreground 'whitespace-trailing nil)
+      (set-face-background 'whitespace-trailing "green"))
 
     (global-whitespace-mode)
 

@@ -508,6 +508,7 @@ window and run the unit tests. "
 
 ;;; * purescript
 (use-package psc-ide
+  ;; :disabled t
   :init
   (progn
 
@@ -519,9 +520,34 @@ window and run the unit tests. "
       (company-mode)
       (flycheck-mode)
       (smartparens-mode)
-      (turn-on-purescript-indentation))
+      ;;      (setq psc-ide-server-executable "pulp server")
+      )
 
     (add-hook 'purescript-mode-hook 'my-purescript-hook)
+    (add-hook 'purescript-mode-hook 'turn-on-purescript-indentation)
+
+    ))
+
+(use-package purescript-mode
+  :disabled t
+  :init
+  (progn
+
+    (eval-after-load 'flycheck
+      '(flycheck-purescript-setup))
+
+    (defun my-purescript-hook ()
+      ;;      (psc-ide-mode)
+      (message "my-purescript-hook")
+      (company-mode)
+      ;; (flycheck-mode)
+      (smartparens-mode)
+      ;;      (setq psc-ide-server-executable "pulp server")
+      )
+
+    (add-hook 'purescript-mode-hook 'my-purescript-hook)
+    (add-hook 'purescript-mode-hook 'turn-on-purescript-indentation)
+
     ))
 
 ;;; * whitespace-mode

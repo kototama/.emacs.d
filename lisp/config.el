@@ -366,7 +366,15 @@ last month."
           (progn
             (require 'org-bullets)
             (org-bullets-mode 1))
-        (message "org-bullets not installed")))
+        (message "org-bullets not installed"))
+      (add-to-list 'org-latex-classes
+                   '("myletter"
+                     "\\documentclass\{letter\}
+                      \\usepackage[english]{babel}
+                      \[NO-DEFAULT-PACKAGES]
+                      \[NO-PACKAGES]
+                      \[EXTRA]"))
+      (setq org-latex-with-hyperref nil))
 
     (add-hook 'org-mode-hook 'my-common-org-mode-hook))
 

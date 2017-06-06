@@ -367,14 +367,7 @@ last month."
             (require 'org-bullets)
             (org-bullets-mode 1))
         (message "org-bullets not installed"))
-      (add-to-list 'org-latex-classes
-                   '("myletter"
-                     "\\documentclass\{letter\}
-                      \\usepackage[english]{babel}
-                      \[NO-DEFAULT-PACKAGES]
-                      \[NO-PACKAGES]
-                      \[EXTRA]"))
-      (setq org-latex-with-hyperref nil))
+      (message "my-common-org-mode-hook"))
 
     (add-hook 'org-mode-hook 'my-common-org-mode-hook))
 
@@ -386,6 +379,18 @@ last month."
 ;;; * org-capture
 (use-package org-capture
   :bind (("C-c o r" . org-capture)))
+;;; * ox-latex
+(use-package ox-latex
+  :config (progn
+            (add-to-list 'org-latex-classes
+                         '("myletter"
+                           "\\documentclass\{letter\}
+                            \\usepackage[english]{babel}
+                            \[NO-DEFAULT-PACKAGES]
+                            \[NO-PACKAGES]
+                            \[EXTRA]"))
+            (setq org-latex-with-hyperref nil)
+            ))
 
 ;;; * paredit
 (use-package paredit

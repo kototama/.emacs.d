@@ -105,6 +105,21 @@
 ;;; * dired+
 (use-package dired+)
 
+;;; * elixir
+(use-package elixir-mode
+  :config
+  (progn
+
+    (defun my-elixir-mode-hook ()
+      (smartparens-mode)
+      (require 'smartparens-elixir)
+      (company-mode)
+      (set-face-foreground 'elixir-atom-face "dark turquoise")
+      )
+
+    (add-hook 'elixir-mode-hook 'my-elixir-mode-hook)
+    )
+  )
 ;;; * elpy
 (use-package elpy
   :config

@@ -78,6 +78,7 @@
   :config
   (progn
     (setq company-idle-delay 0.5)
+    (set-face-background 'company-tooltip "light slate blue")
     ;; (global-company-mode)
     ))
 

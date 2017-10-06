@@ -78,6 +78,7 @@
   :config
   (progn
     (setq company-idle-delay 0.5)
+    (set-face-background 'company-tooltip "light slate blue")
     ;; (global-company-mode)
     ))
 
@@ -105,6 +106,21 @@
 ;;; * dired+
 (use-package dired+)
 
+;;; * elixir
+(use-package elixir-mode
+  :config
+  (progn
+
+    (defun my-elixir-mode-hook ()
+      (smartparens-mode)
+      (require 'smartparens-elixir)
+      (company-mode)
+      (set-face-foreground 'elixir-atom-face "dark turquoise")
+      )
+
+    (add-hook 'elixir-mode-hook 'my-elixir-mode-hook)
+    )
+  )
 ;;; * elpy
 (use-package elpy
   :config

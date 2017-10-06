@@ -385,7 +385,11 @@ last month."
             (add-to-list 'org-latex-classes
                          '("myletter"
                            "\\documentclass\{letter\}
-                            \\usepackage[english]{babel}
+\\usepackage[english]{babel}
+\\usepackage[utf8]{inputenc}
+\\makeatletter
+\\let\\@texttop\\relax
+\\makeatother
                             \[NO-DEFAULT-PACKAGES]
                             \[NO-PACKAGES]
                             \[EXTRA]"))

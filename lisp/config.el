@@ -372,7 +372,6 @@ last month."
 
     (defun my-common-org-mode-hook
         ()
-      (message "my-common-org-mode-hook")
       (setq org-refile-targets '((nil :maxlevel . 2)))
       (setq org-use-speed-commands t)
       (setq org-archive-location "::* Archived Tasks")
@@ -382,8 +381,7 @@ last month."
           (progn
             (require 'org-bullets)
             (org-bullets-mode 1))
-        (message "org-bullets not installed"))
-      (message "my-common-org-mode-hook"))
+        (message "org-bullets not installed")))
 
     (add-hook 'org-mode-hook 'my-common-org-mode-hook))
 
@@ -584,23 +582,23 @@ window and run the unit tests. "
     ))
 
 ;;; * whitespace-mode
-(use-package whitespace
+(use-package whitespace-mode
   :init
   (progn
+    (global-whitespace-mode)
     (setq whitespace-style '(face tabs trailing ;; lines-tail
                                   space-before-tab
                                  newline indentation empty space-after-tab
                                  tab-mark ;; newline-mark
                                  ))
+    (set-face-foreground 'whitespace-trailing nil)
+    (set-face-background 'whitespace-trailing "green")
+    )
 
-    (defun my-whitespace-mode-hook
-        ()
-      (set-face-foreground 'whitespace-trailing nil)
-      (set-face-background 'whitespace-trailing "green"))
-
-    (global-whitespace-mode)
-
-    (add-hook 'whitespace-mode-hook 'my-whitespace-mode-hook))
+  :config
+  (progn
+    
+    )
   )
 
 

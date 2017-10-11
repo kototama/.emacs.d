@@ -595,11 +595,6 @@ window and run the unit tests. "
     (set-face-foreground 'whitespace-trailing nil)
     (set-face-background 'whitespace-trailing "green")
     )
-
-  :config
-  (progn
-    
-    )
   )
 
 

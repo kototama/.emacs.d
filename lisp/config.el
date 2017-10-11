@@ -252,6 +252,7 @@
   (progn
 
     (use-package auto-async-byte-compile
+      :disabled
       :config
       (progn
         (setq auto-async-byte-compile-suppress-warnings t)

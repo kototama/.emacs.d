@@ -425,7 +425,8 @@ last month."
     (setq projectile-keymap-prefix (kbd "C-c M-p"))
     (projectile-global-mode))
   :bind (("C-c f f" . projectile-find-file)
-         ("C-c f d" . projectile-find-dir)))
+         ("C-c f d" . projectile-find-dir)
+         ("C-c f a" . projectile-ag)))
 
 ;;; * python
 (use-package python

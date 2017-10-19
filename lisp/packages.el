@@ -43,6 +43,7 @@ specific configurations and are store in
   ()
   (interactive)
   (add-packages '(
+                  ag
                   ack ;; for wgrep-ack
                   ack-menu
 		  ace-jump-mode

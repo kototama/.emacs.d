@@ -252,6 +252,7 @@
   (progn
 
     (use-package auto-async-byte-compile
+      :disabled
       :config
       (progn
         (setq auto-async-byte-compile-suppress-warnings t)
@@ -372,7 +373,6 @@ last month."
 
     (defun my-common-org-mode-hook
         ()
-      (message "my-common-org-mode-hook")
       (setq org-refile-targets '((nil :maxlevel . 2)))
       (setq org-use-speed-commands t)
       (setq org-archive-location "::* Archived Tasks")
@@ -382,8 +382,7 @@ last month."
           (progn
             (require 'org-bullets)
             (org-bullets-mode 1))
-        (message "org-bullets not installed"))
-      (message "my-common-org-mode-hook"))
+        (message "org-bullets not installed")))
 
     (add-hook 'org-mode-hook 'my-common-org-mode-hook))
 
@@ -401,7 +400,11 @@ last month."
             (add-to-list 'org-latex-classes
                          '("myletter"
                            "\\documentclass\{letter\}
-                            \\usepackage[english]{babel}
+\\usepackage[english]{babel}
+\\usepackage[utf8]{inputenc}
+\\makeatletter
+\\let\\@texttop\\relax
+\\makeatother
                             \[NO-DEFAULT-PACKAGES]
                             \[NO-PACKAGES]
                             \[EXTRA]"))
@@ -581,23 +584,18 @@ window and run the unit tests. "
     ))
 
 ;;; * whitespace-mode
-(use-package whitespace
+(use-package whitespace-mode
   :init
   (progn
+    (global-whitespace-mode)
     (setq whitespace-style '(face tabs trailing ;; lines-tail
                                   space-before-tab
                                  newline indentation empty space-after-tab
                                  tab-mark ;; newline-mark
                                  ))
-
-    (defun my-whitespace-mode-hook
-        ()
-      (set-face-foreground 'whitespace-trailing nil)
-      (set-face-background 'whitespace-trailing "green"))
-
-    (global-whitespace-mode)
-
-    (add-hook 'whitespace-mode-hook 'my-whitespace-mode-hook))
+    (set-face-foreground 'whitespace-trailing nil)
+    (set-face-background 'whitespace-trailing "green")
+    )
   )
 
 

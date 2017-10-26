@@ -453,12 +453,14 @@ last month."
 
     (defun my-python-mode-hook
         ()
-      (elpy-mode)
-      (setq elpy-rpc-backend "jedi")
+      (message "my-python-mode-hook")
+      ;; (elpy-mode)
+      ;; (setq elpy-rpc-backend "jedi")
       (setq python-indent-offset 4)
       (whitespace-mode)
       (whitespace-cleanup-mode)
-      (local-set-key (kbd "M-.") 'python-goto-definition)
+      ;; (local-set-key (kbd "M-.") 'python-goto-definition)
+      (anaconda-mode)
       )
 
     (defun python-get-test-filename

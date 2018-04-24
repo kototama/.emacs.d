@@ -14,5 +14,5 @@
 (bind-key* "C-S-k"  (lambda ()
                        (interactive)
                        (kill-buffer (current-buffer))))
-
+(bind-key* "C-c d" 'duplicate-thing)
 (provide 'keybindings)

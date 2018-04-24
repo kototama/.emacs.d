@@ -47,7 +47,6 @@ specific configurations and are store in
                   ack ;; for wgrep-ack
                   ack-menu
 		  ace-jump-mode
-                  elfeed
                   auto-async-byte-compile
                   auto-indent-mode
                   clojure-mode
@@ -56,7 +55,9 @@ specific configurations and are store in
                   company
                   dired+
                   dired-open
+                  duplicate-thing
                   elisp-slime-nav
+                  elixir-mode
                   etags-select
                   flycheck
                   flycheck-haskell
@@ -82,7 +83,7 @@ specific configurations and are store in
                   undo-tree
                   visual-regexp
                   whitespace-cleanup-mode
-                  wgrep-ack
+                  wgrep-ag
                   yaml-mode
                   )))
 

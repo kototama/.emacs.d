@@ -53,18 +53,15 @@ specific configurations and are store in
                   ;; clojure-test-mode
                   color-theme
                   company
-                  dired+
                   dired-open
                   duplicate-thing
                   elisp-slime-nav
                   elixir-mode
-                  etags-select
                   flycheck
                   flycheck-haskell
                   flycheck-purescript
                   ;; flycheck-hdevtools
                   haskell-mode
-                  ido-ubiquitous
                   imenu
                   intero
                   magit

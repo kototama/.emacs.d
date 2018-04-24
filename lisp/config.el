@@ -180,7 +180,9 @@
 
     (use-package ido-ubiquitous
       :init
-      (ido-ubiquitous))
+      (ido-ubiquitous)
+      :disabled t
+      )
 
     (setq ido-enable-flex-matching t)
     (setq ido-everywhere t)

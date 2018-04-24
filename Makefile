@@ -1,14 +1,12 @@
-all: dirs submodules install compile
+all: dirs submodules install
 
 dirs:
 	if [ ! -d "backups" ]; then mkdir backups; fi
+	if [ ! -d "elpa/color-theme-20070910.1007/themes" ]; then mkdir -p elpa/color-theme-20070910.1007/themes/; fi
 
 submodules:
 	git submodule init
 	git submodule update
-
-compile:
-	emacs -batch -l ~/.emacs.d/init.el -f batch-byte-compile ./init.el ./lisp/*.el `find ~/.eroles -name \*.el`
 
 # Install MELPA packages
 install:

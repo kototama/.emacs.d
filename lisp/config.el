@@ -61,12 +61,6 @@
 
     (add-hook 'clojure-mode-hook 'my-clojure-mode-hook)))
 
-;;; * coffee
-(use-package coffee-mode
-  :config
-  (progn
-    (setq coffee-tab-width 2)))
-
 ;;; * color-theme
 (use-package color-theme
              :config

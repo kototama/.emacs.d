@@ -62,6 +62,7 @@ specific configurations and are store in
                   flycheck-purescript
                   ;; flycheck-hdevtools
                   haskell-mode
+                  ido-completing-read+
                   imenu
                   intero
                   magit

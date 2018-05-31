@@ -46,9 +46,10 @@ specific configurations and are store in
                   ag
                   ack ;; for wgrep-ack
                   ack-menu
-		  ace-jump-mode
+                  ace-jump-mode
                   auto-async-byte-compile
                   auto-indent-mode
+                  browser-kill-ring
                   clojure-mode
                   ;; clojure-test-mode
                   color-theme

@@ -1,4 +1,4 @@
-<img src="https://travis-ci.org/kototama/.emacs.d.svg?branch=master" />
+[![travis status](https://travis-ci.org/kototama/.emacs.d.svg?branch=master "Travis Status")](https://travis-ci.org/kototama/.emacs.d.svg?branch=master)
 
 # Emacs configuration
 

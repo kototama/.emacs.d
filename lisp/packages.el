@@ -49,7 +49,7 @@ specific configurations and are store in
                   ace-jump-mode
                   auto-async-byte-compile
                   auto-indent-mode
-                  browser-kill-ring
+                  browse-kill-ring
                   clojure-mode
                   ;; clojure-test-mode
                   color-theme

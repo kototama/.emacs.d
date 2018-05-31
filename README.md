@@ -1,4 +1,4 @@
-[![travis status](https://travis-ci.org/kototama/.emacs.d.svg?branch=master "Travis Status")](https://travis-ci.org/kototama/.emacs.d.svg?branch=master)
+[![Build Status](https://www.travis-ci.org/kototama/.emacs.d.svg?branch=master)](https://www.travis-ci.org/kototama/.emacs.d)
 
 # Emacs configuration
 

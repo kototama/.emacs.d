@@ -592,7 +592,9 @@ window and run the unit tests. "
                                   space-before-tab
                                  newline indentation empty space-after-tab
                                  tab-mark ;; newline-mark
+                                 lines
                                  ))
+    (setq whitespace-line-column 110)
     (set-face-foreground 'whitespace-trailing nil)
     (set-face-background 'whitespace-trailing "green")
     )

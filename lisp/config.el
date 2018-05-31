@@ -7,6 +7,9 @@
 (use-package ace-jump-mode
   :bind (("M-SPC" . ace-jump-mode)))
 
+;;; * browser-kill-ring
+(use-package browser-kill-ring)
+
 ;;; * cider-repl
 (use-package cider-repl
   :config
@@ -178,10 +181,9 @@
   :init
   (progn
 
-    (use-package ido-ubiquitous
+    (use-package ido-completing-read+
       :init
-      (ido-ubiquitous)
-      :disabled t
+      (ido-ubiquitous-mode 1)
       )
 
     (setq ido-enable-flex-matching t)

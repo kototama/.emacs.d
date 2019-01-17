@@ -37,7 +37,7 @@
 (set-language-environment "UTF-8")
 
 ;; lines should be 80 characters wide, not 72
-(setq fill-column 80)
+(setq-default fill-column 80)
 
 ;; sentences do not need double spaces to end.
 (set-default 'sentence-end-double-space nil)

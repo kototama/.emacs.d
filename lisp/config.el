@@ -504,6 +504,17 @@ window and run the unit tests. "
       (set-face-background 'sp-pair-overlay-face "DodgerBlue4"))
 
     (add-hook 'smartparens-mode-hook 'my-smarparens-mode-hook)))
+;;; * rust
+(use-package rust-mode
+  :config
+  (progn
+    (defun my-rust-mode-hook ()
+      (linum-mode)
+      ;; (add-hook 'before-save-hook 'rust-format-buffer nil 'make-it-local)
+      (setq rust-format-on-save t)
+      )
+
+    (add-hook 'rust-mode-hook 'my-rust-mode-hook)))
 ;;; * smex
 (use-package smex
   :demand t

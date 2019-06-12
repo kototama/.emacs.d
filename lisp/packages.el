@@ -3,6 +3,7 @@
 (setq package-archives
       '(("gnu" . "http://elpa.gnu.org/packages/")
         ("melpa" . "http://melpa.org/packages/")
+        ("melpa-stable" . "http://stable.melpa.org/packages/")
         ("org" . "http://orgmode.org/elpa/")
         ;; ("elpy" . "http://jorgenschaefer.github.io/packages/")
         ("emacs-pe" . "https://emacs-pe.github.io/packages/")
@@ -69,6 +70,7 @@ specific configurations and are store in
                   magit
                   markdown-mode
                   multiple-cursors
+                  monokai-theme
                   org
                   org-bullets
                   org-plus-contrib

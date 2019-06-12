@@ -66,9 +66,11 @@
 
 ;;; * color-theme
 (use-package color-theme
-             :config
-             (require 'color-theme-kototama)
-             (color-theme-kototama))
+  :disabled t
+  :config
+  (require 'color-theme-kototama)
+  ;; (color-theme-kototama)
+  )
 
 ;;; * company
 (use-package company
@@ -334,6 +336,13 @@
 (use-package multiple-cursors
   :bind (("C-S-c C-S-c" . mc/edit-lines)))
 
+;;; * monokai
+(use-package monokai-theme
+  :init
+  (setq
+   monokai-comments "SteelBlue1"
+   )
+)
 ;;; * org
 (use-package org
   :config

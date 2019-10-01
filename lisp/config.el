@@ -262,10 +262,8 @@
 
     (defun my-emacs-lisp-mode-hook
         ()
-      (use-package paredit
-        :config
-        (paredit-mode t)
-        (auto-indent-mode t))
+      (paredit-mode t)
+      ;; (auto-indent-mode t)
 
       (use-package elisp-slime-nav
         :config

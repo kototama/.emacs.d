@@ -136,6 +136,10 @@
     )
   )
 
+;;; * expand region
+(use-package expand-region
+  :bind (("C-M-SPC" . er/expand-region))
+)
 ;;; * flycheck
 (use-package flycheck
   :config

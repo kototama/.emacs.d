@@ -57,6 +57,7 @@ specific configurations and are store in
                   duplicate-thing
                   elisp-slime-nav
                   elixir-mode
+                  expand-region
                   flycheck
                   flycheck-haskell
                   flycheck-purescript

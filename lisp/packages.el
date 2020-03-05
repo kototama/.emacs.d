@@ -1,13 +1,16 @@
 (require 'package)
 
 (setq package-archives
-      '(("gnu" . "http://elpa.gnu.org/packages/")
-        ("melpa" . "http://melpa.org/packages/")
-        ("melpa-stable" . "http://stable.melpa.org/packages/")
+      '(("melpa-stable" . "http://stable.melpa.org/packages/")
         ("org" . "http://orgmode.org/elpa/")
-        ;; ("elpy" . "http://jorgenschaefer.github.io/packages/")
-        ("emacs-pe" . "https://emacs-pe.github.io/packages/")
+        ("melpa" . "http://melpa.org/packages/")
+        ("gelpa" . "http://elpa.gnu.org/packages/")
         ))
+
+;; signatures verification broken? :-(
+;; (setq package-check-signature nil)
+;; or
+;; $ gpg --homedir ~/.emacs.d/elpa/gnupg --receive-keys 066DAFCB81E42C40
 
 ;; loads packages used during the configuration
 (add-to-list 'load-path "~/.emacs.d/site-lisp/dash.el/")
@@ -20,7 +23,8 @@
 (defun add-packages
   (pkgs)
   "Add packages to the list of `user-packages`"
-  (setq user-packages (-union user-packages pkgs)))
+  (setq packages-pinned-packages pkgs)
+  (setq user-packages (-union user-packages (-map #'car pkgs))))
 
 (defun load-role-file
   (name)
@@ -44,47 +48,39 @@ specific configurations and are store in
   ()
   (interactive)
   (add-packages '(
-                  ag
-                  ace-jump-mode
-                  auto-async-byte-compile
-                  auto-indent-mode
-                  browse-kill-ring
-                  clojure-mode
-                  ;; clojure-test-mode
-                  color-theme
-                  company
-                  dired-open
-                  duplicate-thing
-                  elisp-slime-nav
-                  elixir-mode
-                  expand-region
-                  flycheck
-                  flycheck-haskell
-                  flycheck-purescript
-                  ;; flycheck-hdevtools
-                  haskell-mode
-                  ido-completing-read+
-                  imenu
-                  intero
-                  magit
-                  markdown-mode
-                  multiple-cursors
-                  monokai-theme
-                  org
-                  org-bullets
-                  org-plus-contrib
-                  paredit
-                  projectile
-                  psc-ide
-                  purescript-mode
-                  s
-                  smartparens
-                  smex
-                  undo-tree
-                  visual-regexp
-                  whitespace-cleanup-mode
-                  wgrep-ag
-                  yaml-mode
+                  (ag . "melpa-stable")
+                  (ace-jump-mode . "melpa-stable")
+                  (auto-indent-mode . "melpa-stable")
+                  (browse-kill-ring . "melpa-stable")
+                  (clojure-mode . "melpa-stable")
+                  (company . "melpa-stable")
+                  ;;                  duplicate-thing
+                  (elisp-slime-nav . "melpa-stable")
+                  (elixir-mode . "melpa-stable")
+                  (expand-region . "melpa-stable")
+                  (flycheck . "melpa-stable")
+                  (flycheck-haskell . "melpa-stable")
+                  (haskell-mode . "melpa-stable")
+                  (ido-completing-read+ . "melpa-stable")
+                  (imenu . "melpa-stable")
+                  (intero . "melpa-stable")
+                  (magit . "melpa-stable")
+                  (markdown-mode . "melpa-stable")
+                  (multiple-cursors . "melpa-stable")
+                  (monokai-theme . "melpa-stable")
+                  (org . "melpa-stable")
+                  (org-bullets . "melpa-stable")
+                  (org-plus-contrib . "melpa-stable")
+                  (paredit . "melpa-stable")
+                  (projectile . "melpa-stable")
+                  (s . "melpa-stable")
+                  (smartparens . "melpa-stable")
+                  (smex . "melpa-stable")
+                  ;;                  undo-tree
+                  (visual-regexp . "melpa-stable")
+                  (whitespace-cleanup-mode . "melpa-stable")
+                  (wgrep-ag . "melpa-stable")
+                  (yaml-mode . "melpa-stable")
                   )))
 
 (define-common-packages)

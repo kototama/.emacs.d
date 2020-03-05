@@ -123,6 +123,7 @@
   )
 ;;; * elpy
 (use-package elpy
+  :disabled t
   :config
   (progn
 
@@ -422,6 +423,12 @@ last month."
             (setq org-latex-with-hyperref nil)
             ))
 
+;;; * plantuml
+(use-package plantuml-mode
+  :config
+  (progn
+    (setq plantuml-jar-path "~/local/opt/plantuml.jar")
+    (setq plantuml-default-exec-mode 'jar)))
 ;;; * paredit
 (use-package paredit
   :config
@@ -565,7 +572,7 @@ window and run the unit tests. "
 
 ;;; * purescript
 (use-package psc-ide
-  ;; :disabled t
+  :disabled t
   :init
   (progn
 

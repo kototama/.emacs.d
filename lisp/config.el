@@ -116,11 +116,14 @@
       (require 'smartparens-elixir)
       (company-mode)
       (set-face-foreground 'elixir-atom-face "dark turquoise")
+      (flycheck-mode)
+      (setq flycheck-elixir-credo-strict t)
       )
 
     (add-hook 'elixir-mode-hook 'my-elixir-mode-hook)
     )
   )
+
 ;;; * elpy
 (use-package elpy
   :disabled t
@@ -642,7 +645,3 @@ window and run the unit tests. "
 ;; eval: (org-global-cycle)
 ;; orgstruct-heading-prefix-regexp: ";;; "
 ;; End:
-
-
-
-

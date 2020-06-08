@@ -2,15 +2,28 @@ dist: trusty
 sudo: required
 language: shell
 script:
-  - sudo apt-get install build-essential
-  - sudo apt-get build-dep emacs24
-  - wget http://ftp.gnu.org/gnu/emacs/emacs-24.4.tar.gz
-  - tar -xf emacs-24.4.tar.* && cd emacs-24.4
-  - ./configure
-  - make
+  - sudo apt-get remove emacs emacs24 emacs24-bin-common emacs23-nox emacs23-bin-common emacsen-common
+  - dpkg -l | grep emacs
+  - git clone https://github.com/kototama/nix-home
+  - mv nix-home ~/.config/nixpkgs
+  - cd ~/.config/nixpkgs/hosts
+  - ln -s ci.nix default.nix
+  - curl https://nixos.org/nix/install | sh
+  - source ~/.nix-profile/etc/profile.d/nix.sh
+  - nix-channel --add https://github.com/rycee/home-manager/archive/master.tar.gz home-manager
+  - nix-channel --update
+  - export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
+  - rm -rf /home/travis/{.profile,.bashrc,.bash_profile,.ssh}
+  - nix-shell '<home-manager>' -A install
+  - home-manager switch
+  - ls -ahl ~/.nix-profile/bin
+  - source ~/.profile
+  - source ~/.bashrc
+  - echo $PATH
   - cd $TRAVIS_BUILD_DIR
   - cd ..
   - mv $TRAVIS_BUILD_DIR ~/.emacs.d
   - cd ~/.emacs.d
-  - emacs-24.4 --version
-  - emacs-24.4 -l ~/.emacs.d/init.el -batch --eval='(message "Working")'
+  - which emacs
+  - emacs --version
+  - emacs -l ~/.emacs.d/init.el -batch --eval='(message "Working")'

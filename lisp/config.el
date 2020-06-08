@@ -1,14 +1,14 @@
 ;;; * beginning of file
 
-(add-to-list 'load-path "~/.emacs.d/site-lisp/use-package/")
-(require 'use-package)
+(eval-when-compile
+  (require 'use-package))
 
 ;;; * ace-jump
 (use-package ace-jump-mode
   :bind (("M-SPC" . ace-jump-mode)))
 
-;;; * browser-kill-ring
-(use-package browser-kill-ring)
+;;; * browse-kill-ring
+(use-package browse-kill-ring)
 
 ;;; * cider-repl
 (use-package cider-repl
@@ -100,10 +100,12 @@
          ()
          (local-set-key (kbd "<S-return>") 'dired-open-xdg))
 
-       (add-hook 'dired-mode-hook 'my-dired-open-hook)))))
+       (add-hook 'dired-mode-hook 'my-dired-open-hook))
+      :disabled t)))
 
 ;;; * dired+
-(use-package dired+)
+(use-package dired+
+  :disabled t)
 
 ;;; * elixir
 (use-package elixir-mode
@@ -167,6 +169,7 @@
 
 ;;; * haskell
 (use-package haskell-mode
+  :disabled t
   :config
   (progn
 
@@ -191,10 +194,10 @@
   :init
   (progn
 
-    (use-package ido-completing-read+
-      :init
-      (ido-ubiquitous-mode 1)
-      )
+    ;; (use-package ido-completing-read+
+    ;;   :init
+    ;;   (ido-ubiquitous-mode 1)
+    ;;   )
 
     (setq ido-enable-flex-matching t)
     (setq ido-everywhere t)
@@ -272,10 +275,6 @@
         ()
       (paredit-mode t)
       ;; (auto-indent-mode t)
-
-      (use-package elisp-slime-nav
-        :config
-        (elisp-slime-nav-mode t))
 
       ;; (use-package auto-indent
       ;;   :config
@@ -428,6 +427,7 @@ last month."
 
 ;;; * plantuml
 (use-package plantuml-mode
+  :disabled t
   :config
   (progn
     (setq plantuml-jar-path "~/local/opt/plantuml.jar")
@@ -618,7 +618,7 @@ window and run the unit tests. "
     ))
 
 ;;; * whitespace-mode
-(use-package whitespace-mode
+(use-package whitespace
   :init
   (progn
     (global-whitespace-mode)

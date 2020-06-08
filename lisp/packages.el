@@ -1,21 +1,3 @@
-(require 'package)
-
-(setq package-archives
-      '(("melpa-stable" . "http://stable.melpa.org/packages/")
-        ("org" . "http://orgmode.org/elpa/")
-        ("melpa" . "http://melpa.org/packages/")
-        ("gelpa" . "http://elpa.gnu.org/packages/")
-        ))
-
-;; signatures verification broken? :-(
-;; (setq package-check-signature nil)
-;; or
-;; $ gpg --homedir ~/.emacs.d/elpa/gnupg --receive-keys 066DAFCB81E42C40
-
-;; loads packages used during the configuration
-(add-to-list 'load-path "~/.emacs.d/site-lisp/dash.el/")
-(load-file "~/.emacs.d/site-lisp/package/package+.el")
-
 (require 'dash)
 
 (defvar user-packages nil "The list of external packages used by the user.")

@@ -629,8 +629,8 @@ window and run the unit tests. "
                                  lines
                                  ))
     (setq whitespace-line-column 110)
-    (set-face-foreground 'whitespace-trailing nil)
-    (set-face-background 'whitespace-trailing "green")
+    (set-face-foreground 'whitespace-trailing "red")
+    (set-face-background 'whitespace-trailing "black")
     )
   )
 

@@ -1,5 +1,4 @@
-;;; * beginning of file
-
+;;; * require use-package
 (eval-when-compile
   (require 'use-package))
 

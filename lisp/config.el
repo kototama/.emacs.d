@@ -113,6 +113,7 @@
   (progn
 
     (defun my-elixir-mode-hook ()
+      (whitespace-mode)
       (smartparens-mode)
       (linum-mode)
       (require 'smartparens-elixir)
@@ -623,18 +624,21 @@ window and run the unit tests. "
 (use-package whitespace
   :init
   (progn
-    (global-whitespace-mode)
-    (setq whitespace-style '(face tabs trailing ;; lines-tail
-                                  space-before-tab
+   (setq whitespace-style '(face tabs trailing ;; lines-tail
+                                 space-before-tab
                                  newline indentation empty space-after-tab
                                  tab-mark ;; newline-mark
                                  lines
                                  ))
-    (setq whitespace-line-column 110)
-    (set-face-foreground 'whitespace-trailing "red")
-    (set-face-background 'whitespace-trailing "black")
-    )
-  )
+   (setq whitespace-line-column 110)
+
+   (defun my-whitespace-hook
+       ()
+     (set-face-foreground 'whitespace-trailing "red")
+     (set-face-background 'whitespace-trailing "black"))
+   
+   (add-hook 'whitespace-mode-hook 'my-whitespace-hook)
+   ))
 
 
 ;;; * wgrep

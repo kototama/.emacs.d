@@ -329,10 +329,12 @@
     (setq magit-completing-read-function #'magit-ido-completing-read)
 
     (add-hook 'magit-mode-hook 'my-magit-mode-hook))
+
   :bind (("C-c m s" . magit-status)
          ("C-c m l" . magit-file-log)
          ("C-c m L" . magit-log)
          ("C-c m b" . magit-blame))
+
   :load-path "site-lisp/magit/lisp/")
 
 ;;; * magit-blame

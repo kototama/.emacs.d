@@ -655,11 +655,13 @@ window and run the unit tests. "
 
 ;;; * wgrep
 (use-package wgrep)
+
 ;;; * end of file
 (provide 'config)
 
+;;; * autoload
+
 ;; Local Variables:
-;; eval: (orgstruct-mode 1)
-;; eval: (org-global-cycle)
-;; orgstruct-heading-prefix-regexp: ";;; "
+;; eval: (outshine-mode 1)
+;; eval: (outshine-cycle-buffer)
 ;; End:

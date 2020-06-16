@@ -107,6 +107,19 @@
 (use-package dired+
   :disabled t)
 
+;;; * elisp
+(use-package elisp-mode
+  :init
+  (progn
+
+    (defun my-elisp-mode-hook
+        ()
+      (auto-indent-mode)
+      (whitespace-mode))
+
+    ;; does not work when hook is elisp-mode-hook!
+    (add-hook 'emacs-lisp-mode-hook 'my-elisp-mode-hook)))
+
 ;;; * elixir
 (use-package elixir-mode
   :config

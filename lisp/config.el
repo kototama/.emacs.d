@@ -359,9 +359,12 @@
 ;;; * monokai
 (use-package monokai-theme
   :init
-  (setq
-   monokai-comments "SteelBlue1"
-   )
+  (progn
+    (setq
+     monokai-comments "SteelBlue1"
+     )
+    (load-theme 'monokai t)
+    )
 )
 ;;; * org
 (use-package org

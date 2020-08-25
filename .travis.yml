@@ -8,7 +8,7 @@ script:
   - mv nix-home ~/.config/nixpkgs
   - cd ~/.config/nixpkgs/hosts
   - ln -s ci.nix default.nix
-  - curl https://nixos.org/nix/install | sh
+  - curl -L https://nixos.org/nix/install | sh
   - source ~/.nix-profile/etc/profile.d/nix.sh
   - nix-channel --add https://github.com/rycee/home-manager/archive/master.tar.gz home-manager
   - nix-channel --update

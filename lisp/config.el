@@ -367,6 +367,11 @@
     (load-theme 'monokai t)
     )
 )
+;;; * move-lines
+(use-package move-lines
+  :bind (("M-<up>" . move-lines-up)
+         ("M-<down>" . move-lines-down)
+         ))
 ;;; * org
 (use-package org
   :config

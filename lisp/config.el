@@ -132,6 +132,7 @@
       (company-mode)
       (set-face-foreground 'elixir-atom-face "dark turquoise")
       (flycheck-mode)
+      (exunit-mode)
       (setq flycheck-elixir-credo-strict t)
       )
 

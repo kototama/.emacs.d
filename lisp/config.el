@@ -2,6 +2,12 @@
 (eval-when-compile
   (require 'use-package))
 
+;;; * auto-indent-mode
+(use-package auto-indent-mode
+  :config
+  ;; until https://github.com/mattfidler/auto-indent-mode.el/issues/65 is fixed
+  (advice-remove 'beginning-of-visual-line #'ad-Advice-move-beginning-of-line))
+
 ;;; * ace-jump
 (use-package ace-jump-mode
   :bind (("M-SPC" . ace-jump-mode)))

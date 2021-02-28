@@ -243,9 +243,9 @@
     (add-hook 'ido-setup-hook 'my-ido-setup-hook))
   :bind (("C-S-o" . ido-switch-buffer)))
 
-;;; * imenu
-(use-package imenu
-  :bind ("C-c i" . imenu))
+;;; * imenu-anywhere
+(use-package imenu-anywhere
+  :bind ("C-c i" . ido-imenu-anywhere))
 
 ;;; * javascript
 (use-package js

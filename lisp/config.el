@@ -647,6 +647,18 @@ window and run the unit tests. "
 
     ))
 
+;;; * tuareg
+(use-package tuareg
+  :init
+  (progn
+    (defun my-tuareg-hook ()
+      (merlin-mode)
+      (company-mode)
+      (smartparens-mode)
+      )
+
+    (add-hook 'tuareg-mode-hook 'my-tuareg-hook)
+    ))
 ;;; * whitespace-mode
 (use-package whitespace
   :init

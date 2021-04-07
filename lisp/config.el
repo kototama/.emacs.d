@@ -203,6 +203,17 @@
     (add-hook 'haskell-mode-hook 'my-haskell-mode-hook)
     ))
 
+;;; * helm
+(use-package helm-mode
+  :init
+  (helm-mode 1)
+  :bind (("C-x C-f" . helm-find-files)
+         ("M-x" . helm-M-x)
+         ("C-x C-b" . helm-buffers-list)
+         ("C-S-o" . helm-buffers-list)
+         ("C-c s" . helm-ag)
+         )
+)
 ;;; * hl
 (use-package hl-line
   :config
@@ -211,6 +222,7 @@
     ))
 ;;; * ido
 (use-package ido-mode
+  :disabled t
   :init
   (progn
 
@@ -559,6 +571,7 @@ window and run the unit tests. "
     (add-hook 'rust-mode-hook 'my-rust-mode-hook)))
 ;;; * smex
 (use-package smex
+  :disabled t
   :demand t
   :bind (("M-x" . smex)))
 

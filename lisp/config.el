@@ -129,17 +129,23 @@
 (use-package elixir-mode
   :config
   (progn
+    ;; (setq  lsp-clients-elixir-server-executable "elixir-ls")
+    (setq  lsp-clients-elixir-server-executable "language_server.sh")
 
     (defun my-elixir-mode-hook ()
       (whitespace-mode)
       (smartparens-mode)
       (linum-mode)
+      (auto-fill-mode)
       (require 'smartparens-elixir)
       (company-mode)
       (set-face-foreground 'elixir-atom-face "dark turquoise")
       (flycheck-mode)
       (exunit-mode)
       (setq flycheck-elixir-credo-strict t)
+      ;; (lsp)
+      (yas-minor-mode) ;; required for lsp
+      (flymake-elixir-load)
       )
 
     (add-hook 'elixir-mode-hook 'my-elixir-mode-hook)
@@ -257,6 +263,7 @@
 
 ;;; * imenu-anywhere
 (use-package imenu-anywhere
+  :disabled t
   :bind ("C-c i" . ido-imenu-anywhere))
 
 ;;; * javascript
@@ -358,16 +365,14 @@
 
     (define-key magit-mode-map "v" #'visit-pull-request-url)
 
-    (setq magit-completing-read-function #'magit-ido-completing-read)
+    ;; (setq magit-completing-read-function #'magit-ido-completing-read)
 
     (add-hook 'magit-mode-hook 'my-magit-mode-hook))
 
   :bind (("C-c m s" . magit-status)
          ("C-c m l" . magit-file-log)
          ("C-c m L" . magit-log)
-         ("C-c m b" . magit-blame))
-
-  :load-path "site-lisp/magit/lisp/")
+         ("C-c m b" . magit-blame)))
 
 ;;; * magit-blame
 (use-package magit-blame)

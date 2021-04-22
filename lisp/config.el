@@ -132,6 +132,19 @@
     ;; (setq  lsp-clients-elixir-server-executable "elixir-ls")
     (setq  lsp-clients-elixir-server-executable "language_server.sh")
 
+    (defun elixir-expected-ns ()
+      (let* ((path (file-truename (buffer-file-name)))
+             (sans-file-ext (substring path 0 (- (length (file-name-extension path t)))))
+             (sans-project-dir (replace-regexp-in-string "\\(.*/lib/\\)" "" sans-file-ext))
+             ;;(sans-project-dir (replace-regexp-in-string "\\(.*/test/\\)" "" path))
+             (with-capitals (mapconcat 'capitalize (split-string sans-project-dir "/") "."))
+             (sans-underscores (replace-regexp-in-string "_" "" with-capitals)))
+        sans-underscores))
+
+    (defun elixir-insert-ns ()
+      (interactive)
+      (insert (elixir-expected-ns)))
+
     (defun my-elixir-mode-hook ()
       (whitespace-mode)
       (smartparens-mode)
@@ -150,6 +163,8 @@
 
     (add-hook 'elixir-mode-hook 'my-elixir-mode-hook)
     )
+  :bind (("C-c =" . elixir-format))
+  :bind (("C-c n" . elixir-insert-ns))
   )
 
 ;;; * elpy
@@ -702,6 +717,13 @@ window and run the unit tests. "
 ;;; * wgrep
 (use-package wgrep)
 
+;;; * yasnippet
+(use-package yasnippet
+  :init
+  (progn
+    (setq yas-snippet-dirs
+         '("~/.emacs.d/snippets"))
+    (add-to-list 'warning-suppress-types '(yasnippet backquote-change))))
 ;;; * end of file
 (provide 'config)
 

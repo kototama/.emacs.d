@@ -1,0 +1,18 @@
+# -*- mode: snippet -*-
+# name: genserver
+# key: genserver
+# --
+defmodule `(elixir-insert-ns)` do
+  @moduledoc "TODO"
+
+  use GenServer
+
+  def start_link(options) do
+    $1
+    GenServer.start_link(__MODULE__, options, name: $2)
+  end
+
+  def init(options) do
+    {:ok, options$0}
+  end
+end

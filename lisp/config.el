@@ -2,12 +2,6 @@
 (eval-when-compile
   (require 'use-package))
 
-;;; * auto-indent-mode
-(use-package auto-indent-mode
-  :config
-  ;; until https://github.com/mattfidler/auto-indent-mode.el/issues/65 is fixed
-  (advice-remove 'beginning-of-visual-line #'ad-Advice-move-beginning-of-line))
-
 ;;; * ace-jump
 (use-package ace-jump-mode
   :bind (("M-SPC" . ace-jump-mode)))
@@ -62,7 +56,7 @@
       ()
       (message "my-clojure-mode-hook")
       (paredit-mode t)
-      (auto-indent-mode t)
+      ;; (auto-indent-mode t)
       (clojure-test-mode t)
       ;; indents ring context function properly
       (put 'context 'clojure-indent-function 2))
@@ -92,7 +86,8 @@
   (add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
   :config
   (progn
-    (add-hook 'css-mode-hook 'auto-indent-mode)))
+    ;; (add-hook 'css-mode-hook 'auto-indent-mode)
+    ))
 
 ;;; * dired
 (use-package dired
@@ -119,7 +114,7 @@
 
     (defun my-elisp-mode-hook
         ()
-      (auto-indent-mode)
+      ;; (auto-indent-mode)
       (whitespace-mode))
 
     ;; does not work when hook is elisp-mode-hook!
@@ -149,6 +144,7 @@
       (whitespace-mode)
       (smartparens-mode)
       (linum-mode)
+      (electric-indent-mode)
       (auto-fill-mode)
       (require 'smartparens-elixir)
       (company-mode)
@@ -158,7 +154,7 @@
       (setq flycheck-elixir-credo-strict t)
       ;; (lsp)
       (yas-minor-mode) ;; required for lsp
-      (flymake-elixir-load)
+      ;; (flymake-elixir-load)
       )
 
     (add-hook 'elixir-mode-hook 'my-elixir-mode-hook)
@@ -288,7 +284,7 @@
 
     (defun my-js-mode-hook
         ()
-      (auto-indent-mode)
+      ;; (auto-indent-mode)
       (whitespace-mode)
       (flycheck-mode)
       (smartparens-mode))

@@ -68,6 +68,8 @@
   :config
   (setq inferior-lisp-program "sbcl")
 
+  (slime-setup '(slime-fancy slime-company))
+
   (add-hook 'lisp-mode-hook
             (lambda ()
               (paredit-mode t)
@@ -596,6 +598,13 @@ window and run the unit tests. "
       )
 
     (add-hook 'rust-mode-hook 'my-rust-mode-hook)))
+;;; * slime-repl
+(use-package slime-repl
+  :config
+  (add-hook 'slime-repl-mode-hook
+            (lambda ()
+               (paredit-mode t)
+               )))
 ;;; * smex
 (use-package smex
   :disabled t

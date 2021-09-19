@@ -63,6 +63,17 @@
 
     (add-hook 'clojure-mode-hook 'my-clojure-mode-hook)))
 
+;;; * common-lisp
+(use-package lisp-mode
+  :config
+  (setq inferior-lisp-program "sbcl")
+
+  (add-hook 'lisp-mode-hook
+            (lambda ()
+              (paredit-mode t)
+              ))
+)
+
 ;;; * color-theme
 (use-package color-theme
   :disabled t

@@ -168,6 +168,7 @@
       ;; (lsp)
       (yas-minor-mode) ;; required for lsp
       ;; (flymake-elixir-load)
+      (eglot-ensure)
       )
 
     (add-hook 'elixir-mode-hook 'my-elixir-mode-hook)

@@ -1,6 +1,7 @@
-;;; * require use-package
+;;; * required libs
 (eval-when-compile
-  (require 'use-package))
+  (require 'use-package)
+  (require 's))
 
 ;;; * ace-jump
 (use-package ace-jump-mode
@@ -164,11 +165,13 @@
       (set-face-foreground 'elixir-atom-face "dark turquoise")
       (flycheck-mode)
       (exunit-mode)
-      (setq flycheck-elixir-credo-strict t)
+      ;; (setq flycheck-elixir-credo-strict t)
       ;; (lsp)
       (yas-minor-mode) ;; required for lsp
       ;; (flymake-elixir-load)
-      (eglot-ensure)
+      (when (not (s-ends-with? "/mix.exs" (buffer-file-name)))
+        (message "Starting eglot")
+        (eglot-ensure))
       )
 
     (add-hook 'elixir-mode-hook 'my-elixir-mode-hook)

@@ -175,6 +175,8 @@
     )
   :bind (("C-c =" . elixir-format))
   :bind (("C-c n" . elixir-insert-ns))
+  :bind (("C-c e b" . elixir-beginning-of-defun))
+  :bind (("C-c e f" . elixir-end-of-defun))
   )
 
 ;;; * elpy

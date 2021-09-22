@@ -742,7 +742,8 @@ window and run the unit tests. "
   (progn
     (setq yas-snippet-dirs
          '("~/.emacs.d/snippets"))
-    (add-to-list 'warning-suppress-types '(yasnippet backquote-change))))
+    (add-to-list 'warning-suppress-types '(yasnippet backquote-change))
+    (yas-global-mode)))
 ;;; * end of file
 (provide 'config)
 

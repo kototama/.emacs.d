@@ -1,0 +1,5 @@
+## -*- mode: snippet -*-
+# name: keyword-get
+# key: kg
+# --
+$1 = Keyword.get($2, $3, $4)$0

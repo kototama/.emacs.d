@@ -1,0 +1,5 @@
+## -*- mode: snippet -*-
+# name: keyword-fetch
+# key: kf
+# --
+$1 = Keyword.fetch!($2, :$1)$0

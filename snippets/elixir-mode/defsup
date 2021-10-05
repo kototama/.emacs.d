@@ -1,0 +1,23 @@
+# -*- mode: snippet -*-
+# name: defsup
+# key: defsup
+# --
+defmodule `(elixir-insert-ns)` do
+  @moduledoc "TODO"
+
+  use Supervisor
+
+  alias $1
+
+  def start_link([]) do
+    Supervisor.start_link(__MODULE__, [], name: __MODULE__)
+  end
+
+  def init([]) do
+    children = [
+      $2
+    ]
+
+    Supervisor.init(children, strategy: :one_for_one)
+  end
+end

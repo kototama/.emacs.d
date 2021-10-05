@@ -161,7 +161,7 @@
       (smartparens-mode)
       (linum-mode)
       (electric-indent-mode)
-      (auto-fill-mode)
+      ;; (auto-fill-mode)
       (require 'smartparens-elixir)
       (company-mode)
       (set-face-foreground 'elixir-atom-face "dark turquoise")

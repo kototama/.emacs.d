@@ -129,7 +129,9 @@
     (defun my-elisp-mode-hook
         ()
       ;; (auto-indent-mode)
-      (whitespace-mode))
+      (whitespace-mode)
+      (company-mode)
+      )
 
     ;; does not work when hook is elisp-mode-hook!
     (add-hook 'emacs-lisp-mode-hook 'my-elisp-mode-hook)))

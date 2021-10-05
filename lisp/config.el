@@ -363,6 +363,14 @@
   :config
   (progn
 
+    ;; taken from https://github.com/magit/magit/issues/3717#issuecomment-734798341
+    (transient-append-suffix 'magit-push "-u"
+      '(1 "=s" "Skip gitlab pipeline" "--push-option=ci.skip"))
+    (transient-append-suffix 'magit-push "-u"
+      '(1 "=v" "Set CI variable" "--push-option=ci.variable="))
+    (transient-append-suffix 'magit-push "-u"
+      '(1 "=o" "Set push option" "--push-option="))
+
     ;; http://endlessparentheses.com/create-github-prs-from-emacs-with-magit.html
     (require 's)
 

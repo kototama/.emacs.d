@@ -147,7 +147,7 @@
       (let* ((path (file-truename (buffer-file-name)))
              (sans-file-ext (substring path 0 (- (length (file-name-extension path t)))))
              (sans-project-dir (replace-regexp-in-string "\\(.*/lib/\\)" "" sans-file-ext))
-             ;;(sans-project-dir (replace-regexp-in-string "\\(.*/test/\\)" "" path))
+             (sans-project-dir (replace-regexp-in-string "\\(.*/test/\\)" "" sans-project-dir))
              (with-capitals (mapconcat 'capitalize (split-string sans-project-dir "/") "."))
              (sans-underscores (replace-regexp-in-string "_" "" with-capitals)))
         sans-underscores))

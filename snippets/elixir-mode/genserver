@@ -2,17 +2,17 @@
 # name: genserver
 # key: genserver
 # --
-defmodule `(elixir-insert-ns)` do
-  @moduledoc "TODO"
+use GenServer
 
-  use GenServer
+def start_link(options) do
+  $1
+  GenServer.start_link(__MODULE__, options, name: $2)
+end
 
-  def start_link(options) do
-    $1
-    GenServer.start_link(__MODULE__, options, name: $2)
-  end
+#
+# GenServer callbacks
+#
 
-  def init(options) do
-    {:ok, options$0}
-  end
+def init(options) do
+  {:ok, options$0}
 end

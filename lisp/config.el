@@ -161,6 +161,12 @@
       (interactive)
       (insert (elixir-expected-ns)))
 
+    (defun create-elixir-scratch-buffer nil
+       "create a scratch buffer"
+       (interactive)
+       (switch-to-buffer (get-buffer-create "*elixir-scratch*"))
+       (elixir-mode))
+
     (defun my-elixir-mode-hook ()
       (whitespace-mode)
       (smartparens-mode)

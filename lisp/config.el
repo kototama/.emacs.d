@@ -121,6 +121,11 @@
 (use-package dired+
   :disabled t)
 
+;;; * doom powerline
+(use-package doom-modeline
+  ;; run-once: (all-the-icons-install-fonts)
+  :init (doom-modeline-mode 1)
+  )
 ;;; * elisp
 (use-package elisp-mode
   :init

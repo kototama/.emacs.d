@@ -441,10 +441,9 @@
 (use-package monokai-theme
   :init
   (progn
-    (setq
-     monokai-comments "SteelBlue1"
-     )
+    (setq monokai-comments "SteelBlue1")
     (load-theme 'monokai t)
+    (set-cursor-color "purple")
     )
 )
 ;;; * move-lines

@@ -427,6 +427,12 @@
 
 ;;; * magit-blame
 (use-package magit-blame)
+;;; * markdown
+(use-package markdown-mode
+  :init
+  (progn
+    (add-hook 'markdown-mode-hook 'whitespace-mode)))
+
 ;;; * multiple-cursors
 (use-package multiple-cursors
   :bind (("C-S-c C-S-c" . mc/edit-lines)))

@@ -673,6 +673,7 @@ window and run the unit tests. "
 (use-package undo-tree
   :config
   (progn
+    (setq undo-tree-auto-save-history nil)
     (global-undo-tree-mode)))
 ;;; * paredit
 (use-package paredit

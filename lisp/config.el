@@ -145,9 +145,6 @@
 (use-package elixir-mode
   :config
   (progn
-    ;; (setq  lsp-clients-elixir-server-executable "elixir-ls")
-    (setq  lsp-clients-elixir-server-executable "language_server.sh")
-
     (defun elixir-expected-ns ()
       (let* ((path (file-truename (buffer-file-name)))
              (sans-file-ext (substring path 0 (- (length (file-name-extension path t)))))
@@ -168,6 +165,7 @@
        (elixir-mode))
 
     (defun my-elixir-mode-hook ()
+      (setq eglot-server-programs (cons '(elixir-mode . ("elixir-ls")) 'eglot-server-programs))
       (whitespace-mode)
       (smartparens-mode)
       (linum-mode)
@@ -184,7 +182,8 @@
       ;; (flymake-elixir-load)
       (when (not (s-ends-with? "/mix.exs" (buffer-file-name)))
         (message "Starting eglot")
-        (eglot-ensure))
+        (eglot-ensure)
+        )
       )
 
     (add-hook 'elixir-mode-hook 'my-elixir-mode-hook)
@@ -193,6 +192,7 @@
   :bind (("C-c n" . elixir-insert-ns))
   :bind (("C-c e b" . elixir-beginning-of-defun))
   :bind (("C-c e f" . elixir-end-of-defun))
+  :bind (("C-c , " . exunit-transient))
   )
 
 ;;; * elpy

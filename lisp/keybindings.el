@@ -15,4 +15,6 @@
                        (interactive)
                        (kill-buffer (current-buffer))))
 (bind-key* "C-c d" 'duplicate-thing)
+(bind-key* "C-c f p" 'ffap)
+
 (provide 'keybindings)

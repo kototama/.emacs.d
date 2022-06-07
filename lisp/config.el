@@ -126,6 +126,10 @@
   ;; run-once: (all-the-icons-install-fonts)
   :init (doom-modeline-mode 1)
   )
+;;; * eglot
+(use-package eglot
+  :config
+  (push '(elixir-mode . ("elixir-ls")) eglot-server-programs))
 ;;; * elisp
 (use-package elisp-mode
   :init
@@ -165,7 +169,6 @@
        (elixir-mode))
 
     (defun my-elixir-mode-hook ()
-      (setq eglot-server-programs (cons '(elixir-mode . ("elixir-ls")) 'eglot-server-programs))
       (whitespace-mode)
       (smartparens-mode)
       (linum-mode)
@@ -619,6 +622,12 @@ window and run the unit tests. "
       (set-face-background 'sp-pair-overlay-face "DodgerBlue4"))
 
     (add-hook 'smartparens-mode-hook 'my-smarparens-mode-hook)))
+;;; * recentf
+(use-package recentf
+  :config
+  (progn
+    (run-at-time (current-time) 300 'recentf-save-list))
+  )
 ;;; * rust
 (use-package rust-mode
   :config

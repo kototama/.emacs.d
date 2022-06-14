@@ -259,10 +259,11 @@
 (use-package helm-mode
   :init
   (helm-mode 1)
+
   :bind (("C-x C-f" . helm-find-files)
          ("M-x" . helm-M-x)
          ("C-x C-b" . helm-buffers-list)
-         ("C-S-o" . helm-buffers-list)
+         ("C-S-o" . helm-mini)
          ("C-c s" . helm-ag)
          )
 )
@@ -624,9 +625,14 @@ window and run the unit tests. "
     (add-hook 'smartparens-mode-hook 'my-smarparens-mode-hook)))
 ;;; * recentf
 (use-package recentf
+  :init
+  (recentf-mode)
+
   :config
   (progn
-    (run-at-time (current-time) 300 'recentf-save-list))
+    (setq recentf-max-menu-items 25)
+    (setq recentf-max-saved-items 25)
+    (run-at-time (current-time) 60 'recentf-save-list))
   )
 ;;; * rust
 (use-package rust-mode

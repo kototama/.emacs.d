@@ -277,46 +277,6 @@
   (progn
     (set-face-background 'hl-line "dark slate blue")
     ))
-;;; * ido
-(use-package ido-mode
-  :disabled t
-  :init
-  (progn
-
-    ;; (use-package ido-completing-read+
-    ;;   :init
-    ;;   (ido-ubiquitous-mode 1)
-    ;;   )
-
-    (setq ido-enable-flex-matching t)
-    (setq ido-everywhere t)
-    (setq ido-use-virtual-buffers t)
-    (setq ido-ignore-extensions t)
-    (setq ido-default-buffer-method #'selected-window)
-    (setq ido-max-directory-size 100000)
-
-    (ido-mode 1)
-
-    (defun my-ido-setup-hook
-        ()
-      ;; Go straight home
-      (define-key ido-file-completion-map
-        (kbd "~")
-        (lambda ()
-          (interactive)
-          ;; type ~~ to go the ~/.emacs.d
-          (cond ((looking-back "~/") (insert ".emacs.d/"))
-                ((looking-back "/") (insert "~/"))
-                (t (call-interactively 'self-insert-command))))))
-
-    (add-hook 'ido-setup-hook 'my-ido-setup-hook))
-  :bind (("C-S-o" . ido-switch-buffer)))
-
-;;; * imenu-anywhere
-(use-package imenu-anywhere
-  :disabled t
-  :bind ("C-c i" . ido-imenu-anywhere))
-
 ;;; * javascript
 (use-package js
   :config
@@ -661,12 +621,6 @@ window and run the unit tests. "
             (lambda ()
                (paredit-mode t)
                )))
-;;; * smex
-(use-package smex
-  :disabled t
-  :demand t
-  :bind (("M-x" . smex)))
-
 ;;; * show-paren-mode
 (use-package paren
   :init
@@ -675,18 +629,6 @@ window and run the unit tests. "
     (set-face-foreground 'show-paren-match "black"))
   :config
   (show-paren-mode))
-
-;;; * twitter
-(use-package twittering-mode
-  :disabled t
-  :config
-  (progn
-    (defun load-twitter-credentials
-        ()
-      (interactive)
-      (twittering-load-private-info)))
-  :bind (("C-c t l" . load-twitter-credentials)
-         ("C-c t t" . twit)))
 
 ;;; * uniquify
 (use-package uniquify
@@ -710,50 +652,6 @@ window and run the unit tests. "
       (local-set-key (kbd "M-q") 'fill-paragraph))
 
     (add-hook 'paredit-mode-hook 'my-paredit-mode-hook)))
-
-;;; * purescript
-(use-package psc-ide
-  :disabled t
-  :init
-  (progn
-
-    (eval-after-load 'flycheck
-      '(flycheck-purescript-setup))
-
-    (defun my-purescript-hook ()
-      (psc-ide-mode)
-      (company-mode)
-      (flycheck-mode)
-      (smartparens-mode)
-      ;;      (setq psc-ide-server-executable "pulp server")
-      )
-
-    (add-hook 'purescript-mode-hook 'my-purescript-hook)
-    (add-hook 'purescript-mode-hook 'turn-on-purescript-indentation)
-
-    ))
-
-(use-package purescript-mode
-  :disabled t
-  :init
-  (progn
-
-    (eval-after-load 'flycheck
-      '(flycheck-purescript-setup))
-
-    (defun my-purescript-hook ()
-      ;;      (psc-ide-mode)
-      (message "my-purescript-hook")
-      (company-mode)
-      ;; (flycheck-mode)
-      (smartparens-mode)
-      ;;      (setq psc-ide-server-executable "pulp server")
-      )
-
-    (add-hook 'purescript-mode-hook 'my-purescript-hook)
-    (add-hook 'purescript-mode-hook 'turn-on-purescript-indentation)
-
-    ))
 
 ;;; * tuareg
 (use-package tuareg

@@ -103,6 +103,10 @@
     ;; (add-hook 'css-mode-hook 'auto-indent-mode)
     ))
 
+;;; * delsel
+(use-package delsel
+  :config
+  (delete-selection-mode))
 ;;; * dired
 (use-package dired
   :config
@@ -613,6 +617,11 @@ window and run the unit tests. "
 
     (add-hook 'python-mode-hook 'my-python-mode-hook)))
 
+;;; * simple
+(use-package simple
+  :config
+  (column-number-mode))
+
 ;;; * smartparens
 (use-package smartparens
   :config
@@ -663,7 +672,9 @@ window and run the unit tests. "
   :init
   (progn
     (set-face-background 'show-paren-match "purple")
-    (set-face-foreground 'show-paren-match "black")))
+    (set-face-foreground 'show-paren-match "black"))
+  :config
+  (show-paren-mode))
 
 ;;; * twitter
 (use-package twittering-mode
@@ -778,6 +789,11 @@ window and run the unit tests. "
    ))
 
 
+
+;;; * winner-mode
+(use-package winner
+  :config
+  (winner-mode))
 ;;; * wgrep
 (use-package wgrep)
 

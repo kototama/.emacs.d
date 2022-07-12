@@ -13,9 +13,6 @@
   ;; loads package configurations
   (require 'config)
 
-  ;; activates default modes
-  (require 'modes)
-
   ;; setup global keybindings
   (require 'keybindings)
 

@@ -130,6 +130,10 @@
   ;; run-once: (all-the-icons-install-fonts)
   :init (doom-modeline-mode 1)
   )
+;;; * eldoc
+(use-package eldoc
+  :bind (("C-c h" . eldoc))
+  )
 ;;; * eglot
 (use-package eglot
   :config

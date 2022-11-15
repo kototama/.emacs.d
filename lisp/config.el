@@ -671,6 +671,12 @@ window and run the unit tests. "
 
     (add-hook 'tuareg-mode-hook 'my-tuareg-hook)
     ))
+;;; * web-mode
+(use-package web-mode
+  :init
+  (add-to-list 'auto-mode-alist '("\\.eex$" . web-mode))
+  :config
+  (web-mode-toggle-current-element-highlight))
 ;;; * whitespace-mode
 (use-package whitespace
   :init

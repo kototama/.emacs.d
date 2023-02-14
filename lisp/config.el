@@ -667,6 +667,7 @@ window and run the unit tests. "
       (company-mode)
       (smartparens-mode)
       (flycheck-mode)
+      (setq merlin-command "ocamlmerlin")
       )
 
     (add-hook 'tuareg-mode-hook 'my-tuareg-hook)

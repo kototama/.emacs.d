@@ -694,6 +694,8 @@ window and run the unit tests. "
       (company-mode)
       (smartparens-mode)
       (flycheck-mode)
+      (whitespace-mode)
+      (set-face-foreground 'tuareg-font-lock-governing-face "goldenrod")
       (setq merlin-command "ocamlmerlin")
       )
 

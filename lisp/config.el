@@ -89,7 +89,8 @@
 (use-package company
   :config
   (progn
-    (setq company-idle-delay 0.5)
+    (setq company-idle-delay 0.25)
+    (setq company-dabbrev-downcase 0.25)
     (set-face-background 'company-tooltip "light slate blue")
     ;; (global-company-mode)
     ))

@@ -234,6 +234,16 @@
     (use-package flycheck-hdevtools
       :disabled t)))
 
+;;; * geiser-repl
+(use-package geiser-repl
+  :config
+  (progn
+    (defun my-geiser-repl-hook ()
+      (paredit-mode)
+      (company-mode))
+
+    (add-hook 'geiser-repl-mode-hook 'my-geiser-repl-hook)
+    ))
 ;;; * grep
 
 (use-package grep
@@ -597,6 +607,22 @@ window and run the unit tests. "
       (set-face-background 'sp-pair-overlay-face "DodgerBlue4"))
 
     (add-hook 'smartparens-mode-hook 'my-smarparens-mode-hook)))
+;;; * racket
+(use-package racket-mode
+  :config
+  (progn
+    (defun my-racket-mode-hook ()
+      (paredit-mode)
+      (geiser-mode)
+      (company-mode)
+      )
+
+    (add-hook 'racket-mode-hook 'my-racket-mode-hook)
+    )
+
+  :init
+  (add-to-list 'auto-mode-alist '("\\.rkt$" . racket-mode)))
+
 ;;; * recentf
 (use-package recentf
   :init

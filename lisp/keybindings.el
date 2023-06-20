@@ -17,4 +17,7 @@
 (bind-key "C-c d" 'duplicate-thing)
 (bind-key "C-c f p" 'ffap)
 
+(bind-key "C-x C-c" nil)
+(bind-key "C-c C-c q q" 'save-buffers-kill-terminal)
+
 (provide 'keybindings)

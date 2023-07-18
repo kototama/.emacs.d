@@ -414,7 +414,9 @@
 (use-package markdown-mode
   :init
   (progn
-    (add-hook 'markdown-mode-hook 'whitespace-mode)))
+    (add-hook 'markdown-mode-hook 'whitespace-mode))
+  :bind* (("M-p" . backward-paragraph)
+          ("M-n" . forward-paragraph)))
 
 ;;; * multiple-cursors
 (use-package multiple-cursors
@@ -483,6 +485,11 @@ last month."
             (require 'org-bullets)
             (org-bullets-mode 1))
         (message "org-bullets not installed")))
+
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((emacs-lisp . t)
+       (shell . t)))
 
     (add-hook 'org-mode-hook 'my-common-org-mode-hook))
 

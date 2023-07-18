@@ -128,7 +128,7 @@
 
 ;;; * doom powerline
 (use-package doom-modeline
-  ;; run-once: (all-the-icons-install-fonts)
+  ;; run-once: (nerd-icons-install-fonts)
   :init (doom-modeline-mode 1)
   )
 ;;; * eldoc

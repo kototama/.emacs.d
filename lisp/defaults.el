@@ -78,4 +78,7 @@
                              str2 begin2 end2
                              ignore-case)))))
 
+;; do not show a message when saving a file
+(setq save-silently t)
+
 (provide 'defaults)

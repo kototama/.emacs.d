@@ -200,11 +200,12 @@
 
     (add-hook 'elixir-mode-hook 'my-elixir-mode-hook)
     )
-  :bind (("C-c =" . elixir-format))
-  :bind (("C-c n" . elixir-insert-ns))
-  :bind (("C-c e b" . elixir-beginning-of-defun))
-  :bind (("C-c e f" . elixir-end-of-defun))
-  :bind (("C-c , " . exunit-transient))
+  :bind (:map elixir-mode-map
+              ("C-c =" . elixir-format)
+              ("C-c n" . elixir-insert-ns)
+              ("C-c e b" . elixir-beginning-of-defun)
+              ("C-c e f" . elixir-end-of-defun)
+              ("C-c , " . exunit-transient))
   )
 
 ;;; * elpy
@@ -436,6 +437,9 @@
   :bind (("M-<up>" . move-lines-up)
          ("M-<down>" . move-lines-down)
          ))
+;;; * ocamlformat
+(use-package ocamlformat
+  :hook (before-save . ocamlformat-before-save))
 ;;; * org
 (use-package org
   :config

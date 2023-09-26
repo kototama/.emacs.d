@@ -419,6 +419,12 @@
   :bind* (("M-p" . backward-paragraph)
           ("M-n" . forward-paragraph)))
 
+;;; * merlin
+(use-package merlin
+  :config
+  (set-face-attribute 'merlin-compilation-error-face nil :underline '(:color "OliveDrab1" :style wave))
+  ;; (set-face-background 'merlin-compilation-error-face "LavenderBlush1")
+  )
 ;;; * multiple-cursors
 (use-package multiple-cursors
   :bind (("C-S-c C-S-c" . mc/edit-lines)))

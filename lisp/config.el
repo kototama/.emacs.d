@@ -643,8 +643,15 @@ window and run the unit tests. "
   (progn
     (setq recentf-max-menu-items 25)
     (setq recentf-max-saved-items 25)
-    (let ((save-silently t))
-      (run-at-time (current-time) 60 'recentf-save-list))))
+
+    (defun silent-recentf-save-list (orig-fun &rest args)
+      (let ((save-silently t)
+            (inhibit-message t))
+        (apply orig-fun args)))
+
+    (advice-add 'recentf-save-list :around #'silent-recentf-save-list)
+
+    (run-at-time (current-time) 60 'recentf-save-list)))
 
 ;;; * rust
 (use-package rust-mode

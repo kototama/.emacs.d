@@ -661,10 +661,23 @@ window and run the unit tests. "
 
 ;;; * rust
 (use-package rust-mode
+  :init
+  (add-hook 'eglot-managed-mode-hook
+            (lambda ()
+              ;; (put 'eglot-note 'flymake-overlay-control nil)
+              (put 'eglot-warning 'flymake-overlay-control nil)
+              (put 'eglot-error 'flymake-overlay-control nil)
+
+              ;; Show flymake diagnostics first.
+              (setq eldoc-documentation-functions (cons #'flymake-eldoc-function
+                                                        (remove #'flymake-eldoc-function
+                                                                eldoc-documentation-functions)))
+              (eglot-inlay-hints-mode -1)))
   :config
   (progn
     (defun my-rust-mode-hook ()
       (linum-mode)
+      (company-mode)
       ;; (add-hook 'before-save-hook 'rust-format-buffer nil 'make-it-local)
       (setq rust-format-on-save t)
       )
@@ -675,8 +688,8 @@ window and run the unit tests. "
   :config
   (add-hook 'slime-repl-mode-hook
             (lambda ()
-               (paredit-mode t)
-               )))
+              (paredit-mode t)
+              ))))
 ;;; * show-paren-mode
 (use-package paren
   :init

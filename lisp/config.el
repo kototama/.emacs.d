@@ -689,7 +689,8 @@ window and run the unit tests. "
   (add-hook 'slime-repl-mode-hook
             (lambda ()
               (paredit-mode t)
-              ))))
+              )))
+
 ;;; * show-paren-mode
 (use-package paren
   :init

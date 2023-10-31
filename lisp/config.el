@@ -183,7 +183,7 @@
     (defun my-elixir-mode-hook ()
       (whitespace-mode)
       (smartparens-mode)
-      (linum-mode)
+      (display-line-number-mode)
       (electric-indent-mode)
       ;; (auto-fill-mode)
       (require 'smartparens-elixir)
@@ -679,7 +679,7 @@ window and run the unit tests. "
   :config
   (progn
     (defun my-rust-mode-hook ()
-      (linum-mode)
+      (display-line-number-mode)
       (company-mode)
       ;; (add-hook 'before-save-hook 'rust-format-buffer nil 'make-it-local)
       (setq rust-format-on-save t)

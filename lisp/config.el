@@ -138,7 +138,10 @@
 ;;; * eglot
 (use-package eglot
   :config
-  (push '(elixir-mode . ("elixir-ls")) eglot-server-programs))
+  (push '(elixir-mode . ("elixir-ls")) eglot-server-programs)
+  :bind
+  (("C-c e i" . eglot-find-implementation)
+   ))
 ;;; * elisp
 (use-package elisp-mode
   :init

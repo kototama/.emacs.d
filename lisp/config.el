@@ -183,7 +183,7 @@
     (defun my-elixir-mode-hook ()
       (whitespace-mode)
       (smartparens-mode)
-      (display-line-number-mode)
+      (display-line-numbers-mode)
       (electric-indent-mode)
       ;; (auto-fill-mode)
       (require 'smartparens-elixir)

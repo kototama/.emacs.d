@@ -679,6 +679,7 @@ window and run the unit tests. "
   :config
   (progn
     (defun my-rust-mode-hook ()
+      (eglot)
       (display-line-number-mode)
       (company-mode)
       ;; (add-hook 'before-save-hook 'rust-format-buffer nil 'make-it-local)

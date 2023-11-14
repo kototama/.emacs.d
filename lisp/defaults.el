@@ -81,4 +81,8 @@
 ;; do not show a message when saving a file
 (setq save-silently t)
 
+;; browse the hyperspec within Emacs
+(setq browse-url-handlers '(("hyperspec" . eww-browse-url)
+        ("." . browse-url-default-browser)))
+
 (provide 'defaults)

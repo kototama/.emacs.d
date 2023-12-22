@@ -680,7 +680,7 @@ window and run the unit tests. "
   (progn
     (defun my-rust-mode-hook ()
       (eglot-ensure)
-      (display-line-number-mode)
+      (display-line-numbers-mode)
       (company-mode)
       ;; (add-hook 'before-save-hook 'rust-format-buffer nil 'make-it-local)
       (setq rust-format-on-save t)

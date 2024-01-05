@@ -23,7 +23,7 @@
   ;; (load-role-file "init.el")
 
   ;; loads files lib
-  (require 'files)
+  (require 'files-util)
 
   ;; starts the emacs server
   (require 'server)

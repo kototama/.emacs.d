@@ -1,5 +1,10 @@
 ;;; helper functions to manipulate files
+
+(message "Starting of loading files.el")
+
 (require 's)
+
+(message "Starting of loading files.el")
 
 ;; renaming
 
@@ -90,7 +95,7 @@ sMatching file pattern (regexp): ")
   (while (search-forward (string ?\C-m) nil t)
     (replace-match "" nil t)))
 
-
+(message "Before defun copy-buffer-file-name-as-kill")
 
 (defun copy-buffer-file-name-as-kill (choice)
   "Copy the buffer-file-name to the kill-ring"
@@ -110,4 +115,4 @@ sMatching file pattern (regexp): ")
       (message "%s copied" new-kill-string)
       (kill-new new-kill-string))))
 
-(provide 'files)
+(provide 'files-util)

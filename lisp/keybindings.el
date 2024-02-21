@@ -19,6 +19,6 @@
 (bind-key "C-c k" 'delete-region)
 
 (bind-key "C-x C-c" nil)
-(bind-key "C-c C-c q q" 'save-buffers-kill-terminal)
+(bind-key "C-c q q" 'save-buffers-kill-terminal)
 
 (provide 'keybindings)

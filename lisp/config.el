@@ -504,6 +504,8 @@ last month."
      '((emacs-lisp . t)
        (shell . t)))
 
+    (setq org-agenda-files '("~/syncthing/org_notes/Recipes.org"))
+
     (add-hook 'org-mode-hook 'my-common-org-mode-hook))
 
   :bind (("C-c o a" . org-agenda)
@@ -748,7 +750,9 @@ window and run the unit tests. "
   :init
   (add-to-list 'auto-mode-alist '("\\html.eex$" . web-mode))
   :config
-  (web-mode-toggle-current-element-highlight))
+  (web-mode-toggle-current-element-highlight)
+  :custom
+  (web-mode-markup-indent-offset 2))
 ;;; * whitespace-mode
 (use-package whitespace
   :init

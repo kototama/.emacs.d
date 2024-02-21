@@ -408,7 +408,7 @@
     (add-hook 'magit-mode-hook 'my-magit-mode-hook))
 
   :bind (("C-c m s" . magit-status)
-         ("C-c m l" . magit-file-log)
+         ("C-c m l" . magit-log-buffer-file)
          ("C-c m L" . magit-log)
          ("C-c m b" . magit-blame)))
 

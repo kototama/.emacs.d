@@ -358,6 +358,21 @@
     (add-hook 'emacs-lisp-mode-hook 'my-emacs-lisp-mode-hook)
     (add-hook 'minibuffer-setup-hook 'my-minibuffer-mode-hook)))
 
+;;; * lsp-mode
+
+(use-package lsp-mode
+  :init
+  (setq
+   lsp-eldoc-render-all nil
+   lsp-ui-doc-enable t
+   lsp-ui-sideline-enable t
+   lsp-ui-sideline-show-hover nil
+   lsp-signature-doc-lines 5
+   ;; lsp-prefer-capf t
+   lsp-idle-delay 0.2)
+  :config
+  (define-key lsp-mode-map (kbd "C-l") lsp-command-map))
+
 ;;; * magit
 (use-package magit
   :config
@@ -666,14 +681,7 @@ window and run the unit tests. "
 
 ;;; * rust
 (use-package rust-mode
-  :init
-  (setq
-   lsp-eldoc-render-all nil
-   lsp-ui-doc-enable t
-   lsp-ui-sideline-enable t
-   lsp-ui-sideline-show-hover nil
-   ;; lsp-prefer-capf nil
-   lsp-idle-delay 0.2)
+  ;; :init
   ;; (add-hook 'eglot-managed-mode-hook
   ;;           (lambda ()
   ;;             ;; (put 'eglot-note 'flymake-overlay-control nil)

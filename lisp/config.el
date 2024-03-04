@@ -667,26 +667,35 @@ window and run the unit tests. "
 ;;; * rust
 (use-package rust-mode
   :init
-  (add-hook 'eglot-managed-mode-hook
-            (lambda ()
-              ;; (put 'eglot-note 'flymake-overlay-control nil)
-              (put 'eglot-warning 'flymake-overlay-control nil)
-              (put 'eglot-error 'flymake-overlay-control nil)
+  (setq
+   lsp-eldoc-render-all nil
+   lsp-ui-doc-enable t
+   lsp-ui-sideline-enable t
+   lsp-ui-sideline-show-hover nil
+   ;; lsp-prefer-capf nil
+   lsp-idle-delay 0.2)
+  ;; (add-hook 'eglot-managed-mode-hook
+  ;;           (lambda ()
+  ;;             ;; (put 'eglot-note 'flymake-overlay-control nil)
+  ;;             (put 'eglot-warning 'flymake-overlay-control nil)
+  ;;             (put 'eglot-error 'flymake-overlay-control nil)
 
-              ;; Show flymake diagnostics first.
-              (setq eldoc-documentation-functions (cons #'flymake-eldoc-function
-                                                        (remove #'flymake-eldoc-function
-                                                                eldoc-documentation-functions)))
-              (eglot-inlay-hints-mode -1)))
+  ;;             ;; Show flymake diagnostics first.
+  ;;             (setq eldoc-documentation-functions (cons #'flymake-eldoc-function
+  ;;                                                       (remove #'flymake-eldoc-function
+  ;;                                                               eldoc-documentation-functions)))
+  ;;             (eglot-inlay-hints-mode -1)))
   :config
   (progn
     (defun my-rust-mode-hook ()
-      (eglot-ensure)
+      (setq lsp-rust-analyzer-proc-macro-enable nil)
+      (lsp)
+      ;; (eglot-ensure)
       (display-line-numbers-mode)
       (company-mode)
+
       ;; (add-hook 'before-save-hook 'rust-format-buffer nil 'make-it-local)
-      (setq rust-format-on-save t)
-      )
+      (setq rust-format-on-save t))
 
     (add-hook 'rust-mode-hook 'my-rust-mode-hook)))
 ;;; * slime-repl

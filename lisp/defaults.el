@@ -89,4 +89,6 @@
 (setq gc-cons-threshold 100000000)
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
 
+(setq safe-local-variable-values '((eval outshine-cycle-buffer) (eval org-global-cycle)))
+
 (provide 'defaults)

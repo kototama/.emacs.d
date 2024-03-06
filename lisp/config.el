@@ -707,7 +707,7 @@ window and run the unit tests. "
   :config
   (progn
     (defun my-rust-mode-hook ()
-      (setq lsp-rust-analyzer-proc-macro-enable nil)
+      ;; does not work: (setq lsp-rust-analyzer-proc-macro-enable nil)
       (lsp)
       ;; (eglot-ensure)
       (display-line-numbers-mode)

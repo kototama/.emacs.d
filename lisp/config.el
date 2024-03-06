@@ -359,19 +359,26 @@
     (add-hook 'minibuffer-setup-hook 'my-minibuffer-mode-hook)))
 
 ;;; * lsp-mode
-
 (use-package lsp-mode
   :init
   (setq
-   lsp-eldoc-render-all nil
+   lsp-eldoc-render-all t
    lsp-ui-doc-enable t
    lsp-ui-sideline-enable t
    lsp-ui-sideline-show-hover nil
    lsp-signature-doc-lines 5
    ;; lsp-prefer-capf t
-   lsp-idle-delay 0.2)
+   lsp-idle-delay 0.5)
   :config
-  (define-key lsp-mode-map (kbd "C-l") lsp-command-map))
+  (progn
+    ;; lsp-mode tweaks https://emacs-lsp.github.io/lsp-mode/page/performance/
+    ;; (setq lsp-idle-delay 0.500)
+    ;; https://emacs-lsp.github.io/lsp-mode/page/file-watchers/
+    (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]build\\'")
+    (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]deps\\'")
+    (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.rebar3?\\'")
+    (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\.cargo\\'")
+    (define-key lsp-mode-map (kbd "C-l") lsp-command-map)))
 
 ;;; * magit
 (use-package magit

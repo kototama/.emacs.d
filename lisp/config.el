@@ -366,7 +366,7 @@
 (use-package lsp-mode
   :init
   (setq
-   lsp-eldoc-render-all t
+   lsp-eldoc-render-all nil
    lsp-ui-doc-enable t
    lsp-ui-sideline-enable t
    lsp-ui-sideline-show-hover nil
@@ -706,7 +706,34 @@ window and run the unit tests. "
   ;;             (eglot-inlay-hints-mode -1)))
   :config
   (progn
+    (defun fix-lsp-minibuffer ()
+      ;; https://github.com/emacs-lsp/lsp-mode/pull/1740#issuecomment-1776493727
+
+      ;; do not cache the shitty result from rust-analyzer
+      (advice-add #'lsp-eldoc-function :after (lambda (&rest _) (setq lsp--hover-saved-bounds nil)))
+
+      ;; extract and show short signature for rust-analyzer
+      (cl-defmethod lsp-clients-extract-signature-on-hover (contents (_server-id (eql rust-analyzer)))
+        (let* ((value (if lsp-use-plists (plist-get contents :value) (gethash "value" contents)))
+               (groups (--partition-by (s-blank? it) (s-lines (s-trim value))))
+               (mod-group (cond ((s-equals? "```rust" (car (-fifth-item groups))) (-third-item groups))
+                                ((s-equals? "```rust" (car (-third-item groups))) (-first-item groups))
+                                (t nil)))
+               (cmt (if (null mod-group) "" (concat " // " (cadr mod-group))))
+               (sig-group (cond ((s-equals? "```rust" (car (-fifth-item groups))) (-fifth-item groups))
+                                ((s-equals? "```rust" (car (-third-item groups))) (-third-item groups))
+                                (t (-first-item groups))))
+               (sig (->> sig-group
+                         (--drop-while (s-equals? "```rust" it))
+                         (--take-while (not (s-equals? "```" it)))
+                         (--map (s-replace-regexp "//.*" "" it))
+                         (--map (s-trim it))
+                         (s-join " "))))
+          (lsp--render-element (concat "```rust\n" sig cmt "\n```")))))
+
     (defun my-rust-mode-hook ()
+      (fix-lsp-minibuffer)
+
       ;; does not work: (setq lsp-rust-analyzer-proc-macro-enable nil)
       (lsp)
       ;; (eglot-ensure)

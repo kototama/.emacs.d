@@ -227,6 +227,9 @@
     )
   )
 
+;;; * envrc
+(use-package envrc
+  :init (envrc-global-mode 1))
 ;;; * expand region
 (use-package expand-region
   :bind (("C-M-SPC" . er/expand-region))

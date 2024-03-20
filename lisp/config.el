@@ -441,7 +441,8 @@
   :bind (("C-c m s" . magit-status)
          ("C-c m l" . magit-log-buffer-file)
          ("C-c m L" . magit-log)
-         ("C-c m b" . magit-blame)))
+         ("C-c m b" . magit-blame))
+  :custom  (magit-blame-echo-style 'show-lines))
 
 ;;; * magit-blame
 (use-package magit-blame)

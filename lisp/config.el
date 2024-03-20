@@ -199,6 +199,8 @@
         (message "Starting eglot")
         (eglot-ensure)
         )
+
+      (add-hook 'before-save-hook 'elixir-format nil t)
       )
 
     (add-hook 'elixir-mode-hook 'my-elixir-mode-hook)

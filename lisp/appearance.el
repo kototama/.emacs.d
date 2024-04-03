@@ -12,4 +12,11 @@
             )))
     (error (message "Fonts Inconsolata can not be found. Please do 'sudo apt-get install ttf-inconsolata'."))))
 
+
+;; fix annoying lsp-ui color for errors
+(set-face-attribute 'error nil
+                    :foreground "dark orange"
+                    ;; :weight 'bold
+                    )
+
 (provide 'appearance)

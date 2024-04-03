@@ -13,10 +13,22 @@
     (error (message "Fonts Inconsolata can not be found. Please do 'sudo apt-get install ttf-inconsolata'."))))
 
 
-;; fix annoying lsp-ui color for errors
+;; Fix annoying lsp-ui color for errors.
+;; Found with M-x list-faces-display
+;; Found a new color M-x list-colors-display
 (set-face-attribute 'error nil
-                    :foreground "dark orange"
+                    :foreground "gold"
                     ;; :weight 'bold
                     )
+
+(set-face-attribute 'success nil
+                    :foreground "spring green"
+                    ;; :weight 'bold
+                    )
+
+;; (set-face-attribute 'compilation-line-number nil
+;;                     :foreground "gold"
+;;                     ;; :weight 'bold
+;;                     )
 
 (provide 'appearance)

@@ -139,6 +139,7 @@
 (use-package eglot
   :config
   (push '(elixir-mode . ("elixir-ls")) eglot-server-programs)
+  (setq-default eglot-workspace-configuration '(:elixirLS (:dialyzerEnabled :json-false)))
   :bind
   (("C-c e i" . eglot-find-implementation)
    ))

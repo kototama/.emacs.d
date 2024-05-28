@@ -21,4 +21,7 @@
 (bind-key "C-x C-c" nil)
 (bind-key "C-c q q" 'save-buffers-kill-terminal)
 
+(bind-key "C-+" 'text-scale-increase)
+(bind-key "C--" 'text-scale-decrease)
+
 (provide 'keybindings)

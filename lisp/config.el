@@ -297,7 +297,7 @@
          ("M-x" . helm-M-x)
          ("C-x C-b" . helm-buffers-list)
          ("C-S-o" . helm-mini)
-         ("C-c s" . helm-ag)
+         ;; ("C-c s" . helm-rg)
          )
 )
 ;;; * hl
@@ -697,6 +697,11 @@ window and run the unit tests. "
 
     (run-at-time (current-time) 60 'recentf-save-list)))
 
+;;; * rg
+(use-package rg
+  :init (rg-enable-default-bindings)
+;;  :bind (("C-c s" . ))
+  )
 ;;; * rust
 (use-package rust-mode
   ;; :init

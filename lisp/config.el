@@ -241,6 +241,14 @@
 (use-package flycheck
   :config
   (progn
+
+    ;; ;; Fix annoying lsp-ui color for info.
+    ;; (set-face-attribute 'flycheck-info nil
+    ;;                 :foreground nil
+    ;;                 :underline '(:color "spring green")
+    ;;                 ;; :weight 'bold
+    ;;                 )
+
     (use-package flycheck-hdevtools
       :disabled t)))
 
@@ -421,7 +429,8 @@
     ;; https://emacs.stackexchange.com/questions/13772/how-to-prevent-magit-to-ask-where-to-push-a-branch
     (defun my-magit-mode-hook
         ()
-
+      (set-face-foreground 'magit-diff-hunk-heading "gold")
+      (set-face-background 'magit-diff-hunk-heading "gray28")
       (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
       (defun magit-push-arguments-maybe-upstream (magit-push-popup-fun &rest args)

@@ -36,8 +36,8 @@
 ;; unicode
 (set-language-environment "UTF-8")
 
-;; lines should be 80 characters wide, not 72
-(setq-default fill-column 80)
+;; lines should be 110 characters wide, not 72
+(setq-default fill-column 110)
 
 ;; sentences do not need double spaces to end.
 (set-default 'sentence-end-double-space nil)

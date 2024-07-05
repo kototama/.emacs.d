@@ -479,10 +479,10 @@
   :init
   (progn
     (setq monokai-comments "SteelBlue1")
-    (load-theme 'monokai t)
-    (set-cursor-color "purple")
-    )
-)
+    (custom-set-faces
+     '(cursor ((t (:background "purple")))))
+    (load-theme 'monokai t)))
+
 ;;; * move-lines
 (use-package move-lines
   :bind (("M-<up>" . move-lines-up)

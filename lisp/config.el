@@ -476,12 +476,15 @@
 
 ;;; * monokai
 (use-package monokai-theme
-  :init
-  (progn
-    (setq monokai-comments "SteelBlue1")
-    (custom-set-faces
-     '(cursor ((t (:background "purple")))))
-    (load-theme 'monokai t)))
+  :ensure t
+  :config
+  (load-theme 'monokai t)
+  (custom-theme-set-faces
+   'monokai
+   '(font-lock-comment-delimiter-face ((t (:foreground "Steelblue1"))))
+   '(font-lock-comment-face ((t (:foreground "Steelblue1"))))
+   '(cursor ((t (:background "purple")))))
+  (enable-theme 'monokai))
 
 ;;; * move-lines
 (use-package move-lines

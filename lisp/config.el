@@ -483,7 +483,7 @@
    'monokai
    '(font-lock-comment-delimiter-face ((t (:foreground "Steelblue1"))))
    '(font-lock-comment-face ((t (:foreground "Steelblue1"))))
-   '(cursor ((t (:background "purple")))))
+   '(cursor ((t (:background "gold")))))
   (enable-theme 'monokai))
 
 ;;; * move-lines

@@ -237,6 +237,16 @@
 (use-package expand-region
   :bind (("C-M-SPC" . er/expand-region))
 )
+;;; * files
+(use-package files
+  :custom
+  (auto-save-default nil)
+  (make-backup-files nil)
+  (major-mode-remap-alist
+   '((elixir-mode . elixir-ts-mode)
+     (js-json-mode . json-ts-mode)
+     (python-mode . python-ts-mode)
+     (rust-mode . rust-ts-mode))))
 ;;; * flycheck
 (use-package flycheck
   :config

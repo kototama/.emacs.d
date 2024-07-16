@@ -246,7 +246,8 @@
    '((elixir-mode . elixir-ts-mode)
      (js-json-mode . json-ts-mode)
      (python-mode . python-ts-mode)
-     (rust-mode . rust-ts-mode))))
+;;     (rust-mode . rust-ts-mode)
+     )))
 ;;; * flycheck
 (use-package flycheck
   :config
@@ -726,6 +727,8 @@ window and run the unit tests. "
   )
 ;;; * rust
 (use-package rust-mode
+  :init
+  (setq rust-mode-treesitter-derive t)
   ;; :init
   ;; (add-hook 'eglot-managed-mode-hook
   ;;           (lambda ()
@@ -777,7 +780,7 @@ window and run the unit tests. "
       ;; (add-hook 'before-save-hook 'rust-format-buffer nil 'make-it-local)
       (setq rust-format-on-save t))
 
-    (add-hook 'rust-mode-hook 'my-rust-mode-hook)))
+    (add-hook 'rust-ts-mode-hook 'my-rust-mode-hook)))
 ;;; * slime-repl
 (use-package slime-repl
   :config

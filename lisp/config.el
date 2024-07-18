@@ -139,6 +139,7 @@
 (use-package eglot
   :config
   (push '(elixir-mode . ("elixir-ls")) eglot-server-programs)
+  (push '(elixir-ts-mode . ("elixir-ls")) eglot-server-programs)
   (setq-default eglot-workspace-configuration '(:elixirLS (:dialyzerEnabled :json-false)))
   :bind
   (("C-c e i" . eglot-find-implementation)
@@ -159,7 +160,7 @@
     (add-hook 'emacs-lisp-mode-hook 'my-elisp-mode-hook)))
 
 ;;; * elixir
-(use-package elixir-mode
+(use-package elixir-ts-mode
   :config
   (progn
     (defun elixir-expected-ns ()
@@ -189,7 +190,7 @@
       ;; (auto-fill-mode)
       (require 'smartparens-elixir)
       (company-mode)
-      (set-face-foreground 'elixir-atom-face "dark turquoise")
+      ;; (set-face-foreground 'elixir-atom-face "dark turquoise")
       (flycheck-mode)
       (exunit-mode)
       ;; (setq flycheck-elixir-credo-strict t)
@@ -204,9 +205,9 @@
       (add-hook 'before-save-hook 'elixir-format nil t)
       )
 
-    (add-hook 'elixir-mode-hook 'my-elixir-mode-hook)
+    (add-hook 'elixir-ts-mode-hook 'my-elixir-mode-hook)
     )
-  :bind (:map elixir-mode-map
+  :bind (:map elixir-ts-mode-map
               ("C-c =" . elixir-format)
               ("C-c n" . elixir-insert-ns)
               ("C-c e b" . elixir-beginning-of-defun)

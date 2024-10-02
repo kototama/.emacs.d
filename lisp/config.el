@@ -550,6 +550,7 @@ last month."
       (setq org-archive-location "::* Archived Tasks")
       (setq org-log-done 'time)
       (setq org-export-with-sub-superscripts nil)
+      (setq org-hide-emphasis-markers t)
       (condition-case nil
           (progn
             (require 'org-bullets)
@@ -568,7 +569,10 @@ last month."
   :bind (("C-c o a" . org-agenda)
          ("C-c o o" . org-open-at-point)
          ("C-c o l" . org-store-link)
-         ("C-c o L" . org-insert-link)))
+         ("C-c o L" . org-insert-link))
+  :custom-face
+      (org-code ((t (:foreground "LightSeaGreen"))))
+  )
 
 ;;; * org-capture
 (use-package org-capture

@@ -555,6 +555,7 @@ last month."
       (setq org-log-done 'time)
       (setq org-export-with-sub-superscripts nil)
       (setq org-hide-emphasis-markers t)
+      (mixed-pitch-mode t)
       (condition-case nil
           (progn
             (require 'org-bullets)
@@ -576,6 +577,8 @@ last month."
          ("C-c o L" . org-insert-link))
   :custom-face
       (org-code ((t (:foreground "LightSeaGreen"))))
+      (org-level-1 ((t (:foreground "goldenrod" :height 150))))
+      (org-level-2 ((t (:height 150))))
   )
 
 ;;; * org-capture

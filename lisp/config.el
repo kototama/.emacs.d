@@ -791,6 +791,7 @@ window and run the unit tests. "
       ;; (eglot-ensure)
       (display-line-numbers-mode)
       (company-mode)
+      (whitespace-mode)
 
       ;; (add-hook 'before-save-hook 'rust-format-buffer nil 'make-it-local)
       (setq rust-format-on-save t))

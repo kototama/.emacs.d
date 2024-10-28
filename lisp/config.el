@@ -574,7 +574,10 @@ last month."
   :bind (("C-c o a" . org-agenda)
          ("C-c o o" . org-open-at-point)
          ("C-c o l" . org-store-link)
-         ("C-c o L" . org-insert-link))
+         ("C-c o L" . org-insert-link)
+         ("C-c o c" . org-copy-subtree)
+         ("C-c o p" . org-paste-subtree)
+         )
   :custom-face
       (org-code ((t (:foreground "LightSeaGreen"))))
       (org-level-1 ((t (:foreground "goldenrod" :height 150))))

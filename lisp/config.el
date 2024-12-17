@@ -210,8 +210,6 @@
   :bind (:map elixir-ts-mode-map
               ("C-c =" . elixir-format)
               ("C-c n" . elixir-insert-ns)
-              ("C-c e b" . elixir-beginning-of-defun)
-              ("C-c e f" . elixir-end-of-defun)
               ("C-c , " . exunit-transient))
   )
 

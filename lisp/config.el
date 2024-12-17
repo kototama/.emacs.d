@@ -584,7 +584,41 @@ last month."
 
 ;;; * org-capture
 (use-package org-capture
+  :config
+  (setq org-capture-templates
+      '(("i" "recipe from internet" entry (file "~/syncthing/org_notes/recipes.org")
+         "%(org-chef-get-recipe-from-url)"
+         :empty-lines 1)
+        ("m" "Manual recipe entry" entry (file "~/syncthing/org_notes/recipes.org")
+         "* %^{Recipe title: }\n  :PROPERTIES:\n  :source-url:\n  :servings:\n  :prep-time:\n  :cook-time:\n  :ready-in:\n  :END:\n** Ingredients\n   %?\n** Directions\n\n")))
   :bind (("C-c o r" . org-capture)))
+
+;;; * org-chef
+(use-package org-chef
+:init
+;; override the code to get the "- [ ]" prefix for each ingredient instead of just "-"
+
+(defun org-chef-to-unordered-list-fixup (list)
+  "Convert a LIST of strings into an org-element plain list"
+  (if (null list)
+      nil
+    `(plain-list nil ,(mapcar #'(lambda (x) `(item (:bullet "- [ ]" :pre-blank 0)  ,(concat "[ ] " x))) list))))
+
+ (eval-after-load "org-chef"
+   '(defun org-chef-recipe-to-org-element (recipe)
+      "Convert a RECIPE into an `org-element` AST."
+      `(headline (:title ,(cdr (assoc 'name recipe)) :level 1)
+                 (property-drawer nil
+                                  ((node-property (:key "source-url" :value ,(cdr (assoc 'source-url recipe))))
+                                   (node-property (:key "servings"   :value ,(cdr (assoc 'servings recipe))))
+                                   (node-property (:key "prep-time"  :value ,(format "%s" (cdr (assoc 'prep-time recipe)))))
+                                   (node-property (:key "cook-time"  :value ,(format "%s" (cdr (assoc 'cook-time recipe)))))
+                                   (node-property (:key "ready-in"   :value ,(format "%s" (cdr (assoc 'ready-in recipe)))))))
+                 (headline (:title "Ingredients" :level 2 :pre-blank 1)
+                           ,(org-chef-to-unordered-list-fixup (cdr (assoc 'ingredients recipe))))
+                 (headline (:title "Directions" :level 2 :pre-blank 1)
+                           ,(org-chef-to-ordered-list (cdr (assoc 'directions recipe))))))))
+
 ;;; * ox-latex
 (use-package ox-latex
   :config (progn

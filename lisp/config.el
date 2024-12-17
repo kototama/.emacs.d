@@ -275,9 +275,9 @@
     (add-hook 'geiser-repl-mode-hook 'my-geiser-repl-hook)
     ))
 ;;; * golden-ratio
-(use-package golden-ratio
-  :init (golden-ratio-mode 1)
-  )
+;; (use-package golden-ratio
+;;   :init (golden-ratio-mode 1)
+;;   )
 ;;; * grep
 
 (use-package grep

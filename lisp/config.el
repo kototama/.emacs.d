@@ -331,6 +331,7 @@
 
     (defun my-js-mode-hook
         ()
+      (setq js-indent-level 2)
       ;; (auto-indent-mode)
       (whitespace-mode)
       (flycheck-mode)

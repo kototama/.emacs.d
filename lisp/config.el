@@ -515,6 +515,7 @@
 
     (setq org-reverse-note-order t)
     (setq org-src-fontify-natively t)
+    (setq org-tags-match-list-sublevels nil)
 
     (defun jtc-org-tasks-closed-in-month (&optional month year match-string)
       "Produces an org agenda tags view list of the tasks completed
@@ -566,7 +567,7 @@ last month."
      '((emacs-lisp . t)
        (shell . t)))
 
-    (setq org-agenda-files '("~/syncthing/org_notes/Recipes.org"))
+    (setq org-agenda-files '("~/syncthing/org_notes/recipes.org"))
 
     (add-hook 'org-mode-hook 'my-common-org-mode-hook))
 

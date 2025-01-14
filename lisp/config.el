@@ -245,7 +245,7 @@
    '((elixir-mode . elixir-ts-mode)
      (js-json-mode . json-ts-mode)
      (python-mode . python-ts-mode)
-;;     (rust-mode . rust-ts-mode)
+     (rust-mode . rust-ts-mode)
      )))
 ;;; * flycheck
 (use-package flycheck
@@ -776,6 +776,9 @@ window and run the unit tests. "
 ;;; * rust
 (use-package rust-mode
   :init
+  ;; otherwise lsp does not start anymore? 2025-09-01
+  (setq lsp-inline-completion-enable t)
+
   (setq rust-mode-treesitter-derive t)
   ;; :init
   ;; (add-hook 'eglot-managed-mode-hook

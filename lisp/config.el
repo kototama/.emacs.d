@@ -182,13 +182,32 @@
        (switch-to-buffer (get-buffer-create "*elixir-scratch*"))
        (elixir-mode))
 
+    (defun elixir-in-doc-or-comment-p
+      ()
+      (elixir-ppss-comment-or-string-start (syntax-ppss)))
+
+    (defun sp-elixir-in-heredoc-p (_id _action context)
+      (save-excursion
+        (re-search-backward "\"\"\"" nil nil)
+        (backward-char 4)
+        (looking-at "doc ")))
+
     (defun my-elixir-mode-hook ()
       (whitespace-mode)
       (smartparens-mode)
+      (require 'smartparens-elixir)
+
+      (sp-with-modes '(elixir-mode elixir-ts-mode)
+        ;; (sp-local-pair "if" nil :actions :rem)
+        (sp-local-pair "if" "end"
+                       :when '(("SPC" "RET" "<evil-ret>"))
+                       :post-handlers '(sp-elixir-do-block-post-handler)
+                       :skip-match 'sp-elixir-skip-keyword-list-def-p
+                       :unless '(sp-in-comment-p sp-in-string-p sp-elixir-in-heredoc-p)))
+
       (display-line-numbers-mode)
       (electric-indent-mode)
       ;; (auto-fill-mode)
-      (require 'smartparens-elixir)
       (company-mode)
       ;; (set-face-foreground 'elixir-atom-face "dark turquoise")
       (flycheck-mode)

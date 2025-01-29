@@ -198,8 +198,17 @@
       (require 'smartparens-elixir)
 
       (sp-with-modes '(elixir-mode elixir-ts-mode)
-        ;; (sp-local-pair "if" nil :actions :rem)
         (sp-local-pair "if" "end"
+                       :when '(("SPC" "RET" "<evil-ret>"))
+                       :post-handlers '(sp-elixir-do-block-post-handler)
+                       :skip-match 'sp-elixir-skip-keyword-list-def-p
+                       :unless '(sp-in-comment-p sp-in-string-p sp-elixir-in-heredoc-p))
+        (sp-local-pair "do" "end"
+                       :when '(("SPC" "RET" "<evil-ret>"))
+                       :post-handlers '(sp-elixir-do-block-post-handler)
+                       :skip-match 'sp-elixir-skip-keyword-list-def-p
+                       :unless '(sp-in-comment-p sp-in-string-p sp-elixir-in-heredoc-p))
+        (sp-local-pair "for" "end"
                        :when '(("SPC" "RET" "<evil-ret>"))
                        :post-handlers '(sp-elixir-do-block-post-handler)
                        :skip-match 'sp-elixir-skip-keyword-list-def-p

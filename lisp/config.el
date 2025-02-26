@@ -823,6 +823,8 @@ window and run the unit tests. "
   ;; otherwise lsp does not start anymore? 2025-09-01
   (setq lsp-inline-completion-enable t)
 
+  (setq rust-indent-offset 4)
+
   (setq rust-mode-treesitter-derive t)
   ;; :init
   ;; (add-hook 'eglot-managed-mode-hook

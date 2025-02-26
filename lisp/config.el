@@ -87,13 +87,18 @@
 
 ;;; * company
 (use-package company
-  :config
-  (progn
-    (setq company-idle-delay 0.25)
-    (setq company-dabbrev-downcase 0.25)
-    (set-face-background 'company-tooltip "light slate blue")
-    ;; (global-company-mode)
-    ))
+  :custom
+  (set-face-attribute 'company-tooltip nil :background "#2E3440" :foreground "#D8DEE9")
+  (set-face-attribute 'company-tooltip-selection nil :background "#5E81AC" :foreground "#ECEFF4")
+  (set-face-attribute 'company-tooltip-common nil :foreground "#88C0D0")
+  (set-face-attribute 'company-tooltip-common-selection nil :foreground "#BF616A" :weight 'bold)
+  (set-face-attribute 'company-scrollbar-bg nil :background "#3B4252")
+  (set-face-attribute 'company-scrollbar-fg nil :background "#4C566A")
+  (setq company-idle-delay 0.25)
+  (setq company-dabbrev-downcase 0.25)
+  ;; (set-face-background 'company-tooltip "light slate blue")
+  ;; (global-company-mode)
+  )
 
 ;;; * css-mode
 (use-package css-mode

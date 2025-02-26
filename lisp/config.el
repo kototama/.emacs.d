@@ -217,6 +217,11 @@
                        :when '(("SPC" "RET" "<evil-ret>"))
                        :post-handlers '(sp-elixir-do-block-post-handler)
                        :skip-match 'sp-elixir-skip-keyword-list-def-p
+                       :unless '(sp-in-comment-p sp-in-string-p sp-elixir-in-heredoc-p))
+        (sp-local-pair "with" "end"
+                       :when '(("SPC" "RET" "<evil-ret>"))
+                       :post-handlers '(sp-elixir-do-block-post-handler)
+                       :skip-match 'sp-elixir-skip-keyword-list-def-p
                        :unless '(sp-in-comment-p sp-in-string-p sp-elixir-in-heredoc-p)))
 
       (display-line-numbers-mode)

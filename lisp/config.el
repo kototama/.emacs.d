@@ -300,6 +300,11 @@
     (use-package flycheck-hdevtools
       :disabled t)))
 
+;;; * flymake
+(use-package flymake
+  :bind (("C-c f n" . flymake-goto-next-error))
+  )
+
 ;;; * geiser-repl
 (use-package geiser-repl
   :config

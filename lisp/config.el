@@ -193,7 +193,7 @@
 
     (defun sp-elixir-in-heredoc-p (_id _action context)
       (save-excursion
-        (re-search-backward "\"\"\"" nil nil)
+        (re-search-backward "\"\"\"" nil t)
         (backward-char 4)
         (looking-at "doc ")))
 

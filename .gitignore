@@ -16,3 +16,9 @@ smex-items
 ido.last
 projectile-bookmarks.eld
 recentf
+/bookmarks
+/eln-cache/
+/transient/
+/tutorial/
+/.lsp-session-v1
+/.cache/

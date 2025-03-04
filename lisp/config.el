@@ -3,6 +3,164 @@
   (require 'use-package)
   (require 's))
 
+;;; * global settings
+(use-package emacs
+  :init
+  ;; installs inconsolate fonts if presents
+  (when (eq window-system 'x)
+    (condition-case nil
+        (progn
+          (set-frame-font "Inconsolata-15")
+          (add-to-list 'default-frame-alist '(font . "Inconsolata-15")))
+      (error (message "Fonts Inconsolata can not be found. Please do 'sudo apt-get install ttf-inconsolata'."))))
+
+
+  ;; Fix annoying lsp-ui color for errors.
+  ;; Found with M-x list-faces-display
+  ;; Found a new color M-x list-colors-display
+  (set-face-attribute 'error nil
+                      :foreground "gold"
+                      ;; :weight 'bold
+                      )
+
+  (set-face-attribute 'success nil
+                      :foreground "spring green"
+                      ;; :weight 'bold
+                      )
+
+  ;; (set-face-attribute 'compilation-line-number nil
+  ;;                     :foreground "gold"
+  ;;                     ;; :weight 'bold
+  ;;                     )
+
+  (blink-cursor-mode 0)
+
+  ;; saves backup and tmp files in the ~/.emacs.d/tmp directory
+  (setq backup-directory-alist
+        `((".*" . ,(concat user-emacs-directory "backups/"))))
+
+  (setq auto-save-file-name-transforms
+        `((".*"  ,(concat user-emacs-directory "backups/") t)))
+
+
+  ;; no menubar
+  (menu-bar-mode 0)
+
+  ;; no toolbar
+  (tool-bar-mode -1)
+
+  ;; no scroll bars
+  (scroll-bar-mode -1)
+
+  ;; no start screen
+  (setq inhibit-splash-screen t)
+
+  ;; no tabs, spaces instead
+  (setq-default indent-tabs-mode nil)
+
+  ;; changes all yes/no questions to y/n type
+  (fset 'yes-or-no-p 'y-or-n-p)
+
+  ;; do not confirm file creation
+  (setq confirm-nonexistent-file-or-buffer nil)
+
+  ;; integrates copy/paste with X
+  (setq x-select-enable-clipboard t)
+  ;; (setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
+
+  ;; unicode
+  (set-language-environment "UTF-8")
+
+  ;; lines should be 110 characters wide, not 72
+  (setq-default fill-column 110)
+
+  ;; sentences do not need double spaces to end.
+  (set-default 'sentence-end-double-space nil)
+
+  ;; prefix buffer having the same name by a path element
+  (setq uniquify-buffer-name-style 'forward)
+
+  ;; allows downcase-region command
+  (put 'downcase-region 'disabled nil)
+
+  ;; saves a lot of recent files
+  (setq recentf-max-menu-items 300)
+
+  ;; defines functions that can be executed by buffer local definitions
+  (setq safe-local-variable-values
+        '((eval org-global-cycle)))
+
+  ;; shift + movements do not activate a selection
+  (setq shift-select-mode nil)
+
+  ;; fix emacs closing slowly on some systems
+  (setq x-select-enable-clipboard-manager nil)
+
+  ;; use aspell instead of ispell
+  (setq-default ispell-program-name "aspell")
+
+  ;; prevent magit 2.1 to hang emacs
+  ;; see http://magit.vc/manual/magit/Emacs-245-hangs-when-loading-Magit.html#Emacs-245-hangs-when-loading-Magit
+  (setq tramp-ssh-controlmaster-options nil)
+
+  ;; missing function in Emacs < 24.4
+  (when (<= (string-to-number emacs-version) 24.3)
+    (defun string-suffix-p (str1 str2 &optional ignore-case)
+      (let ((begin2 (- (length str2) (length str1)))
+            (end2 (length str2)))
+        (when (< begin2 0) (setq begin2 0))
+        (eq t (compare-strings str1 nil nil
+                               str2 begin2 end2
+                               ignore-case)))))
+
+  ;; do not show a message when saving a file
+  (setq save-silently t)
+
+  ;; browse the hyperspec within Emacs
+  (setq browse-url-handlers '(("hyperspec" . eww-browse-url)
+                              ("." . browse-url-default-browser)))
+
+  ;; lsp-mode tweaks https://emacs-lsp.github.io/lsp-mode/page/performance/
+  (setq gc-cons-threshold 100000000)
+  (setq read-process-output-max (* 1024 1024)) ;; 1mb
+
+  (setq safe-local-variable-values '((eval outshine-cycle-buffer) (eval org-global-cycle)))
+
+  (defun transpose-windows (arg)
+    "Transpose the buffers shown in two windows."
+    (interactive "p")
+    (let ((selector (if (>= arg 0) 'next-window 'previous-window)))
+      (while (/= arg 0)
+        (let ((this-win (window-buffer))
+              (next-win (window-buffer (funcall selector))))
+          (set-window-buffer (selected-window) next-win)
+          (set-window-buffer (funcall selector) this-win)
+          (select-window (funcall selector)))
+        (setq arg (if (cl-plusp arg) (1- arg) (1+ arg))))))
+
+  :bind
+  (("C-c p" . pop-to-mark-command)
+   ("C-c p" . pop-to-mark-command)
+   ("C-S-j" . join-line)
+   ("M-n" . forward-paragraph)
+   ("M-p" . backward-paragraph)
+   ("M-o" . other-window)
+   ("M-S-o" . (lambda ()
+    (interactive)
+    (other-window -1)))
+   ("C-S-k" . (lambda ()
+                (interactive)
+                (kill-buffer (current-buffer))))
+   ("C-c d" . duplicate-thing)
+   ("C-c f p" . ffap)
+   ("C-c k" . delete-region)
+
+   ("C-x C-c" . nil)
+   ("C-c q q" . save-buffers-kill-terminal)
+
+   ("C-+" . text-scale-increase)
+   ("C--" . text-scale-decrease)))
+
 ;;; * ace-jump
 (use-package ace-jump-mode
   :bind (("M-SPC" . ace-jump-mode)))
@@ -302,6 +460,8 @@
 
 ;;; * flymake
 (use-package flymake
+;;  :custom
+  ;; (setq flymake-display-mode 'popup)
   :bind (("C-c f n" . flymake-goto-next-error))
   )
 

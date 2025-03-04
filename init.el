@@ -5,22 +5,11 @@
 (let ((file-name-handler-alist nil))
   (add-to-list 'load-path "~/.emacs.d/lisp")
 
-  ;; loads the common settings
-  (require 'defaults)
-  (require 'appearance)
-  (require 'layout)
-
   ;; loads package configurations
   (require 'config)
 
-  ;; setup global keybindings
-  (require 'keybindings)
-
   ;; setup keyboard accents
   (require 'iso-transl)
-
-  ;; adds the user/machine specific configuration
-  ;; (load-role-file "init.el")
 
   ;; loads files lib
   (require 'files-util)

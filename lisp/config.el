@@ -409,22 +409,6 @@
               ("C-c , " . exunit-transient))
   )
 
-;;; * elpy
-(use-package elpy
-  :disabled t
-  :config
-  (progn
-
-    (defun my-elpy-mode-hook ()
-      (setq elpy-rpc-backend "rope")
-      (setq elpy-rpc-timeout 3)
-      (setq elpy-test-runner 'elpy-test-pytest-runner)
-      (local-set-key (kbd "M-.") 'python-goto-definition))
-
-    (add-hook 'elpy-mode-hook 'my-elpy-mode-hook)
-    )
-  )
-
 ;;; * envrc
 (use-package envrc
   :init (envrc-global-mode 1))
@@ -443,7 +427,7 @@
      (python-mode . python-ts-mode)
      (rust-mode . rust-mode)
      )))
-;;; * flycheck
+ ;;; * flycheck
 (use-package flycheck
   :config
   (progn
@@ -458,13 +442,6 @@
     (use-package flycheck-hdevtools
       :disabled t)))
 
-;;; * flymake
-(use-package flymake
-;;  :custom
-  ;; (setq flymake-display-mode 'popup)
-  :bind (("C-c f n" . flymake-goto-next-error))
-  )
-
 ;;; * geiser-repl
 (use-package geiser-repl
   :config
@@ -475,10 +452,6 @@
 
     (add-hook 'geiser-repl-mode-hook 'my-geiser-repl-hook)
     ))
-;;; * golden-ratio
-;; (use-package golden-ratio
-;;   :init (golden-ratio-mode 1)
-;;   )
 ;;; * grep
 
 (use-package grep
@@ -493,22 +466,6 @@
       )))
 
 
-;;; * haskell
-(use-package haskell-mode
-  :disabled t
-  :config
-  (progn
-
-    (setq haskell-process-type 'stack-ghci)
-
-
-    (defun my-haskell-mode-hook
-      ()
-      (intero-mode))
-
-    (add-hook 'haskell-mode-hook 'my-haskell-mode-hook)
-    ))
-
 ;;; * helm
 (use-package helm-mode
   :init
@@ -521,12 +478,6 @@
          ;; ("C-c s" . helm-rg)
          )
 )
-;;; * hl
-(use-package hl-line
-  :config
-  (progn
-    (set-face-background 'hl-line "dark slate blue")
-    ))
 ;;; * javascript
 (use-package js
   :config

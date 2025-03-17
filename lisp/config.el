@@ -987,6 +987,7 @@ window and run the unit tests. "
       (whitespace-mode)
 
       ;; (add-hook 'before-save-hook 'rust-format-buffer nil 'make-it-local)
+      (setq rust-rustfmt-switches '("--edition" "2024"))
       (setq rust-format-on-save t))
 
     (add-hook 'rust-ts-mode-hook 'my-rust-mode-hook)))

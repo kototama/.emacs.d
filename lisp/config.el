@@ -467,9 +467,9 @@
 
 
 ;;; * helm
-(use-package helm-mode
-  :init
-  (helm-mode 1)
+(use-package helm-command
+  ;; :config
+  ;; (helm-mode 1)
 
   :bind (("C-x C-f" . helm-find-files)
          ("M-x" . helm-M-x)

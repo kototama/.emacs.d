@@ -467,17 +467,22 @@
 
 
 ;;; * helm
-(use-package helm-command
-  ;; :config
-  ;; (helm-mode 1)
 
+(use-package helm-mode
+  :demand t
+  :init
+  (helm-mode 1)
+  )
+
+(use-package helm-command
   :bind (("C-x C-f" . helm-find-files)
          ("M-x" . helm-M-x)
          ("C-x C-b" . helm-buffers-list)
          ("C-S-o" . helm-mini)
          ;; ("C-c s" . helm-rg)
          )
-)
+  )
+
 ;;; * javascript
 (use-package js
   :config

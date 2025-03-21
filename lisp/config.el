@@ -551,7 +551,11 @@
   :init
   (setq
    lsp-eldoc-render-all nil
+
    lsp-ui-doc-enable t
+   lsp-ui-doc-show-with-cursor t
+   lsp-ui-doc-delay 1
+
    lsp-ui-sideline-enable t
    lsp-ui-sideline-show-hover nil
    lsp-signature-doc-lines 5

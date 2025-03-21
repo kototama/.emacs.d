@@ -1,4 +1,6 @@
-[![Build Status](https://www.travis-ci.org/kototama/.emacs.d.svg?branch=master)](https://www.travis-ci.org/kototama/.emacs.d)
+# THIS REPOSITORY IS ARCHIVED
+
+Current repository at https://git.sr.ht/~kototama/.emacs.d
 
 # Emacs configuration
 

@@ -655,6 +655,7 @@
   (load-theme 'monokai t)
   (custom-theme-set-faces
    'monokai
+   '(xref-match ((t (:background "red"))))
    '(font-lock-comment-delimiter-face ((t (:foreground "Steelblue1"))))
    '(font-lock-comment-face ((t (:foreground "Steelblue1"))))
    '(cursor ((t (:background "gold")))))
